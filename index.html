@@ -3,157 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brutalist Portfolio</title>
+    <title>Ethan Sheaf-Morrison</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;500&display=swap');
     </style>
 </head>
 <body>
-    <!-- Sticky Banner with Scrolling Text -->
-    <div class="sticky-banner">
-        <div class="scrolling-text">
-            Welcome to Ethan Sheaf’s Portfolio | Designer | Writer | Research Assistant
-        </div>
-    </div>
-
     <!-- Header Section -->
     <header>
-        <div class="site-title">Ethan Sheaf*</div>
+        <div class="site-title">Ethan Sheaf-Morrison</div>
         <nav>
-            <a href="#">HOME</a>
-            <a href="#">ABOUT</a>
-            <a href="#">CONTACT</a>
+            <a href="#">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="experiments.html">Experiments</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
         </nav>
     </header>
 
-
-    <hr class="bold-line">
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Designer</h1>
-        <p>Pōneke, Aotearoa</p>
-        <a href="#" class="cta-link">Call to Action</a>
-    </section>
-
-    <hr class="bold-line">
-
-    <!-- Filter Section -->
-    <section class="filter">
-        <a href="#" class="filter-link">ALL</a>
-        <a href="#" class="filter-link">WEB DESIGN</a>
-        <a href="#" class="filter-link">BRANDING</a>
-        <a href="#" class="filter-link">OTHER</a>
-    </section>
-
-    <hr class="bold-line">
-
     <!-- Selected Works Section -->
-<!-- Selected Works Section -->
-<section class="selected-works">
-    <h2>Selected Works</h2>
-    <ul>
-        <li><a href="projects/project1.html">Project 1: Finding Kuku</a><span class="project-date">Jan 2024</span></li>
-        <li><a href="projects/project2.html">Mapping Human/Earth Systems</a><span class="project-date">Feb 2024</span></li>
-        <li><a href="projects/project3.html">Western Sahara, Aotearoa, and the Phosphate Crisis</a><span class="project-date">Mar 2024</span></li>
-    </ul>
-</section>
+    <section class="selected-works">
+        <h2>Selected Works</h2>
+        <ul>
+            <li>
+                <a href="projects/FindingKuku.html" class="project-title">Finding Kuku</a>
+                <span class="project-date">2024</span>
+            </li>
+            <li>
+                <a href="projects/MappingHumanEarthSystems.html" class="project-title">Mapping Human/Earth Systems</a>
+                <span class="project-date">2024</span>
+            </li>
+            <li>
+                <a href="projects/WesternSahara.html" class="project-title">Western Sahara, Aotearoa, & the phosphate crisis</a>
+                <span class="project-date">2023</span>
+            </li>
+            <li>
+                <a href="projects/GoogleWarming.html" class="project-title">Google Warming</a>
+                <span class="project-date">2023</span>
+            </li>
+            <li>
+                <a href="projects/CollatedFrames.html" class="project-title">Collated_Frames</a>
+                <span class="project-date">2023</span>
+            </li>
+        </ul>
+    </section>
 
-    
-    <!-- Section for projects by year -->
-     
+    <!-- Projects by Year Section -->
     <section class="projects-list">
-        <h1>Projects by year</h1> 
+        <h1>Projects by Year</h1>
+        
         <h2 class="dropdown-header" data-target="projects-2024">2024</h2>
         <ul id="projects-2024" class="project-year-list">
-            <li data-image="Images/image0.png">
-                <a href="projects/FindingKuku.html">
-                    <span class="project-title">Project 1</span>
-                </a>
-                    <span class="project-date">Jan 2024</span>
-          
+            <li>
+                <a href="projects/FindingKuku.html" class="project-title">Finding Kuku</a>
+                <span class="project-date">January</span>
             </li>
-            <li data-image="Images/image1.png">
-                <a href="projects/project2.html">
-                    <span class="project-title">Mapping Human/Earth Systems</span>
-                </a>
-                    <span class="project-date">Feb 2024</span>
+            <li>
+                <a href="projects/MappingHumanEarthSystems.html" class="project-title">Mapping Human/Earth Systems</a>
+                <span class="project-date">February</span>
             </li>
-            <li data-image="Images/image1.png">
-                <span class="project-title">Iterate Postgraduate Showcase</span>
-                <span class="project-date">Feb 2024</span>
+            <li>
+                <a href="projects/Iterate.html" class="project-title">Iterate Postgraduate Showcase</a>
+                <span class="project-date">February</span>
             </li>
         </ul>
 
         <h2 class="dropdown-header" data-target="projects-2023">2023</h2>
         <ul id="projects-2023" class="project-year-list">
-            <li data-image="images/image3.jpg">
-                <span class="project-title">On Display Pt.2</span>
-                <span class="project-date">Aug 2023</span>
+            <li>
+                <a href="projects/OnDisplay.html" class="project-title">On Display Pt.2</a>
+                <span class="project-date">August</span>
             </li>
-            <li data-image="images/image4.jpg">
-                <span class="project-title">Western Sahara, Aotearoa, and the Phosphate Crisis</span>
-                <span class="project-date">Sep 2023</span>
+            <li>
+                <a href="projects/WesternSahara.html" class="project-title">Western Sahara, Aotearoa, & the phosphate crisis</a>
+                <span class="project-date">September</span>
             </li>
-            <li data-image="images/image4.jpg">
-                <span class="project-title">Google Warming</span>
-                <span class="project-date">Sep 2023</span>
-            </li>
-        </ul>
-
-        <h2 class="dropdown-header" data-target="projects-2022">2022</h2>
-        <ul id="projects-2022" class="project-year-list">
-            <li data-image="images/image3.jpg">
-                <span class="project-title">Finding Kuku</span>
-                <span class="project-date">Aug 2023</span>
-            </li>
-            <li data-image="images/image4.jpg">
-                <span class="project-title">Reweti & I</span>
-                <span class="project-date">Sep 2023</span>
-            </li>
-            <li data-image="images/image4.jpg">
-                <span class="project-title">Dazed, Afraid, & Underpaid</span>
-                <span class="project-date">Sep 2023</span>
-            </li>
-            <li data-image="images/image4.jpg">
-                <span class="project-title">Photographics Catalogue 2022</span>
-                <span class="project-date">Sep 2023</span>
-            </li>
-            <li data-image="images/image4.jpg">
-                <span class="project-title">Reweti & I: Visualised</span>
-                <span class="project-date">Sep 2023</span>
-            </li>
-            <li data-image="images/image4.jpg">
-                <span class="project-title">Dazed, Afraid, & Underpaid</span>
-                <span class="project-date">Sep 2023</span>
+            <li>
+                <a href="projects/GoogleWarming.html" class="project-title">Google Warming</a>
+                <span class="project-date">September</span>
             </li>
         </ul>
     </section>
-
-    <!-- Background Image Element -->
-    <div class="hover-image" id="hover-image"></div>
-
-    <script src="script.js"></script>
-
-    <hr class="bold-line">
 
     <!-- About/Contact Section -->
     <section class="about-contact">
-        <p>About Me: I am a designer, research assistant, and writer. I graduated from Te Herenga waka Victoria university of wellington in 2023 with a Bachelor of Design Innovation with a double major in communication and media design. I have held positions as a tutor and research assistant at Victoria university since 2021 including a position as a summer research scholar (2022-2023). Throughout my undergraduate I received multiple accolades such as the Te Tini a Rehua award (2021) and Te Pūtahi o Poutama Awhina grant (2022). </p>
-        <p>Contact: <a href= "mailto: ethan.sheafmorrison@gmail.com"> studio@ethansheaf.com </a></p>
+        <p>I am a designer, research assistant, and writer. I graduated from Te Herenga Waka Victoria University of Wellington in 2023 with a Bachelor of Design Innovation with a double major in communication and media design. I have held positions as a tutor and research assistant at Victoria University since 2021 including a position as a summer research scholar (2022-2023). Throughout my undergraduate I received multiple accolades such as the Te Tini a Rehua award (2021) and Te Pūtahi o Poutama Awhina grant (2022).</p>
+        <p>Contact: <a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
     </section>
-
-    <hr class="bold-line">
 
     <!-- Footer Section -->
     <footer>
-        <p class="social-links">
-            <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>|
-            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>|
+        <div class="social-links">
+            <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
             <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-        </p>
-        <p class="copyright">&copy; 2024 Ethan Sheaf-Morrison</p>
+        </div>
+        <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

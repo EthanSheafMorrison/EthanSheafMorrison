@@ -1,35 +1,184 @@
 /* Basic Styles */
 body {
     font-family: 'Helvetica', 'Arial', 'system-ui', sans-serif;
-    font-weight: medium;
+    font-weight: 400;
     background-color: rgb(255, 255, 255);
-    accent-color: red;
     color: black;
     margin: 0;
     padding: 0;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-/* Ensure links retain their appearance */
+/* Typography */
+h1, h2, h3 {
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+/* Links */
 a {
-    color: black; /* Set the default link colour */
-    text-decoration: none; /* Remove the underline */
-    font-weight: medium;
+    color: black;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 a:hover {
-    color: red !important; /* Optional: Set a hover effect (e.g., red) */
-    text-decoration: underline;
+    color: #666;
 }
 
-a:visited {
-    color: black; /* Keep visited links the same colour as unvisited */
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-a:active {
-    color: red; /* Ensure active (clicked) links stay black */
+.site-title {
+    font-size: 2rem;
+    letter-spacing: -0.02em;
 }
 
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Selected Works Section */
+.selected-works {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.selected-works h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.selected-works ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.selected-works li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.selected-works li:last-child {
+    border-bottom: none;
+}
+
+.project-title {
+    font-size: 1.2rem;
+}
+
+.project-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Projects List */
+.projects-list {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.projects-list h1 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dropdown-header {
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.project-year-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.project-year-list.expanded {
+    display: block;
+}
+
+.project-year-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* About/Contact Section */
+.about-contact {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Footer */
+footer {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .selected-works li,
+    .project-year-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .project-date {
+        align-self: flex-end;
+    }
+}
 
 /* Projects List */
 .projects-list {
@@ -107,32 +256,6 @@ a:active {
     transition: opacity 0.3s ease;
 }
 
-/* Header */
-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: Left;
-    padding: 30px 20px 15px;
-}
-
-.site-title {
-    font-size: 48px;
-    font-weight: medium;
-}
-
-nav {
-    text-align: right;
-    padding: 25px;
-}
-
-nav a {
-    margin-left: 25px;
-    text-decoration: none;
-    color: black;
-    font-size: 24px;
-    font-weight: medium;
-}
-
 /* Hero Section */
 .hero {
     text-align: left;
@@ -190,149 +313,6 @@ nav a {
     font-size: 24px;
     text-align: center;
     font-weight: medium;
-}
-
-/* About/Contact Section */
-.about-contact {
-    text-align: left;
-    padding: 100px 20px;
-    font-size: 24px;
-    font-weight: medium;
-}
-
-/* Footer */
-footer {
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    align-items: left;
-    padding: 40px 20px;
-}
-
-.social-links a {
-    color: black; /* Default link color */
-    text-decoration: none; /* Remove underline */
-    font-weight: medium;
-    margin-right: 10px; /* Add some spacing */
-}
-
-.social-links a:hover {
-    color: red; /* Change color on hover */
-    text-decoration: underline; /* Add underline on hover */
-}
-
-.copyright {
-    text-align: right;
-    font-size: 18px;
-}
-
-/* Bold Horizontal Line */
-.bold-line {
-    border: none;
-    border-top: 2px solid black;
-}
-
-/* Sticky Banner */
-.sticky-banner {
-    position: sticky;
-    top: 0;
-    background-color: rgb(0, 255, 110);
-    color: rgb(0, 0, 0);
-    z-index: 1000;
-    overflow: hidden;
-    width: 100%;
-    padding: 2px 0;
-    text-align: center;
-    border-bottom: 2px solid rgb(0, 0, 0); /* To separate the banner visually */
-}
-
-/* Scrolling Text Animation */
-.scrolling-text {
-    display: inline-block;
-    white-space: nowrap;
-    animation: scroll 20s linear infinite;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(225%);
-    }
-    100% {
-        transform: translateX(-225%);
-    }
-}
-
-/* Main container layout */
-.container {
-    display: flex;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
-}
-
-/* Vertical Navigation */
-.project-nav {
-    width: 20%;
-    background-color: #f4f4f4;
-    padding: 20px;
-    overflow-y: auto; /* Independent scrolling */
-    position: sticky;
-    top: 0; /* Make the navigation stay in place when scrolling */
-}
-
-.project-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-.project-nav li {
-    margin-bottom: 15px;
-}
-
-.project-nav a {
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.project-nav a:hover {
-    color: red;
-}
-
-/* Main Project Content */
-.project-content {
-    width: 80%;
-    padding: 20px;
-    overflow-y: scroll; /* Independent scrolling */
-}
-
-.project-info {
-    margin-bottom: 40px;
-}
-
-.project-info h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.project-info p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* Grid of Images */
-.project-images .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 20px;
-}
-
-.project-images img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
 }
 
 /* General Styling */
