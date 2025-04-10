@@ -3,27 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1 - My Portfolio</title>
+    <title>Finding Kuku - Ethan Sheaf-Morrison</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../projectstyles.css">
 </head>
 <body>
-    <header>
-        <h1>Project 1</h1>
-        <nav>
-            <a href="../index.html">Back to Portfolio</a>
-        </nav>
-    </header>
+    <div class="project-container">
+        <!-- Project Header -->
+        <header class="project-header">
+            <nav class="project-nav">
+                <a href="../index.html" class="back-link">← Back to Portfolio</a>
+            </nav>
+        </header>
 
-    <section class="project-details">
-        <h2>Overview</h2>
-        <p>This is the detailed overview of Project 1. Here you can describe the project, the challenges, the solutions, and the outcome.</p>
+        <!-- Hero Section -->
+        <section class="project-hero">
+            <div class="hero-content">
+                <h1 class="project-title">Finding Kuku</h1>
+                <div class="project-meta">
+                    <span class="project-date">2024</span>
+                    <span class="project-category">Research & Design</span>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2000&q=80" alt="Finding Kuku Project" class="hero-image">
+            </div>
+        </section>
 
-        <h2>Images</h2>
-        <img src="Images/image0.png" alt="Project 1 Example" style="width:100%; max-width:600px;">
-    </section>
+        <!-- Project Content -->
+        <main class="project-content">
+            <!-- Introduction -->
+            <section class="project-section intro-section">
+                <div class="section-content">
+                    <h2>Overview</h2>
+                    <p class="project-description">
+                        Finding Kuku is a research and design project exploring the intersection of cultural heritage and digital technology. The project investigates how digital tools can be used to preserve and share indigenous knowledge systems.
+                    </p>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2024 My Portfolio</p>
-    </footer>
+            <!-- Process Section -->
+            <section class="project-section process-section">
+                <div class="section-content">
+                    <h2>Process</h2>
+                    <div class="process-grid">
+                        <div class="process-item">
+                            <h3>Research</h3>
+                            <p>Initial investigation into cultural preservation methods and digital archiving techniques.</p>
+                        </div>
+                        <div class="process-item">
+                            <h3>Design</h3>
+                            <p>Development of interactive interfaces for knowledge sharing and preservation.</p>
+                        </div>
+                        <div class="process-item">
+                            <h3>Implementation</h3>
+                            <p>Creation of digital tools and platforms for cultural knowledge transmission.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="project-section gallery-section">
+                <div class="section-content gallery-title-container">
+                    <h2>Documentation</h2>
+                </div>
+                <div class="gallery-grid-fullwidth">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Research phase documentation" class="gallery-image">
+                        <div class="gallery-caption">Research phase documentation</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Design development" class="gallery-image">
+                        <div class="gallery-caption">Design development</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Final implementation" class="gallery-image">
+                        <div class="gallery-caption">Final implementation</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="project-footer">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="../index.html" class="footer-link">Portfolio</a>
+                    <a href="mailto:ethan.sheafmorrison@gmail.com" class="footer-link">Contact</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2024 Ethan Sheaf-Morrison</p>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
