@@ -14,27 +14,27 @@
     <div class="project-preview"></div>
 
     <!-- Filter Sidebar -->
-    <button class="filter-toggle">☰</button>
-    <div class="filter-sidebar">
+    <button class="filter-toggle" aria-label="Toggle project filters" aria-expanded="false">☰</button>
+    <div class="filter-sidebar" role="complementary" aria-label="Project filters">
         <h2>Filter Projects</h2>
-        <div class="filter-tags">
+        <div class="filter-tags" role="group" aria-label="Project categories">
             <label class="filter-tag">
-                <input type="checkbox" value="Mapping"> Mapping
+                <input type="checkbox" value="Mapping" aria-label="Filter by Mapping projects"> Mapping
             </label>
             <label class="filter-tag">
-                <input type="checkbox" value="Writing"> Writing
+                <input type="checkbox" value="Writing" aria-label="Filter by Writing projects"> Writing
             </label>
             <label class="filter-tag">
-                <input type="checkbox" value="Design"> Design
+                <input type="checkbox" value="Design" aria-label="Filter by Design projects"> Design
             </label>
             <label class="filter-tag">
-                <input type="checkbox" value="Research"> Research
+                <input type="checkbox" value="Research" aria-label="Filter by Research projects"> Research
             </label>
             <label class="filter-tag">
-                <input type="checkbox" value="Data Visualization"> Data Visualization
+                <input type="checkbox" value="Data Visualization" aria-label="Filter by Data Visualization projects"> Data Visualization
             </label>
             <label class="filter-tag">
-                <input type="checkbox" value="Community"> Community
+                <input type="checkbox" value="Community" aria-label="Filter by Community projects"> Community
             </label>
         </div>
     </div>
@@ -43,11 +43,11 @@
     <header>
         <div class="site-title">Ethan Sheaf-Morrison</div>
         <nav>
-            <a href="#">Home</a>
-            <a href="blog.html">Blog</a>
-            <a href="experiments.html">Experiments</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html" aria-label="Home page">Home</a>
+            <a href="blog.html" aria-label="Blog posts">Blog</a>
+            <a href="experiments.html" aria-label="Experiments and prototypes">Experiments</a>
+            <a href="about.html" aria-label="About me">About</a>
+            <a href="contact.html" aria-label="Contact information">Contact</a>
             <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
