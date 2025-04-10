@@ -167,76 +167,64 @@ nav a {
     margin-bottom: 2rem;
 }
 
+/* Dropdown Headers */
 .dropdown-header {
-    font-size: 1.2rem;
-    padding: 1rem 0;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-    position: relative;
-    padding-right: 20px;
-}
-
-.dropdown-header::after {
-    content: '▼';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease;
-    font-size: 0.7em;
-    opacity: 0.5;
-}
-
-.dropdown-header.expanded::after {
-    transform: translateY(-50%) rotate(180deg);
-    opacity: 0.8;
-}
-
-.project-year-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: none;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform-origin: top;
-    transform: scaleY(0) translateY(-20px);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-year-list.expanded {
-    display: block;
-    max-height: 1000px;
-    opacity: 1;
-    transform: scaleY(1) translateY(0);
-}
-
-.project-year-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+    cursor: pointer;
     border-bottom: 1px solid #eee;
-    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown-header:hover {
+    color: red;
+}
+
+.dropdown-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.dropdown-indicator {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-header.expanded .dropdown-indicator {
+    transform: rotate(45deg);
+}
+
+.project-year-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
     opacity: 0;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0;
+    padding: 0;
 }
 
-.project-year-list.expanded li {
-    transform: translateY(0);
+.project-year-list.expanded {
+    max-height: 2000px; /* Adjust based on your content */
     opacity: 1;
+    margin: 1rem 0;
+    padding: 0 0 1rem;
 }
 
-/* Add a slight delay to each list item for a staggered effect */
-.project-year-list li:nth-child(1) { transition-delay: 0.05s; }
-.project-year-list li:nth-child(2) { transition-delay: 0.1s; }
-.project-year-list li:nth-child(3) { transition-delay: 0.15s; }
-.project-year-list li:nth-child(4) { transition-delay: 0.2s; }
-.project-year-list li:nth-child(5) { transition-delay: 0.25s; }
+/* Dark Mode Styles for Dropdowns */
+body.dark-mode .dropdown-header {
+    border-bottom-color: #333;
+}
+
+body.dark-mode .dropdown-header:hover {
+    color: red;
+}
+
+/* Accessibility */
+.dropdown-header[aria-expanded="true"] .dropdown-indicator {
+    transform: rotate(45deg);
+}
 
 /* About/Contact Section */
 .about-contact {
@@ -837,5 +825,80 @@ body.dark-mode .project-summary {
         opacity: 1;
         max-height: none;
         margin: 0.5rem 0 1rem;
+    }
+}
+
+/* Featured In Section */
+.featured-in {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.featured-in h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.featured-in ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.featured-in li {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.featured-in li:last-child {
+    border-bottom: none;
+}
+
+.publication-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.publication-title:hover {
+    color: red;
+}
+
+.publication-date {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.publication-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #666;
+    margin: 0;
+}
+
+/* Dark Mode Styles for Featured In */
+body.dark-mode .featured-in h2 {
+    border-bottom-color: #333;
+}
+
+body.dark-mode .featured-in li {
+    border-bottom-color: #333;
+}
+
+body.dark-mode .publication-date,
+body.dark-mode .publication-description {
+    color: #999;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .featured-in li {
+        padding: 1.5rem 0;
     }
 }

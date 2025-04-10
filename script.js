@@ -26,16 +26,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const dropdownHeaders = document.querySelectorAll('.dropdown-header');
     
     dropdownHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const targetList = document.getElementById(targetId);
+        const targetId = header.getAttribute('data-target');
+        const targetList = document.getElementById(targetId);
+        const indicator = header.querySelector('.dropdown-indicator');
+        
+        // Set initial state
+        header.setAttribute('aria-expanded', 'false');
+        targetList.setAttribute('aria-hidden', 'true');
+        
+        header.addEventListener('click', () => {
+            const isExpanded = header.getAttribute('aria-expanded') === 'true';
             
-            // Toggle the expanded class
+            // Toggle the expanded state
+            header.setAttribute('aria-expanded', !isExpanded);
+            targetList.setAttribute('aria-hidden', isExpanded);
+            
+            // Toggle the expanded class for styling
+            header.classList.toggle('expanded');
             targetList.classList.toggle('expanded');
-            this.classList.toggle('expanded');
             
-            // Force a reflow to ensure the animation works
-            void targetList.offsetWidth;
+            // Update the indicator
+            indicator.textContent = isExpanded ? '+' : '−';
         });
     });
 
