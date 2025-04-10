@@ -93,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Toggle filter sidebar
             filterToggle.addEventListener('click', () => {
-                filterSidebar.classList.toggle('active');
+                const isExpanded = filterSidebar.classList.toggle('active');
+                filterToggle.setAttribute('aria-expanded', isExpanded);
             });
 
             // Filter projects based on selected tags
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     !filterSidebar.contains(e.target) && 
                     !filterToggle.contains(e.target)) {
                     filterSidebar.classList.remove('active');
+                    filterToggle.setAttribute('aria-expanded', 'false');
                 }
             });
         }
@@ -130,54 +132,60 @@ document.addEventListener('DOMContentLoaded', function () {
     // Project Thumbnail Previews
     const previewContainer = document.querySelector('.project-preview');
 
-    // Placeholder images for each project
-    const placeholderImages = {
-        'Finding Kuku': 'https://placehold.co/600x400/333/fff?text=Finding+Kuku',
-        'Mapping Human/Earth Systems': 'https://placehold.co/600x400/333/fff?text=Mapping+Human/Earth+Systems',
-        'Western Sahara, Aotearoa, & the phosphate crisis': 'https://placehold.co/600x400/333/fff?text=Western+Sahara',
-        'Google Warming': 'https://placehold.co/600x400/333/fff?text=Google+Warming',
-        'Collated_Frames': 'https://placehold.co/600x400/333/fff?text=Collated_Frames',
-        'Iterate Postgraduate Showcase': 'https://placehold.co/600x400/333/fff?text=Iterate',
-        'On Display Pt.2': 'https://placehold.co/600x400/333/fff?text=On+Display'
-    };
-
     projectItems.forEach(item => {
-        const projectTitle = item.querySelector('.project-title').textContent;
-        const placeholderImage = placeholderImages[projectTitle] || 'https://placehold.co/600x400/333/fff?text=Project';
+        const projectLink = item.querySelector('.project-title');
+        const projectTitle = projectLink.textContent;
+        const projectUrl = projectLink.getAttribute('href');
+        
+        // Fetch the project page to get the hero image
+        fetch(projectUrl)
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const heroImage = doc.querySelector('.hero-image');
+                
+                if (heroImage) {
+                    const heroImageUrl = heroImage.getAttribute('src');
+                    
+                    item.addEventListener('mouseenter', () => {
+                        previewContainer.style.backgroundImage = `url(${heroImageUrl})`;
+                        previewContainer.style.opacity = '1';
+                        previewContainer.style.visibility = 'visible';
+                    });
 
-        item.addEventListener('mouseenter', () => {
-            previewContainer.style.backgroundImage = `url(${placeholderImage})`;
-            previewContainer.style.opacity = '1';
-            previewContainer.style.visibility = 'visible';
-        });
+                    item.addEventListener('mousemove', (e) => {
+                        const x = e.clientX;
+                        const y = e.clientY;
+                        const previewWidth = 300;
+                        const previewHeight = 200;
+                        const windowWidth = window.innerWidth;
+                        const windowHeight = window.innerHeight;
 
-        item.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            const previewWidth = 300;
-            const previewHeight = 200;
-            const windowWidth = window.innerWidth;
-            const windowHeight = window.innerHeight;
+                        // Position the preview to the right of the cursor, or to the left if near the right edge
+                        let left = x + 20;
+                        if (left + previewWidth > windowWidth) {
+                            left = x - previewWidth - 20;
+                        }
 
-            // Position the preview to the right of the cursor, or to the left if near the right edge
-            let left = x + 20;
-            if (left + previewWidth > windowWidth) {
-                left = x - previewWidth - 20;
-            }
+                        // Position the preview below the cursor, or above if near the bottom edge
+                        let top = y + 20;
+                        if (top + previewHeight > windowHeight) {
+                            top = y - previewHeight - 20;
+                        }
 
-            // Position the preview below the cursor, or above if near the bottom edge
-            let top = y + 20;
-            if (top + previewHeight > windowHeight) {
-                top = y - previewHeight - 20;
-            }
+                        previewContainer.style.left = `${left}px`;
+                        previewContainer.style.top = `${top}px`;
+                    });
 
-            previewContainer.style.left = `${left}px`;
-            previewContainer.style.top = `${top}px`;
-        });
-
-        item.addEventListener('mouseleave', () => {
-            previewContainer.style.opacity = '0';
-            previewContainer.style.visibility = 'hidden';
-        });
+                    item.addEventListener('mouseleave', () => {
+                        previewContainer.style.opacity = '0';
+                        previewContainer.style.visibility = 'hidden';
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching project hero image:', error);
+            });
     });
 });
