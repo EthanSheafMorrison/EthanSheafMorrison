@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         item.addEventListener('mouseleave', function () {
-            hoverImage.style.opacity = 0; // Hide the image when not hovering
+            hoverImage.style.opacity = 0;
         });
     });
 
-    // Handle dropdown functionality
+    // Handle dropdown functionality with animations
     const dropdownHeaders = document.querySelectorAll('.dropdown-header');
     
     dropdownHeaders.forEach(header => {
@@ -32,9 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Toggle the expanded class
             targetList.classList.toggle('expanded');
-            
-            // Toggle the arrow icon (optional)
             this.classList.toggle('expanded');
+            
+            // Force a reflow to ensure the animation works
+            void targetList.offsetWidth;
         });
     });
 
@@ -49,6 +50,134 @@ document.addEventListener('DOMContentLoaded', function () {
                     block: 'start'
                 });
             }
+        });
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Check for saved user preference, if any, on load of the website
+    function checkDarkModePreference() {
+        const darkMode = localStorage.getItem('darkMode');
+        if (darkMode === 'true' || (darkMode === null && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+        }
+    }
+
+    // Toggle dark mode
+    function toggleDarkMode() {
+        const isDarkMode = document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+    }
+
+    // Event Listeners
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+    prefersDarkScheme.addEventListener('change', (e) => {
+        if (localStorage.getItem('darkMode') === null) {
+            document.body.classList.toggle('dark-mode', e.matches);
+        }
+    });
+
+    // Check preference on load
+    checkDarkModePreference();
+
+    // Project Filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize filter sidebar if it exists
+        const filterSidebar = document.querySelector('.filter-sidebar');
+        if (filterSidebar) {
+            const filterToggle = document.querySelector('.filter-toggle');
+            const filterTags = document.querySelectorAll('.filter-tag input[type="checkbox"]');
+            const projects = document.querySelectorAll('.project-item');
+
+            // Toggle filter sidebar
+            filterToggle.addEventListener('click', () => {
+                filterSidebar.classList.toggle('active');
+            });
+
+            // Filter projects based on selected tags
+            filterTags.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const selectedTags = Array.from(filterTags)
+                        .filter(cb => cb.checked)
+                        .map(cb => cb.value);
+
+                    projects.forEach(project => {
+                        const projectTags = Array.from(project.querySelectorAll('.project-tag'))
+                            .map(tag => tag.textContent.trim());
+
+                        if (selectedTags.length === 0 || selectedTags.some(tag => projectTags.includes(tag))) {
+                            project.style.display = '';
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Close sidebar when clicking outside
+            document.addEventListener('click', (e) => {
+                if (filterSidebar.classList.contains('active') && 
+                    !filterSidebar.contains(e.target) && 
+                    !filterToggle.contains(e.target)) {
+                    filterSidebar.classList.remove('active');
+                }
+            });
+        }
+    });
+
+    // Project Thumbnail Previews
+    const previewContainer = document.querySelector('.project-preview');
+
+    // Placeholder images for each project
+    const placeholderImages = {
+        'Finding Kuku': 'https://placehold.co/600x400/333/fff?text=Finding+Kuku',
+        'Mapping Human/Earth Systems': 'https://placehold.co/600x400/333/fff?text=Mapping+Human/Earth+Systems',
+        'Western Sahara, Aotearoa, & the phosphate crisis': 'https://placehold.co/600x400/333/fff?text=Western+Sahara',
+        'Google Warming': 'https://placehold.co/600x400/333/fff?text=Google+Warming',
+        'Collated_Frames': 'https://placehold.co/600x400/333/fff?text=Collated_Frames',
+        'Iterate Postgraduate Showcase': 'https://placehold.co/600x400/333/fff?text=Iterate',
+        'On Display Pt.2': 'https://placehold.co/600x400/333/fff?text=On+Display'
+    };
+
+    projectItems.forEach(item => {
+        const projectTitle = item.querySelector('.project-title').textContent;
+        const placeholderImage = placeholderImages[projectTitle] || 'https://placehold.co/600x400/333/fff?text=Project';
+
+        item.addEventListener('mouseenter', () => {
+            previewContainer.style.backgroundImage = `url(${placeholderImage})`;
+            previewContainer.style.opacity = '1';
+            previewContainer.style.visibility = 'visible';
+        });
+
+        item.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            const previewWidth = 300;
+            const previewHeight = 200;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // Position the preview to the right of the cursor, or to the left if near the right edge
+            let left = x + 20;
+            if (left + previewWidth > windowWidth) {
+                left = x - previewWidth - 20;
+            }
+
+            // Position the preview below the cursor, or above if near the bottom edge
+            let top = y + 20;
+            if (top + previewHeight > windowHeight) {
+                top = y - previewHeight - 20;
+            }
+
+            previewContainer.style.left = `${left}px`;
+            previewContainer.style.top = `${top}px`;
+        });
+
+        item.addEventListener('mouseleave', () => {
+            previewContainer.style.opacity = '0';
+            previewContainer.style.visibility = 'hidden';
         });
     });
 });

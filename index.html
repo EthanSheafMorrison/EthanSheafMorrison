@@ -10,6 +10,35 @@
     </style>
 </head>
 <body>
+    <!-- Project Preview Container -->
+    <div class="project-preview"></div>
+
+    <!-- Filter Sidebar -->
+    <button class="filter-toggle">☰</button>
+    <div class="filter-sidebar">
+        <h2>Filter Projects</h2>
+        <div class="filter-tags">
+            <label class="filter-tag">
+                <input type="checkbox" value="Mapping"> Mapping
+            </label>
+            <label class="filter-tag">
+                <input type="checkbox" value="Writing"> Writing
+            </label>
+            <label class="filter-tag">
+                <input type="checkbox" value="Design"> Design
+            </label>
+            <label class="filter-tag">
+                <input type="checkbox" value="Research"> Research
+            </label>
+            <label class="filter-tag">
+                <input type="checkbox" value="Data Visualization"> Data Visualization
+            </label>
+            <label class="filter-tag">
+                <input type="checkbox" value="Community"> Community
+            </label>
+        </div>
+    </div>
+
     <!-- Header Section -->
     <header>
         <div class="site-title">Ethan Sheaf-Morrison</div>
@@ -17,34 +46,62 @@
             <a href="#">Home</a>
             <a href="blog.html">Blog</a>
             <a href="experiments.html">Experiments</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
         </nav>
     </header>
+    <!-- Hero Section -->  
+    <section class="hero" style="padding-bottom: 0;">
+        <div class="hero-content">
+            <h1>Designer</h1>
+            <p>Pōneke, Aotearoa</p>
+        </div>
+    </section>
 
     <!-- Selected Works Section -->
-    <section class="selected-works">
+    <section class="projects-list">
         <h2>Selected Works</h2>
         <ul>
             <li>
                 <a href="projects/FindingKuku.html" class="project-title">Finding Kuku</a>
                 <span class="project-date">2024</span>
+                <p class="project-summary">A visual journey reconnecting whakapapa through photographic mapping.</p>
             </li>
             <li>
                 <a href="projects/MappingHumanEarthSystems.html" class="project-title">Mapping Human/Earth Systems</a>
                 <span class="project-date">2024</span>
+                <p class="project-summary">Exploring the interconnectedness of human and environmental systems through data visualization.</p>
             </li>
             <li>
                 <a href="projects/WesternSahara.html" class="project-title">Western Sahara, Aotearoa, & the phosphate crisis</a>
                 <span class="project-date">2023</span>
+                <p class="project-summary">Investigating the global phosphate supply chain and its impact on indigenous communities.</p>
             </li>
             <li>
                 <a href="projects/GoogleWarming.html" class="project-title">Google Warming</a>
                 <span class="project-date">2023</span>
+                <p class="project-summary">A critical examination of climate change representation in digital media and search algorithms.</p>
             </li>
             <li>
                 <a href="projects/CollatedFrames.html" class="project-title">Collated_Frames</a>
                 <span class="project-date">2023</span>
+                <p class="project-summary">An experimental approach to visual storytelling through sequential image arrangement.</p>
             </li>
         </ul>
     </section>
@@ -53,35 +110,52 @@
     <section class="projects-list">
         <h1>Projects by Year</h1>
         
+
+        <h2 class="dropdown-header" data-target="projects-2025">2025</h2>
+        <ul id="projects-2025" class="project-year-list">
+            <li>
+                <a href="#" class="project-title">Coming Soon</a>
+                <span class="project-date">TBA</span>
+            </li>
+        </ul>
+        
         <h2 class="dropdown-header" data-target="projects-2024">2024</h2>
         <ul id="projects-2024" class="project-year-list">
             <li>
                 <a href="projects/FindingKuku.html" class="project-title">Finding Kuku</a>
                 <span class="project-date">January</span>
+                <p class="project-summary">A visual journey reconnecting whakapapa through photographic mapping.</p>
             </li>
             <li>
                 <a href="projects/MappingHumanEarthSystems.html" class="project-title">Mapping Human/Earth Systems</a>
                 <span class="project-date">February</span>
+                <p class="project-summary">Exploring the interconnectedness of human and environmental systems through data visualization.</p>
             </li>
             <li>
                 <a href="projects/Iterate.html" class="project-title">Iterate Postgraduate Showcase</a>
                 <span class="project-date">February</span>
+                <p class="project-summary">A showcase of innovative design research and practice from postgraduate students.</p>
             </li>
         </ul>
+
+
 
         <h2 class="dropdown-header" data-target="projects-2023">2023</h2>
         <ul id="projects-2023" class="project-year-list">
             <li>
                 <a href="projects/OnDisplay.html" class="project-title">On Display Pt.2</a>
                 <span class="project-date">August</span>
+                <p class="project-summary">An exhibition exploring the intersection of digital and physical display spaces.</p>
             </li>
             <li>
                 <a href="projects/WesternSahara.html" class="project-title">Western Sahara, Aotearoa, & the phosphate crisis</a>
                 <span class="project-date">September</span>
+                <p class="project-summary">Investigating the global phosphate supply chain and its impact on indigenous communities.</p>
             </li>
             <li>
                 <a href="projects/GoogleWarming.html" class="project-title">Google Warming</a>
                 <span class="project-date">September</span>
+                <p class="project-summary">A critical examination of climate change representation in digital media and search algorithms.</p>
             </li>
         </ul>
     </section>
@@ -96,8 +170,8 @@
     <footer>
         <div class="social-links">
             <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
         </div>
         <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
     </footer>
