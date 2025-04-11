@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Western Sahara Phosphate Trade Map - Ethan Sheaf-Morrison</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;500&display=swap');
+        
+        /* Map Container Styles */
+        .map-container {
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            position: relative;
+            background-color: #ffffff;
+            margin: 2rem 0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Control Panel Styles */
+        .control-panel {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            border: 1px solid #ff0000;
+        }
+
+        .control-group {
+            margin-bottom: 1rem;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #ff0000;
+        }
+
+        .control-group input[type="range"] {
+            width: 200px;
+            accent-color: #ff0000;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode .map-container {
+            background-color: #ffffff;
+        }
+
+        body.dark-mode .control-panel {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-color: #ff0000;
+        }
+
+        body.dark-mode .control-group label {
+            color: #ff0000;
+        }
+
+        /* Loading Indicator */
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff0000;
+            font-size: 1.2rem;
+        }
+
+        body.dark-mode .loading {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="site-title">Ethan Sheaf-Morrison</div>
+        <nav>
+            <a href="../index.html" aria-label="Home page">Home</a>
+            <a href="../blog.html" aria-label="Blog posts">Blog</a>
+            <a href="../experiments.html" aria-label="Experiments and prototypes">Experiments</a>
+            <a href="../about.html" aria-label="About me">About</a>
+            <a href="../contact.html" aria-label="Contact information">Contact</a>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+
+    <section class="embedded-project">
+        <h2>Interactive Map</h2>
+        <iframe src="https://west-sahara.onrender.com" width="100%" height="1000" style="border:none;"></iframe>
+    </section>
+    <!-- Map Content -->
+    <main class="project-content">
+        <h1>Western Sahara Phosphate Trade Routes</h1>
+        <div class="project-meta">
+            <span class="project-date">2023</span>
+            <span class="project-tags">Interactive Map, Data Visualization, Three.js</span>
+        </div>
+
+        <section class="project-description">
+            <p>This interactive visualization explores the phosphate trade routes between Western Sahara and New Zealand. The map reveals the complex supply chain and its impact on indigenous communities through an immersive 3D experience.</p>
+        </section>
+
+        <!-- Map Container -->
+        <div class="map-container">
+            <div class="loading">Loading map...</div>
+            <div class="control-panel">
+                <div class="control-group">
+                    <label for="rotationSpeed">Rotation Speed</label>
+                    <input type="range" id="rotationSpeed" min="0" max="0.02" step="0.001" value="0.00">
+                </div>
+                <div class="control-group">
+                    <label for="scale">Scale</label>
+                    <input type="range" id="scale" min="0.5" max="2" step="0.1" value="1">
+                </div>
+            </div>
+        </div>
+
+        <section class="project-details">
+            <h2>Map Features</h2>
+            <ul>
+                <li>3D globe visualization of phosphate trade routes</li>
+                <li>Interactive controls for rotation and scale</li>
+                <li>Real-time data visualization of trade volumes</li>
+                <li>Historical timeline of phosphate trade</li>
+            </ul>
+
+            <h2>Data Sources</h2>
+            <p>The map combines data from multiple sources:</p>
+            <ul>
+                <li>International trade databases</li>
+                <li>Shipping route information</li>
+                <li>Historical trade records</li>
+                <li>Environmental impact assessments</li>
+            </ul>
+
+            <h2>Technical Details</h2>
+            <p>Built using:</p>
+            <ul>
+                <li>Three.js for 3D visualization</li>
+                <li>WebGL for rendering</li>
+                <li>GeoJSON for geographical data</li>
+                <li>Custom shaders for effects</li>
+            </ul>
+        </section>
+
+        <section class="project-links">
+            <h2>Related Resources</h2>
+            <ul>
+                <li><a href="../projects/WesternSahara.html" target="_blank">Full Project Documentation</a></li>
+                <li><a href="#" target="_blank">Data Sources</a></li>
+                <li><a href="#" target="_blank">Technical Documentation</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
+        </div>
+        <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
+    </footer>
+
+    <!-- Three.js and Map Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Initialize Three.js scene
+        const container = document.querySelector('.map-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ 
+            antialias: true,
+            alpha: true
+        });
+        
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setClearColor(0xff0000, 1); // Red background
+        container.appendChild(renderer.domElement);
+
+        // Add controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 8;
+        controls.maxDistance = 20;
+
+        // Create globe
+        const geometry = new THREE.SphereGeometry(5, 64, 64);
+        
+        // Load world map texture
+        const textureLoader = new THREE.TextureLoader();
+        const worldMapTexture = textureLoader.load('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_atmos_2048.jpg');
+        
+        const material = new THREE.MeshBasicMaterial({
+            map: worldMapTexture,
+            color: 0xff0000, // Red color for countries
+            transparent: true,
+            opacity: 0.8
+        });
+        
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        // Create ocean material
+        const oceanGeometry = new THREE.SphereGeometry(5.01, 64, 64); // Slightly larger than the globe
+        const oceanMaterial = new THREE.MeshBasicMaterial({
+            color: 0xffffff, // White color for ocean
+            transparent: true,
+            opacity: 0.3
+        });
+        
+        const ocean = new THREE.Mesh(oceanGeometry, oceanMaterial);
+        scene.add(ocean);
+
+        // Add lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+        scene.add(ambientLight);
+
+        // Add grid helper
+        const gridHelper = new THREE.GridHelper(20, 20, 0xffffff, 0xffffff); // White grid
+        scene.add(gridHelper);
+
+        // Position camera
+        camera.position.z = 15;
+        camera.position.y = 5;
+
+        // Handle controls
+        const rotationSpeed = document.getElementById('rotationSpeed');
+        const scale = document.getElementById('scale');
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            globe.rotation.y += parseFloat(rotationSpeed.value);
+            ocean.rotation.y = globe.rotation.y; // Keep ocean synchronized with globe
+            globe.scale.set(scale.value, scale.value, scale.value);
+            ocean.scale.set(scale.value, scale.value, scale.value);
+            renderer.render(scene, camera);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+
+        // Start animation
+        animate();
+
+        // Remove loading indicator
+        document.querySelector('.loading').style.display = 'none';
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html> 
