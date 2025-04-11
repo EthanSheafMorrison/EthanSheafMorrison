@@ -902,3 +902,137 @@ body.dark-mode .publication-description {
         padding: 1.5rem 0;
     }
 }
+
+/* Project Content Styles */
+.project-content {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.project-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.project-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.project-tags span {
+    padding: 0.25rem 0.75rem;
+    background-color: #f0f0f0;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+.project-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 800px;
+}
+
+.project-details {
+    margin-bottom: 3rem;
+}
+
+.project-details h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    font-weight: 400;
+}
+
+.project-details p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-details ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-details li {
+    margin-bottom: 0.5rem;
+}
+
+.project-gallery {
+    margin: 3rem 0;
+}
+
+.project-gallery img {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+}
+
+.project-links {
+    margin-top: 3rem;
+}
+
+.project-links h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.project-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-links li {
+    margin-bottom: 0.5rem;
+}
+
+.project-links a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.project-links a:hover {
+    color: red;
+}
+
+/* Dark Mode Styles for Project Content */
+body.dark-mode .project-meta {
+    color: #999;
+}
+
+body.dark-mode .project-tags span {
+    background-color: #333;
+    color: #999;
+}
+
+body.dark-mode .project-links a {
+    color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-content h1 {
+        font-size: 2rem;
+    }
+
+    .project-meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .project-description {
+        font-size: 1.1rem;
+    }
+}
