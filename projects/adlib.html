@@ -6,9 +6,11 @@
     <title>ADLIB // BRUTALIST DESIGN</title>
     <link rel="stylesheet" href="../adlib.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=VT323&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <div class="noise"></div>
+    <div id="cloth-overlay" class="cloth-overlay"></div>
     
     <header>
         <div class="glitch-container">
@@ -165,9 +167,17 @@
         <div class="copyright">© 2024 ADLIB PROJECT</div>
     </footer>
 
+    <div class="cloth-controls">
+        <button id="reset-cloth">Reset</button>
+        <button id="toggle-wind">Toggle Wind</button>
+        <button id="toggle-wireframe">Toggle Wireframe</button>
+        <button id="change-color">Change Color</button>
+        <button id="toggle-cloth">Hide Cloth</button>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Glitch effect
+            // Original site glitch effect
             const glitch = document.querySelector('.glitch');
             setInterval(() => {
                 glitch.classList.add('active');
@@ -264,5 +274,7 @@
             });
         });
     </script>
+    
+    <script src="../adlib-cloth.js"></script>
 </body>
 </html> 
