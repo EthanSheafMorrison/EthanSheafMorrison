@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Ethan Sheaf-Morrison</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-form {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            height: 8rem;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .checkbox-label input {
+            margin-right: 0.5rem;
+        }
+        
+        .tag-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            background-color: #f0f0f0;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .tag button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            color: #666;
+        }
+        
+        .tag button:hover {
+            color: red;
+        }
+        
+        .add-tag {
+            display: flex;
+            margin-top: 0.5rem;
+        }
+        
+        .add-tag input {
+            flex: 1;
+            margin-right: 0.5rem;
+        }
+        
+        button[type="submit"],
+        button[type="button"] {
+            padding: 0.75rem 1.5rem;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 1rem;
+        }
+        
+        button[type="submit"]:hover,
+        button[type="button"]:hover {
+            background-color: red;
+        }
+        
+        .error-message {
+            color: red;
+            margin-top: 0.5rem;
+        }
+        
+        .success-message {
+            color: green;
+            margin-top: 0.5rem;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode input[type="text"],
+        body.dark-mode input[type="number"],
+        body.dark-mode select,
+        body.dark-mode textarea {
+            background-color: #333;
+            border-color: #555;
+            color: #fff;
+        }
+        
+        body.dark-mode .tag {
+            background-color: #444;
+            color: #ccc;
+        }
+        
+        body.dark-mode button[type="submit"],
+        body.dark-mode button[type="button"] {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="site-title">Ethan Sheaf-Morrison</div>
+        <nav>
+            <a href="index.html" aria-label="Home page">Home</a>
+            <a href="blog.html" aria-label="Blog posts">Blog</a>
+            <a href="experiments.html" aria-label="Experiments and prototypes">Experiments</a>
+            <a href="about.html" aria-label="About me">About</a>
+            <a href="contact.html" aria-label="Contact information">Contact</a>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <div class="admin-form">
+        <h1>Add New Project</h1>
+        <form id="projectForm">
+            <div class="form-group">
+                <label for="projectTitle">Project Title*</label>
+                <input type="text" id="projectTitle" name="title" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="projectId">Project ID*</label>
+                <input type="text" id="projectId" name="id" required>
+                <small>Use kebab-case, e.g., "my-project-name"</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="projectDate">Year*</label>
+                <input type="text" id="projectDate" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="projectMonth">Month</label>
+                <input type="text" id="projectMonth" name="month">
+            </div>
+            
+            <div class="form-group">
+                <label for="projectSummary">Summary*</label>
+                <textarea id="projectSummary" name="summary" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="projectUrl">Project URL*</label>
+                <input type="text" id="projectUrl" name="url" required>
+                <small>e.g., "projects/ProjectName.html"</small>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <label>Project Type</label>
+                <div class="checkbox-label">
+                    <input type="checkbox" id="projectFeatured" name="featured">
+                    <label for="projectFeatured">Featured Project</label>
+                </div>
+                <div class="checkbox-label">
+                    <input type="checkbox" id="projectGroup" name="group">
+                    <label for="projectGroup">Group Project</label>
+                </div>
+            </div>
+            
+            <div class="form-group" id="groupUrlContainer" style="display: none;">
+                <label for="groupUrl">Group Project URL</label>
+                <input type="text" id="groupUrl" name="groupUrl">
+                <small>For external group project websites</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="projectTags">Tags</label>
+                <div class="tag-input" id="tagContainer"></div>
+                <div class="add-tag">
+                    <input type="text" id="tagInput">
+                    <button type="button" id="addTagBtn">Add Tag</button>
+                </div>
+            </div>
+            
+            <button type="submit">Save Project</button>
+            <button type="button" id="createFileBtn">Create Project File</button>
+            <div id="message"></div>
+        </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
+        </div>
+        <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectForm = document.getElementById('projectForm');
+            const projectGroupCheckbox = document.getElementById('projectGroup');
+            const groupUrlContainer = document.getElementById('groupUrlContainer');
+            const tagInput = document.getElementById('tagInput');
+            const addTagBtn = document.getElementById('addTagBtn');
+            const tagContainer = document.getElementById('tagContainer');
+            const messageDiv = document.getElementById('message');
+            const createFileBtn = document.getElementById('createFileBtn');
+            
+            // Show/hide group URL field based on checkbox
+            projectGroupCheckbox.addEventListener('change', function() {
+                groupUrlContainer.style.display = this.checked ? 'block' : 'none';
+            });
+            
+            // Tag management
+            const tags = [];
+            
+            function updateTagDisplay() {
+                tagContainer.innerHTML = '';
+                tags.forEach((tag, index) => {
+                    const tagElement = document.createElement('div');
+                    tagElement.className = 'tag';
+                    tagElement.innerHTML = `
+                        ${tag}
+                        <button type="button" data-index="${index}">&times;</button>
+                    `;
+                    tagContainer.appendChild(tagElement);
+                });
+                
+                // Add event listeners to remove buttons
+                tagContainer.querySelectorAll('.tag button').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        tags.splice(index, 1);
+                        updateTagDisplay();
+                    });
+                });
+            }
+            
+            addTagBtn.addEventListener('click', function() {
+                const tag = tagInput.value.trim();
+                if (tag && !tags.includes(tag)) {
+                    tags.push(tag);
+                    tagInput.value = '';
+                    updateTagDisplay();
+                }
+            });
+            
+            // Form submission
+            projectForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(projectForm);
+                const projectData = {
+                    id: formData.get('id'),
+                    title: formData.get('title'),
+                    date: formData.get('date'),
+                    month: formData.get('month'),
+                    summary: formData.get('summary'),
+                    featured: projectForm.querySelector('#projectFeatured').checked,
+                    group: projectForm.querySelector('#projectGroup').checked,
+                    url: formData.get('url'),
+                    tags: [...tags]
+                };
+                
+                if (projectData.group && formData.get('groupUrl')) {
+                    projectData.groupUrl = formData.get('groupUrl');
+                }
+                
+                // Fetch existing data
+                fetch('data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Check if project with same ID already exists
+                        const existingIndex = data.projects.findIndex(p => p.id === projectData.id);
+                        
+                        if (existingIndex !== -1) {
+                            // Update existing project
+                            data.projects[existingIndex] = projectData;
+                            messageDiv.textContent = 'Updated existing project';
+                        } else {
+                            // Add new project
+                            data.projects.push(projectData);
+                            messageDiv.textContent = 'Added new project';
+                        }
+                        
+                        // Sort projects by date (newest first)
+                        data.projects.sort((a, b) => b.date.localeCompare(a.date));
+                        
+                        // Try to save using a local download if server-side saving isn't available
+                        try {
+                            // First try server-side saving
+                            return fetch('data.json', {
+                                method: 'POST', // Changed from PUT to POST
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data, null, 2)
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    return Promise.resolve();
+                                } else {
+                                    // If server-side saving fails, offer download
+                                    throw new Error('Server save failed');
+                                }
+                            });
+                        } catch (error) {
+                            // Fallback to client-side download
+                            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                            const a = document.createElement('a');
+                            a.href = URL.createObjectURL(blob);
+                            a.download = 'data.json';
+                            a.click();
+                            
+                            messageDiv.textContent += ' (Downloaded data.json file - please upload it to your server)';
+                            messageDiv.className = 'success-message';
+                            return Promise.resolve();
+                        }
+                    })
+                    .then(() => {
+                        messageDiv.textContent += ' - Project saved successfully!';
+                        messageDiv.className = 'success-message';
+                    })
+                    .catch(error => {
+                        messageDiv.textContent = error.message;
+                        messageDiv.className = 'error-message';
+                    });
+            });
+            
+            // Create project file button
+            createFileBtn.addEventListener('click', function() {
+                const projectId = document.getElementById('projectId').value.trim();
+                const projectTitle = document.getElementById('projectTitle').value.trim();
+                
+                if (!projectId || !projectTitle) {
+                    messageDiv.textContent = 'Project ID and Title are required to create a file';
+                    messageDiv.className = 'error-message';
+                    return;
+                }
+                
+                // Get template content
+                fetch('project-template.html')
+                    .then(response => response.text())
+                    .then(template => {
+                        // Replace placeholders with actual values
+                        const content = template
+                            .replace(/Project Title/g, projectTitle)
+                            .replace(/project-name/g, projectId);
+                        
+                        // Create the file
+                        const blob = new Blob([content], { type: 'text/html' });
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(blob);
+                        a.download = `${projectId}.html`;
+                        a.click();
+                        
+                        messageDiv.textContent = `Project file ${projectId}.html created for download`;
+                        messageDiv.className = 'success-message';
+                    })
+                    .catch(error => {
+                        messageDiv.textContent = 'Error creating project file: ' + error.message;
+                        messageDiv.className = 'error-message';
+                    });
+            });
+        });
+    </script>
+</body>
+</html> 

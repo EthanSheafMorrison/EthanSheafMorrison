@@ -1,202 +1,307 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Hover image functionality for project items
-    const projectItems = document.querySelectorAll('.projects-list li');
-    const hoverImage = document.getElementById('hover-image');
+    console.log('DOM fully loaded');
     
-    projectItems.forEach(item => {
-        item.addEventListener('mouseenter', function () {
-            const imageUrl = item.getAttribute('data-image');
-            hoverImage.style.backgroundImage = `url(${imageUrl})`;
-            hoverImage.style.opacity = 1;
+    // Load project data from JSON file
+    fetch('data.json')
+        .then(response => {
+            console.log('Fetch response received:', response.ok);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data loaded:', data);
+            console.log('Number of projects:', data.projects.length);
+            populateProjects(data.projects);
+            setupEventListeners();
+        })
+        .catch(error => console.error('Error loading project data:', error));
 
-            // Generate random position within the viewport
-            const randomX = Math.floor(Math.random() * (window.innerWidth - hoverImage.offsetWidth));
-            const randomY = Math.floor(Math.random() * (window.innerHeight - hoverImage.offsetHeight));
-            
-            hoverImage.style.left = `${randomX}px`;
-            hoverImage.style.top = `${randomY}px`;
-        });
-
-        item.addEventListener('mouseleave', function () {
-            hoverImage.style.opacity = 0;
-        });
-    });
-
-    // Handle dropdown functionality with animations
-    const dropdownHeaders = document.querySelectorAll('.dropdown-header');
-    
-    dropdownHeaders.forEach(header => {
-        const targetId = header.getAttribute('data-target');
-        const targetList = document.getElementById(targetId);
-        const indicator = header.querySelector('.dropdown-indicator');
+    function populateProjects(projects) {
+        console.log('Starting to populate projects...');
         
-        // Set initial state
-        header.setAttribute('aria-expanded', 'false');
-        targetList.setAttribute('aria-hidden', 'true');
+        // Populate Selected Works section
+        const featuredProjects = projects.filter(project => project.featured);
+        console.log('Featured projects:', featuredProjects.length);
         
-        header.addEventListener('click', () => {
-            const isExpanded = header.getAttribute('aria-expanded') === 'true';
+        // Get the first section with class projects-list
+        const selectedWorksSection = document.querySelector('section.projects-list');
+        if (selectedWorksSection) {
+            const selectedWorksUl = selectedWorksSection.querySelector('ul');
+            console.log('Selected Works UL found:', !!selectedWorksUl);
             
-            // Toggle the expanded state
-            header.setAttribute('aria-expanded', !isExpanded);
-            targetList.setAttribute('aria-hidden', isExpanded);
-            
-            // Toggle the expanded class for styling
-            header.classList.toggle('expanded');
-            targetList.classList.toggle('expanded');
-            
-            // Update the indicator
-            indicator.textContent = isExpanded ? '+' : '−';
-        });
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            if (selectedWorksUl) {
+                populateProjectSection(selectedWorksUl, featuredProjects);
             }
+        } else {
+            console.error('Selected Works section not found');
+        }
+        
+        // Populate Projects by Year section
+        const projectsByYear = groupProjectsByYear(projects);
+        console.log('Years with projects:', Object.keys(projectsByYear));
+        
+        for (const year in projectsByYear) {
+            const yearList = document.getElementById(`projects-${year}`);
+            console.log(`Looking for projects-${year}:`, !!yearList);
+            
+            if (yearList) {
+                populateProjectList(yearList, projectsByYear[year]);
+            }
+        }
+        
+        // Populate Group Projects section - this is the 3rd section with class projects-list
+        const groupProjects = projects.filter(project => project.group);
+        console.log('Group projects:', groupProjects.length);
+        
+        const sections = document.querySelectorAll('section.projects-list');
+        console.log('Total sections found:', sections.length);
+        
+        if (sections.length >= 3) {
+            const groupProjectsSection = sections[2]; // Third section (index 2)
+            const groupProjectsUl = groupProjectsSection.querySelector('ul');
+            console.log('Group Projects UL found:', !!groupProjectsUl);
+            
+            if (groupProjectsUl) {
+                populateProjectSection(groupProjectsUl, groupProjects);
+            }
+        } else {
+            console.error('Group Projects section not found');
+        }
+    }
+    
+    function groupProjectsByYear(projects) {
+        const result = {};
+        projects.forEach(project => {
+            const year = project.date;
+            if (!result[year]) {
+                result[year] = [];
+            }
+            result[year].push(project);
         });
-    });
+        return result;
+    }
+    
+    function populateProjectList(container, projects) {
+        if (!container) return;
+        
+        container.innerHTML = '';
+        populateProjectItems(container, projects);
+    }
+    
+    function populateProjectSection(container, projects) {
+        console.log('populateProjectSection called with container:', container);
+        console.log('Projects to populate:', projects);
+        
+        if (!container) {
+            console.error('Container is null or undefined');
+            return;
+        }
+        
+        if (!projects || projects.length === 0) {
+            console.warn('No projects to populate');
+            container.innerHTML = '<li>No projects to display</li>';
+            return;
+        }
+        
+        try {
+            container.innerHTML = '';
+            populateProjectItems(container, projects);
+            console.log('Successfully populated section with', projects.length, 'projects');
+        } catch (error) {
+            console.error('Error populating section:', error);
+        }
+    }
+    
+    function populateProjectItems(container, projects) {
+        try {
+            console.log('Populating items into container:', container);
+            
+            projects.forEach(project => {
+                console.log('Creating element for project:', project.title);
+                
+                const li = document.createElement('li');
+                
+                const link = document.createElement('a');
+                link.href = project.url || '#';
+                link.className = 'project-title';
+                link.textContent = project.title || 'Untitled Project';
+                
+                const date = document.createElement('span');
+                date.className = 'project-date';
+                date.textContent = project.month ? project.month : (project.date || 'No Date');
+                
+                const summary = document.createElement('p');
+                summary.className = 'project-summary';
+                summary.textContent = project.summary || 'No description available';
+                
+                li.appendChild(link);
+                li.appendChild(date);
+                li.appendChild(summary);
+                
+                container.appendChild(li);
+                console.log('Added project to container:', project.title);
+            });
+        } catch (error) {
+            console.error('Error in populateProjectItems:', error);
+        }
+    }
 
-    // Dark Mode Toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    function setupEventListeners() {
+        // Project Preview functionality
+        setupProjectPreview();
+        
+        // Handle dropdown functionality with animations
+        setupDropdowns();
+        
+        // Smooth scroll for anchor links
+        setupSmoothScroll();
+        
+        // Dark Mode Toggle
+        setupDarkMode();
+    }
+    
+    function setupProjectPreview() {
+        // We need to add this setTimeout to ensure we're selecting elements that have been added to the DOM
+        setTimeout(() => {
+            const projectItems = document.querySelectorAll('.projects-list li');
+            const previewContainer = document.querySelector('.project-preview');
+            
+            if (!previewContainer) return;
+            
+            projectItems.forEach(item => {
+                const projectLink = item.querySelector('.project-title');
+                if (!projectLink) return;
+                
+                const projectUrl = projectLink.getAttribute('href');
+                
+                item.addEventListener('mouseenter', () => {
+                    previewContainer.style.opacity = '1';
+                    previewContainer.style.visibility = 'visible';
+                });
 
-    // Check for saved user preference, if any, on load of the website
-    function checkDarkModePreference() {
+                item.addEventListener('mousemove', (e) => {
+                    const x = e.clientX;
+                    const y = e.clientY;
+                    const previewWidth = 300;
+                    const previewHeight = 200;
+                    const windowWidth = window.innerWidth;
+                    const windowHeight = window.innerHeight;
+
+                    // Position the preview to the right of the cursor, or to the left if near the right edge
+                    let left = x + 20;
+                    if (left + previewWidth > windowWidth) {
+                        left = x - previewWidth - 20;
+                    }
+
+                    // Position the preview below the cursor, or above if near the bottom edge
+                    let top = y + 20;
+                    if (top + previewHeight > windowHeight) {
+                        top = y - previewHeight - 20;
+                    }
+
+                    previewContainer.style.left = `${left}px`;
+                    previewContainer.style.top = `${top}px`;
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    previewContainer.style.opacity = '0';
+                    previewContainer.style.visibility = 'hidden';
+                });
+            });
+        }, 100);
+    }
+    
+    function setupDropdowns() {
+        const dropdownHeaders = document.querySelectorAll('.dropdown-header');
+        
+        dropdownHeaders.forEach(header => {
+            const targetId = header.getAttribute('data-target');
+            const targetList = document.getElementById(targetId);
+            const indicator = header.querySelector('.dropdown-indicator');
+            
+            if (!targetList || !indicator) return;
+            
+            // Set initial state
+            header.setAttribute('aria-expanded', 'false');
+            targetList.setAttribute('aria-hidden', 'true');
+            
+            header.addEventListener('click', () => {
+                const isExpanded = header.getAttribute('aria-expanded') === 'true';
+                
+                // Toggle the expanded state
+                header.setAttribute('aria-expanded', !isExpanded);
+                targetList.setAttribute('aria-hidden', isExpanded);
+                
+                // Toggle the expanded class for styling
+                header.classList.toggle('expanded');
+                targetList.classList.toggle('expanded');
+                
+                // Update the indicator
+                indicator.textContent = isExpanded ? '+' : '−';
+            });
+        });
+    }
+    
+    function setupSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+    
+    function setupDarkMode() {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        if (!darkModeToggle) return;
+        
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check for saved user preference
         const darkMode = localStorage.getItem('darkMode');
         if (darkMode === 'true' || (darkMode === null && prefersDarkScheme.matches)) {
             document.body.classList.add('dark-mode');
         }
-    }
 
-    // Toggle dark mode
-    function toggleDarkMode() {
-        const isDarkMode = document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', isDarkMode);
-    }
-
-    // Event Listeners
-    darkModeToggle.addEventListener('click', toggleDarkMode);
-    prefersDarkScheme.addEventListener('change', (e) => {
-        if (localStorage.getItem('darkMode') === null) {
-            document.body.classList.toggle('dark-mode', e.matches);
-        }
-    });
-
-    // Check preference on load
-    checkDarkModePreference();
-
-    // Project Filtering
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize filter sidebar if it exists
-        const filterSidebar = document.querySelector('.filter-sidebar');
-        if (filterSidebar) {
-            const filterToggle = document.querySelector('.filter-toggle');
-            const filterTags = document.querySelectorAll('.filter-tag input[type="checkbox"]');
-            const projects = document.querySelectorAll('.project-item');
-
-            // Toggle filter sidebar
-            filterToggle.addEventListener('click', () => {
-                const isExpanded = filterSidebar.classList.toggle('active');
-                filterToggle.setAttribute('aria-expanded', isExpanded);
-            });
-
-            // Filter projects based on selected tags
-            filterTags.forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    const selectedTags = Array.from(filterTags)
-                        .filter(cb => cb.checked)
-                        .map(cb => cb.value);
-
-                    projects.forEach(project => {
-                        const projectTags = Array.from(project.querySelectorAll('.project-tag'))
-                            .map(tag => tag.textContent.trim());
-
-                        if (selectedTags.length === 0 || selectedTags.some(tag => projectTags.includes(tag))) {
-                            project.style.display = '';
-                        } else {
-                            project.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Close sidebar when clicking outside
-            document.addEventListener('click', (e) => {
-                if (filterSidebar.classList.contains('active') && 
-                    !filterSidebar.contains(e.target) && 
-                    !filterToggle.contains(e.target)) {
-                    filterSidebar.classList.remove('active');
-                    filterToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-    });
-
-    // Project Thumbnail Previews
-    const previewContainer = document.querySelector('.project-preview');
-
-    projectItems.forEach(item => {
-        const projectLink = item.querySelector('.project-title');
-        const projectTitle = projectLink.textContent;
-        const projectUrl = projectLink.getAttribute('href');
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+        });
         
-        // Fetch the project page to get the hero image
-        fetch(projectUrl)
-            .then(response => response.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const heroImage = doc.querySelector('.hero-image');
-                
-                if (heroImage) {
-                    const heroImageUrl = heroImage.getAttribute('src');
-                    
-                    item.addEventListener('mouseenter', () => {
-                        previewContainer.style.backgroundImage = `url(${heroImageUrl})`;
-                        previewContainer.style.opacity = '1';
-                        previewContainer.style.visibility = 'visible';
-                    });
-
-                    item.addEventListener('mousemove', (e) => {
-                        const x = e.clientX;
-                        const y = e.clientY;
-                        const previewWidth = 300;
-                        const previewHeight = 200;
-                        const windowWidth = window.innerWidth;
-                        const windowHeight = window.innerHeight;
-
-                        // Position the preview to the right of the cursor, or to the left if near the right edge
-                        let left = x + 20;
-                        if (left + previewWidth > windowWidth) {
-                            left = x - previewWidth - 20;
-                        }
-
-                        // Position the preview below the cursor, or above if near the bottom edge
-                        let top = y + 20;
-                        if (top + previewHeight > windowHeight) {
-                            top = y - previewHeight - 20;
-                        }
-
-                        previewContainer.style.left = `${left}px`;
-                        previewContainer.style.top = `${top}px`;
-                    });
-
-                    item.addEventListener('mouseleave', () => {
-                        previewContainer.style.opacity = '0';
-                        previewContainer.style.visibility = 'hidden';
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching project hero image:', error);
-            });
-    });
+        // Listen for OS theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (localStorage.getItem('darkMode') === null) {
+                document.body.classList.toggle('dark-mode', e.matches);
+            }
+        });
+    }
 });
+
+// Helper function to find elements with text content
+Element.prototype.querySelector = function(selector) {
+    return Element.prototype.querySelector.call(this, selector);
+};
+
+// Add a :contains selector to find elements containing text
+document.querySelector = function(selector) {
+    if (selector.includes(':contains(')) {
+        const parts = selector.split(':contains(');
+        const baseSelector = parts[0];
+        const textContent = parts[1].slice(0, -1);
+        
+        const elements = document.querySelectorAll(baseSelector);
+        for (const el of elements) {
+            if (el.textContent.includes(textContent)) {
+                return el;
+            }
+        }
+        return null;
+    }
+    return Document.prototype.querySelector.call(this, selector);
+};
