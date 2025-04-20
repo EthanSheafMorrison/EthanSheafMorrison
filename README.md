@@ -9,6 +9,7 @@ The portfolio uses:
 - JavaScript to dynamically populate content from this data
 - An admin interface for adding/updating projects
 - A project template for creating consistent project pages
+- **NEW**: Markdown support for easy content creation
 
 ## How to Add a New Project
 
@@ -23,10 +24,9 @@ The portfolio uses:
    - Check "Group Project" if it should appear in the Group Projects section
    - Add tags relevant to your project
 3. Click "Save Project" to update the data.json file
-4. Click "Create Project File" to generate and download an HTML file based on the project template
-5. Place the downloaded file in your `projects/` directory
-6. Add your project images to `images/projects/your-project-id/`
-7. Edit the project file to update content, images, and descriptions
+4. Choose one of the following options:
+   - Click "Create HTML File" to generate a traditional HTML file
+   - **NEW**: Click "Create Markdown Project" to generate both a Markdown content file and its HTML wrapper
 
 ### Method 2: Manual Editing
 
@@ -37,14 +37,26 @@ The portfolio uses:
    - Follow the existing structure for project entries
    - Make sure to set the "featured" and "group" properties according to where you want the project to appear
 
+### Method 3: Markdown-Based Projects (NEW)
+
+1. Create a new Markdown file in the `markdown/` directory with your project ID as the filename
+   - For example: `markdown/my-project.md`
+2. Add your project details to `data.json` as usual
+3. Create a new HTML file in the `projects/` directory based on `markdown-template.html`
+   - This HTML file will automatically load and render the Markdown content
+4. Add your project images to `images/projects/your-project-id/`
+
 ## File Structure
 
 - `index.html` - Main homepage with dynamic project listings
 - `data.json` - Contains all project data
 - `script.js` - Handles dynamic content loading and site functionality
+- `simple-script.js` - Simplified script that's easier to maintain
 - `styles.css` - Site-wide styling
 - `admin.html` - Interface for adding/updating projects
 - `project-template.html` - Template for new project pages
+- `markdown-template.html` - **NEW**: Template for Markdown-based projects
+- `markdown/` - **NEW**: Directory containing Markdown content files
 - `projects/` - Directory containing individual project pages
 - `images/projects/` - Directory containing project images
 
@@ -56,20 +68,31 @@ The system works by:
 3. Dynamically creating HTML elements for each project
 4. Inserting these elements into the appropriate sections of the page
 
-This approach means you only need to:
-1. Create a new project HTML file
-2. Add the project data to `data.json`
-3. Add your project images
+## New Markdown-Based Projects
 
-The homepage will automatically update to display your new project.
+The Markdown system works by:
+1. Creating a standard HTML wrapper page based on `markdown-template.html`
+2. Writing your content in Markdown format in a .md file
+3. When the HTML page loads, it:
+   - Fetches the project data from `data.json`
+   - Loads the corresponding Markdown file
+   - Converts the Markdown to HTML using the marked.js library
+   - Inserts the converted HTML into the page
+
+### Markdown Benefits
+
+- **Easier to write**: Markdown is much simpler than HTML
+- **Content focused**: Focus on the content, not the HTML structure
+- **Consistent styling**: The template handles all the styling
+- **Quick updates**: Just edit the Markdown file, no need to touch HTML
 
 ## Customization
 
 You can customize the site by:
 - Editing `styles.css` to change the visual design
-- Modifying `project-template.html` to change the structure of project pages
+- Modifying `project-template.html` or `markdown-template.html` to change the structure of project pages
 - Updating `index.html` to add/remove sections or change the layout
-- Editing the JavaScript in `script.js` to change how projects are displayed
+- Editing the JavaScript in `simple-script.js` to change how projects are displayed
 
 ## Server Requirements
 
