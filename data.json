@@ -1,6 +1,17 @@
 {
   "projects": [
     {
+      "id": "sample-project",
+      "title": "Sample Markdown Project",
+      "date": "2024",
+      "month": "April",
+      "summary": "A demonstration of using Markdown to create project pages with minimal effort.",
+      "featured": true,
+      "group": false,
+      "url": "projects/sample-project.html",
+      "tags": ["Markdown", "Template", "Documentation"]
+    },
+    {
       "id": "finding-kuku",
       "title": "Finding Kuku",
       "date": "2024",
@@ -10,7 +21,8 @@
       "group": false,
       "url": "projects/FindingKuku.html",
       "tags": ["Photography", "Mapping", "Cultural Heritage"]
-    },    {
+    },
+    {
       "id": "finding-kuku2",
       "title": "Finding Kuku2",
       "date": "2024",
@@ -62,7 +74,7 @@
       "month": "October",
       "summary": "An experimental approach to visual storytelling through sequential image arrangement.",
       "featured": true,
-      "group": true,
+      "group": false,
       "url": "projects/CollatedFrames.html",
       "tags": ["Visual Storytelling", "Sequential Art"]
     },

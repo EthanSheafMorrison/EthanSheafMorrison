@@ -230,9 +230,12 @@
                 </div>
             </div>
             
-            <button type="submit">Save Project</button>
-            <button type="button" id="createFileBtn">Create Project File</button>
-            <div id="message"></div>
+            <div id="form-controls">
+                <button type="submit">Save Project</button>
+                <button type="button" id="createFileBtn">Create HTML File</button>
+                <button type="button" id="createMarkdownBtn">Create Markdown Project</button>
+                <div id="message"></div>
+            </div>
         </form>
     </div>
 
@@ -257,6 +260,7 @@
             const tagContainer = document.getElementById('tagContainer');
             const messageDiv = document.getElementById('message');
             const createFileBtn = document.getElementById('createFileBtn');
+            const createMarkdownBtn = document.getElementById('createMarkdownBtn');
             
             // Show/hide group URL field based on checkbox
             projectGroupCheckbox.addEventListener('change', function() {
@@ -411,6 +415,89 @@
                     })
                     .catch(error => {
                         messageDiv.textContent = 'Error creating project file: ' + error.message;
+                        messageDiv.className = 'error-message';
+                    });
+            });
+
+            // Create Markdown project handler
+            createMarkdownBtn.addEventListener('click', function() {
+                const projectId = document.getElementById('projectId').value.trim();
+                const projectTitle = document.getElementById('projectTitle').value.trim();
+                
+                if (!projectId || !projectTitle) {
+                    messageDiv.textContent = 'Project ID and Title are required to create a Markdown project';
+                    messageDiv.className = 'error-message';
+                    return;
+                }
+                
+                // Create the Markdown template content
+                const markdownTemplate = `![Hero image for ${projectTitle}](../images/projects/${projectId}/hero.jpg)
+
+## Background
+
+Add your project background here. Describe what inspired this work and the context in which it was created.
+
+## Process
+
+Describe your process here. You can use lists, images, and other Markdown features:
+
+1. Research phase
+2. Concept development
+3. Implementation
+4. Evaluation
+
+### Development Details
+
+Provide more details about your development process here.
+
+## Features
+
+- **Feature 1**: Description
+- **Feature 2**: Description
+- **Feature 3**: Description
+
+## Images
+
+![Additional image](../images/projects/${projectId}/image2.jpg)
+
+## Outcome
+
+Discuss the results and impact of your project here.
+
+## Related Links
+
+- [Related link 1](https://example.com)
+- [Related link 2](https://example.com)
+`;
+                
+                // Create a blob and download the Markdown file
+                const markdownBlob = new Blob([markdownTemplate], { type: 'text/markdown' });
+                const markdownLink = document.createElement('a');
+                markdownLink.href = URL.createObjectURL(markdownBlob);
+                markdownLink.download = `${projectId}.md`;
+                markdownLink.click();
+                
+                // Create an HTML file based on the markdown template
+                fetch('markdown-template.html')
+                    .then(response => response.text())
+                    .then(template => {
+                        // Replace placeholders
+                        const content = template
+                            .replace(/Project Title/g, projectTitle)
+                            .replace(/project-name/g, projectId);
+                        
+                        // Create HTML file for download
+                        const htmlBlob = new Blob([content], { type: 'text/html' });
+                        const htmlLink = document.createElement('a');
+                        htmlLink.href = URL.createObjectURL(htmlBlob);
+                        htmlLink.download = `${projectId}.html`;
+                        htmlLink.click();
+                        
+                        messageDiv.textContent = `Created Markdown project files: ${projectId}.md and ${projectId}.html`;
+                        messageDiv.className = 'success-message';
+                    })
+                    .catch(error => {
+                        messageDiv.textContent = 'Error creating Markdown project: ' + error.message;
                         messageDiv.className = 'error-message';
                     });
             });

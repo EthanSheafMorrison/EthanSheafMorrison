@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Data loaded:', data);
             if (data.projects && data.projects.length > 0) {
                 displayProjects(data.projects);
+                setupProjectPreviews(data.projects);
             } else {
                 console.error('No projects found in data.json');
             }
@@ -115,7 +116,83 @@ document.addEventListener('DOMContentLoaded', function() {
         li.appendChild(date);
         li.appendChild(summary);
         
+        // Add data attribute for project ID to use with hover images
+        li.setAttribute('data-project-id', project.id);
+        
         return li;
+    }
+    
+    function setupProjectPreviews(projects) {
+        // Get the project preview container
+        const previewContainer = document.querySelector('.project-preview');
+        if (!previewContainer) {
+            console.warn('Project preview container not found');
+            return;
+        }
+        
+        // Create a mapping of project IDs to image paths
+        const projectImages = {};
+        projects.forEach(project => {
+            // Use a default image path pattern based on project ID
+            projectImages[project.id] = `images/projects/${project.id}/hero.jpg`;
+        });
+        
+        // Add event listeners to all project list items
+        const projectItems = document.querySelectorAll('.projects-list li');
+        projectItems.forEach(item => {
+            const projectId = item.getAttribute('data-project-id');
+            if (!projectId) return;
+            
+            // Store the image path
+            const imagePath = projectImages[projectId];
+            
+            item.addEventListener('mouseenter', function(e) {
+                // Show the preview with the project image
+                previewContainer.style.backgroundImage = `url(${imagePath})`;
+                previewContainer.style.opacity = '1';
+                previewContainer.style.visibility = 'visible';
+                
+                // Update position on initial hover
+                updatePreviewPosition(e, previewContainer);
+            });
+            
+            item.addEventListener('mousemove', function(e) {
+                // Update the position as the mouse moves
+                updatePreviewPosition(e, previewContainer);
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                // Hide the preview when mouse leaves
+                previewContainer.style.opacity = '0';
+                previewContainer.style.visibility = 'hidden';
+            });
+        });
+        
+        console.log('Project preview hover effects set up');
+    }
+    
+    function updatePreviewPosition(e, previewContainer) {
+        const x = e.clientX;
+        const y = e.clientY;
+        const previewWidth = 300;
+        const previewHeight = 200;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        
+        // Position the preview to the right of the cursor, or to the left if near the right edge
+        let left = x + 20;
+        if (left + previewWidth > windowWidth) {
+            left = x - previewWidth - 20;
+        }
+        
+        // Position the preview below the cursor, or above if near the bottom edge
+        let top = y + 20;
+        if (top + previewHeight > windowHeight) {
+            top = y - previewHeight - 20;
+        }
+        
+        previewContainer.style.left = `${left}px`;
+        previewContainer.style.top = `${top}px`;
     }
     
     // Setup dark mode toggle
