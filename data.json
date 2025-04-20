@@ -1,0 +1,103 @@
+{
+  "projects": [
+    {
+      "id": "finding-kuku",
+      "title": "Finding Kuku",
+      "date": "2024",
+      "month": "January",
+      "summary": "A visual journey reconnecting whakapapa through photographic mapping.",
+      "featured": true,
+      "group": false,
+      "url": "projects/FindingKuku.html",
+      "tags": ["Photography", "Mapping", "Cultural Heritage"]
+    },    {
+      "id": "finding-kuku2",
+      "title": "Finding Kuku2",
+      "date": "2024",
+      "month": "January",
+      "summary": "A visual journey reconnecting whakapapa through photographic mapping.",
+      "featured": true,
+      "group": false,
+      "url": "projects/FindingKuku.html",
+      "tags": ["Photography", "Mapping", "Cultural Heritage"]
+    },
+    {
+      "id": "mapping-human-earth-systems",
+      "title": "Mapping Human/Earth Systems",
+      "date": "2024",
+      "month": "February",
+      "summary": "Exploring the interconnectedness of human and environmental systems through data visualization.",
+      "featured": true,
+      "group": false,
+      "url": "projects/MappingHumanEarthSystems.html",
+      "tags": ["Data Visualization", "Environmental"]
+    },
+    {
+      "id": "western-sahara",
+      "title": "Western Sahara, Aotearoa, & the phosphate crisis",
+      "date": "2023",
+      "month": "September",
+      "summary": "Investigating the global phosphate supply chain and its impact on indigenous communities.",
+      "featured": true,
+      "group": true,
+      "url": "projects/WesternSahara.html",
+      "groupUrl": "https://wsnz.onrender.com/index.html",
+      "tags": ["Research", "Policy", "Indigenous"]
+    },
+    {
+      "id": "google-warming",
+      "title": "Google Warming",
+      "date": "2023",
+      "month": "September",
+      "summary": "A critical examination of climate change representation in digital media and search algorithms.",
+      "featured": true,
+      "group": true,
+      "url": "projects/GoogleWarming.html",
+      "tags": ["Digital Media", "Climate Change", "Algorithms"]
+    },
+    {
+      "id": "collated-frames",
+      "title": "Collated_Frames",
+      "date": "2023",
+      "month": "October",
+      "summary": "An experimental approach to visual storytelling through sequential image arrangement.",
+      "featured": true,
+      "group": true,
+      "url": "projects/CollatedFrames.html",
+      "tags": ["Visual Storytelling", "Sequential Art"]
+    },
+    {
+      "id": "iterate",
+      "title": "Iterate Postgraduate Showcase",
+      "date": "2024",
+      "month": "February",
+      "summary": "A showcase of innovative design research and practice from postgraduate students.",
+      "featured": false,
+      "group": false,
+      "url": "projects/Iterate.html",
+      "tags": ["Exhibition", "Design Research"]
+    },
+    {
+      "id": "on-display",
+      "title": "On Display Pt.2",
+      "date": "2023",
+      "month": "August",
+      "summary": "An exhibition exploring the intersection of digital and physical display spaces.",
+      "featured": false,
+      "group": false,
+      "url": "projects/OnDisplay.html",
+      "tags": ["Exhibition", "Digital/Physical"]
+    },
+    {
+      "id": "adlib",
+      "title": "adlib",
+      "date": "2024",
+      "month": "March",
+      "summary": "A brutalist web design experiment exploring raw aesthetics and unconventional digital interfaces.",
+      "featured": true,
+      "group": true,
+      "url": "projects/adlib.html",
+      "tags": ["Web Design", "Brutalism", "Experimental"]
+    }
+  ]
+} 
