@@ -1,0 +1,95 @@
+[
+  {
+    "id": "1",
+    "title": "Western Sahara Resource Watch",
+    "year": "2023",
+    "description": "A responsive website for the Western Sahara Resource Watch organization that highlights their work and research.",
+    "content_file": "data/wsrw-content.md",
+    "tags": ["Web Development", "Responsive Design", "UI/UX"],
+    "images": [
+      {
+        "src": "../images/projects/wsrw/main.jpg",
+        "alt": "Western Sahara Resource Watch website homepage"
+      },
+      {
+        "src": "../images/projects/wsrw/mobile.jpg",
+        "alt": "Mobile view of the WSRW website"
+      },
+      {
+        "src": "../images/projects/wsrw/data-viz.jpg",
+        "alt": "Data visualization component"
+      }
+    ],
+    "links": [
+      {
+        "title": "Visit Website",
+        "url": "https://www.wsrw.org",
+        "external": true
+      },
+      {
+        "title": "GitHub Repository",
+        "url": "https://github.com/EthanSheafMorrison/wsrw",
+        "external": true
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Portfolio Website",
+    "year": "2024",
+    "description": "A personal portfolio website designed and developed to showcase my projects and skills.",
+    "content_file": "data/portfolio-content.md",
+    "tags": ["Web Development", "Personal Project", "UI/UX"],
+    "images": [
+      {
+        "src": "../images/projects/portfolio/main.jpg",
+        "alt": "Portfolio website homepage"
+      },
+      {
+        "src": "../images/projects/portfolio/projects.jpg", 
+        "alt": "Projects gallery page"
+      }
+    ],
+    "links": [
+      {
+        "title": "GitHub Repository",
+        "url": "https://github.com/EthanSheafMorrison/portfolio",
+        "external": true
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Interactive Data Visualization",
+    "year": "2023",
+    "description": "An interactive data visualization project exploring climate change impact on global agriculture.",
+    "content_file": "data/data-viz-content.md",
+    "tags": ["Data Visualization", "Interactive", "Research"],
+    "images": [
+      {
+        "src": "../images/projects/data-viz/main.jpg",
+        "alt": "Main visualization dashboard"
+      },
+      {
+        "src": "../images/projects/data-viz/chart1.jpg",
+        "alt": "Temperature trends chart"
+      },
+      {
+        "src": "../images/projects/data-viz/chart2.jpg",
+        "alt": "Agricultural yield visualization"
+      }
+    ],
+    "links": [
+      {
+        "title": "Live Demo",
+        "url": "https://ethansheafmorrison.com/projects/data-viz",
+        "external": false
+      },
+      {
+        "title": "Research Paper",
+        "url": "https://example.org/research-paper.pdf",
+        "external": true
+      }
+    ]
+  }
+] 

@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const projectImages = {};
         projects.forEach(project => {
             // Use a default image path pattern based on project ID
-            projectImages[project.id] = `images/projects/${project.id}/hero.jpg`;
+            projectImages[project.id] = `images/projects/${project.id}/main.jpg`;
         });
         
         // Add event listeners to all project list items
