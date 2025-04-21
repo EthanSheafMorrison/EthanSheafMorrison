@@ -8,6 +8,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;500&display=swap');
     </style>
+    <!-- Include html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <!-- Header Section -->
@@ -127,6 +129,10 @@
                     </div>
                 </div>
             </div>
+                        <!-- Download Link -->
+                        <p>
+                            <a href="cv.pdf" class="cv-download" download>Download my CV →</a>
+                        </p>
         </section>
     </main>
 
@@ -140,6 +146,13 @@
         <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const element = document.getElementById('cv-content');
+            html2pdf()
+                .from(element)
+                .save('Ethan_Sheaf_Morrison_CV.pdf');
+        });
+    </script>
 </body>
 </html> 

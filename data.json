@@ -108,7 +108,7 @@
       "summary": "A brutalist web design experiment exploring raw aesthetics and unconventional digital interfaces.",
       "featured": true,
       "group": true,
-      "url": "projects/adlib.html",
+      "url": "adlib/adlib.html",
       "tags": ["Web Design", "Brutalism", "Experimental"]
     },
     {
@@ -132,6 +132,39 @@
       "group": false,
       "url": "projects/projects.html?id=kihikihi",
       "tags": ["Web Design", "Brutalism", "Experimental"]
+    },
+    {
+      "id": "iterate",
+      "title": "Iterate Postgraduate Showcase",
+      "date": "2024",
+      "month": "November",
+      "summary": "A showcase of innovative design research and spatial collaboration by postgraduate students.",
+      "featured": true,
+      "group": false,
+      "url": "projects/projects.html?id=iterate",
+      "tags": ["Exhibition", "Design Research", "Collaboration"]
+    },
+    {
+      "id": "empty-vessels",
+      "title": "Empty Vessels",
+      "date": "2025",
+      "month": "March",
+      "summary": "An installation exploring the interplay between form and void, emphasizing the spatial dynamics of emptiness.",
+      "featured": false,
+      "group": false,
+      "url": "projects/projects.html?id=empty-vessels",
+      "tags": ["Installation", "Spatial Design", "Conceptual Art"]
+    },
+    {
+      "id": "geographic-visualisation",
+      "title": "Geographic Visualisation",
+      "date": "2025",
+      "month": "January",
+      "summary": "A project visualizing geographic data to reveal patterns and insights about environmental changes.",
+      "featured": false,
+      "group": false,
+      "url": "projects/projects.html?id=geographic-visualisation",
+      "tags": ["Data Visualization", "Geography", "Environmental Studies"]
     }
   ]
 } 
