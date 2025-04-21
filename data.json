@@ -110,6 +110,28 @@
       "group": true,
       "url": "projects/adlib.html",
       "tags": ["Web Design", "Brutalism", "Experimental"]
+    },
+    {
+      "id": "adlib",
+      "title": "FindingKuku MD",
+      "date": "2025",
+      "month": "March",
+      "summary": "A brutalist web design experiment exploring raw aesthetics and unconventional digital interfaces.",
+      "featured": true,
+      "group": true,
+      "url": "projects/projects.html?id=finding-kuku",
+      "tags": ["Web Design", "Brutalism", "Experimental"]
+    },
+    {
+      "id": "kihikihi",
+      "title": "Kihikihi",
+      "date": "2025",
+      "month": "March",
+      "summary": "A brutalist web design experiment exploring raw aesthetics and unconventional digital interfaces.",
+      "featured": false,
+      "group": false,
+      "url": "projects/projects.html?id=kihikihi",
+      "tags": ["Web Design", "Brutalism", "Experimental"]
     }
   ]
 } 
