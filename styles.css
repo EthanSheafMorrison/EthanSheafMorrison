@@ -571,11 +571,12 @@ body.dark-mode .dropdown-header:hover {
 
 /* About/Contact Section */
 .about-contact {
-    /* max-width: 1200px; */
-    /* margin: 4rem auto; */
+    max-width: 1200px;
+    margin: 4rem auto;
     padding: 0 2rem;
     font-size: 1rem;
     line-height: 1.8;
+    text-align: left;
 }
 
 /* Footer */
@@ -585,7 +586,7 @@ footer {
     padding: 0 2rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     font-size: 0.9rem;
     color: #666;
     grid-column: main-start / main-end;
@@ -1680,10 +1681,10 @@ body.dark-mode .caption-border {
 
 /* Contact Section */
 .contact {
-    padding: 8rem 2rem;
+    padding: 0rem 2rem;
     max-width: 800px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
 .contact-link {
@@ -1731,6 +1732,7 @@ footer {
     .about,
     .contact {
         padding: 4rem 1rem;
+        text-align: left;
     }
 
     .projects-grid {
