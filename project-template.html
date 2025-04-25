@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Title - Ethan Sheaf-Morrison</title>
+    <title>{title} - Ethan Sheaf-Morrison</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
@@ -11,52 +11,27 @@
 </head>
 <body>
     <!-- Header Section -->
-    <header>
-        <div class="site-title">Ethan Sheaf-Morrison</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="blog.html">Blog</a>
-            <a href="experiments.html">Experiments</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"/>
-                    <line x1="12" y1="1" x2="12" y2="3"/>
-                    <line x1="12" y1="21" x2="12" y2="23"/>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                    <line x1="1" y1="12" x2="3" y2="12"/>
-                    <line x1="21" y1="12" x2="23" y2="12"/>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                </svg>
-                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
-            </button>
-        </nav>
-    </header>
+    <div id="site-header"></div>
 
     <!-- Project Hero Section -->
     <section class="project-hero">
         <div class="project-hero-content">
             <div class="project-title-section">
                 <span class="hero-label">/ PROJECT</span>
-                <h1>Project Title</h1>
+                <h1>{title}</h1>
             </div>
             <div class="project-meta-grid">
                 <div class="project-meta-item">
                     <span class="detail-label">/ DATE</span>
-                    <p>2024</p>
+                    <p>{date}</p>
                 </div>
                 <div class="project-meta-item">
                     <span class="detail-label">/ ROLE</span>
-                    <p>Design, Development, Research</p>
+                    <p>{role}</p>
                 </div>
                 <div class="project-meta-item">
                     <span class="detail-label">/ TYPE</span>
-                    <p>Digital, Research, Mapping</p>
+                    <p>{type}</p>
                 </div>
             </div>
         </div>
@@ -69,7 +44,7 @@
             <div class="project-info-column">
                 <div class="info-section">
                     <h3 class="section-label">/ OVERVIEW</h3>
-                    <p>Brief description of the project and its main objectives. This section provides context and introduces the key themes explored in the work.</p>
+                    <p>{summary}</p>
                 </div>
                 <div class="info-section">
                     <h3 class="section-label">/ APPROACH</h3>
@@ -115,9 +90,9 @@
     <!-- Next Project Section -->
     <section class="next-project">
         <span class="detail-label">/ NEXT PROJECT</span>
-        <a href="next-project.html" class="next-project-link">
-            <h2>Next Project Title</h2>
-            <p>Brief description of the next project</p>
+        <a href="../{next_url}" class="next-project-link">
+            <h2>{next_title}</h2>
+            <p>{next_summary}</p>
         </a>
     </section>
 
@@ -127,5 +102,12 @@
     </footer>
 
     <script src="simple-script.js"></script>
+    <script>
+        fetch('header.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('site-header').innerHTML = data;
+          });
+      </script>
 </body>
 </html> 

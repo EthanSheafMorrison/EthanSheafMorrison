@@ -195,29 +195,29 @@ document.addEventListener('DOMContentLoaded', function() {
         previewContainer.style.top = `${top}px`;
     }
     
-    // Setup dark mode toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-
-    // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'true') {
-        body.classList.add('dark-mode');
-    }
-
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
-    });
-
-    // Project filtering functionality
+    // Initialize filtering system
     const filterCheckboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
     const projectRows = document.querySelectorAll('.project-row');
     const clearFiltersBtn = document.querySelector('.clear-filters');
     const activeFilters = new Set();
 
+    if (filterCheckboxes.length === 0) {
+        console.warn('No filter checkboxes found');
+    } else {
+        console.log('Found filter checkboxes:', filterCheckboxes.length);
+    }
+
+    if (projectRows.length === 0) {
+        console.warn('No project rows found');
+    } else {
+        console.log('Found project rows:', projectRows.length);
+    }
+
+    // Setup filter event listeners
     filterCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
             const selectedTag = checkbox.getAttribute('data-tag');
+            console.log('Checkbox changed:', selectedTag, checkbox.checked);
             
             if (checkbox.checked) {
                 activeFilters.add(selectedTag);
@@ -229,14 +229,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    clearFiltersBtn.addEventListener('click', () => {
-        // Uncheck all checkboxes
-        filterCheckboxes.forEach(checkbox => checkbox.checked = false);
-        activeFilters.clear();
-        updateProjectVisibility();
-    });
+    if (clearFiltersBtn) {
+        clearFiltersBtn.addEventListener('click', () => {
+            console.log('Clearing filters');
+            filterCheckboxes.forEach(checkbox => checkbox.checked = false);
+            activeFilters.clear();
+            updateProjectVisibility();
+        });
+    } else {
+        console.warn('Clear filters button not found');
+    }
 
     function updateProjectVisibility() {
+        console.log('Active filters:', Array.from(activeFilters));
+        
         projectRows.forEach(row => {
             if (activeFilters.size === 0) {
                 row.style.display = 'grid';
@@ -244,16 +250,56 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const projectTags = Array.from(row.querySelectorAll('.project-tags span'))
-                .map(span => span.textContent.toLowerCase());
+                .map(span => span.textContent.trim().toLowerCase());
+            
+            console.log('Project tags:', projectTags);
             
             // Show project if it matches ANY of the active filters
             const hasMatchingTag = Array.from(activeFilters)
-                .some(filter => projectTags.includes(filter));
+                .some(filter => projectTags.includes(filter.toLowerCase()));
             
             row.style.display = hasMatchingTag ? 'grid' : 'none';
         });
     }
-    
+
+    // Setup project hover effects
+    const hoverBg = document.querySelector('.project-hover-bg');
+    if (hoverBg) {
+        projectRows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                const imageUrl = row.getAttribute('data-image');
+                if (imageUrl) {
+                    hoverBg.style.backgroundImage = `url('${imageUrl}')`;
+                    hoverBg.classList.add('visible');
+                }
+            });
+
+            row.addEventListener('mouseleave', () => {
+                hoverBg.classList.remove('visible');
+            });
+        });
+    } else {
+        console.warn('Project hover background element not found');
+    }
+
+    // Setup dark mode toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    if (darkModeToggle) {
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        });
+    } else {
+        console.warn('Dark mode toggle button not found');
+    }
+
     // Setup dropdowns
     document.querySelectorAll('.dropdown-header').forEach(header => {
         header.addEventListener('click', () => {
