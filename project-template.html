@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Title - Ethan Sheaf-Morrison</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
     </style>
 </head>
 <body>
@@ -14,11 +14,11 @@
     <header>
         <div class="site-title">Ethan Sheaf-Morrison</div>
         <nav>
-            <a href="../index.html" aria-label="Home page">Home</a>
-            <a href="../blog.html" aria-label="Blog posts">Blog</a>
-            <a href="../experiments.html" aria-label="Experiments and prototypes">Experiments</a>
-            <a href="../about.html" aria-label="About me">About</a>
-            <a href="../contact.html" aria-label="Contact information">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="experiments.html">Experiments</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
             <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
@@ -38,66 +38,94 @@
         </nav>
     </header>
 
-    <!-- Project Content -->
-    <div class="project-content">
-        <h1>Project Title</h1>
-        
-        <div class="project-meta">
-            <div class="project-date">Year</div>
-            <div class="project-tags">
-                <span>Tag 1</span>
-                <span>Tag 2</span>
-                <span>Tag 3</span>
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="project-title-section">
+                <span class="hero-label">/ PROJECT</span>
+                <h1>Project Title</h1>
+            </div>
+            <div class="project-meta-grid">
+                <div class="project-meta-item">
+                    <span class="detail-label">/ DATE</span>
+                    <p>2024</p>
+                </div>
+                <div class="project-meta-item">
+                    <span class="detail-label">/ ROLE</span>
+                    <p>Design, Development, Research</p>
+                </div>
+                <div class="project-meta-item">
+                    <span class="detail-label">/ TYPE</span>
+                    <p>Digital, Research, Mapping</p>
+                </div>
             </div>
         </div>
-        
-        <div class="project-description">
-            <p>A brief description of your project. This should provide an overview of what the project is about, its objectives, and its significance.</p>
-        </div>
-        
-        <div class="project-gallery">
-            <img src="../images/projects/project-name/image1.jpg" alt="Project image description" class="hero-image">
-            <img src="../images/projects/project-name/image2.jpg" alt="Project image description">
-            <img src="../images/projects/project-name/image3.jpg" alt="Project image description">
-        </div>
-        
-        <div class="project-details">
-            <h2>Background</h2>
-            <p>Explain the context and background of your project. What inspired this work? What problem or question were you addressing?</p>
-            
-            <h2>Process</h2>
-            <p>Describe your working process, research methodologies, and the steps you took to develop this project.</p>
-            <ul>
-                <li>Research phase</li>
-                <li>Initial concepts</li>
-                <li>Development</li>
-                <li>Final implementation</li>
-            </ul>
-            
-            <h2>Outcome</h2>
-            <p>Discuss the results of your project. What did you achieve? What was learned? How was it received?</p>
-        </div>
-        
-        <div class="project-links">
-            <h2>Related Links</h2>
-            <ul>
-                <li><a href="#" target="_blank">External link example</a></li>
-                <li><a href="#" target="_blank">Publication</a></li>
-                <li><a href="#" target="_blank">Additional resource</a></li>
-            </ul>
-        </div>
-    </div>
+    </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
-            <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="project-grid">
+            <!-- Left Column - Project Info -->
+            <div class="project-info-column">
+                <div class="info-section">
+                    <h3 class="section-label">/ OVERVIEW</h3>
+                    <p>Brief description of the project and its main objectives. This section provides context and introduces the key themes explored in the work.</p>
+                </div>
+                <div class="info-section">
+                    <h3 class="section-label">/ APPROACH</h3>
+                    <p>Description of the methodology, tools, and processes used in developing the project.</p>
+                </div>
+                <div class="info-section">
+                    <h3 class="section-label">/ TOOLS</h3>
+                    <ul class="tools-list">
+                        <li>Tool or Technology 1</li>
+                        <li>Tool or Technology 2</li>
+                        <li>Tool or Technology 3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column - Project Gallery -->
+            <div class="project-gallery-column">
+                <figure class="project-figure">
+                    <img src="path/to/image1.jpg" alt="Project image description">
+                    <figcaption>Caption describing the image or process shown</figcaption>
+                </figure>
+                <figure class="project-figure">
+                    <img src="path/to/image2.jpg" alt="Project image description">
+                    <figcaption>Caption describing the image or process shown</figcaption>
+                </figure>
+            </div>
         </div>
+    </section>
+
+    <!-- Project Details Section -->
+    <section class="project-details-section">
+        <div class="details-grid">
+            <div class="details-text">
+                <h2>Project Details</h2>
+                <p>More detailed information about the project, including challenges, solutions, and outcomes.</p>
+            </div>
+            <div class="details-image">
+                <img src="path/to/detail-image.jpg" alt="Detailed view of project">
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project Section -->
+    <section class="next-project">
+        <span class="detail-label">/ NEXT PROJECT</span>
+        <a href="next-project.html" class="next-project-link">
+            <h2>Next Project Title</h2>
+            <p>Brief description of the next project</p>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
         <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="simple-script.js"></script>
 </body>
 </html> 

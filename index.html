@@ -6,13 +6,10 @@
     <title>Ethan Sheaf-Morrison</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
     </style>
 </head>
 <body>
-    <!-- Project Preview Container -->
-    <div class="project-preview"></div>
-
     <!-- Header Section -->
     <header>
         <div class="site-title">Ethan Sheaf-Morrison</div>
@@ -40,75 +37,312 @@
             </button>
         </nav>
     </header>
-    <!-- Hero Section -->  
-    <section class="hero" style="padding-bottom: 0;">
+
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="hero-content">
-            <h1>Designer</h1>
-            <p>Pōneke, Aotearoa</p>
+            <div class="hero-title">
+                <span class="hero-label">/ INTRO</span>
+                <h1>I craft digital experiences that engage and inspire.</h1>
+            </div>
+            <div class="hero-details">
+                <div class="hero-location">
+                    <span class="detail-label">/ LOCATION</span>
+                    <p>Designer & Developer based in Pōneke, Aotearoa</p>
+                </div>
+                <div class="hero-focus">
+                    <span class="detail-label">/ FOCUS</span>
+                    <p>Indigenous storytelling, critical cartography, and digital world-building</p>
+                </div>
+                <div class="hero-status">
+                    <span class="detail-label">/ STATUS</span>
+                    <p>Currently working on mapping projects and data visualization</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Selected Works Section -->
-    <section class="projects-list">
-        <h2>Selected Works</h2>
-        <ul>
-            <!-- Projects will be dynamically loaded here -->
-        </ul>
+    <!-- All Projects Section -->
+    <section class="all-projects">
+        <div class="filter-sidebar">
+            <div class="filter-section">
+                <h3 class="filter-heading">/ FILTER</h3>
+                <div class="filter-group">
+                    <h4 class="filter-group-heading">└ Type</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" data-tag="photography">
+                            Photography (3)
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" data-tag="mapping">
+                            Mapping (2)
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" data-tag="research">
+                            Research (4)
+                        </label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h4 class="filter-group-heading">└ Topic</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" data-tag="cultural">
+                            Cultural (2)
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" data-tag="environmental">
+                            Environmental (3)
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" data-tag="indigenous">
+                            Indigenous (1)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button class="clear-filters">CLEAR FILTERS</button>
+        </div>
+
+        <div class="projects-container">
+            <div class="projects-header">
+                <span class="header-date">/ DATE</span>
+                <span class="header-name">/ NAME</span>
+                <span class="header-type">/ TYPE</span>
+            </div>
+            <div class="projects-list">
+                <!-- Finding Kuku -->
+                <div class="project-row" data-image="images/projects/finding-kuku.jpg">
+                    <div class="project-number">01</div>
+                    <a href="projects/FindingKuku.html" class="project-title">
+                        Finding Kuku — Visual Mapping Project
+                    </a>
+                    <div class="project-tags">
+                        <span>Photography</span>
+                        <span>Mapping</span>
+                        <span>Cultural</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        A photographic journey retracing whakapapa through the East Cape, mapping personal and ancestral memory.
+                    </div>
+                </div>
+
+                <!-- Mapping Human/Earth Systems -->
+                <div class="project-row" data-image="images/projects/mapping-human-earth-systems.jpg">
+                    <div class="project-number">02</div>
+                    <a href="projects/MappingHumanEarthSystems.html" class="project-title">
+                        Mapping Human/Earth Systems — Data Visualization
+                    </a>
+                    <div class="project-tags">
+                        <span>Data</span>
+                        <span>Research</span>
+                        <span>Environmental</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        Visualising the complex interrelations between people and environment using data-driven maps and diagrams.
+                    </div>
+                </div>
+
+                <!-- Western Sahara -->
+                <div class="project-row" data-image="images/projects/WSNZ/main.jpg">
+                    <div class="project-number">03</div>
+                    <a href="projects/WesternSahara.html" class="project-title">
+                        Western Sahara — Phosphate Research
+                    </a>
+                    <div class="project-tags">
+                        <span>Research</span>
+                        <span>Policy</span>
+                        <span>Indigenous</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        Investigating phosphate extraction, colonial histories, and indigenous rights in the Western Sahara region.
+                    </div>
+                </div>
+
+                <!-- Google Warming -->
+                <div class="project-row" data-image="images/projects/google-warming.jpg">
+                    <div class="project-number">04</div>
+                    <a href="projects/google-warming.html" class="project-title">
+                        Google Warming — Digital Media Research
+                    </a>
+                    <div class="project-tags">
+                        <span>Digital</span>
+                        <span>Climate</span>
+                        <span>Research</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        Examining the role of digital platforms in shaping public understanding of climate change.
+                    </div>
+                </div>
+
+                <!-- Collated Frames -->
+                <div class="project-row" data-image="images/projects/collated-frames.jpg">
+                    <div class="project-number">05</div>
+                    <a href="projects/CollatedFrames.html" class="project-title">
+                        Collated_Frames — Visual Storytelling
+                    </a>
+                    
+                    <div class="project-tags">
+                        <span>Visual</span>
+                        <span>Sequential</span>
+                        <span>Art</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        Exploring narrative through sequential imagery and experimental visual composition.
+                    </div>
+                </div>
+
+                <!-- adlib -->
+                <div class="project-row" data-image="adlib/adlibsimg/Adlib-23.png">
+                    <div class="project-number">06</div>
+                    <a href="adlib/adlib.html" class="project-title">
+                        Adlib — Brutalist Web Design
+                    </a>
+                    <div class="project-tags">
+                        <span>Web</span>
+                        <span>Design</span>
+                        <span>Experimental</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        A playful, experimental approach to web design inspired by brutalism and improvisation.
+                    </div>
+                </div>
+                <!-- KihiKihi -->
+                <div class="project-row" data-image="images/projects/kihikihi/main.jpg">
+                    <div class="project-number">07</div>
+                    <a href="kihikihi/kihikihi.html" class="project-title">
+                        KihiKihi — Installation Art
+                    </a>
+                    <div class="project-tags">
+                        <span>Web</span>
+                        <span>Design</span>
+                        <span>Experimental</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        A playful, experimental approach to web design inspired by brutalism and improvisation.
+                    </div>
+                </div>
+                <!-- Empty Vessels -->
+                <div class="project-row" data-image="images/projects/empty-vessels.jpg">
+                    <div class="project-number">07</div>
+                    <a href="projects/projects.html?id=empty-vessels" class="project-title">
+                        Empty Vessels — Installation Art
+                    </a>
+                    <div class="project-tags">
+                        <span>Installation</span>
+                        <span>Spatial</span>
+                        <span>Art</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        An immersive installation exploring space, sound, and the metaphor of the vessel.
+                    </div>
+                </div>
+
+                <!-- Geographic Visualisation -->
+                <div class="project-row" data-image="images/projects/geographic-visualisation.jpg">
+                    <div class="project-number">08</div>
+                    <a href="projects/projects.html?id=geographic-visualisation" class="project-title">
+                        Geographic Visualisation — Environmental Data
+                    </a>
+                    <div class="project-tags">
+                        <span>Data</span>
+                        <span>Geography</span>
+                        <span>Research</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="project-description">
+                        Tools and graphics for making complex environmental data accessible through maps and visual storytelling.
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Projects by Year Section -->
-    <section class="projects-list">
-        <h1>Projects by Year</h1>
-        
-        <h2 class="dropdown-header" data-target="projects-2025">
-            <span class="dropdown-title">2025</span>
-            <span class="dropdown-indicator" aria-hidden="true">+</span>
-        </h2>
-        <ul id="projects-2025" class="project-year-list" aria-hidden="true">
-            <!-- 2025 Projects will be dynamically loaded here -->
-        </ul>
-        
-        <h2 class="dropdown-header" data-target="projects-2024">
-            <span class="dropdown-title">2024</span>
-            <span class="dropdown-indicator" aria-hidden="true">+</span>
-        </h2>
-        <ul id="projects-2024" class="project-year-list" aria-hidden="true">
-            <!-- 2024 Projects will be dynamically loaded here -->
-        </ul>
-
-        <h2 class="dropdown-header" data-target="projects-2023">
-            <span class="dropdown-title">2023</span>
-            <span class="dropdown-indicator" aria-hidden="true">+</span>
-        </h2>
-        <ul id="projects-2023" class="project-year-list" aria-hidden="true">
-            <!-- 2023 Projects will be dynamically loaded here -->
-        </ul>
+    <!-- About Section -->
+    <section class="about-footer">
+        <div class="bio-intro">
+            <p>Ethan Sheaf-Morrison is an independent <em>designer, researcher, and developer</em> based in Aotearoa New Zealand. Grounded in his Māori whakapapa (Te Whānau-ā-Apanui), his work intersects indigenous storytelling, critical cartography, and digital world-building. He creates poetic, technically rigorous responses to social and environmental systems through data visualisation, mapping, and typographic experimentation. He has worked with university research centres, independent artists, and policy organisations on projects spanning from phosphate trade research to geospatial tools for community engagement.</p>
+        </div>
+        <div class="bio-grid">
+            <div class="bio-image">
+                <img src="images/ethan-profile.jpg" alt="Ethan Sheaf-Morrison Portrait">
+            </div>
+            <div class="bio-column">
+                <h3>EXPERIENCE</h3>
+                <p>Research Assistant, Victoria University — 2021–</p>
+                <p>Design Tutor, Victoria University — 2021–</p>
+                <p>Summer Research Scholar — 2022–2023</p>
+            </div>
+            <div class="bio-column">
+                <h3>EDUCATION</h3>
+                <p>Te Herenga Waka, Victoria University<br>Master of Design, 2024</p>
+                <p>Bachelor of Design Innovation, 2023</p>
+            </div>
+            <div class="bio-column">
+                <h3>CONTACT</h3>
+                <p><strong>Email</strong><br><a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
+                <p><strong>Elsewhere</strong><br>
+                    <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a><br>
+                    <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a><br>
+                    <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
+                </p>
+            </div>
+        </div>
     </section>
 
-    <!-- Group Projects Section -->
-    <section class="projects-list">
-        <h2>Group Projects</h2>
-        <ul>
-            <!-- Group Projects will be dynamically loaded here -->
-        </ul>
-    </section>
-
-    <!-- About/Contact Section -->
-    <section class="about-contact">
-        <p>I am a designer, research assistant, and writer. I graduated from Te Herenga Waka Victoria University of Wellington in 2023 with a Bachelor of Design Innovation with a double major in communication and media design. I have held positions as a tutor and research assistant at Victoria University since 2021 including a position as a summer research scholar (2022-2023). Throughout my undergraduate I received multiple accolades such as the Te Tini a Rehua award (2021) and Te Pūtahi o Poutama Awhina grant (2022).</p>
-        <p>Contact: <a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
-    </section>
-
-    <!-- Footer Section -->
-    <footer>
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Let's Connect</h2>
+        <p>Get in touch for collaborations or just to say hello.</p>
+        <a href="mailto:ethan.sheafmorrison@gmail.com" class="contact-link">ethan.sheafmorrison@gmail.com</a>
         <div class="social-links">
             <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
             <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
             <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
         <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
     </footer>
 
+</body>
+    <div class="project-hover-bg"></div>
+    <script>
+      const hoverBg = document.querySelector('.project-hover-bg');
+      const projectRows = document.querySelectorAll('.project-row');
+
+      projectRows.forEach(row => {
+          row.addEventListener('mouseenter', () => {
+              const imageUrl = row.getAttribute('data-image');
+              hoverBg.style.backgroundImage = `url('${imageUrl}')`;
+              hoverBg.classList.add('visible');
+          });
+
+          row.addEventListener('mouseleave', () => {
+              hoverBg.classList.remove('visible');
+          });
+      });
+    </script>
     <script src="simple-script.js"></script>
 </body>
 </html>

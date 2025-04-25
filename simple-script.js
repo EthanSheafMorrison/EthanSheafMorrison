@@ -197,16 +197,61 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup dark mode toggle
     const darkModeToggle = document.getElementById('darkModeToggle');
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    const body = document.body;
+
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+        body.classList.add('dark-mode');
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    });
+
+    // Project filtering functionality
+    const filterCheckboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
+    const projectRows = document.querySelectorAll('.project-row');
+    const clearFiltersBtn = document.querySelector('.clear-filters');
+    const activeFilters = new Set();
+
+    filterCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const selectedTag = checkbox.getAttribute('data-tag');
+            
+            if (checkbox.checked) {
+                activeFilters.add(selectedTag);
+            } else {
+                activeFilters.delete(selectedTag);
+            }
+            
+            updateProjectVisibility();
         });
-        
-        // Check for saved preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-        }
+    });
+
+    clearFiltersBtn.addEventListener('click', () => {
+        // Uncheck all checkboxes
+        filterCheckboxes.forEach(checkbox => checkbox.checked = false);
+        activeFilters.clear();
+        updateProjectVisibility();
+    });
+
+    function updateProjectVisibility() {
+        projectRows.forEach(row => {
+            if (activeFilters.size === 0) {
+                row.style.display = 'grid';
+                return;
+            }
+
+            const projectTags = Array.from(row.querySelectorAll('.project-tags span'))
+                .map(span => span.textContent.toLowerCase());
+            
+            // Show project if it matches ANY of the active filters
+            const hasMatchingTag = Array.from(activeFilters)
+                .some(filter => projectTags.includes(filter));
+            
+            row.style.display = hasMatchingTag ? 'grid' : 'none';
+        });
     }
     
     // Setup dropdowns
