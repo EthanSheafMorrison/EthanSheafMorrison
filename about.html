@@ -4,72 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Ethan Sheaf-Morrison</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Optional page-specific styles if needed */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
         .about-container {
-            max-width: 800px; /* Content width */
-            margin: 4rem auto;
-            padding: 0 2rem;
+            margin: 0 auto;
+            padding: 6rem;
         }
-        .about-container h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+
+        .about-hero {
+            margin-bottom: 4rem;
+        }
+
+        .about-hero h1 {
+            font-size: 4rem;
             font-weight: 500;
+            margin-bottom: 2rem;
             letter-spacing: -0.02em;
         }
-        .about-container p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: #333;
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 6rem;
+            max-width: 1600px;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+        }
+
+        .cv-link {
+            display: inline-block;
+            margin-top: 2rem;
+            font-weight: 500;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cv-link:hover {
+            color: #666;
+        }
+
+        .about-image {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                padding: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-hero h1 {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section - Copied from index.html, update links later -->
-    <header>
-        <div class="site-title">Ethan Sheaf-Morrison</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="blog.html">Blog</a>
-            <a href="experiments.html">Experiments</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+    <div id="site-header"></div>
 
-    <!-- Main Content -->
     <main class="about-container">
-        <h1>About</h1>
-        <p>
-            Ethan Sheaf is a designer, visual researcher, and storyteller based in Aotearoa New Zealand. His practice navigates the spaces between communication design, indigenous knowledge systems, data visualisation, and community mapping.
-        </p>
-        <p>
-            With a background in media and communication design, his work often takes the form of systems-driven visuals — maps, networks, interfaces, publications — grounded in kaupapa Māori values and critical design methods. Ethan's projects question how we represent data, land, and people — and who those representations serve.
-        </p>
-        <p>
-            He holds a Master of Design Innovation from Te Herenga Waka—Victoria University of Wellington, where his thesis explored truthful methods of mapping social, environmental, and economic systems through indigenous and critical GIS approaches. In addition to academic research, he has worked as a tutor, research assistant, and collaborator on projects spanning environmental justice, data sovereignty, and visual storytelling.
-        </p>
-        <p>
-            Ethan's work exists between digital and tactile media — from screen-based dashboards to photographic journeys and large-scale installations. Each project is shaped by a clear intent: to make invisible systems visible, to reconnect stories to place, and to challenge extractive narratives.
-        </p>
-        <p>
-            <a href="cv.html" class="cv-link">View my CV →</a>
-        </p>
+        <section class="about-hero">
+            <h1>About</h1>
+        </section>
+
+        <section class="about-content">
+            <div class="about-text">
+                <p>
+                    Ethan Sheaf is a designer, visual researcher, and storyteller based in Aotearoa New Zealand. His practice navigates the spaces between communication design, indigenous knowledge systems, data visualisation, and community mapping.
+                </p>
+                <p>
+                    With a background in media and communication design, his work often takes the form of systems-driven visuals — maps, networks, interfaces, publications — grounded in kaupapa Māori values and critical design methods. Ethan's projects question how we represent data, land, and people — and who those representations serve.
+                </p>
+                <p>
+                    He holds a Master of Design Innovation from Te Herenga Waka—Victoria University of Wellington, where his thesis explored truthful methods of mapping social, environmental, and economic systems through indigenous and critical GIS approaches. In addition to academic research, he has worked as a tutor, research assistant, and collaborator on projects spanning environmental justice, data sovereignty, and visual storytelling.
+                </p>
+                <p>
+                    Ethan's work exists between digital and tactile media — from screen-based dashboards to photographic journeys and large-scale installations. Each project is shaped by a clear intent: to make invisible systems visible, to reconnect stories to place, and to challenge extractive narratives.
+                </p>
+                <a href="cv.html" class="cv-link">View my CV →</a>
+            </div>
+            <div class="about-image-container">
+                <img src="images/about/portrait.jpg" alt="Portrait of Ethan Sheaf-Morrison" class="about-image">
+            </div>
+        </section>
     </main>
 
-    <!-- Footer Section - Copied from index.html, update links later -->
     <footer>
         <div class="social-links">
             <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
-            <!-- TODO: Update LinkedIn/GitHub links if desired -->
-            <a href="#" target="_blank">LinkedIn</a>
-            <a href="#" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
         </div>
         <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
     </footer>
 
-    <script src="script.js"></script> <!-- Link to main script if needed -->
+    <script src="script.js"></script>
+    <script>
+        fetch('header.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('site-header').innerHTML = data;
+          });
+    </script>
 </body>
 </html> 
