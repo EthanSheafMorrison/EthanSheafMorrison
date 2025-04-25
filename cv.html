@@ -6,47 +6,42 @@
     <title>CV - Ethan Sheaf-Morrison</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
     </style>
     <!-- Include html2pdf.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="site-title">Ethan Sheaf-Morrison</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="blog.html">Blog</a>
-            <a href="experiments.html">Experiments</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"/>
-                    <line x1="12" y1="1" x2="12" y2="3"/>
-                    <line x1="12" y1="21" x2="12" y2="23"/>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                    <line x1="1" y1="12" x2="3" y2="12"/>
-                    <line x1="21" y1="12" x2="23" y2="12"/>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                </svg>
-                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
-            </button>
-        </nav>
-    </header>
+    <div id="site-header"></div>
 
     <!-- CV Content -->
     <main class="cv-content">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <span class="hero-label">/ CV</span>
+                    <h1>Ethan Sheaf-Morrison</h1>
+                </div>
+                <div class="hero-details">
+                    <div class="hero-location">
+                        <span class="detail-label">/ LOCATION</span>
+                        <p>Designer & Developer based in Pōneke, Aotearoa</p>
+                    </div>
+                    <div class="hero-focus">
+                        <span class="detail-label">/ FOCUS</span>
+                        <p>Indigenous storytelling, critical cartography, and digital world-building</p>
+                    </div>
+                    <div class="hero-status">
+                        <span class="detail-label">/ STATUS</span>
+                        <p>Currently working on mapping projects and data visualization</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="cv-section">
-            <h1>Curriculum Vitae</h1>
-            
             <div class="cv-section">
-                <h2>Education</h2>
+                <h2 class="section-label">/ EDUCATION</h2>
                 <div class="cv-item">
                     <h3>Bachelor of Design Innovation</h3>
                     <p class="cv-date">2020 - 2023</p>
@@ -60,7 +55,7 @@
             </div>
 
             <div class="cv-section">
-                <h2>Professional Experience</h2>
+                <h2 class="section-label">/ PROFESSIONAL EXPERIENCE</h2>
                 <div class="cv-item">
                     <h3>Research Assistant</h3>
                     <p class="cv-date">2021 - Present</p>
@@ -85,7 +80,7 @@
             </div>
 
             <div class="cv-section">
-                <h2>Skills</h2>
+                <h2 class="section-label">/ SKILLS</h2>
                 <div class="cv-skills">
                     <div class="skill-category">
                         <h3>Design</h3>
@@ -118,7 +113,7 @@
             </div>
 
             <div class="cv-section">
-                <h2>Contact</h2>
+                <h2 class="section-label">/ CONTACT</h2>
                 <div class="cv-contact">
                     <p>Email: <a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
                     <p>Location: Pōneke, Aotearoa</p>
@@ -129,30 +124,25 @@
                     </div>
                 </div>
             </div>
-                        <!-- Download Link -->
-                        <p>
-                            <a href="cv.pdf" class="cv-download" download>Download my CV →</a>
-                        </p>
+
+            <!-- Download Link -->
+            <div class="cv-download-section">
+                <a href="cv.pdf" class="cv-download" download>Download my CV →</a>
+            </div>
         </section>
     </main>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
-            <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
-        </div>
         <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
     </footer>
 
     <script>
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-            const element = document.getElementById('cv-content');
-            html2pdf()
-                .from(element)
-                .save('Ethan_Sheaf_Morrison_CV.pdf');
-        });
+        fetch('header.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('site-header').innerHTML = data;
+            });
     </script>
 </body>
 </html> 
