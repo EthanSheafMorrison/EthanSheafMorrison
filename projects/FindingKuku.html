@@ -6,39 +6,173 @@
     <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
+
+    <div id="site-header"></div>
+
     <section class="project-hero">
-        <h1>Finding Kuku2</h1>
-        <div class="project-meta-grid">
-            <p><strong>/ DATE</strong><br />2024</p>
+        <div class="project-title-section">
+            <span class="hero-label">/ PROJECT</span>
+            <h1>Finding Kuku</h1>
+        </div>
+        <div class="project-meta-grid" style="position: sticky; bottom: 0; z-index: 1000;">
+            <p><strong>/ DATE</strong><br />2023</p>
             <p><strong>/ ROLE</strong><br />Designer</p>
-            <p><strong>/ TYPE</strong><br />Website</p>
+            <p><strong>/ TYPE</strong><br />Publication</p>
         </div>
     </section>
 
-    <section class="project-info-column">
-        <h2>/ OVERVIEW</h2>
-        <p>A visual journey reconnecting whakapapa through photographic mapping.</p>
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="project-hero-image">
+                <img src="../images/projects/finding-kuku/FindingKuku4.jpg" alt="Finding Kuku Hero Image" />
+            </div>
+        </div>
     </section>
 
-    <section class="project-image-column">
-        <img src="../images/project-image.png" alt="Screenshot of the Finding Kuku2 project" />
-    </section>
+    <div class="project-container">
+        <!-- Left column for text content -->
+        <div class="left-column">
+            <section class="project-info-column">
+                <h2 class="section-label">/ OVERVIEW</h3>
+                <p>Finding Kuku is a photographic and illustrative exploration of cultural reconnection through personal experience. Named after Ethan's lost relative, Kuku Reweti, the project follows a journey across the East Cape—documenting moments that intertwine personal memory, family history, and broader historic events.</p>
 
-    <section class="project-tools-column">
-        <h2>/ TOOLS</h2>
-        <ul>
-            <li>Tool 1</li>
-            <li>Tool 2</li>
-            <li>Tool 3</li>
-        </ul>
-    </section>
+                <p>Through photography and drawing, Ethan reflects on the layered and often fractured relationship between identity and whakapapa. The work examines how Māori disconnection from language and place—shaped by colonial policies like the suppression of Te Reo Māori—has instilled generational impacts, including internalised racism and forced urban migration.</p>
+                    
+                <p>Spanning 88 risograph-printed pages, Finding Kuku is both a record and a reassembly. Riso printing was chosen not just for its aesthetic, but as a deliberate, meditative process: separating and layering individual colour channels mimics the act of piecing together memory. This slow, tactile production becomes an act of re-tracing—transforming printmaking into a method of reflection and reclamation.</p>
 
-    <section class="project-next-column">
-        <h2>/ NEXT</h2>
-        <a href="../projects/MappingHumanEarthSystems.html" class="next-project-link" aria-label="Next project: Mapping Human/Earth Systems">
-            <h2>Mapping Human/Earth Systems</h2>
-            <p>Exploring the interconnectedness of human and environmental systems through data visualization.</p>
-        </a>
-    </section>
+                <h2 class="section-label">/ Press & Exhibition</h2>
+                <p>The book was printed by Riso House in Wellington, and exhibited at the 2024 New Zealand Book Show.</p>
+
+                <section class="project-tools-column">
+                    <h2 class="section-label">/ TOOLS</h2>
+                    <ul>
+                        <li>Photography</li>
+                        <li>Mapping</li>
+                        <li>Print Design</li>
+                    </ul>
+                </section>
+
+                                        <!-- Project Links Section -->
+                <section class="project-links">
+                    <h2 class="section-label">Related Resources</h2>
+                    <ul>
+                        <li><a href="https://wsnz.onrender.com/" target="_blank">Website</a></li>
+                        <li><a href="#" target="_blank">Research Paper (PDF)</a></li>
+                        <li><a href="western-sahara-map.html" target="_blank">Interactive Map</a></li>
+                        <li><a href="#" target="_blank">Project Documentation</a></li>
+                    </ul>
+                </section>
+    
+                <section class="project-next-column">
+                    <h2 class="section-label">/ NEXT</h2>
+                    <a href="../projects/MappingHumanEarthSystems.html" class="next-project-link" aria-label="Next project: Mapping Human/Earth Systems">
+                        <h2>Mapping Human/Earth Systems</h2>
+                        <p>Exploring the interconnectedness of human and environmental systems through data visualization.</p>
+                    </a>
+
+                </section>
+            </section>
+            
+        </div>
+
+        <!-- Right column for images -->
+        <section class="project-image-column">
+            <img src="../images/projects/finding-kuku/FindingKuku1.png" alt="Finding Kuku publication cover - photographic and illustrative exploration" />
+            <img src="../images/projects/finding-kuku/FindingKuku2.jpeg" alt="Inside spread of Finding Kuku featuring map and photography" />
+            <img src="../images/projects/finding-kuku/FindingKuku3.jpeg" alt="Layout page from Finding Kuku showing risograph printed illustrations" />
+            <img src="../images/projects/finding-kuku/FindingKuku4.jpg" alt="Detailed view of Finding Kuku publication with textural elements" />
+            <img src="../images/projects/finding-kuku/FindingKuku5.jpg" alt="Final spread from Finding Kuku showing landscape photography" />
+        </section>
+    </div>
+
+    <!-- Lightbox container -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-nav">
+                <span class="lightbox-prev">&#10094;</span>
+                <span class="lightbox-next">&#10095;</span>
+            </div>
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    
+    <script src="../script.js"></script>
+    <script>
+        // Local lightbox initialization specific to this page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('FindingKuku page loaded');
+            const images = document.querySelectorAll('.project-image-column img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            
+            let currentIndex = 0;
+            const imageArray = Array.from(images);
+            
+            // Open lightbox
+            images.forEach((img, index) => {
+                img.addEventListener('click', function() {
+                    lightboxImg.src = this.src;
+                    lightboxCaption.textContent = this.alt;
+                    lightbox.classList.add('active');
+                    currentIndex = index;
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close lightbox
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Previous image
+            lightboxPrev.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
+                lightboxImg.src = imageArray[currentIndex].src;
+                lightboxCaption.textContent = imageArray[currentIndex].alt;
+            });
+            
+            // Next image
+            lightboxNext.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % imageArray.length;
+                lightboxImg.src = imageArray[currentIndex].src;
+                lightboxCaption.textContent = imageArray[currentIndex].alt;
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else if (e.key === 'ArrowLeft') {
+                    lightboxPrev.click();
+                } else if (e.key === 'ArrowRight') {
+                    lightboxNext.click();
+                }
+            });
+        });
+    </script>
+    <script>
+        fetch('../header.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('site-header').innerHTML = data;
+          });
+    </script>
 </body>
 </html>

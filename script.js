@@ -157,6 +157,9 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Dark Mode Toggle
         setupDarkMode();
+        
+        // Lightbox for project images
+        setupLightbox();
     }
     
     function setupProjectPreview() {
@@ -280,6 +283,98 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.body.classList.toggle('dark-mode', e.matches);
             }
         });
+    }
+
+    // Lightbox functionality
+    function setupLightbox() {
+        console.log('Setting up lightbox functionality');
+        const projectImageColumns = document.querySelectorAll('.project-image-column');
+        console.log('Found project image columns:', projectImageColumns.length);
+        
+        // Delay setup slightly to ensure DOM is fully loaded
+        setTimeout(() => {
+            projectImageColumns.forEach(column => {
+                const images = column.querySelectorAll('img');
+                const lightbox = document.getElementById('lightbox');
+                console.log('Lightbox element found:', !!lightbox);
+                
+                if (!lightbox) {
+                    console.error('Lightbox element not found!');
+                    return;
+                }
+                
+                const lightboxImage = document.getElementById('lightbox-img');
+                const lightboxCaption = document.getElementById('lightbox-caption');
+                const lightboxClose = document.querySelector('.lightbox-close');
+                const lightboxPrev = document.querySelector('.lightbox-prev');
+                const lightboxNext = document.querySelector('.lightbox-next');
+                
+                console.log('Image count:', images.length);
+                
+                let currentImageIndex = 0;
+                
+                // Open lightbox when an image is clicked
+                images.forEach((img, index) => {
+                    console.log('Adding click listener to image:', index, img.src);
+                    img.addEventListener('click', () => {
+                        console.log('Image clicked:', index);
+                        currentImageIndex = index;
+                        openLightbox(img.src, img.alt);
+                    });
+                });
+                
+                // Function to open lightbox
+                function openLightbox(src, alt) {
+                    console.log('Opening lightbox with:', src);
+                    lightboxImage.src = src;
+                    lightboxCaption.textContent = alt;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+                }
+                
+                // Close lightbox
+                lightboxClose.addEventListener('click', closeLightbox);
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+                
+                function closeLightbox() {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+                
+                // Next image
+                lightboxNext.addEventListener('click', () => {
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    const nextImg = images[currentImageIndex];
+                    lightboxImage.src = nextImg.src;
+                    lightboxCaption.textContent = nextImg.alt;
+                });
+                
+                // Previous image
+                lightboxPrev.addEventListener('click', () => {
+                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                    const prevImg = images[currentImageIndex];
+                    lightboxImage.src = prevImg.src;
+                    lightboxCaption.textContent = prevImg.alt;
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (!lightbox.classList.contains('active')) return;
+                    
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    } else if (e.key === 'ArrowRight') {
+                        lightboxNext.click();
+                    } else if (e.key === 'ArrowLeft') {
+                        lightboxPrev.click();
+                    }
+                });
+            });
+        }, 100);
     }
 });
 
