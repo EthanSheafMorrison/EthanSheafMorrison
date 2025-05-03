@@ -39,6 +39,14 @@
         </div>
     </section>
 
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="project-hero-image">
+                <img src="../images/projects/iterate/MDI_ITERATE_EXHIBITION-01.jpg" alt="Iterate Hero Image" />
+            </div>
+        </div>
+    </section>
+
     <!-- Project Content -->
     <section class="project-content">
         <div class="project-grid">
@@ -46,7 +54,7 @@
             <div class="project-info-column">
                 <div class="info-section">
                     <h3 class="section-label">/ OVERVIEW</h3>
-                    <p>Iterate was the 2024 postgraduate design showcase for Te Herenga Waka Victoria University of Wellington. My role was to develop the exhibition’s graphic identity, spatial language, and digital presence. The goal was to create a cohesive yet flexible system that celebrated the diverse and research-driven practices of the students involved.</p>
+                    <p>Iterate was the 2024 postgraduate design showcase for Te Herenga Waka Victoria University of Wellington. My role was to develop the exhibition's graphic identity, spatial language, and digital presence. The goal was to create a cohesive yet flexible system that celebrated the diverse and research-driven practices of the students involved.</p>
                 </div>
                 <div class="info-section">
                     <h3 class="section-label">/ APPROACH</h3>
@@ -66,14 +74,14 @@
             <!-- Right Column - Project Gallery -->
             <div class="project-gallery-column">
                 <figure class="project-figure">
-                    <img src="../images/projects/WSNZ/main.jpg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
+                    <img src="../images/projects/iterate/MDI_ITERATE_EXHIBITION-02.jpg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
                     <figcaption>Interactive map illustrating phosphate trade routes connecting Western Sahara and New Zealand's agricultural industry.</figcaption>
                 </figure>
                 <figure class="project-figure">
-                    <img src="../images/projects/WSNZ/main.jpg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
+                    <img src="../images/projects/iterate/MDI_ITERATE_EXHIBITION-04.jpg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
                     <figcaption>Interactive map illustrating phosphate trade routes connecting Western Sahara and New Zealand's agricultural industry.</figcaption>
                 </figure>                <figure class="project-figure">
-                    <img src="../images/projects/WSNZ/main.jpg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
+                    <img src="../images/projects/iterate/MDI_ITERATE_EXHIBITION-61.jpg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
                     <figcaption>Interactive map illustrating phosphate trade routes connecting Western Sahara and New Zealand's agricultural industry.</figcaption>
                 </figure>
             </div>
@@ -115,6 +123,19 @@
         </ul>
     </section>
 
+    <!-- Lightbox container -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-nav">
+                <span class="lightbox-prev">&#10094;</span>
+                <span class="lightbox-next">&#10095;</span>
+            </div>
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="social-links">
@@ -132,6 +153,73 @@
           .then(data => {
             document.getElementById('site-header').innerHTML = data;
           });
+          
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Iterate page loaded');
+            const images = document.querySelectorAll('.project-gallery-column img, .project-hero-image img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            
+            let currentIndex = 0;
+            const imageArray = Array.from(images);
+            
+            // Open lightbox
+            images.forEach((img, index) => {
+                img.addEventListener('click', function() {
+                    lightboxImg.src = this.src;
+                    lightboxCaption.textContent = this.alt;
+                    lightbox.classList.add('active');
+                    currentIndex = index;
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close lightbox
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Previous image
+            lightboxPrev.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
+                lightboxImg.src = imageArray[currentIndex].src;
+                lightboxCaption.textContent = imageArray[currentIndex].alt;
+            });
+            
+            // Next image
+            lightboxNext.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % imageArray.length;
+                lightboxImg.src = imageArray[currentIndex].src;
+                lightboxCaption.textContent = imageArray[currentIndex].alt;
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else if (e.key === 'ArrowLeft') {
+                    lightboxPrev.click();
+                } else if (e.key === 'ArrowRight') {
+                    lightboxNext.click();
+                }
+            });
+        });
       </script>
 </body>
 </html> 
