@@ -47,24 +47,30 @@
   <!-- Table of Contents -->
   <section class="project-content">
     <div class="toc-container">
-      <h3 class="toc-title">Contents</h3>
-      <ul class="toc-list">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#approach">Approach</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#technology">Technology</a></li>
-        <li><a href="#impact">Impact</a></li>
-        <li><a href="#challenges">Challenges</a></li>
-        <li><a href="#future">Future Development</a></li>
-        <li><a href="#tools">Tools</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#links">Links</a></li>
-      </ul>
+      <div class="toc-header">
+        <h3 class="toc-title">Contents</h3>
+        <div class="toc-toggle"></div>
+      </div>
+      <div class="toc-content">
+        <ul class="toc-list">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#visualization">Visualization</a></li>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#challenges">Challenges</a></li>
+          <li><a href="#future">Future Development</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#links">Links</a></li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- Project Content -->
-  <section class="project-content">
+  <!-- Two-Column Layout Section -->
+  <section class="project-section">
     <div class="project-grid">
       <!-- Left Column - Project Info -->
       <div class="project-info-column">
@@ -97,7 +103,84 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Right Column - Project Gallery -->
+      <div id="gallery" class="project-gallery-column">
+        <figure class="project-figure">
+          <img src="../images/project-image.png" alt="Google Earth map showing environmental degradation" />
+          <figcaption>Visualising the interface where satellite imagery intersects with environmental data layers in Google Warming.</figcaption>
+        </figure>
         
+        <div class="section-divider"></div>
+        
+        <figure class="project-figure">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/UoU_UeR_9-Q?si=2d-G5f24ZFsThR6L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <figcaption>Video demonstration of the Google Warming interactive visualization system.</figcaption>
+        </figure>
+        
+        <div class="pullquote">
+          "The way we visualize environmental change shapes how we understand it. Google Warming questions the aesthetics of environmental representation in digital platforms."
+          <span class="attribution">— Leon Gurevitch, Lead Researcher</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Divider -->
+  <div class="layout-divider"></div>
+  
+  <!-- Full-Width Section -->
+  <section id="visualization" class="project-section-full">
+    <div class="section-content">
+      <h2>Visualization Approach</h2>
+      <p>Google Warming employs innovative visualization techniques to make visible the often unseen or ignored aspects of environmental change. Our approach combines multiple data layers with interactive navigation to create a more complete picture of how extraction and industry impact our planet.</p>
+      
+      <div class="featured-content">
+        <img src="../images/project-image.png" alt="Close-up of the visualization interface" />
+        <div class="featured-content-text">
+          <h3>Interactive Layers</h3>
+          <p>Our visualization system allows users to toggle between different data layers, combining satellite imagery with climate data, extraction records, and historical imagery. This layered approach reveals patterns and connections that might otherwise remain invisible.</p>
+          <p>By making these relationships tangible and explorable, we aim to foster a deeper understanding of environmental systems and how they are affected by human activity.</p>
+        </div>
+      </div>
+      
+      <div class="text-columns-3">
+        <div class="column-item">
+          <h4>Satellite Imagery</h4>
+          <p>High-resolution imagery from multiple satellites provides the visual foundation for understanding landscape changes.</p>
+        </div>
+        <div class="column-item">
+          <h4>Environmental Data</h4>
+          <p>Climate metrics, biodiversity indexes, and pollution readings add critical context to visual observations.</p>
+        </div>
+        <div class="column-item">
+          <h4>Temporal Analysis</h4>
+          <p>Historical imagery sequences allow users to track changes over time and identify acceleration patterns.</p>
+        </div>
+      </div>
+      
+      <div class="full-gallery">
+        <figure>
+          <img src="../images/project-image.png" alt="Visualization interface showing data layers" />
+          <figcaption>The interactive interface showing multiple environmental data layers.</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/project-image.png" alt="Time-series visualization of environmental change" />
+          <figcaption>Time-series view showing progressive environmental changes in a mining region.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Divider -->
+  <div class="layout-divider"></div>
+  
+  <!-- Back to Two-Column Layout -->
+  <section class="project-section">
+    <div class="project-grid">
+      <!-- Left Column - Project Info -->
+      <div class="project-info-column">
         <div id="technology" class="info-section">
           <h3 class="section-label">TECHNOLOGY</h3>
           <p>At the core of Google Warming is a custom-built visualization engine that combines multiple data sources and imagery layers. The technical architecture includes:</p>
@@ -156,22 +239,8 @@
         </div>
       </div>
 
-      <!-- Right Column - Project Gallery -->
-      <div id="gallery" class="project-gallery-column">
-        <figure class="project-figure">
-          <img src="../images/project-image.png" alt="Google Earth map showing environmental degradation" />
-          <figcaption>Visualising the interface where satellite imagery intersects with environmental data layers in Google Warming.</figcaption>
-        </figure>
-        
-        <div class="section-divider"></div>
-        
-        <figure class="project-figure">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/UoU_UeR_9-Q?si=2d-G5f24ZFsThR6L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <figcaption>Video demonstration of the Google Warming interactive visualization system.</figcaption>
-        </figure>
-        
-        <div class="section-divider"></div>
-        
+      <!-- Right Column - Additional Content -->
+      <div class="project-gallery-column">
         <div class="project-image-column">
           <figure>
             <img src="../images/project-image.png" alt="Close-up of environmental impact visualization" />
@@ -184,11 +253,6 @@
         <div class="highlight-box">
           <h3>Research Context</h3>
           <p>Google Warming sits at the intersection of critical media studies, environmental humanities, and digital design. It builds on a growing body of work examining how climate change is mediated through digital platforms and visualization systems.</p>
-        </div>
-        
-        <div class="pullquote">
-          "The way we visualize environmental change shapes how we understand it. Google Warming questions the aesthetics of environmental representation in digital platforms."
-          <span class="attribution">— Leon Gurevitch, Lead Researcher</span>
         </div>
       </div>
     </div>
@@ -214,6 +278,23 @@
       
     // Add smooth scrolling for TOC links
     document.addEventListener('DOMContentLoaded', function() {
+      // Table of Contents toggle functionality
+      const tocContainer = document.querySelector('.toc-container');
+      const tocHeader = document.querySelector('.toc-header');
+      
+      // Set initial state (expanded)
+      const savedTocState = localStorage.getItem('tocCollapsed');
+      if (savedTocState === 'true') {
+        tocContainer.classList.add('collapsed');
+      }
+      
+      tocHeader.addEventListener('click', function() {
+        tocContainer.classList.toggle('collapsed');
+        // Save state to localStorage
+        localStorage.setItem('tocCollapsed', tocContainer.classList.contains('collapsed'));
+      });
+      
+      // Smooth scrolling
       const tocLinks = document.querySelectorAll('.toc-list a');
       
       tocLinks.forEach(link => {
