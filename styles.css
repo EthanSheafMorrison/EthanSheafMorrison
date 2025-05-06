@@ -1,12 +1,16 @@
+/* Import Geist font */
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..500&display=swap');
+
 .about-footer {
     padding: 4rem 2rem;
     max-width: 1400px;
     margin: 0 auto;
-    font-family: 'Inter', serif;
+    font-family: 'Geist', serif;
 }
 
 .bio-intro {
-    max-width: 800px;
+    max-width: 500px;
     font-size: 1.125rem;
     line-height: 1.8;
     margin-bottom: 4rem;
@@ -82,7 +86,8 @@ header {
     padding: 8rem 2rem;
     max-width: 1600px;
     margin: 0 auto;
-    font-family: monospace;
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
 }
 
 .hero-content {
@@ -91,7 +96,7 @@ header {
 }
 
 .hero-title {
-    max-width: 800px;
+    max-width: 500px;
 }
 
 .hero-label, .detail-label {
@@ -103,7 +108,7 @@ header {
 
 .hero h1 {
     font-size: 6rem;
-    font-weight: 900;
+    font-weight: 500;
     line-height: 1;
     margin: 0;
     letter-spacing: -0.02em;
@@ -184,7 +189,7 @@ body.dark-mode .hero-nav a:hover {
 .all-projects {
     display: grid;
     grid-template-columns: 300px 1fr;
-    font-family: monospace;
+    font-family: 'Geist', sans-serif;
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 1rem;
@@ -238,7 +243,7 @@ body.dark-mode .hero-nav a:hover {
 .clear-filters {
     background: none;
     border: none;
-    font-family: monospace;
+    font-family: 'Geist', sans-serif;
     font-size: 0.9rem;
     color: var(--text-color);
     cursor: pointer;
@@ -441,7 +446,7 @@ h2 {
 }
 
 h3 {
-    font-weight: 800;
+    font-weight: 500;
 }
 
 /* Dark Mode Toggle Button */
@@ -511,7 +516,7 @@ header {
 
 .site-title {
     font-size: 1.25rem;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 nav {
@@ -773,7 +778,7 @@ footer {
 
 /* Hero Section */
 .hero-content {
-    max-width: 800px;
+    max-width: 500px;
 }
 
 .hero h1 {
@@ -832,7 +837,7 @@ footer {
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Helvetica', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .h2 {
@@ -911,7 +916,7 @@ body, html {
     font-weight: 500;
     margin-bottom: 2rem;
     opacity: 0.7;
-    font-family: monospace;
+    font-family: 'Geist', sans-serif;
 }
 
 .cv-item {
@@ -928,7 +933,7 @@ body, html {
     font-size: 0.9rem;
     opacity: 0.7;
     margin-bottom: 0.25rem;
-    font-family: monospace;
+    font-family: 'Geist', sans-serif;
 }
 
 .cv-institution {
@@ -1124,7 +1129,7 @@ body.dark-mode .project-tag:hover {
 .clear-filters {
     background: none;
     border: none;
-    font-family: monospace;
+    font-family: 'Geist', sans-serif;
     font-size: 0.9rem;
     color: var(--text-color);
     cursor: pointer;
@@ -1397,7 +1402,7 @@ body.dark-mode .publication-description {
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 3rem;
-    max-width: 800px;
+    max-width: 500px;
 }
 
 .project-details {
@@ -1431,7 +1436,7 @@ body.dark-mode .publication-description {
 
 .project-gallery img {
     width: 100%;
-    max-width: 800px;
+    max-width: 500px;
     margin-bottom: 2rem;
     border-radius: 4px;
 }
@@ -1502,7 +1507,7 @@ body.dark-mode .project-links a {
     font-size: 1.6rem;
     line-height: 1.4;
     font-style: italic;
-    max-width: 800px;
+    max-width: 500px;
     margin: 3rem auto;
     padding: 2rem;
     border-left: 4px solid #333;
@@ -1662,7 +1667,7 @@ body.dark-mode .callout {
     padding: 1rem;
     border: 1px solid #eee;
     background-color: #f9f9f9;
-    max-width: 800px;
+    max-width: 500px;
 }
 
 .bordered-image img {
@@ -1719,7 +1724,7 @@ body.dark-mode .caption-border {
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 500px;
 }
 
 /* Featured Projects */
@@ -1738,7 +1743,7 @@ body.dark-mode .caption-border {
 /* About Section */
 .about {
     padding: 2rem 2rem;
-    /* max-width: 800px; */
+    /* max-width: 500px; */
     margin: 0 auto;
 }
 
@@ -1749,7 +1754,7 @@ body.dark-mode .caption-border {
 /* Contact Section */
 .contact {
     padding: 0rem 2rem;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
     text-align: left;
 }
@@ -1819,7 +1824,7 @@ footer {
     padding: 2rem 2rem 0 2rem; /* Updated padding for better spacing */
     max-width: 1400px;
     margin: 0 auto;
-    font-family: monospace;
+    font-family: 'Geist', sans-serif;
 }
 
 .project-hero + .project-hero {
@@ -1868,7 +1873,7 @@ footer {
 }
 
 .project-title-section {
-    max-width: 800px;
+    max-width: 500px;
 }
 
 .project-meta-grid {
@@ -1909,7 +1914,7 @@ footer {
 }
 
 .section-label {
-    font-family: monospace;
+    font-family: 'Geist', sans-serif;
     font-size: 0.9rem;
     font-weight: normal;
     margin-bottom: 1rem;
@@ -1947,7 +1952,7 @@ footer {
     margin-top: 1rem;
     font-size: 0.9rem;
     opacity: 0.7;
-    font-family: monospace;
+    font-family: 'Geist Mono', 'Geist', sans-serif;
 }
 
 .project-details-section {
@@ -2130,7 +2135,7 @@ body.dark-mode .next-project {
     text-align: center;
     padding: 16px;
     margin-top: 20px;
-    font-family: monospace;
+    font-family: 'Geist Mono', 'Geist', sans-serif;
 }
 
 /* For responsive design */
@@ -2175,7 +2180,7 @@ body.dark-mode .next-project {
   opacity: 0.7;
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
-  font-family: monospace;
+  font-family: 'Geist Mono', 'Geist', sans-serif;
   line-height: 1.4;
 }
 
@@ -2259,4 +2264,99 @@ body.dark-mode .next-project {
         font-size: 1rem;
         line-height: 1.6;
     }
+}
+
+/* Table of Contents Styles */
+.toc-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  max-width: 800px;
+}
+
+.toc-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.toc-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toc-list li {
+  margin-bottom: 0.5rem;
+}
+
+.toc-list a {
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+  padding: 0.2rem 0;
+}
+
+.toc-list a:hover {
+  opacity: 1;
+  background: none;
+  color: inherit !important;
+  text-decoration: underline;
+}
+
+/* Dark mode styles */
+body.dark-mode .toc-container {
+  background-color: #222;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 4rem 0;
+  width: 100%;
+}
+
+/* Process steps */
+.process-steps {
+  counter-reset: process-counter;
+}
+
+.process-step {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 2rem;
+}
+
+.process-step::before {
+  counter-increment: process-counter;
+  content: counter(process-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+body.dark-mode .process-step::before {
+  background-color: #555;
+}
+
+/* Smooth scrolling for in-page navigation */
+html {
+  scroll-behavior: smooth;
 }
