@@ -182,28 +182,28 @@
         document.getElementById('site-header').innerHTML = data;
       });
       
-    /Add smooth scrolling for navigation links
+    // Add smooth scrolling for navigation links
     document.addEventListener('DOMContentLoaded', function() {
-      /Get all navigation links
+      // Get all navigation links
       const navLinks = document.querySelectorAll('.project-nav-item a, .section-link');
       
-      /Add click event listeners for smooth scrolling
+      // Add click event listeners for smooth scrolling
       navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
           
-          /Get the target section id
+          // Get the target section id
           const targetId = this.getAttribute('href');
           const targetElement = document.querySelector(targetId);
           
           if (targetElement) {
-            /Smooth scroll to target
+            // Smooth scroll to target
             window.scrollTo({
-              top: targetElement.offsetTop - 100, /Offset to account for any fixed headers
+              top: targetElement.offsetTop - 100, // Offset to account for any fixed headers
               behavior: 'smooth'
             });
             
-            /Update active state in main navigation
+            // Update active state in main navigation
             document.querySelectorAll('.project-nav-item').forEach(item => {
               item.classList.remove('active');
             });
@@ -213,17 +213,17 @@
               parentNavItem.classList.add('active');
             }
             
-            /Update URL without refreshing page
+            // Update URL without refreshing page
             history.pushState(null, null, targetId);
           }
         });
       });
       
-      /Set active nav item on scroll
+      // Set active nav item on scroll
       window.addEventListener('scroll', function() {
         const scrollPosition = window.scrollY;
         
-        /Find all section markers
+        // Find all section markers
         const sections = document.querySelectorAll('.section-marker');
         
         sections.forEach(section => {
@@ -233,7 +233,7 @@
           if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
             const sectionId = section.getAttribute('id');
             
-            /Update nav active state
+            // Update nav active state
             document.querySelectorAll('.project-nav-item').forEach(item => {
               item.classList.remove('active');
             });
