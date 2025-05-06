@@ -1,0 +1,166 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Project Connections - Ethan Sheaf-Morrison</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #network {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            margin-top: 2rem;
+        }
+    </style>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="project-title-section">
+                <span class="hero-label">MAP</span>
+                <h1>Project Connections</h1>
+            </div>
+            <p>This interactive map shows how different projects relate across themes like extractive systems, storytelling, and indigenous sovereignty.</p>
+        </div>
+    </section>
+
+    <div id="network"></div>
+
+    <script>
+        const nodes = new vis.DataSet([
+            { id: 1, label: "Western Sahara", url: "projects/WesternSahara.html" },
+            { id: 2, label: "Empty Vessels", url: "projects/EmptyVesselsInstall.html" },
+            { id: 3, label: "Google Warming", url: "projects/GoogleWarming.html" }
+        ]);
+
+        const edges = new vis.DataSet([
+            { from: 1, to: 2, label: "Extractive Systems" },
+            { from: 1, to: 3, label: "Climate & Trade" }
+        ]);
+
+        const container = document.getElementById('network');
+        const data = { nodes, edges };
+        const options = {
+            nodes: {
+                shape: 'dot',
+                size: 16,
+                font: { size: 16 }
+            },
+            edges: {
+                arrows: 'to',
+                font: { align: 'middle' }
+            },
+            interaction: { hover: true },
+            physics: {
+                forceAtlas2Based: {
+                    gravitationalConstant: -26,
+                    centralGravity: 0.005,
+                    springLength: 230,
+                    springConstant: 0.18
+                },
+                maxVelocity: 146,
+                solver: 'forceAtlas2Based',
+                timestep: 0.35,
+                stabilization: { iterations: 150 }
+            }
+        };
+
+        const network = new vis.Network(container, data, options);
+
+        network.on("click", function (params) {
+            if (params.nodes.length > 0) {
+                const node = nodes.get(params.nodes[0]);
+                if (node.url) {
+                    window.open(node.url, "_blank");
+                }
+            }
+        });
+    </script>
+
+    <script>
+        fetch('header.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('site-header').innerHTML = data;
+          });
+    </script>
+
+<script>
+    async function loadGraph() {
+      const response = await fetch('data.json');
+      const data = await response.json();
+      const projectMap = new Map();
+    
+      const nodes = new vis.DataSet();
+      data.projects.forEach((project, index) => {
+        nodes.add({
+          id: index,
+          label: project.title,
+          url: project.url
+        });
+        projectMap.set(project.id, index);
+      });
+    
+      // Define your relations manually or from another JSON file
+      const relations = [
+        { from: "western-sahara", to: "empty-vessels", label: "Extractive Systems" },
+        { from: "western-sahara", to: "google-warming", label: "Climate & Trade" },
+        { from: "mapping-human-earth-systems", to: "geographic-visualisation", label: "Environmental Systems" }
+      ];
+    
+      const edges = new vis.DataSet();
+      relations.forEach(rel => {
+        if (projectMap.has(rel.from) && projectMap.has(rel.to)) {
+          edges.add({
+            from: projectMap.get(rel.from),
+            to: projectMap.get(rel.to),
+            label: rel.label
+          });
+        }
+      });
+    
+      const container = document.getElementById('network');
+      const graphData = { nodes, edges };
+      const options = {
+        nodes: { shape: 'dot', size: 16, font: { size: 16 } },
+        edges: { arrows: 'to', font: { align: 'middle' } },
+        interaction: { hover: true },
+        physics: { solver: 'forceAtlas2Based' }
+      };
+    
+      const network = new vis.Network(container, graphData, options);
+      network.on("click", function (params) {
+        if (params.nodes.length > 0) {
+          const node = nodes.get(params.nodes[0]);
+          if (node.url) window.open(node.url, "_blank");
+        }
+      });
+    
+      // Optional: "Related Projects" list for current project
+      const currentProject = "western-sahara";
+      const relatedList = document.getElementById("related-projects");
+      const related = relations.filter(r => r.from === currentProject || r.to === currentProject);
+      related.forEach(r => {
+        const targetId = r.from === currentProject ? r.to : r.from;
+        const proj = data.projects.find(p => p.id === targetId);
+        if (proj) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = proj.url;
+          a.textContent = proj.title;
+          li.appendChild(a);
+          relatedList.appendChild(li);
+        }
+      });
+    }
+    
+    loadGraph();
+    </script>
+</body>
+</html>
