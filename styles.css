@@ -208,8 +208,8 @@ nav a {
 }
 
 .project-nav-item a:hover {
-  background-color: var(--color-black);
-  color: var(--color-black);
+  background-color: transparent;
+  color: var(--color-black) !important;
   opacity: 1;
   text-decoration: underline;
 }
