@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collated Frames - Ethan Sheaf-Morrison</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <!-- Project Hero Section -->
+  <section class="project-hero">
+    <div class="project-hero-content">
+      <div class="project-title-section">
+        <span class="hero-label">PROJECT</span>
+        <h1>He Rito</h1>
+      </div>
+      <div class="project-meta-grid">
+        <div class="project-meta-item">
+          <span class="detail-label">DATE</span>
+          <p>2023</p>
+        </div>
+        <div class="project-meta-item">
+          <span class="detail-label">ROLE</span>
+          <p>Branding, Design</p>
+        </div>
+        <div class="project-meta-item">
+          <span class="detail-label">TYPE</span>
+          <p>Branding, Design, Typography</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-hero">
+    <div class="project-hero-content">
+      <div class="project-hero-image">
+        <img src="../images/projects/HeRito/HeRitoExhibition09112023+(6).jpg" alt="Screenshot of the Google Warming project" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Content -->
+  <section class="project-content">
+    <div class="project-grid">
+      <!-- Left Column - Project Info -->
+      <div class="project-info-column">
+        <div class="info-section">
+          <h3 class="section-label">OVERVIEW</h3>
+          <p>He Rito is a brand identity for a Māori photography exhibition. The exhibition is a collection of photographs taken by Māori photographers. </p>
+        </div>
+        <div class="info-section">
+          <h3 class="section-label">OUTPUT</h3>
+          <p>The results culminated in a Typographic and Visual Identity for the exhibition. Hosted at Toi Poneke in Wellington, New Zealand.</p>
+        </div>
+        <!-- <div class="info-section">
+          <h3 class="section-label">METHOD</h3>
+          <p>The work came out of an exploration of the letter form of 'k' and how this form origantes from the outreached hand. I was taken aback by the simplicity that typography had transformed this gesture into a symbol of communication. 
+          </p>
+          <p>I wanted to explore this idea of the hand as a symbol of communication and how this gesture can be translated into a visual language. I had also simultaneously been interested in the limitations of language as a form of communication. Especially within the digital age.</p> 
+          <p>I had explored how the FaceID on Apple devices has a way of interpreting the human face as a language, and how this can be used to unlock devices. I wanted to explore how this technology could be used to unlock a new language of the hand. </p>
+          <p>I used 3D point cloud mapping to create a series of hand models that were then deconstructed and reconfigured into fragmented, ethereal shapes. These digital hand models became symbolic representations of the typographic gesture, each frame capturing the essence of motion and human presence in a digital realm whilst being eeriely lost and distored.</p>
+          <p>An example of the limitations of communication and language</p>
+        </div> -->
+        <div class="info-section">
+          <h3 class="section-label">TOOLS</h3>
+          <ul class="tools-list">
+            <li>Adobe Illustrator</li>
+            <li>Adobe InDesign</li>
+          </ul>
+        </div>
+        <div class="info-section">
+          <h3 class="section-label">PRESS</h3>
+          <ul class="tools-list">
+            <li><a href="https://toiponeke.nz/events/he-rito" target="_blank">Toi Poneke</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Column - Project Gallery -->
+      <div class="project-gallery-column">
+        <figure class="project-figure">
+          <img src="../images/projects/Collated-Frames/CollatedFrames2.jpg" alt="Collated Frames visualization" />
+          <figcaption>Frame from the animated sequence exploring the gestural origins of the letter ‘k’.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
+    </div>
+    <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    fetch('../header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('site-header').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

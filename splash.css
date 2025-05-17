@@ -1,0 +1,161 @@
+:root {
+    --font-primary: 'Geist', sans-serif;
+    --font-mono: 'Geist Mono', monospace;
+    --color-off-white: #f5f5f5;
+    --color-black: #000000;
+    --color-dark-grey: #333333;
+    --color-accent: #D95A2B; /* Using the orange as a general accent */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-primary);
+    color: var(--color-black);
+    background-color: var(--color-dark-grey); /* Dark background for a focused, moody splash */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Ensure footer link behaves as expected */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Max width for the project display */
+    padding: 2rem;
+    box-sizing: border-box;
+    position: relative; /* For positioning nav controls */
+}
+
+.project-display-area {
+    width: 100%;
+    margin-bottom: 1.5rem; /* Space between image and nav controls */
+    text-align: center; /* Center the image and text block */
+}
+
+.project-display-area a {
+    text-decoration: none;
+    color: var(--color-off-white);
+    display: block; /* Make the link a block to contain image and text */
+    transition: opacity 0.3s ease;
+}
+
+.project-display-area a:hover {
+    opacity: 0.85;
+}
+
+#projectImage {
+    width: 100%;
+    max-height: 60vh; /* Limit image height */
+    object-fit: cover; /* Cover the area, might crop */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 2px solid var(--color-off-white);
+}
+
+.project-info h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin: 0 0 0.25rem 0;
+    font-weight: 500;
+}
+
+.project-info p {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    margin: 0;
+    opacity: 0.8;
+    font-family: var(--font-mono);
+}
+
+.navigation-controls {
+    display: flex;
+    justify-content: center; /* Center buttons */
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem; /* Space before the explore link */
+}
+
+.navigation-controls button {
+    background-color: var(--color-off-white);
+    color: var(--color-black);
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-mono);
+}
+
+.navigation-controls button:hover {
+    background-color: var(--color-accent);
+    color: var(--color-off-white);
+}
+
+/* Link to explore all projects */
+.enter-site-link {
+    /* position: fixed; remove fixed to place it naturally in the flex flow */
+    /* bottom: 1.5rem; */
+    /* right: 1.5rem; */
+    z-index: 100;
+    margin-top: auto; /* Push to bottom if body is flex container */
+    padding-bottom: 2rem; /* Ensure some spacing at the very bottom */
+    text-align: center; /* Center the link */
+}
+
+.enter-site-link a {
+    font-family: var(--font-mono);
+    text-decoration: none;
+    color: var(--color-off-white);
+    background-color: transparent; /* Transparent background */
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    border: 1px solid var(--color-off-white); /* Border instead of background */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.enter-site-link a:hover {
+    background-color: var(--color-off-white);
+    color: var(--color-black);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .splash-container {
+        padding: 1rem;
+    }
+
+    #projectImage {
+        max-height: 50vh;
+    }
+
+    .project-info h2 {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+    }
+
+    .project-info p {
+        font-size: clamp(0.8rem, 3vw, 1rem);
+    }
+
+    .navigation-controls button {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+
+    .enter-site-link {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .enter-site-link a {
+        display: block; /* Make button full width on small screens */
+        padding: 0.8rem;
+    }
+} 
