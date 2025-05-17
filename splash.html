@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan Sheaf-Morrison - Portfolio Splash</title>
+    <link rel="stylesheet" href="splash.css">
+    <style>
+        /* Include Geist font import from existing styles.css for consistency */
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..500&display=swap');
+    </style>
+</head>
+<body>
+    <div class="splash-container">
+        <div class="project-display-area">
+            <a href="#" id="projectLink">
+                <img src="" alt="Project Image" id="projectImage">
+                <div class="project-info">
+                    <h2 id="projectTitle"></h2>
+                    <p id="projectSubtitle"></p>
+                </div>
+            </a>
+        </div>
+
+        <div class="navigation-controls">
+            <button id="prevProject" aria-label="Previous Project">&larr;</button>
+            <button id="nextProject" aria-label="Next Project">&rarr;</button>
+        </div>
+    </div>
+
+    <div class="enter-site-link">
+        <a href="index.html">Explore All Projects &rarr;</a>
+    </div>
+
+    <script>
+        const projects = [
+            {
+                title: "Finding Kuku",
+                subtitle: "Visual Mapping Project",
+                image: "images/projects/finding-kuku/FindingKuku2.jpeg",
+                link: "projects/FindingKuku.html"
+            },
+            {
+                title: "Mapping Human/Earth Systems",
+                subtitle: "Data Visualization",
+                image: "images/projects/mapping-human-earth-systems.jpg",
+                link: "projects/MappingHumanEarthSystems.html"
+            },
+            {
+                title: "Western Sahara",
+                subtitle: "Phosphate Research",
+                image: "images/projects/WSNZ/main.jpg",
+                link: "projects/WesternSahara.html"
+            },
+            {
+                title: "Google Warming",
+                subtitle: "Digital Media Research",
+                image: "images/projects/google-warming.jpg",
+                link: "projects/GoogleWarming.html"
+            }
+        ];
+
+        let currentProjectIndex = 0;
+
+        const projectImageEl = document.getElementById('projectImage');
+        const projectTitleEl = document.getElementById('projectTitle');
+        const projectSubtitleEl = document.getElementById('projectSubtitle');
+        const projectLinkEl = document.getElementById('projectLink');
+        const prevButton = document.getElementById('prevProject');
+        const nextButton = document.getElementById('nextProject');
+
+        function displayProject(index) {
+            const project = projects[index];
+            projectImageEl.src = project.image;
+            projectImageEl.alt = project.title + " - " + project.subtitle;
+            projectTitleEl.textContent = project.title;
+            projectSubtitleEl.textContent = project.subtitle;
+            projectLinkEl.href = project.link;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+            displayProject(currentProjectIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+            displayProject(currentProjectIndex);
+        });
+
+        // Display the first project initially
+        displayProject(currentProjectIndex);
+    </script>
+</body>
+</html> 
