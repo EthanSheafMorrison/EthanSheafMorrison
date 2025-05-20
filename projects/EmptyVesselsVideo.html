@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empty Vessels - Ethan Sheaf-Morrison</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <!-- Project Hero Section -->
+  <section class="project-hero">
+    <div class="project-hero-content">
+      <div class="project-title-section">
+        <span class="hero-label">/ PROJECT</span>
+        <h1>Empty Vessels</h1>
+      </div>
+      <div class="project-meta-grid">
+        <div class="project-meta-item">
+          <span class="detail-label">/ DATE</span>
+          <p>2024</p>
+        </div>
+        <div class="project-meta-item">
+          <span class="detail-label">/ ROLE</span>
+          <p>Design, Development</p>
+        </div>
+        <div class="project-meta-item">
+          <span class="detail-label">/ TYPE</span>
+          <p>Interactive Design, Data Visualization, Environmental Research</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-hero">
+    <div class="project-hero-content">
+      <div class="project-hero-image">
+        <img src="../images/projects/empty-vessels/Day 08 Image -02 Large.jpeg" alt="Installation view of Empty Vessels" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Content -->
+  <section class="project-content">
+    <div class="project-grid">
+      <!-- Left Column - Project Info -->
+      <div class="project-info-column">
+        <div class="info-section">
+          <h3 class="section-label">/ OVERVIEW</h3>
+          <p>Exploring the shifting political grounds of global food production, <strong>Empty Vessels</strong> and <strong>Desert Narratives</strong> is a dialogue between Aotearoa New Zealand artist Matthew Galloway and Sahrawi Western Saharan artist Mohamed Sleiman Labat. The two, who have had an ongoing correspondence since meeting in 2016, present different perspectives on Aotearoa's reliance on phosphate rock from Western Sahara. Phosphate is mineral rock used to make fertiliser, partly fuelling Aotearoa's high-performing agricultural industry. However, the resource is controlled by Morocco's violent occupation of the region, which has displaced the Sahrawi people from their land.</p>
+        </div>
+        <div class="info-section">
+          <h3 class="section-label">/ APPROACH</h3>
+          <p>I created data visualisations and graphics for this project, which investigates how climate change is represented in digital platforms, particularly through Google Earth. This system enables viewers to explore layered satellite images and connect them to extractive processes and climate impacts globally.</p>
+        </div>
+        <div class="info-section">
+          <h3 class="section-label">/ TOOLS</h3>
+          <ul class="tools-list">
+            <li>Video Editing</li>
+            <li>Data Visualisation</li>
+            <li>Motion Graphics</li>
+
+          </ul>
+        </div>
+        <div class="info-section">
+          <h3 class="section-label">/ LINKS</h3>
+          <ul class="tools-list">
+            <li><a href="https://googlewarming.com" target="_blank">Website</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Column - Project Gallery -->
+      <div class="project-gallery-column">
+        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/kJhrB6I5Xak?si=W6qmcFbSaKop7lMH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/HOl9Yi26_pA?si=QN6j4gUy1KIdQtng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <figure class="project-figure">
+          <img src="../images/projects/empty-vessels/Day 08 Image -07 Large.jpeg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
+          <figcaption>Outside Banners.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../images/projects/empty-vessels/Day 08 Image -11 Large.jpeg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
+          <figcaption>Outside Banners.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../images/projects/empty-vessels/Day 08 Image -08 Large.jpeg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
+          <figcaption>Outside Banners.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
+    </div>
+    <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    fetch('../header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('site-header').innerHTML = data;
+      });
+  </script>
+</body>
+</html>
