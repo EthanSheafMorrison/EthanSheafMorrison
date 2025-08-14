@@ -1,6 +1,16 @@
 /* Mobile-First Design Overhaul */
 /* Inspired by architectural bureau aesthetic */
 
+/* Hide mobile UI by default (desktop-first) */
+.mobile-header,
+.mobile-hero,
+.mobile-projects,
+.mobile-about,
+.mobile-footer,
+.mobile-scroll-indicator {
+  display: none !important;
+}
+
 /* Mobile Navigation Overlay */
 .mobile-nav-overlay {
   position: fixed;
@@ -216,8 +226,8 @@
 /* Mobile Projects Section */
 .mobile-projects {
   padding: 4rem 2rem;
-  background-color: var(--color-black);
-  color: var(--color-off-white);
+  background-color: var(--color-off-white);
+  color: var(--color-black);
 }
 
 .mobile-projects-header {
@@ -252,7 +262,7 @@
   font-family: var(--font-primary);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-off-white);
+  color: var(--color-black);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -271,7 +281,7 @@
 .mobile-project-tag {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-off-white);
+  color: var(--color-black);
   opacity: 0.7;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -423,8 +433,15 @@
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .mobile-header,
-  .mobile-menu-toggle {
-    display: block;
+  .mobile-menu-toggle,
+  .mobile-hero,
+  .mobile-projects,
+  .mobile-about,
+  .mobile-footer {
+    display: block !important;
+  }
+  .mobile-scroll-indicator {
+    display: flex !important;
   }
   
   .mobile-nav-item {
