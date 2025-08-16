@@ -410,6 +410,11 @@
   z-index: 50;
 }
 
+/* Mobile background layer (global; hidden on desktop via z-index layering) */
+.mobile-hero-bg {
+  display: none;
+}
+
 .mobile-scroll-indicator:hover {
   opacity: 1;
 }
@@ -439,6 +444,8 @@
   .mobile-about,
   .mobile-footer {
     display: block !important;
+    position: relative;
+    z-index: 1;
   }
   .mobile-scroll-indicator {
     display: flex !important;
@@ -454,6 +461,26 @@
   
   .mobile-hero-text {
     font-size: 1.125rem;
+  }
+
+  /* Background behind mobile index dropdown */
+  .mobile-projects {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mobile-hero-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.1;
+    transition: background-image 0.3s ease, opacity 0.3s ease;
+    display: block;
   }
 }
 

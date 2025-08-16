@@ -420,6 +420,7 @@
                         A brand identity for a Māori photography exhibition, creating a typographic and visual identity for the exhibition at Toi Poneke.
                     </div>
                 </div>
+                <div class="project-selection-bar" id="projectSelectionBar"></div>
             </div>
         </div>
     </section>
@@ -755,24 +756,9 @@
         </svg>
     </button>
 
-</body>
     <div class="project-hover-bg"></div>
+    <div class="mobile-hero-bg" id="mobileHeroBg"></div>
     <script>
-      const hoverBg = document.querySelector('.project-hover-bg');
-      const projectRows = document.querySelectorAll('.project-row');
-
-      projectRows.forEach(row => {
-          row.addEventListener('mouseenter', () => {
-              const imageUrl = row.getAttribute('data-image');
-              hoverBg.style.backgroundImage = `url('${imageUrl}')`;
-              hoverBg.classList.add('visible');
-          });
-
-          row.addEventListener('mouseleave', () => {
-              hoverBg.classList.remove('visible');
-          });
-      });
-
       // Mobile Navigation Functionality
       const mobileNavOverlay = document.getElementById('mobileNavOverlay');
       const mobileMenuToggle = document.getElementById('mobileMenuToggle');
@@ -887,6 +873,69 @@
       document.querySelectorAll('.mobile-project-item, .mobile-about-content').forEach(el => {
         observer.observe(el);
       });
+      
+      // Desktop hover selection bar and background
+      (function() {
+        const selectionBar = document.getElementById('projectSelectionBar');
+        const hoverBg = document.querySelector('.project-hover-bg');
+        const rows = document.querySelectorAll('.project-row');
+        if (!selectionBar || !rows.length) return;
+        const list = document.querySelector('.projects-list');
+        rows.forEach(row => {
+          row.addEventListener('mouseenter', () => {
+            const rowRect = row.getBoundingClientRect();
+            const listRect = list.getBoundingClientRect();
+            const translateY = rowRect.top - listRect.top + list.scrollTop;
+            selectionBar.style.height = `${rowRect.height}px`;
+            selectionBar.style.transform = `translateY(${translateY}px)`;
+            selectionBar.classList.add('visible');
+            const imageUrl = row.getAttribute('data-image');
+            if (imageUrl && hoverBg) {
+              hoverBg.style.backgroundImage = `url('${imageUrl}')`;
+              hoverBg.classList.add('visible');
+            }
+          });
+          row.addEventListener('mouseleave', () => {
+            if (hoverBg) hoverBg.classList.remove('visible');
+          });
+        });
+      })();
+
+      // Mobile: background image changes with scroll over project items
+      (function() {
+        const bg = document.getElementById('mobileHeroBg');
+        const items = document.querySelectorAll('.mobile-project-item');
+        if (!bg || !items.length) return;
+        const images = [
+          'images/projects/finding-kuku/FindingKuku2.jpeg',
+          'images/projects/mapping-human-earth-systems.jpg',
+          'images/projects/WSNZ/main.jpg',
+          'images/projects/google-warming.jpg',
+          'images/projects/iterate.jpg',
+          'images/projects/collated-frames.jpg',
+          'adlib/adlibsimg/Adlib-23.png',
+          'images/projects/kihikihi/main.jpg',
+          'images/projects/empty-vessels.jpg',
+          'images/projects/empty-vessels.jpg',
+          'images/projects/geographic-visualisation.jpg',
+          'images/projects/geographic-visualisation.jpg',
+          'images/projects/pixaura.jpg',
+          'images/projects/HeRito/HeRitoExhibition09112023+(6).jpg'
+        ];
+        const opts = { threshold: 0.6 };
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const idx = Array.from(items).indexOf(entry.target);
+              if (images[idx]) {
+                bg.style.backgroundImage = `url('${images[idx]}')`;
+                bg.style.opacity = '0.12';
+              }
+            }
+          });
+        }, opts);
+        items.forEach(item => io.observe(item));
+      })();
     </script>
     <script src="simple-script.js"></script>
     <script>

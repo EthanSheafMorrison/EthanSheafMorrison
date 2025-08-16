@@ -785,6 +785,30 @@ body.dark-mode .project-hover-bg.visible {
   opacity: 0.12;
 }
 
+/* Project hover background (desktop) */
+.project-hover-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-hover-bg.visible {
+  opacity: 0.08;
+}
+
+/* Animated selection bar for project rows (desktop) */
+.projects-list {
+  position: relative;
+}
+
 body.dark-mode .project-nav-item a {
   color: var(--color-off-white);
 }

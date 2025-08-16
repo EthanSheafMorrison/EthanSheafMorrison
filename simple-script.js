@@ -262,9 +262,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Setup project hover effects
+    // Setup project hover effects (skip if enhanced selection bar exists)
     const hoverBg = document.querySelector('.project-hover-bg');
-    if (hoverBg) {
+    const selectionBarEl = document.getElementById('projectSelectionBar');
+    if (hoverBg && !selectionBarEl) {
         projectRows.forEach(row => {
             row.addEventListener('mouseenter', () => {
                 const imageUrl = row.getAttribute('data-image');
@@ -278,8 +279,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 hoverBg.classList.remove('visible');
             });
         });
-    } else {
-        console.warn('Project hover background element not found');
     }
 
     // Setup dark mode toggle
