@@ -795,13 +795,17 @@ body.dark-mode .project-hover-bg.visible {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 280ms ease;
   pointer-events: none;
   z-index: 0;
 }
 
-.project-hover-bg.visible {
-  opacity: 0.08;
+.project-hover-bg.visible { opacity: 0.08; }
+
+@media (max-width: 768px) {
+  .project-hover-bg.visible {
+    opacity: 0; /* use mobile-hero-bg on mobile instead */
+  }
 }
 
 /* Animated selection bar for project rows (desktop) */

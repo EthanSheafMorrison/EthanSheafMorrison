@@ -184,8 +184,8 @@
 /* Mobile Hero Section */
 .mobile-hero {
   padding: 8rem 2rem 4rem;
-  background-color: var(--color-off-white);
-  min-height: 100vh;
+  background-color: transparent;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -226,7 +226,7 @@
 /* Mobile Projects Section */
 .mobile-projects {
   padding: 4rem 2rem;
-  background-color: var(--color-off-white);
+  background-color: transparent;
   color: var(--color-black);
 }
 
@@ -297,7 +297,7 @@
 /* Mobile About Section */
 .mobile-about {
   padding: 4rem 2rem;
-  background-color: var(--color-off-white);
+  background-color: transparent;
   color: var(--color-black);
 }
 
@@ -445,7 +445,7 @@
   .mobile-footer {
     display: block !important;
     position: relative;
-    z-index: 1;
+    z-index: 1; /* keep content above mobile-hero-bg */
   }
   .mobile-scroll-indicator {
     display: flex !important;
@@ -477,7 +477,7 @@
     height: 100vh;
     background-size: cover;
     background-position: center;
-    z-index: -1;
+    z-index: 0; /* Above body background, below content */
     opacity: 0.1;
     transition: background-image 0.3s ease, opacity 0.3s ease;
     display: block;

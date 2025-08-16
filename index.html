@@ -193,7 +193,7 @@
                 </div>
 
                 <!-- Mapping Human/Earth Systems -->
-                <div class="project-row" data-image="images/projects/mapping-human-earth-systems.jpg">
+                <div class="project-row" data-image="images/projects/MappingSystems/Mapping-01.png">
                     <div class="project-number">02</div>
                     <a href="projects/MappingHumanEarthSystems.html" class="project-title">
                         Mapping Human/Earth Systems — Data Visualization
@@ -756,7 +756,8 @@
         </svg>
     </button>
 
-    <div class="project-hover-bg"></div>
+    <div class="project-hover-bg" id="hoverBgA"></div>
+    <div class="project-hover-bg" id="hoverBgB"></div>
     <div class="mobile-hero-bg" id="mobileHeroBg"></div>
     <script>
       // Mobile Navigation Functionality
@@ -874,13 +875,15 @@
         observer.observe(el);
       });
       
-      // Desktop hover selection bar and background
+      // Desktop hover selection bar and crossfade background
       (function() {
         const selectionBar = document.getElementById('projectSelectionBar');
-        const hoverBg = document.querySelector('.project-hover-bg');
+        const hoverBgA = document.getElementById('hoverBgA');
+        const hoverBgB = document.getElementById('hoverBgB');
         const rows = document.querySelectorAll('.project-row');
         if (!selectionBar || !rows.length) return;
         const list = document.querySelector('.projects-list');
+        let activeIsA = true;
         rows.forEach(row => {
           row.addEventListener('mouseenter', () => {
             const rowRect = row.getBoundingClientRect();
@@ -890,27 +893,40 @@
             selectionBar.style.transform = `translateY(${translateY}px)`;
             selectionBar.classList.add('visible');
             const imageUrl = row.getAttribute('data-image');
-            if (imageUrl && hoverBg) {
-              hoverBg.style.backgroundImage = `url('${imageUrl}')`;
-              hoverBg.classList.add('visible');
-            }
+            if (!imageUrl) return;
+            const incoming = activeIsA ? hoverBgB : hoverBgA;
+            const outgoing = activeIsA ? hoverBgA : hoverBgB;
+            incoming.style.backgroundImage = `url('${imageUrl}')`;
+            incoming.classList.add('visible');
+            // let outgoing fade out
+            outgoing.classList.remove('visible');
+            activeIsA = !activeIsA;
           });
           row.addEventListener('mouseleave', () => {
-            if (hoverBg) hoverBg.classList.remove('visible');
+            // keep current image until another hover or leave container
           });
         });
+        // If leaving the project list area entirely, fade out both
+        const projectsContainer = document.querySelector('.projects-container');
+        if (projectsContainer) {
+          projectsContainer.addEventListener('mouseleave', () => {
+            hoverBgA.classList.remove('visible');
+            hoverBgB.classList.remove('visible');
+          });
+        }
       })();
 
-      // Mobile: background image changes with scroll over project items
+      // Mobile: show image only when a project is near viewport center; fade out between projects and outside section
       (function() {
         const bg = document.getElementById('mobileHeroBg');
-        const items = document.querySelectorAll('.mobile-project-item');
-        if (!bg || !items.length) return;
+        const section = document.getElementById('projects');
+        const items = Array.from(document.querySelectorAll('.mobile-project-item'));
+        if (!bg || !section || !items.length) return;
         const images = [
           'images/projects/finding-kuku/FindingKuku2.jpeg',
-          'images/projects/mapping-human-earth-systems.jpg',
+          'images/projects/MappingSystems/Mapping-01.png',
           'images/projects/WSNZ/main.jpg',
-          'images/projects/google-warming.jpg',
+          'images/projects/GoogleWarming/GoogleWarming-01.png',
           'images/projects/iterate.jpg',
           'images/projects/collated-frames.jpg',
           'adlib/adlibsimg/Adlib-23.png',
@@ -922,19 +938,53 @@
           'images/projects/pixaura.jpg',
           'images/projects/HeRito/HeRitoExhibition09112023+(6).jpg'
         ];
-        const opts = { threshold: 0.6 };
-        const io = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const idx = Array.from(items).indexOf(entry.target);
-              if (images[idx]) {
-                bg.style.backgroundImage = `url('${images[idx]}')`;
-                bg.style.opacity = '0.12';
-              }
+
+        function updateBg() {
+          const vpH = window.innerHeight;
+          const vpCenter = vpH / 2;
+          const sectionRect = section.getBoundingClientRect();
+
+          // Hide completely when outside the projects section
+          if (sectionRect.bottom < 0 || sectionRect.top > vpH) {
+            bg.style.opacity = '0';
+            return;
+          }
+
+          // Find item whose center is closest to viewport center
+          let closestIdx = -1;
+          let closestDist = Infinity;
+          items.forEach((el, i) => {
+            const r = el.getBoundingClientRect();
+            const itemCenter = r.top + r.height / 2;
+            const dist = Math.abs(itemCenter - vpCenter);
+            if (dist < closestDist) {
+              closestDist = dist;
+              closestIdx = i;
             }
           });
-        }, opts);
-        items.forEach(item => io.observe(item));
+
+          // Tight activation band around center
+          const activationRadius = Math.min(180, vpH * 0.25);
+          if (closestIdx !== -1 && closestDist <= activationRadius) {
+            const url = images[closestIdx];
+            if (url) {
+              if (bg.dataset.currentUrl !== url) {
+                bg.style.backgroundImage = `url('${url}')`;
+                bg.dataset.currentUrl = url;
+              }
+              bg.style.opacity = '0.12';
+            } else {
+              bg.style.opacity = '0';
+            }
+          } else {
+            // Between projects → fade out
+            bg.style.opacity = '0';
+          }
+        }
+
+        window.addEventListener('scroll', updateBg, { passive: true });
+        window.addEventListener('resize', updateBg);
+        updateBg();
       })();
     </script>
     <script src="simple-script.js"></script>
@@ -947,3 +997,4 @@
       </script>
 </body>
 </html>
+
