@@ -230,6 +230,59 @@
   color: var(--color-black);
 }
 
+/* Mobile filter chips */
+.mobile-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.mobile-filter-chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.mobile-chip {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-black);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-chip.active {
+  background: var(--color-black);
+  color: var(--color-off-white);
+  border-color: var(--color-black);
+}
+
+.mobile-filter-clear {
+  flex: 0 0 auto;
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  background: transparent;
+  color: var(--color-black);
+  opacity: 0.6;
+}
+
+body.dark-mode .mobile-chip { border-color: rgba(255,255,255,0.35); background: rgba(0,0,0,0.2); color: var(--color-off-white); }
+body.dark-mode .mobile-chip.active { background: var(--color-off-white); color: #121212; border-color: var(--color-off-white); }
+
 .mobile-projects-header {
   font-family: var(--font-primary);
   font-size: 1.5rem;
