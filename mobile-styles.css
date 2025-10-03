@@ -220,6 +220,10 @@
   margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--color-black) 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .mobile-hero-text {
@@ -319,6 +323,22 @@ body.dark-mode .mobile-chip.active { background: var(--color-off-white); color: 
 .mobile-project-item {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mobile-project-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-project-item:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .mobile-project-number {
