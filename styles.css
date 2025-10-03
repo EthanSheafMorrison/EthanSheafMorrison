@@ -904,6 +904,51 @@ body.dark-mode .section-link:hover {
   font-family: var(--font-mono);
 }
 
+/* Loading States */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-text {
+  height: 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-text:last-child {
+  margin-bottom: 0;
+}
+
+.skeleton-image {
+  height: 200px;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.project-row.loading {
+  opacity: 0.6;
+}
+
+.project-row.loading .project-title,
+.project-row.loading .project-description {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  color: transparent;
+  border-radius: 4px;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
   /* Layout adjustments */
