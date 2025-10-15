@@ -25,3 +25,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Enable scroll snapping for top-level sections on the homepage */
+.snap-start {
+  scroll-margin-top: 64px;
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+/* Ensure the root scrolling container snaps smoothly */
+.snap-y {
+  scroll-snap-type: y mandatory;
+}
+.snap-always {
+  scroll-snap-stop: always;
+}

@@ -9,6 +9,8 @@ export type ProjectMeta = {
   summary?: string;
   cover?: string;
   tags?: string[];
+  featured?: boolean;
+  gallery?: { src: string; alt?: string; width?: number; height?: number }[];
 };
 
 const contentDir = path.join(process.cwd(), "content", "projects");
@@ -41,6 +43,15 @@ export async function getProjectBySlug(slug: string) {
   const raw = await fs.readFile(path.join(contentDir, `${slug}.mdx`), "utf8");
   const { data, content } = matter(raw);
   return { meta: { slug, ...(data as Omit<ProjectMeta, "slug">) }, content };
+}
+
+export async function getPrevNext(slug: string): Promise<{ prev?: ProjectMeta; next?: ProjectMeta }> {
+  const all = await getAllProjectsMeta();
+  const index = all.findIndex((p) => p.slug === slug);
+  if (index === -1) return {};
+  const prev = index < all.length - 1 ? all[index + 1] : undefined; // older
+  const next = index > 0 ? all[index - 1] : undefined; // newer
+  return { prev, next };
 }
 
 
