@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "arcgis-dash",
+    "title": "ArcGIS Dash",
+    "date": "2024-07-01T00:00:00.000Z",
+    "summary": "A compact dashboard leveraging ArcGIS.",
+    "cover": "/images/projects/GEO/TEST.png",
+    "tags": [
+      "gis",
+      "dashboard"
+    ]
+  },
+  {
+    "slug": "finding-kuku",
+    "title": "Finding Kuku",
+    "date": "2023-11-12T00:00:00.000Z",
+    "summary": "Field notes on locating Kuku.",
+    "cover": "/images/projects/finding-kuku/main.jpg",
+    "tags": [
+      "mapping",
+      "research"
+    ]
+  }
+]

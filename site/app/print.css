@@ -1,0 +1,8 @@
+@media print {
+  @page { margin: 12mm; }
+  body { background: white; color: black; }
+  a { text-decoration: none; color: inherit; }
+  nav, footer { display: none; }
+}
+
+
