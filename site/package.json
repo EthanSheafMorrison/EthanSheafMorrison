@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "prebuild": "node ./scripts/generate-projects-json.mjs",
     "build": "next build --turbopack",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint"
   },
@@ -20,7 +21,9 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
-    "remark-unwrap-images": "^4.0.1"
+    "remark-unwrap-images": "^4.0.1",
+    "next-sitemap": "^4.2.3",
+    "framer-motion": "^11"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,45 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tokotoko - Ethan Sheaf-Morrison</title>
-  <link rel="stylesheet" href="../styles.css" />
-</head>
-<body>
-  <div id="site-header"></div>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tokotoko — Te Reo Language Learning Application — Ethan Sheaf-Morrison</title>
+    <meta name="description" content="Thesis project operationalising truthful, participatory visualisation across organic certification and Māori business networks." />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="preload" as="image" href="../images/projects/MappingSystems/Mapping-01.png">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Mapping Human Earth Systems" />
+    <meta property="og:description" content="Participatory mapping, data sovereignty, and fluid ontologies in practice." />
+    <meta property="og:image" content="https://ethansheaf.com/images/projects/Tokotoko/tokotoko-hero.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      .project-nav { position:sticky; top:0; z-index:5; background:var(--bg,#fff); border-block:1px solid rgba(0,0,0,.08)}
+      .project-nav-inner{max-width:1200px;margin-inline:auto;padding:0 1rem}
+      .project-nav-list{display:flex;gap:.75rem;flex-wrap:wrap;padding:.75rem 0;margin:0;list-style:none}
+      .project-nav-item a{display:block;padding:.4rem .6rem;border-radius:.35rem}
+      .project-nav-item.active a{outline:1px solid currentColor}
+      .kbd{font-family:var(--font-geist-mono,monospace);font-size:.9em;padding:.1rem .35rem;border:1px solid rgba(0,0,0,.1);border-radius:.3rem}
+      .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+      .token{display:inline-block;padding:.15rem .4rem;border:1px solid rgba(0,0,0,.12);border-radius:.35rem;margin:.15rem 0 .15rem .25rem}
+      .callout{border:1px solid rgba(0,0,0,.12);padding:1rem;border-radius:.5rem}
+      .badge{display:inline-flex;align-items:center;gap:.4rem;padding:.2rem .5rem;border-radius:.4rem;border:1px solid rgba(0,0,0,.12)}
+      .ok{background:#e9f7ef}
+      .warn{background:#fff6e5}
+      .stop{background:#fdecea}
+      .legend{display:flex;gap:.5rem;flex-wrap:wrap}
+      .mini{opacity:.8;font-size:.95rem}
+      .muted{opacity:.7}
+      .section-divider{height:1px;background:rgba(0,0,0,.08);margin:2rem 0}
+      .table{width:100%;border-collapse:collapse}
+      .table th,.table td{border-bottom:1px solid rgba(0,0,0,.08);text-align:left;padding:.5rem .25rem}
+      .chip{display:inline-block;border:1px solid rgba(0,0,0,.12);padding:.1rem .4rem;border-radius:.4rem;margin-right:.3rem}
+      .project-figure img{background:#f6f6f6}
+    </style>
+  </head>
+  <body>
+    <div id="site-header"></div>
 
-  <!-- Project Hero Section -->
-  <section class="project-hero">
-    <div class="project-hero-content">
-      <div class="project-title-section">
-        <span class="hero-label">PROJECT</span>
-        <h1>Tokotoko</h1>
-      </div>
-      <div class="project-meta-grid">
-        <div class="project-meta-item">
-          <span class="detail-label">DATE</span>
-          <p>2025–ongoing</p>
+    <!-- Hero -->
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <div class="project-title-section">
+          <span class="hero-label">/ PROJECT</span>
+          <h1>Tokotoko — Te Reo Language Learning Application</h1>
         </div>
-        <div class="project-meta-item">
-          <span class="detail-label">ROLE</span>
-          <p>Design, Development</p>
-        </div>
-        <div class="project-meta-item">
-          <span class="detail-label">TYPE</span>
-          <p>Interactive Design, Data Visualization, Environmental Research</p>
+        <div class="project-meta-grid">
+          <div class="project-meta-item"><span class="detail-label">/ DATE</span><p>2024—2025</p></div>
+          <div class="project-meta-item"><span class="detail-label">/ ROLE</span><p>Design, development, research</p></div>
+          <div class="project-meta-item"><span class="detail-label">/ TYPE</span><p>Thesis, participatory mapping, data viz</p></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="project-hero">
-    <div class="project-hero-content">
-      <div class="project-hero-image">
-        <img src="../images/project-image.png" alt="Screenshot of the Google Warming project" />
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <div class="project-hero-image">
+          <img src="../images/projects/iterate/MDI_ITERATE_EXHIBITION-61.jpg" alt="Exhibition installation image from Mapping Human Earth Systems" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- Project Navigation -->
   <nav class="project-nav">
@@ -56,77 +77,86 @@
     </div>
   </nav>
 
-  <!-- Project Content -->
+     <!-- Project Content -->
   <section class="project-content">
     <div class="project-grid">
       <!-- Left Column - Project Info -->
       <div class="project-info-column">
         <div id="overview" class="info-section section-marker">
           <h3 class="section-label">OVERVIEW</h3>
-          <p>Google Warming is a critical design and research project that investigates how climate change is represented in digital platforms, particularly through Google Earth. Led by Primary Researcher Leon Gurevitch, the project explores the aesthetics and biases embedded in satellite imagery, and how these influence public perception of ecological destruction and resource extraction.</p>
-          
+          <p><em>Tokotoko</em> is a co-designed platform for everyday Te Reo Māori. It focuses on learning in lived contexts: short videos, conversations, and tasks that mirror real use, not drills. The project originated with project lead <strong>Jesse Pirini</strong> and a gap we observed between beginner tools and the needs of intermediate learners. We used cultural probes and field research to map when, where, and why learners engage, then translated those insights into product mechanics.</p>
+
           <div class="section-links">
             <a href="#approach" class="section-link">Jump to Approach</a>
             <a href="#process" class="section-link">Jump to Process</a>
             <a href="#technology" class="section-link">Jump to Technology</a>
           </div>
         </div>
-        
+
         <div id="approach" class="info-section section-marker">
           <h3 class="section-label">APPROACH</h3>
-          <p>We are currently developing an interactive Unreal Engine tool that visualises geolocated environmental data in real time. This system enables viewers to explore layered satellite images and connect them to extractive processes and climate impacts globally.</p>
+          <p>Design is guided by kaupapa Māori values and evidence-based pedagogy. Content is sequenced via a familiarity measure inspired by <em>i+1</em> and Zipfian frequency, keeping material comprehensible while adding stretch. Interactive transcripts, instant vocab capture, and spaced review connect viewing to retention. Gamification privileges whanaungatanga and confidence building over leaderboards.</p>
+          <ul class="tools-list">
+            <li>Everyday input: short, authentic clips with subtitles and word-level timing</li>
+            <li>Adaptive flow: recommendations tuned to familiarity and coverage</li>
+            <li>Community playlists: kaiako and learners curate themed paths</li>
+            <li>Ethical data: user control and mātauranga Māori data stewardship</li>
+          </ul>
         </div>
-        
+
         <div id="process" class="info-section section-marker">
           <h3 class="section-label">PROCESS</h3>
-          <p>Initial research phase collecting and categorizing satellite imagery of environmental damage sites globally.</p>
-          <p>Development of a taxonomy for categorizing different types of extractive and industrial impacts.</p>
-          <p>Design of interactive visualization systems to make these patterns legible and navigable.</p>
-          <p>Integration of real-time data feeds to create dynamic representations of environmental change.</p>
+          <p><strong>Discovery.</strong> Cultural probe kit, diaries, and photo prompts to capture daily language touchpoints. UX surveys and interviews to prioritise barriers and motivators.</p>
+          <p><strong>Prototype.</strong> Interactive transcript player, vocabulary capture, and spaced repetition. Early playlists and difficulty tagging. Low-latency UI tests on mobile.</p>
+          <p><strong>Evaluate.</strong> Usability tests on comprehension, retention, and affect. Compare playlist vs. algorithmic feed. Measure time-on-task and return rate.</p>
+          <p><strong>Iterate.</strong> Refine familiarity model, add social features, and extend content taxonomy for contexts, registers, and domains.</p>
         </div>
-        
+
         <div id="technology" class="info-section section-marker">
           <h3 class="section-label">TECHNOLOGY</h3>
-          <p>At the core of Google Warming is a custom-built visualization engine that combines multiple data sources and imagery layers. The technical architecture includes:</p>
+          <p>A lightweight web stack optimised for media and annotation. Focus on transparent data models and exportability.</p>
           <ul class="tools-list">
-            <li>Data processing pipeline for satellite imagery analysis</li>
-            <li>Geospatial mapping infrastructure built on Unreal Engine</li>
-            <li>Real-time data connection to environmental monitoring systems</li>
-            <li>Custom UI for intuitive exploration of complex datasets</li>
+            <li>Web app: Next.js + TypeScript</li>
+            <li>Transcripts: WebVTT with word-level timing and bilingual alignment</li>
+            <li>Storage: Postgres (Supabase) with RLS for user data control</li>
+            <li>Review engine: spaced repetition with item difficulty and lapse handling</li>
+            <li>Analytics: privacy-preserving event pipeline for learning metrics</li>
+            <li>Exports: CSV/JSON and Anki-ready decks</li>
           </ul>
         </div>
-        
+
         <div id="visualization" class="info-section section-marker">
           <h3 class="section-label">VISUALIZATION</h3>
-          <p>Google Warming employs innovative visualization techniques to make visible the often unseen aspects of environmental change. Our approach includes:</p>
+          <p>Dashboards focus on comprehension and exposure rather than vanity scores.</p>
           <ul class="tools-list">
-            <li><strong>Satellite Imagery:</strong> High-resolution imagery from multiple satellites</li>
-            <li><strong>Environmental Data:</strong> Climate metrics, biodiversity indexes, and pollution readings</li>
-            <li><strong>Temporal Analysis:</strong> Historical imagery sequences showing changes over time</li>
-            <li><strong>Interactive Layers:</strong> Toggle between different data layers to reveal connections</li>
+            <li><strong>Familiarity graph:</strong> tracks coverage of high-frequency vocab and multiword phrases</li>
+            <li><strong>Context heatmap:</strong> domains used this week (home, mahi, kai, travel)</li>
+            <li><strong>Retention bands:</strong> new, learning, mature, and due items</li>
+            <li><strong>Journey map:</strong> playlist paths and branching choices</li>
           </ul>
         </div>
-        
+
         <div id="impact" class="info-section section-marker">
           <h3 class="section-label">IMPACT</h3>
-          <p>Google Warming aims to transform how we perceive and interpret environmental change in digital media. By making visible the often-hidden patterns of resource extraction and ecological damage, the project contributes to critical environmental literacy in the digital age.</p>
+          <p>The aim is durable confidence in everyday reo. We test whether contextual input plus transparent review improves continued use, not just short-term streaks. The research outputs include a co-design playbook, open schemas for transcript annotation, and evaluation of culturally aligned gamification patterns.</p>
         </div>
-        
+
         <div class="info-section">
           <h3 class="section-label">TOOLS</h3>
           <ul class="tools-list">
-            <li>Google Earth & satellite imaging</li>
-            <li>Geospatial data analysis</li>
-            <li>Unreal Engine (real-time 3D)</li>
-            <li>Custom web development</li>
+            <li>Next.js, TypeScript</li>
+            <li>Postgres/Supabase</li>
+            <li>WebVTT, FFmpeg</li>
+            <li>Figma for UX</li>
+            <li>Python notebooks for analysis</li>
           </ul>
         </div>
-        
+
         <div class="info-section">
           <h3 class="section-label">LINKS</h3>
           <ul class="tools-list">
-            <li><a href="https://threed-tests-gw.onrender.com" target="_blank">Application</a></li>
-            <li><a href="https://www.leongurevitch.com/google-warming" target="_blank">Website</a></li>
+            <li><a href="#" target="_blank">Prototype (internal)</a></li>
+            <li><a href="#" target="_blank">Design research notes</a></li>
           </ul>
         </div>
       </div>
@@ -134,118 +164,78 @@
       <!-- Right Column - Project Gallery -->
       <div id="gallery" class="project-gallery-column section-marker">
         <figure class="project-figure">
-          <img src="../images/project-image.png" alt="Google Earth map showing environmental degradation" />
-          <figcaption>Visualising the interface where satellite imagery intersects with environmental data layers in Google Warming.</figcaption>
+          <img src="../images/projects/Tokotoko/tokotoko-player.png" alt="Interactive transcript player with bilingual subtitles" />
+          <figcaption>Interactive transcript with word-level timing, vocab capture, and playback controls.</figcaption>
         </figure>
-        
+
         <div class="section-divider"></div>
-        
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/UoU_UeR_9-Q?si=2d-G5f24ZFsThR6L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        
-        <div class="section-divider"></div>
-        
+
         <figure class="project-figure">
-          <img src="../images/project-image.png" alt="Visualization interface showing data layers" />
-          <figcaption>The interactive interface showing multiple environmental data layers.</figcaption>
+          <img src="../images/projects/Tokotoko/tokotoko-familiarity.png" alt="Familiarity graph showing coverage progress" />
+          <figcaption>Familiarity graph: frequency coverage and phrase maturity over time.</figcaption>
         </figure>
-        
+
         <figure class="project-figure">
-          <img src="../images/project-image.png" alt="Time-series visualization of environmental change" />
-          <figcaption>Time-series view showing progressive environmental changes in a mining region.</figcaption>
+          <img src="../images/projects/Tokotoko/tokotoko-playlists.png" alt="Community playlist UI" />
+          <figcaption>Community playlists curated by kaiako and learners for contextual pathways.</figcaption>
         </figure>
-        
+
         <figure class="project-figure">
-          <img src="../images/project-image.png" alt="Close-up of environmental impact visualization" />
-          <figcaption>Detailed view of extraction site data visualization showing industrial impact patterns.</figcaption>
+          <img src="../images/projects/Tokotoko/tokotoko-probes.png" alt="Cultural probe kit mockups" />
+          <figcaption>Cultural probe artifacts informing content, cadence, and feature priorities.</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="social-links">
-      <a href="https://www.instagram.com/ethan.sheaf/" target="_blank">Instagram</a>
-      <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
-    </div>
-    <div class="copyright">© 2024 Ethan Sheaf-Morrison</div>
-  </footer>
+    <!-- Footer -->
+    <footer>
+      <div class="social-links">
+        <a href="https://www.instagram.com/ethan.sheaf/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/EthanSheafMorrison" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
+    </footer>
 
-  <script src="../script.js"></script>
-  <script>
-    fetch('../header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('site-header').innerHTML = data;
-      });
-      
-    // Add smooth scrolling for navigation links
-    document.addEventListener('DOMContentLoaded', function() {
-      // Get all navigation links
-      const navLinks = document.querySelectorAll('.project-nav-item a, .section-link');
-      
-      // Add click event listeners for smooth scrolling
-      navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          // Get the target section id
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-          
-          if (targetElement) {
-            // Smooth scroll to target
-            window.scrollTo({
-              top: targetElement.offsetTop - 100, // Offset to account for any fixed headers
-              behavior: 'smooth'
-            });
-            
-            // Update active state in main navigation
-            document.querySelectorAll('.project-nav-item').forEach(item => {
-              item.classList.remove('active');
-            });
-            
-            const parentNavItem = document.querySelector(`.project-nav-item a[href="${targetId}"]`).parentElement;
-            if (parentNavItem) {
-              parentNavItem.classList.add('active');
-            }
-            
-            // Update URL without refreshing page
-            history.pushState(null, null, targetId);
-          }
+    <script src="../script.js"></script>
+    <script>
+      // header include
+      fetch('../header.html').then(r=>r.text()).then(t=>{document.getElementById('site-header').innerHTML=t});
+
+      // smooth scroll + active state
+      document.addEventListener('DOMContentLoaded', function () {
+        const navLinks = document.querySelectorAll('.project-nav-item a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const el = document.querySelector(targetId);
+            if (!el) return;
+            const y = el.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+            history.pushState(null, '', targetId);
+          });
         });
-      });
-      
-      // Set active nav item on scroll
-      window.addEventListener('scroll', function() {
-        const scrollPosition = window.scrollY;
-        
-        // Find all section markers
+
         const sections = document.querySelectorAll('.section-marker');
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 150;
-          const sectionBottom = sectionTop + section.offsetHeight;
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            const sectionId = section.getAttribute('id');
-            
-            // Update nav active state
-            document.querySelectorAll('.project-nav-item').forEach(item => {
-              item.classList.remove('active');
-            });
-            
-            const activeNavItem = document.querySelector(`.project-nav-item a[href="#${sectionId}"]`);
-            if (activeNavItem) {
-              activeNavItem.parentElement.classList.add('active');
+        const items = document.querySelectorAll('.project-nav-item');
+        function syncActive() {
+          const scrollY = window.scrollY;
+          sections.forEach(sec => {
+            const top = sec.offsetTop - 150;
+            const bottom = top + sec.offsetHeight;
+            if (scrollY >= top && scrollY < bottom) {
+              const id = sec.getAttribute('id');
+              items.forEach(i => i.classList.remove('active'));
+              const active = document.querySelector(`.project-nav-item a[href="#${id}"]`);
+              active?.parentElement.classList.add('active');
             }
-          }
-        });
+          });
+        }
+        window.addEventListener('scroll', syncActive, { passive: true });
+        syncActive();
       });
-    });
-  </script>
-</body>
-</html>
+    </script>
+  </body>
+  </html>

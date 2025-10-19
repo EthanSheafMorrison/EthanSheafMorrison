@@ -5,6 +5,9 @@ import MDXComponents from "@/components/MDXComponents";
 import ProjectGallery from "@/components/ProjectGallery";
 import Link from "next/link";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export async function generateStaticParams() {
   const slugs = await getProjectSlugs();
   return slugs.map((slug) => ({ slug }));
@@ -12,10 +15,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const { meta } = await getProjectBySlug(params.slug);
+  const url = `/projects/${params.slug}`;
   return {
     title: meta.title,
     description: meta.summary,
-    openGraph: { images: meta.cover ? [meta.cover] : [] },
+    alternates: { canonical: url },
+    openGraph: { url, title: meta.title, description: meta.summary, images: meta.cover ? [meta.cover] : [] },
   };
 }
 

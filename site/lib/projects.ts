@@ -8,9 +8,15 @@ export type ProjectMeta = {
   date?: string | Date;
   summary?: string;
   cover?: string;
+  /** Optional accent color for AIM-style showcase (e.g., #e04f2f) */
+  accent?: string;
   tags?: string[];
   featured?: boolean;
   gallery?: { src: string; alt?: string; width?: number; height?: number }[];
+  /** Coarse-grained type used by the projects filter panel (e.g., research, installation) */
+  type?: string;
+  /** Topic facets used by the projects filter panel (e.g., art, environmental) */
+  topics?: string[];
 };
 
 const contentDir = path.join(process.cwd(), "content", "projects");
