@@ -4,6 +4,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Global Swiss grid system */
+  --page-padding-x: clamp(16px, 2.5vw, 40px);
+  --gutter: clamp(12px, 2vw, 28px);
 }
 
 @theme inline {
@@ -13,11 +16,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
+  background: #ffffff; /* Ensure Safari backdrop has white behind fixed header */
 }
 
 body {
@@ -41,4 +42,31 @@ html, body {
 }
 .snap-always {
   scroll-snap-stop: always;
+}
+
+/* Full-bleed reusable 12-column grid */
+.page-pad {
+  padding-inline: var(--page-padding-x);
+}
+.site-grid {
+  width: 100%;
+  padding-inline: var(--page-padding-x);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+/* Global button defaults */
+@layer base {
+  button {
+    /* Minimal, consistent button base */
+    @apply border-0 px-3 py-1 bg-transparent cursor-pointer border-none;
+  }
+  button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
 }

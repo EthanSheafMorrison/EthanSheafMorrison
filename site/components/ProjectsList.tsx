@@ -81,7 +81,7 @@ export default function ProjectsList({ projects }: { projects: ProjectItem[] }) 
   }
 
   return (
-    <div>
+    <div className="site-grid">
       {/* Fixed hover background for desktop */}
       <div className="hidden md:block fixed inset-0 -z-10 pointer-events-none">
         <div
@@ -96,7 +96,7 @@ export default function ProjectsList({ projects }: { projects: ProjectItem[] }) 
         />
       </div>
       {allTags.length > 0 ? (
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="col-span-12 flex flex-wrap items-center gap-2">
           {allTags.map((t) => (
             <button
               key={t}
@@ -120,13 +120,13 @@ export default function ProjectsList({ projects }: { projects: ProjectItem[] }) 
         </div>
       ) : null}
 
-      <div className="mt-6 space-y-10">
+      <div className="col-span-12 mt-6 space-y-10">
         {grouped.map(([year, items]) => (
-          <section key={year}>
-            <div className="text-right text-4xl md:text-6xl font-bold text-zinc-200 dark:text-zinc-800 select-none">
+          <section key={year} className="site-grid">
+            <div className="col-span-12 text-right text-4xl md:text-6xl font-bold text-zinc-200 dark:text-zinc-800 select-none">
               {year}
             </div>
-            <ul className="mt-2 divide-y" onMouseLeave={onLeave}>
+            <ul className="col-span-12 mt-2 divide-y" onMouseLeave={onLeave}>
               {items.map((p, idx) => (
                 <li key={p.slug} onMouseEnter={() => onHover(p.cover)}>
                   <Link href={`/projects/${p.slug}`} className="block py-5 hover:opacity-80">
