@@ -92,115 +92,133 @@
 
         <div id="overview" class="info-section section-marker">
           <h3 class="section-label">/ OVERVIEW</h3>
-          <p><strong>Mapping Human Earth Systems</strong> operationalises “truthful” visualisation through two live case studies and a reusable system: a certification-timeline map for organic farms and a participatory network map for Māori businesses. The work centres data sovereignty, fluid ontologies, and user authorship.</p>
+          <p><strong>Mapping Human Earth Systems</strong> is a participatory mapping and visualisation project. It prototypes ways to show land use, ownership, and relationships between people and place without stripping context or agency from the people represented.</p>
+          <p>The work runs through two live case studies:</p>
+          <ul class="tools-list">
+            <li>A timeline map that tracks organic farm certification over time.</li>
+            <li>A network map of Māori owned and Māori led businesses in Wellington.</li>
+          </ul>
+          <p>Both prototypes sit inside a reusable system for handling data where consent, provenance, and cultural context are first-class, not afterthoughts.</p>
           <div class="callout">
-            <strong>Thesis aim:</strong> design a framework that keeps <em>provenance</em>, <em>consent</em>, and <em>context</em> attached to data across collection, processing, and display.
+            <strong>The core aim</strong> is to keep provenance, consent, and context attached to data at every stage. Collection, processing, and display are treated as one continuous process, not separate steps.
           </div>
         </div>
 
         <div id="truth" class="info-section section-marker">
           <h3 class="section-label">/ TRUTH MODEL</h3>
-          <p class="mini">Two complementary lenses guide representation.</p>
-          <div class="grid-2">
+          <p>The project treats truth as something that is not only factual but also situated. It uses two lenses when showing information.</p>
+          <div class="grid-2" style="margin-top: 1rem;">
             <div>
               <h4>Correspondence</h4>
-              <p>Faithful alignment to verifiable facts for quantifiable layers: locations, dates, certification states.</p>
+              <p>This is about factual accuracy. It covers things that can be verified externally, such as locations, dates, and certification status. A farm was inspected on this date. A business is located here. A certification moved from C1 to C2 in this year.</p>
             </div>
             <div>
               <h4>Coherence</h4>
-              <p>Internal consistency for qualitative layers: lived narratives, tikanga, sites of significance, community notes.</p>
+              <p>This is about internal consistency and lived reality. It covers things like community narratives, tikanga, significance of place, and relationships between businesses. These do not behave like fixed data points. They are held in context and they can change.</p>
             </div>
           </div>
-          <p class="muted">The UI exposes both: maps for facts, drawers for context, and narrative “story snapshots”.</p>
+          <p class="muted">The interface surfaces both lenses at once. Quantitative layers sit on the map. Qualitative layers open in drawers with context, source, and constraints. Short narrative snapshots sit alongside the map so users can read why something matters, not just where it is.</p>
         </div>
 
         <div id="geodesign" class="info-section section-marker">
           <h3 class="section-label">/ GEODESIGN LOOP</h3>
-          <p>Process follows an iterative loop from the thesis: <span class="chip">Representation</span><span class="chip">Process</span><span class="chip">Evaluation</span><span class="chip">Change</span><span class="chip">Impact</span><span class="chip">Decision</span>. Each prototype cycles evidence → design → feedback with community stakeholders.</p>
+          <p>The work follows an iterative loop.</p>
+          <p><span class="chip">Representation</span> → <span class="chip">Process</span> → <span class="chip">Evaluation</span> → <span class="chip">Change</span> → <span class="chip">Impact</span> → <span class="chip">Decision</span>.</p>
+          <p>In practice this means: gather material, prototype with it, test with the community it describes, adjust, and only then treat anything as publishable.</p>
+          <p class="muted">The map is not treated as neutral output. It is an active site where evidence and design inform each other.</p>
         </div>
 
         <div id="barriers" class="info-section section-marker">
           <h3 class="section-label">/ BARRIERS ADDRESSED</h3>
+          <p>The project is built to remove four common barriers to community owned mapping.</p>
           <ul class="tools-list">
-            <li>Cost: open-source stack replaces paid GIS where possible.</li>
-            <li>Skills: progressive disclosure, inline help, and raw table access.</li>
-            <li>Data gaps: participatory inputs plus visible provenance and status.</li>
-            <li>Trust: consent badges, TK Labels, and reversible sharing scopes.</li>
+            <li><strong>Cost:</strong> Most tooling is open source in order to reduce reliance on expensive GIS platforms.</li>
+            <li><strong>Skills:</strong> The interface reveals complexity gradually. Users can navigate light map views, then open raw tables if they want full detail. Inline help and plain language labels lower the technical barrier.</li>
+            <li><strong>Data gaps:</strong> The system supports direct community input. Users can place new points, add notes, and submit corrections. Provenance is always visible, including who added what and when.</li>
+            <li><strong>Trust:</strong> Every record carries consent state, TK Label information, and visibility scope. Contributors can choose to mark material as public, community only, or private. They can also retract.</li>
           </ul>
         </div>
 
         <div id="case1" class="info-section section-marker">
-          <h3 class="section-label">/ CASE STUDY 1 — MAPPING TRUST IN ORGANICS</h3>
-          <p>Organic certification provides a verifiable temporal pathway.</p>
+          <h3 class="section-label">/ CASE STUDY 1 — ORGANIC CERTIFICATION TIMELINE</h3>
+          <p>This prototype maps organic growers by certification stage across time.</p>
+          <p>Organic certification is not a yes or no state. It is a staged process that can take years.</p>
           <div class="legend">
             <span class="badge ok"><span class="kbd">C0</span> Registration</span>
             <span class="badge ok"><span class="kbd">C1</span> Conversion</span>
             <span class="badge ok"><span class="kbd">C2</span> Conversion</span>
             <span class="badge ok"><span class="kbd">Certified</span> Full</span>
           </div>
-          <ul class="tools-list">
-            <li><strong>Interactive timeline:</strong> scrub years to see progression from C0→Certified.</li>
-            <li><strong>Minimal basemap:</strong> spatial clarity over satellite noise.</li>
-            <li><strong>Data table view:</strong> full record list with PII redacted.</li>
-          </ul>
-          <p class="muted">Early Unreal Engine tests informed scope. Web mapping chosen for reach and performance.</p>
+          <p>The interface lets the user scrub through time and see who is progressing, who is stalled, and where change is happening. The basemap is intentionally minimal to prioritise legibility over satellite texture.</p>
+          <p>A table view exposes the underlying records in full, with personal information removed.</p>
+          <p class="muted">Early experiments in Unreal Engine were used to test immersive mapping and spatial storytelling, but the final delivery is browser based for accessibility and performance.</p>
         </div>
 
         <div id="case2" class="info-section section-marker">
-          <h3 class="section-label">/ CASE STUDY 2 — MĀORI WELLINGTON BUSINESSES</h3>
-          <p>Network view with opt-in verification, sites of significance, and narrative overlays.</p>
-          <h4>Verification tiers</h4>
+          <h3 class="section-label">/ CASE STUDY 2 — MĀORI BUSINESSES</h3>
+          <p>This prototype maps Māori business presence and relationships in Wellington. It is opt in.</p>
+          <p>It supports multiple forms of verification.</p>
           <ul class="tools-list">
-            <li><span class="badge warn">Self-identified</span> submitted by owner or community.</li>
-            <li><span class="badge ok">Community-verified</span> corroborated by network.</li>
-            <li><span class="badge ok">Certified</span> formal governance/ownership evidence.</li>
+            <li><span class="badge warn">Self-identified</span> — Submitted directly by owners or community.</li>
+            <li><span class="badge ok">Community-verified</span> — Confirmed by existing network knowledge.</li>
+            <li><span class="badge ok">Certified</span> — Supported by governance or ownership evidence.</li>
           </ul>
-          <h4>Views</h4>
+          <p>The system presents two main views.</p>
           <ul class="tools-list">
-            <li>Geospatial clusters by suburb and ANZSIC.</li>
-            <li>Abstract “metro-style” relationship map for non-cartesian sense-making.</li>
-            <li>Sites of significance overlay with culturally aware icons.</li>
+            <li>A geographic map showing clusters by suburb and ANZSIC category.</li>
+            <li>An abstract network style map inspired by metro diagrams. This view is helpful when strict geography is less important than social or economic linkage.</li>
           </ul>
+          <p>Users can also view sites of significance with culturally aware iconography and contextual explanation instead of generic map pins.</p>
         </div>
 
         <div id="participation" class="info-section section-marker">
           <h3 class="section-label">/ PARTICIPATION, FLUID ONTOLOGIES, TK LABELS</h3>
+          <p>The system is built for participation rather than extraction.</p>
           <ul class="tools-list">
-            <li><strong>Add marker</strong> (<span class="kbd">+</span>): users submit businesses or places. Stored in a separate queue, visualised distinctly.</li>
-            <li><strong>Fluid ontology</strong>: tags evolve with community use. No fixed taxonomy lock-in.</li>
-            <li><strong>Consent badges</strong> on each record:
-              <span class="token">Provenance: source</span>
-              <span class="token">Scope: public/community/private</span>
-              <span class="token">Revocation: enabled</span>
+            <li><strong>Add marker</strong> — Users can propose new businesses or places. New submissions are stored in a separate queue so they are visible but clearly marked as pending.</li>
+            <li><strong>Fluid ontology</strong> — Categories are not locked. Tags can evolve with community use. The system accepts that language around identity, activity, and belonging is not static.</li>
+            <li><strong>Consent and scope</strong> — Each entry carries a visible consent badge. It states where the information came from, how it is allowed to be used, who can see it, and whether it can be revoked.
+              <div style="margin-top: 0.5rem;">
+                <span class="token">Provenance: source</span>
+                <span class="token">Scope: public/community/private</span>
+                <span class="token">Revocation: enabled</span>
+              </div>
             </li>
-            <li><strong>TK Labels</strong> metadata: usage, attribution, and cultural protocol embedded in records.</li>
-            <li><strong>Story snapshots</strong>: curate sequences of points and notes for teaching or advocacy.</li>
+            <li><strong>TK Labels</strong> — Traditional Knowledge Labels are embedded as metadata in the record. This makes expected cultural protocol visible at the point of use, not hidden in policy text. It clarifies conditions like attribution, respectful use, and limits on reuse.</li>
+            <li><strong>Story snapshots</strong> — Users can curate sequences of points, notes, and places into short walkthroughs. This supports education and advocacy without requiring a formal report.</li>
           </ul>
         </div>
 
         <div id="system" class="info-section section-marker">
           <h3 class="section-label">/ SYSTEM & STACK</h3>
           <ul class="tools-list">
-            <li>Data prep: Python/Pandas, GeoPandas.</li>
-            <li>Viz: Leaflet / React-Leaflet, custom vector tiles, D3-style clustering.</li>
-            <li>Design: Figma, Illustrator for UI and iconography.</li>
-            <li>Governance: provenance fields, consent states, TK Labels, audit log.</li>
+            <li><strong>Data preparation</strong> uses Python and Pandas, including GeoPandas for spatial work.</li>
+            <li><strong>Mapping and visualisation</strong> use Leaflet and React Leaflet with custom vector tiles and clustering logic similar to D3.</li>
+            <li><strong>Design and interface elements</strong> are developed in Figma and Illustrator, including icon systems for consent and provenance.</li>
+            <li><strong>Governance</strong> is built into the data model. Each record includes provenance fields, consent state, TK Label state, and an audit trail.</li>
           </ul>
         </div>
 
         <div id="onboarding" class="info-section section-marker">
           <h3 class="section-label">/ ONBOARDING</h3>
-          <p>Landing explainer, guided tutorial, inline tips, and a data transparency panel linking sources, methods, and caveats.</p>
+          <p>The onboarding flow explains what the map is for, who it represents, and how contributions will be handled.</p>
+          <p>A short guided walkthrough introduces interaction patterns and data visibility.</p>
+          <p>A transparency panel links directly to sources, collection methods, and known gaps rather than hiding them in footnotes.</p>
         </div>
 
         <div id="outcomes" class="info-section section-marker">
           <h3 class="section-label">/ OUTCOMES</h3>
+          <p>The output is not just a pair of demos.</p>
           <ul class="tools-list">
-            <li>Reusable mapping kit with consent and provenance baked in.</li>
-            <li>Two working prototypes: certification timeline map and Māori business network map.</li>
-            <li>Design patterns: layer chips with time windows, context drawers, uncertainty notation.</li>
+            <li>It is a reusable mapping kit that treats consent, provenance, context, and authorship as requirements.</li>
+            <li>It includes two functioning prototypes:
+              <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                <li>The certification timeline map.</li>
+                <li>The Māori business network map.</li>
+              </ul>
+            </li>
+            <li>It also proposes interface patterns that can generalise. Time based layer chips. Context drawers that sit alongside the map rather than below it. Uncertainty and verification states shown as part of the data, not disclaimers at the end.</li>
           </ul>
-          <p class="muted"><em>Optional to add later:</em> user counts, submission volume, workshop notes, access stats.</p>
         </div>
 
         <div id="links" class="info-section section-marker">
