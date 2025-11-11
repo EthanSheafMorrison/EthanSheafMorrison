@@ -72,7 +72,7 @@
         <div class="hero-content">
             <section class="intro-splash">
                 <div class="intro-container">
-                  <h2>Kia ora, I'm Ethan</h2>
+                  <h2 class="parallax-header">Kia ora, I'm Ethan</h2>
                   <p>
                     I'm a designer and researcher based in Aotearoa New Zealand. My practice blends indigenous storytelling, critical cartography, and digital systems thinking to reimagine how we visualise land, data, and identity.
                   </p>
@@ -444,7 +444,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="about-footer">
+    <section class="about-footer" id="about">
         <div class="bio-intro">
             <p>Ethan Sheaf-Morrison is an independent <em>designer, researcher, and developer</em> based in Aotearoa New Zealand. Grounded in his Māori whakapapa (Te Whānau-ā-Apanui), his work intersects indigenous storytelling, critical cartography, and digital world-building. He creates poetic, technically rigorous responses to social and environmental systems through data visualisation, mapping, and typographic experimentation. He has worked with university research centres, independent artists, and policy organisations on projects spanning from phosphate trade research to geospatial tools for community engagement.</p>
         </div>
@@ -472,6 +472,7 @@
                     <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank">LinkedIn</a><br>
                     <a href="https://github.com/EthanSheafMorrison" target="_blank">GitHub</a>
                 </p>
+                <p><strong>CV</strong><br><a href="cv.html">View CV</a></p>
             </div>
         </div>
     </section>
@@ -792,6 +793,9 @@
     <div class="project-hover-bg" id="hoverBgA"></div>
     <div class="project-hover-bg" id="hoverBgB"></div>
     <div class="mobile-hero-bg" id="mobileHeroBg"></div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
     <script>
       // Mobile Navigation Functionality
       const mobileNavOverlay = document.getElementById('mobileNavOverlay');
@@ -908,6 +912,56 @@
         observer.observe(el);
       });
       
+      // Scroll reveal fade-in for text blocks and headers (desktop)
+      (function setupScrollReveal() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+        
+        const elementsToReveal = document.querySelectorAll(
+          '.all-projects h2, .all-projects h3, ' +
+          '.about-footer h2, .about-footer h3, ' +
+          '.bio-intro, .bio-column, ' +
+          '.project-description, ' +
+          '.section-label, .info-section, ' +
+          '.project-info-column p, .project-info-column h2, ' +
+          '.about-footer p, .about-footer h3'
+        );
+        
+        const allParagraphs = document.querySelectorAll('p');
+        const allHeaders = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        const allElements = [...elementsToReveal, ...allParagraphs, ...allHeaders];
+        
+        const elements = Array.from(allElements).filter(el => {
+          if (el.offsetParent === null) return false;
+          const heroSection = el.closest('.hero, .intro-splash, .mobile-hero');
+          if (heroSection) return false;
+          const rect = el.getBoundingClientRect();
+          return rect.top > window.innerHeight * 0.1;
+        });
+        
+        const uniqueElements = [...new Set(elements)];
+        
+        uniqueElements.forEach(el => {
+          el.classList.add('fade-in-element');
+        });
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+        
+        uniqueElements.forEach(el => {
+          revealObserver.observe(el);
+        });
+      })();
+      
       // Mobile filters: build chips from tags, filter list, and sync background
       (function() {
         const chipsContainer = document.getElementById('mobileFilterChips');
@@ -1002,12 +1056,16 @@
             // keep current image until another hover or leave container
           });
         });
-        // If leaving the project list area entirely, fade out both
+        // If leaving the project list area entirely, fade out both backgrounds and reset selection bar
         const projectsContainer = document.querySelector('.projects-container');
         if (projectsContainer) {
           projectsContainer.addEventListener('mouseleave', () => {
             hoverBgA.classList.remove('visible');
             hoverBgB.classList.remove('visible');
+            // Reset selection bar smoothly
+            selectionBar.classList.remove('visible');
+            selectionBar.style.height = '0';
+            selectionBar.style.transform = 'translateY(0)';
           });
         }
       })();
@@ -1086,6 +1144,103 @@
         window.addEventListener('scroll', updateBg, { passive: true });
         window.addEventListener('resize', updateBg);
         updateBg();
+      })();
+
+      // Scroll Progress Bar
+      (function() {
+        const progressBar = document.getElementById('scrollProgressBar');
+        if (!progressBar) return;
+
+        function updateProgressBar() {
+          const windowHeight = window.innerHeight;
+          const documentHeight = document.documentElement.scrollHeight;
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const scrollableHeight = documentHeight - windowHeight;
+          const scrollPercentage = scrollableHeight > 0 ? (scrollTop / scrollableHeight) * 100 : 0;
+          
+          progressBar.style.transform = `scaleX(${scrollPercentage / 100})`;
+        }
+
+        // Use requestAnimationFrame for smooth updates
+        let ticking = false;
+        function onScroll() {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              updateProgressBar();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        updateProgressBar(); // Initial update
+      })();
+
+      // Parallax Typography
+      (function() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        // Select large headers - prioritize those with parallax-header class, then h1/h2
+        const parallaxHeaders = document.querySelectorAll('.parallax-header');
+        const largeHeaders = document.querySelectorAll('h1, h2');
+        
+        // Combine and deduplicate
+        const allHeaders = Array.from(new Set([...parallaxHeaders, ...largeHeaders]));
+        
+        // Filter to only large headers (exclude small h2s in lists, etc.)
+        const headersToParallax = Array.from(allHeaders).filter(header => {
+          // Skip if in mobile sections
+          if (header.closest('.mobile-hero, .mobile-projects, .mobile-about')) return false;
+          // Skip if it's a small header (like in project lists)
+          const fontSize = window.getComputedStyle(header).fontSize;
+          const fontSizeNum = parseFloat(fontSize);
+          return fontSizeNum >= 24 || header.classList.contains('parallax-header');
+        });
+
+        if (headersToParallax.length === 0) return;
+
+        let ticking = false;
+        
+        function updateParallax() {
+          headersToParallax.forEach(header => {
+            const rect = header.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Only apply parallax when header is in viewport
+            if (rect.bottom >= -windowHeight && rect.top <= windowHeight * 2) {
+              // Calculate offset based on scroll position relative to viewport center
+              const elementCenter = rect.top + rect.height / 2;
+              const viewportCenter = windowHeight / 2;
+              const distanceFromCenter = elementCenter - viewportCenter;
+              
+              // Apply parallax offset (2-5% of scroll distance)
+              // Use different offsets for different header sizes
+              const isH1 = header.tagName === 'H1' || header.closest('.hero');
+              const parallaxOffset = isH1 ? distanceFromCenter * 0.05 : distanceFromCenter * 0.03;
+              
+              // Apply parallax transform (will override fade-in transforms when element is visible)
+              header.style.transform = `translateY(${parallaxOffset}px)`;
+            } else {
+              // Reset transform when out of viewport
+              if (header.classList.contains('revealed')) {
+                header.style.transform = '';
+              }
+            }
+          });
+          ticking = false;
+        }
+
+        function onScroll() {
+          if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        updateParallax(); // Initial update
       })();
     </script>
     <script src="simple-script.js"></script>

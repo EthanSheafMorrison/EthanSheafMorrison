@@ -215,6 +215,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Setup filter event listeners
     filterCheckboxes.forEach(checkbox => {
+        // Add click animation
+        checkbox.addEventListener('click', (e) => {
+            // Add temporary scale animation class
+            checkbox.classList.add('checkbox-clicked');
+            setTimeout(() => {
+                checkbox.classList.remove('checkbox-clicked');
+            }, 200);
+        });
+        
         checkbox.addEventListener('change', () => {
             const selectedTag = checkbox.getAttribute('data-tag');
             console.log('Checkbox changed:', selectedTag, checkbox.checked);
@@ -245,7 +254,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         projectRows.forEach(row => {
             if (activeFilters.size === 0) {
-                row.style.display = 'grid';
+                // Show all projects with fade-in animation
+                row.classList.remove('filter-hidden');
                 return;
             }
 
@@ -258,7 +268,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const hasMatchingTag = Array.from(activeFilters)
                 .some(filter => projectTags.includes(filter.toLowerCase()));
             
-            row.style.display = hasMatchingTag ? 'grid' : 'none';
+            // Use class-based visibility for smooth transitions
+            if (hasMatchingTag) {
+                row.classList.remove('filter-hidden');
+            } else {
+                row.classList.add('filter-hidden');
+            }
         });
     }
 

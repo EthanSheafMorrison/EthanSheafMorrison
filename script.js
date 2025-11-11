@@ -160,6 +160,9 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Lightbox for project images
         setupLightbox();
+        
+        // Scroll reveal fade-in animations
+        setupScrollReveal();
     }
     
     function setupProjectPreview() {
@@ -375,6 +378,75 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         }, 100);
+    }
+    
+    function setupScrollReveal() {
+        // Check if user prefers reduced motion
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            return; // Skip animations if user prefers reduced motion
+        }
+        
+        // Select all text blocks and headers to animate (excluding hero sections)
+        const elementsToReveal = document.querySelectorAll(
+            '.all-projects h2, .all-projects h3, ' +
+            '.about-footer h2, .about-footer h3, ' +
+            '.bio-intro, .bio-column, ' +
+            '.project-description, ' +
+            '.section-label, .info-section, ' +
+            '.project-info-column p, .project-info-column h2, ' +
+            '.about-footer p, .about-footer h3'
+        );
+        
+        // Also include paragraphs and headers that are not in hero sections
+        const allParagraphs = document.querySelectorAll('p');
+        const allHeaders = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        
+        // Combine and filter
+        const allElements = [...elementsToReveal, ...allParagraphs, ...allHeaders];
+        
+        // Filter out elements that are already visible or should be excluded
+        const elements = Array.from(allElements).filter(el => {
+            // Skip if element is inside a hidden container
+            if (el.offsetParent === null) return false;
+            
+            // Skip hero sections
+            const heroSection = el.closest('.hero, .intro-splash, .mobile-hero');
+            if (heroSection) return false;
+            
+            // Skip if element is already in viewport (to avoid initial flash)
+            const rect = el.getBoundingClientRect();
+            return rect.top > window.innerHeight * 0.1;
+        });
+        
+        // Remove duplicates
+        const uniqueElements = [...new Set(elements)];
+        
+        // Add fade-in class to elements
+        uniqueElements.forEach(el => {
+            el.classList.add('fade-in-element');
+        });
+        
+        // Create Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px' // Trigger when element is 50px from bottom of viewport
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    // Unobserve after revealing to improve performance
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements
+        uniqueElements.forEach(el => {
+            observer.observe(el);
+        });
     }
 });
 
