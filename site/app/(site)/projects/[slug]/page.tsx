@@ -13,9 +13,10 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { meta } = await getProjectBySlug(params.slug);
-  const url = `/projects/${params.slug}`;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const { meta } = await getProjectBySlug(slug);
+  const url = `/projects/${slug}`;
   return {
     title: meta.title,
     description: meta.summary,
@@ -24,8 +25,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = await getProjectBySlug(params.slug);
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
   if (!project) return notFound();
   const { meta, content } = project;
   const gallery = (meta as { gallery?: { src: string; alt?: string }[]; cover?: string }).gallery ?? (meta.cover ? [{ src: meta.cover }] : []);
