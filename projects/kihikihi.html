@@ -52,22 +52,22 @@
   <header class="project-hero">
     <div class="project-hero-content">
       <div class="project-title-section">
-        <span class="hero-label">/ PROJECT</span>
+        <span class="hero-label">PROJECT</span>
         <h1>Kihikihi</h1>
         <p class="lede">Exhibition identity and website for an experimental sound and electronics installation by Anne Niemetz with Newton Chan and Sam Carswell.</p>
       </div>
 
       <div class="meta-grid project-meta-grid">
         <div class="project-meta-item">
-          <span class="detail-label">/ DATE</span>
+          <span class="detail-label">DATE</span>
           <p>2024</p>
         </div>
         <div class="project-meta-item">
-          <span class="detail-label">/ ROLE</span>
+          <span class="detail-label">ROLE</span>
           <p>Graphic design, art direction, web design, web build</p>
         </div>
         <div class="project-meta-item">
-          <span class="detail-label">/ SCOPE</span>
+          <span class="detail-label">SCOPE</span>
           <p>Identity system, print ephemera, gallery signage, catalogue, website</p>
         </div>
       </div>
@@ -89,22 +89,36 @@
     </div>
   </section>
 
+  <!-- Project Navigation -->
+  <nav class="project-nav">
+    <div class="project-nav-inner">
+      <ul class="project-nav-list">
+        <li class="project-nav-item active"><a href="#overview">Overview</a></li>
+        <li class="project-nav-item"><a href="#link">Link</a></li>
+        <li class="project-nav-item"><a href="#contributions">Contributions</a></li>
+        <li class="project-nav-item"><a href="#tools">Tools</a></li>
+        <li class="project-nav-item"><a href="#credits">Credits</a></li>
+        <li class="project-nav-item"><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <main id="content" class="project-content" role="main">
     <div class="project-grid">
       <aside class="project-info-column">
-        <section class="info-section">
-          <h3 class="section-label">/ OVERVIEW</h3>
+        <section id="overview" class="info-section section-marker">
+          <h3 class="section-label">OVERVIEW</h3>
           <p>Kihikihi takes its name from the Māori word for cicada. The identity explores emergence, rhythm, and resonance through repetition, waveform motifs, and modular typography. The system spans risograph ephemera, flexible logos, gallery signage, and a responsive website that documents the work and context.</p>
           <p>Objective: build a cohesive language that supports collaboration and experimentation while respecting cultural nuance and place.</p>
         </section>
 
-        <section class="info-section">
-          <h3 class="section-label">/ LINK</h3>
+        <section id="link" class="info-section section-marker">
+          <h3 class="section-label">LINK</h3>
           <p><a href="https://kihikihi.info" target="_blank" rel="noopener">Visit kihikihi.info</a></p>
         </section>
 
-        <section class="info-section">
-          <h3 class="section-label">/ CONTRIBUTIONS</h3>
+        <section id="contributions" class="info-section section-marker">
+          <h3 class="section-label">CONTRIBUTIONS</h3>
           <ul>
             <li>Identity design and guidelines</li>
             <li>Poster series and collateral</li>
@@ -113,8 +127,8 @@
           </ul>
         </section>
 
-        <section class="info-section">
-          <h3 class="section-label">/ TOOLS</h3>
+        <section id="tools" class="info-section section-marker">
+          <h3 class="section-label">TOOLS</h3>
           <ul class="tools-list">
             <li>HTML and CSS</li>
             <li>Adobe InDesign</li>
@@ -122,8 +136,8 @@
           </ul>
         </section>
 
-        <section class="info-section">
-          <h3 class="section-label">/ CREDITS</h3>
+        <section id="credits" class="info-section section-marker">
+          <h3 class="section-label">CREDITS</h3>
           <ul>
             <li>Artist: Anne Niemetz</li>
             <li>Collaborators: Newton Chan, Sam Carswell</li>
@@ -134,7 +148,7 @@
         </section>
       </aside>
 
-      <div class="project-gallery-column">
+      <div id="gallery" class="project-gallery-column section-marker">
         <figure class="project-figure">
           <img src="../images/projects/kihikihi/kihikihi_03.jpeg" alt="Detail spread from the printed catalogue showing modular grid and waveform rules" loading="lazy" width="1400" height="933">
           <figcaption>Catalogue detail. Modular grid and waveform rules.</figcaption>
@@ -152,10 +166,6 @@
       </div>
     </div>
 
-    <nav class="project-nav" aria-label="Project navigation">
-      <a href="/projects" class="btn-link">← All projects</a>
-      <span></span>
-    </nav>
   </main>
 
   <footer>
@@ -167,9 +177,67 @@
     </nav>
   </footer>
 
+  <script src="../script.js"></script>
   <script>
     // Header include
     fetch('../header.html').then(r=>r.text()).then(t=>{document.getElementById('site-header').innerHTML=t});
+
+    // Smooth scrolling for navigation links
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.project-nav-item a');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
+            
+            document.querySelectorAll('.project-nav-item').forEach(item => {
+              item.classList.remove('active');
+            });
+            
+            const parentNavItem = this.parentElement;
+            if (parentNavItem) {
+              parentNavItem.classList.add('active');
+            }
+            
+            history.pushState(null, null, targetId);
+          }
+        });
+      });
+      
+      // Set active nav item on scroll
+      window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        
+        const sections = document.querySelectorAll('.section-marker');
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 150;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            const sectionId = section.getAttribute('id');
+            
+            document.querySelectorAll('.project-nav-item').forEach(item => {
+              item.classList.remove('active');
+            });
+            
+            const activeNavItem = document.querySelector(`.project-nav-item a[href="#${sectionId}"]`);
+            if (activeNavItem) {
+              activeNavItem.parentElement.classList.add('active');
+            }
+          }
+        });
+      });
+    });
 
     // Lightbox
     document.addEventListener('DOMContentLoaded',function(){

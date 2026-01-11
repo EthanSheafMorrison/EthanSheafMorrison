@@ -44,21 +44,34 @@
     </div>
   </section>
 
+  <!-- Project Navigation -->
+  <nav class="project-nav">
+    <div class="project-nav-inner">
+      <ul class="project-nav-list">
+        <li class="project-nav-item active"><a href="#overview">Overview</a></li>
+        <li class="project-nav-item"><a href="#output">Output</a></li>
+        <li class="project-nav-item"><a href="#method">Method</a></li>
+        <li class="project-nav-item"><a href="#tools">Tools</a></li>
+        <li class="project-nav-item"><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- Project Content -->
   <section class="project-content">
     <div class="project-grid">
       <!-- Left Column - Project Info -->
       <div class="project-info-column">
-        <div class="info-section">
+        <div id="overview" class="info-section section-marker">
           <h3 class="section-label">OVERVIEW</h3>
-          <p>Collated Frames is a typographic project focused on reinterpreting the lowercase ‘k’ through a blend of historical context and digital abstraction. The exploration began by tracing the letterform’s origins to the outstretched palm of the hand—a gesture embedded in human expression and communication. Building on this symbolic foundation, the project investigated the intersections of digital media and typography, revealing how technology can capture and transform human gestures into visual language.</p>
+          <p>Collated Frames is a typographic project focused on reinterpreting the lowercase 'k' through a blend of historical context and digital abstraction. The exploration began by tracing the letterform's origins to the outstretched palm of the hand—a gesture embedded in human expression and communication. Building on this symbolic foundation, the project investigated the intersections of digital media and typography, revealing how technology can capture and transform human gestures into visual language.</p>
           <p>Using point cloud mapping, a technique that allows the creation of intricate 3D models, various forms of the hand were mapped, broken down, and reconfigured into fragmented, ethereal shapes. These digital hand models—partially deconstructed and hovering between reality and abstraction—became symbolic representations of the typographic gesture, each frame capturing the essence of motion and human presence in a digital realm.</p>
         </div>
-        <div class="info-section">
+        <div id="output" class="info-section section-marker">
           <h3 class="section-label">OUTPUT</h3>
-          <p>The results culminated in a moving image piece, where these frames of the hand's evolving forms flow and shift, transforming the letter ‘k’ into a dynamic expression of both physical and digital language. This piece was displayed as part of the <em>xHeight</em> typographic installation at Twentysix Gallery in Newtown, Wellington, allowing viewers to experience the fusion of traditional and digital typographic art through a visually compelling, immersive installation.</p>
+          <p>The results culminated in a moving image piece, where these frames of the hand's evolving forms flow and shift, transforming the letter 'k' into a dynamic expression of both physical and digital language. This piece was displayed as part of the <em>xHeight</em> typographic installation at Twentysix Gallery in Newtown, Wellington, allowing viewers to experience the fusion of traditional and digital typographic art through a visually compelling, immersive installation.</p>
         </div>
-        <div class="info-section">
+        <div id="method" class="info-section section-marker">
           <h3 class="section-label">METHOD</h3>
           <p>The work came out of an exploration of the letter form of 'k' and how this form origantes from the outreached hand. I was taken aback by the simplicity that typography had transformed this gesture into a symbol of communication. 
           </p>
@@ -67,7 +80,7 @@
           <p>I used 3D point cloud mapping to create a series of hand models that were then deconstructed and reconfigured into fragmented, ethereal shapes. These digital hand models became symbolic representations of the typographic gesture, each frame capturing the essence of motion and human presence in a digital realm whilst being eeriely lost and distored.</p>
           <p>An example of the limitations of communication and language</p>
         </div>
-        <div class="info-section">
+        <div id="tools" class="info-section section-marker">
           <h3 class="section-label">TOOLS</h3>
           <ul class="tools-list">
             <li>3D Point Cloud Mapping</li>
@@ -79,7 +92,7 @@
       </div>
 
       <!-- Right Column - Project Gallery -->
-      <div class="project-gallery-column">
+      <div id="gallery" class="project-gallery-column section-marker">
         <figure class="project-figure">
           <img src="../images/projects/Collated-Frames/CollatedFrames2.jpg" alt="Collated Frames visualization" />
           <figcaption>Frame from the animated sequence exploring the gestural origins of the letter ‘k’.</figcaption>
@@ -87,6 +100,19 @@
       </div>
     </div>
   </section>
+
+  <!-- Lightbox container -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lightbox-img">
+      <div class="lightbox-nav">
+        <span class="lightbox-prev">&#10094;</span>
+        <span class="lightbox-next">&#10095;</span>
+      </div>
+    </div>
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -105,6 +131,131 @@
       .then(data => {
         document.getElementById('site-header').innerHTML = data;
       });
+      
+    // Smooth scrolling for navigation links
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.project-nav-item a');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
+            
+            document.querySelectorAll('.project-nav-item').forEach(item => {
+              item.classList.remove('active');
+            });
+            
+            const parentNavItem = this.parentElement;
+            if (parentNavItem) {
+              parentNavItem.classList.add('active');
+            }
+            
+            history.pushState(null, null, targetId);
+          }
+        });
+      });
+      
+      // Set active nav item on scroll
+      window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        
+        const sections = document.querySelectorAll('.section-marker');
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 150;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            const sectionId = section.getAttribute('id');
+            
+            document.querySelectorAll('.project-nav-item').forEach(item => {
+              item.classList.remove('active');
+            });
+            
+            const activeNavItem = document.querySelector(`.project-nav-item a[href="#${sectionId}"]`);
+            if (activeNavItem) {
+              activeNavItem.parentElement.classList.add('active');
+            }
+          }
+        });
+      });
+    });
+    
+    // Lightbox functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.project-gallery-column img, .project-hero-image img');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const lightboxClose = document.querySelector('.lightbox-close');
+      const lightboxPrev = document.querySelector('.lightbox-prev');
+      const lightboxNext = document.querySelector('.lightbox-next');
+      
+      if (!lightbox || !lightboxImg) return;
+      
+      let currentIndex = 0;
+      const imageArray = Array.from(images);
+      
+      // Open lightbox
+      images.forEach((img, index) => {
+        img.addEventListener('click', function() {
+          lightboxImg.src = this.src;
+          lightboxCaption.textContent = this.alt;
+          lightbox.classList.add('active');
+          currentIndex = index;
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      
+      // Close lightbox
+      lightboxClose.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // Previous image
+      lightboxPrev.addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
+        lightboxImg.src = imageArray[currentIndex].src;
+        lightboxCaption.textContent = imageArray[currentIndex].alt;
+      });
+      
+      // Next image
+      lightboxNext.addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % imageArray.length;
+        lightboxImg.src = imageArray[currentIndex].src;
+        lightboxCaption.textContent = imageArray[currentIndex].alt;
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        } else if (e.key === 'ArrowLeft') {
+          lightboxPrev.click();
+        } else if (e.key === 'ArrowRight') {
+          lightboxNext.click();
+        }
+      });
+    });
   </script>
 </body>
 </html>

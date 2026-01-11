@@ -17,22 +17,20 @@
     <section class="project-hero">
         <div class="project-hero-content">
             <div class="project-title-section">
-                <span class="hero-label">/ PROJECT</span>
+                <span class="hero-label">PROJECT</span>
                 <h1>Iterate Postgraduate Showcase</h1>
-                
             </div>
-            
             <div class="project-meta-grid">
                 <div class="project-meta-item">
-                    <span class="detail-label">/ DATE</span>
+                    <span class="detail-label">DATE</span>
                     <p>2024</p>
                 </div>
                 <div class="project-meta-item">
-                    <span class="detail-label">/ ROLE</span>
+                    <span class="detail-label">ROLE</span>
                     <p>Graphic Design, Web Design, Exhibition Design</p>
                 </div>
                 <div class="project-meta-item">
-                    <span class="detail-label">/ TYPE</span>
+                    <span class="detail-label">TYPE</span>
                     <p>Installation Art, Digital Media, Web Design</p>
                 </div>
             </div>
@@ -47,21 +45,33 @@
         </div>
     </section>
 
+    <!-- Project Navigation -->
+    <nav class="project-nav">
+        <div class="project-nav-inner">
+            <ul class="project-nav-list">
+                <li class="project-nav-item active"><a href="#overview">Overview</a></li>
+                <li class="project-nav-item"><a href="#approach">Approach</a></li>
+                <li class="project-nav-item"><a href="#tools">Tools</a></li>
+                <li class="project-nav-item"><a href="#gallery">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Project Content -->
     <section class="project-content">
         <div class="project-grid">
             <!-- Left Column - Project Info -->
             <div class="project-info-column">
-                <div class="info-section">
-                    <h3 class="section-label">/ OVERVIEW</h3>
+                <div id="overview" class="info-section section-marker">
+                    <h3 class="section-label">OVERVIEW</h3>
                     <p>Iterate was the 2024 postgraduate design showcase for Te Herenga Waka Victoria University of Wellington. My role was to develop the exhibition's graphic identity, spatial language, and digital presence. The goal was to create a cohesive yet flexible system that celebrated the diverse and research-driven practices of the students involved.</p>
                 </div>
-                <div class="info-section">
-                    <h3 class="section-label">/ APPROACH</h3>
+                <div id="approach" class="info-section section-marker">
+                    <h3 class="section-label">APPROACH</h3>
                     <p>The exhibition identity system was built around the idea of modular rhythm—how distinct visual units could combine, repeat, and adapt across spatial and digital applications. I designed a typographic poster series, gallery signage, a printed catalogue, and a website that all worked within this system while allowing space for individual project narratives to stand out.</p>
                 </div>
-                <div class="info-section">
-                    <h3 class="section-label">/ TOOLS</h3>
+                <div id="tools" class="info-section section-marker">
+                    <h3 class="section-label">TOOLS</h3>
                     <ul class="tools-list">
                         <li>Adobe InDesign</li>
                         <li>Adobe Illustrator</li>
@@ -70,7 +80,7 @@
             </div>
 
             <!-- Right Column - Project Gallery -->
-            <div class="project-gallery-column">
+            <div id="gallery" class="project-gallery-column section-marker">
                 <figure class="project-figure">
                     <img src="../images/projects/iterate/MDI_ITERATE_EXHIBITION-02.jpg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
                     <figcaption>Iterate Detail shot. Main Entry Banner.</figcaption>
@@ -87,7 +97,7 @@
                     <img src="../images/projects/iterate/MDI_ITERATE_BOOK.jpeg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
                     <figcaption>Exhibition Publication. Threaded Saddle Stich. 44pp.</figcaption>
                 </figure>
-                </figure>                <figure class="project-figure">
+                <figure class="project-figure">
                     <img src="../images/projects/iterate/MDI_ITERATE_EXHIBITION-79.jpg" alt="Map of phosphate trade routes between Western Sahara and New Zealand">
                     <figcaption>Interactive map illustrating phosphate trade routes connecting Western Sahara and New Zealand's agricultural industry.</figcaption>
                 </figure>
@@ -222,6 +232,63 @@
                 }
             });
         });
-      </script>
+        
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.project-nav-item a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        document.querySelectorAll('.project-nav-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        
+                        const parentNavItem = this.parentElement;
+                        if (parentNavItem) {
+                            parentNavItem.classList.add('active');
+                        }
+                        
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+            
+            // Set active nav item on scroll
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                
+                const sections = document.querySelectorAll('.section-marker');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        const sectionId = section.getAttribute('id');
+                        
+                        document.querySelectorAll('.project-nav-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        
+                        const activeNavItem = document.querySelector(`.project-nav-item a[href="#${sectionId}"]`);
+                        if (activeNavItem) {
+                            activeNavItem.parentElement.classList.add('active');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-</html> 
+</html>

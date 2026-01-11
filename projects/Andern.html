@@ -301,6 +301,19 @@
     </div>
   </section>
 
+  <!-- Lightbox container -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lightbox-img">
+      <div class="lightbox-nav">
+        <span class="lightbox-prev">&#10094;</span>
+        <span class="lightbox-next">&#10095;</span>
+      </div>
+    </div>
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
@@ -440,6 +453,74 @@
             }
           }
         });
+      });
+    });
+    
+    // Lightbox functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.project-gallery-column img, .project-hero-image img');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const lightboxClose = document.querySelector('.lightbox-close');
+      const lightboxPrev = document.querySelector('.lightbox-prev');
+      const lightboxNext = document.querySelector('.lightbox-next');
+      
+      if (!lightbox || !lightboxImg) return;
+      
+      let currentIndex = 0;
+      const imageArray = Array.from(images);
+      
+      // Open lightbox
+      images.forEach((img, index) => {
+        img.addEventListener('click', function() {
+          lightboxImg.src = this.src;
+          lightboxCaption.textContent = this.alt;
+          lightbox.classList.add('active');
+          currentIndex = index;
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      
+      // Close lightbox
+      lightboxClose.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // Previous image
+      lightboxPrev.addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
+        lightboxImg.src = imageArray[currentIndex].src;
+        lightboxCaption.textContent = imageArray[currentIndex].alt;
+      });
+      
+      // Next image
+      lightboxNext.addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % imageArray.length;
+        lightboxImg.src = imageArray[currentIndex].src;
+        lightboxCaption.textContent = imageArray[currentIndex].alt;
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        } else if (e.key === 'ArrowLeft') {
+          lightboxPrev.click();
+        } else if (e.key === 'ArrowRight') {
+          lightboxNext.click();
+        }
       });
     });
   </script>
