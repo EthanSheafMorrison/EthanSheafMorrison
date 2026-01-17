@@ -32,7 +32,6 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px; /* Base font size for rem calculations */
-  scroll-snap-type: y proximity;
 }
 
 body {
@@ -1659,13 +1658,6 @@ body.dark-mode .section-link:hover {
   transform: scaleY(0);
 }
 
-/* Section Snap Points */
-.hero,
-.all-projects,
-.about-footer {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
 
 /* Parallax Typography */
 .parallax-header,
