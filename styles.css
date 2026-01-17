@@ -730,6 +730,15 @@ body.dark-mode .filter-option input[type="checkbox"]:focus {
   border-radius: var(--border-radius);
 }
 
+.project-hero-image video {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--border-radius);
+  display: block;
+}
+
 .project-container {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -796,6 +805,13 @@ body.dark-mode .filter-option input[type="checkbox"]:focus {
   width: 100%;
   height: auto;
   border-radius: var(--border-radius);
+}
+
+.project-figure video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  display: block;
 }
 
 .project-figure figcaption {

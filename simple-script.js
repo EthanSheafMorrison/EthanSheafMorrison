@@ -281,17 +281,55 @@ document.addEventListener('DOMContentLoaded', function() {
     const hoverBg = document.querySelector('.project-hover-bg');
     const selectionBarEl = document.getElementById('projectSelectionBar');
     if (hoverBg && !selectionBarEl) {
+        // Create a video element for video thumbnails
+        let hoverVideo = hoverBg.querySelector('video');
+        if (!hoverVideo) {
+            hoverVideo = document.createElement('video');
+            hoverVideo.autoplay = true;
+            hoverVideo.loop = true;
+            hoverVideo.muted = true;
+            hoverVideo.playsInline = true;
+            hoverVideo.style.width = '100%';
+            hoverVideo.style.height = '100%';
+            hoverVideo.style.objectFit = 'cover';
+            hoverVideo.style.position = 'absolute';
+            hoverVideo.style.top = '0';
+            hoverVideo.style.left = '0';
+            hoverBg.appendChild(hoverVideo);
+        }
+
         projectRows.forEach(row => {
             row.addEventListener('mouseenter', () => {
-                const imageUrl = row.getAttribute('data-image');
-                if (imageUrl) {
-                    hoverBg.style.backgroundImage = `url('${imageUrl}')`;
+                const mediaUrl = row.getAttribute('data-image');
+                if (mediaUrl) {
+                    // Check if it's a video file
+                    const isVideo = mediaUrl.match(/\.(webm|mp4)(\?|$)/i);
+                    if (isVideo) {
+                        // Hide background image and show video
+                        hoverBg.style.backgroundImage = 'none';
+                        hoverVideo.style.display = 'block';
+                        // Set video source (prefer webm, fallback to mp4)
+                        const baseUrl = mediaUrl.replace(/\.(webm|mp4)$/i, '');
+                        hoverVideo.innerHTML = `
+                            <source src="${baseUrl}.webm" type="video/webm">
+                            <source src="${baseUrl}.mp4" type="video/mp4">
+                        `;
+                        hoverVideo.load();
+                        hoverVideo.play().catch(e => console.log('Video autoplay prevented:', e));
+                    } else {
+                        // Hide video and show background image
+                        hoverVideo.style.display = 'none';
+                        hoverBg.style.backgroundImage = `url('${mediaUrl}')`;
+                    }
                     hoverBg.classList.add('visible');
                 }
             });
 
             row.addEventListener('mouseleave', () => {
                 hoverBg.classList.remove('visible');
+                if (hoverVideo) {
+                    hoverVideo.pause();
+                }
             });
         });
     }
