@@ -197,84 +197,77 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize filtering system
     const filterCheckboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
-    const projectRows = document.querySelectorAll('.project-row');
     const clearFiltersBtn = document.querySelector('.clear-filters');
     const activeFilters = new Set();
 
-    if (filterCheckboxes.length === 0) {
-        console.warn('No filter checkboxes found');
-    } else {
-        console.log('Found filter checkboxes:', filterCheckboxes.length);
-    }
-
-    if (projectRows.length === 0) {
-        console.warn('No project rows found');
-    } else {
-        console.log('Found project rows:', projectRows.length);
-    }
-
     // Setup filter event listeners
     filterCheckboxes.forEach(checkbox => {
-        // Add click animation
         checkbox.addEventListener('click', (e) => {
-            // Add temporary scale animation class
             checkbox.classList.add('checkbox-clicked');
             setTimeout(() => {
                 checkbox.classList.remove('checkbox-clicked');
             }, 200);
         });
-        
+
         checkbox.addEventListener('change', () => {
             const selectedTag = checkbox.getAttribute('data-tag');
-            console.log('Checkbox changed:', selectedTag, checkbox.checked);
-            
             if (checkbox.checked) {
                 activeFilters.add(selectedTag);
             } else {
                 activeFilters.delete(selectedTag);
             }
-            
             updateProjectVisibility();
         });
     });
 
     if (clearFiltersBtn) {
         clearFiltersBtn.addEventListener('click', () => {
-            console.log('Clearing filters');
             filterCheckboxes.forEach(checkbox => checkbox.checked = false);
             activeFilters.clear();
             updateProjectVisibility();
         });
-    } else {
-        console.warn('Clear filters button not found');
+    }
+
+    function clearProjectHoverState() {
+        const selectionBar = document.getElementById('projectSelectionBar');
+        const hoverBgA = document.getElementById('hoverBgA');
+        const hoverBgB = document.getElementById('hoverBgB');
+        if (selectionBar) {
+            selectionBar.classList.remove('visible');
+            selectionBar.style.height = '0';
+            selectionBar.style.transform = 'translateY(0)';
+        }
+        if (hoverBgA) hoverBgA.classList.remove('visible');
+        if (hoverBgB) hoverBgB.classList.remove('visible');
     }
 
     function updateProjectVisibility() {
-        console.log('Active filters:', Array.from(activeFilters));
-        
-        projectRows.forEach(row => {
+        const projectRows = document.querySelectorAll('.project-row');
+        const staggerMs = 20;
+
+        projectRows.forEach((row, index) => {
             if (activeFilters.size === 0) {
-                // Show all projects with fade-in animation
+                row.style.transitionDelay = '';
                 row.classList.remove('filter-hidden');
                 return;
             }
 
             const projectTags = Array.from(row.querySelectorAll('.project-tags span'))
                 .map(span => span.textContent.trim().toLowerCase());
-            
-            console.log('Project tags:', projectTags);
-            
-            // Show project if it matches ANY of the active filters
+
             const hasMatchingTag = Array.from(activeFilters)
                 .some(filter => projectTags.includes(filter.toLowerCase()));
-            
-            // Use class-based visibility for smooth transitions
+
             if (hasMatchingTag) {
+                row.style.transitionDelay = '';
                 row.classList.remove('filter-hidden');
             } else {
+                row.style.transitionDelay = index * staggerMs + 'ms';
                 row.classList.add('filter-hidden');
             }
         });
+
+        clearProjectHoverState();
     }
 
     // Setup project hover effects (skip if enhanced selection bar exists)
