@@ -69,8 +69,8 @@ function renderAllProjects() {
             rows.forEach(row => {
                 row.addEventListener('mouseenter', () => {
                     const rowRect = row.getBoundingClientRect();
-                    const listRect = list.getBoundingClientRect();
-                    const translateY = rowRect.top - listRect.top + list.scrollTop;
+                    const containerRect = projectsContainer.getBoundingClientRect();
+                    const translateY = rowRect.top - containerRect.top;
                     selectionBar.style.height = `${rowRect.height}px`;
                     selectionBar.style.transform = `translateY(${translateY}px)`;
                     selectionBar.classList.add('visible');
