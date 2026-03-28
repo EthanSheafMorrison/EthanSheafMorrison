@@ -49,6 +49,24 @@ const projectsData = [
     },
     {
         number: "06",
+        title: "Saving Screen Time",
+        url: "projects/SavingScreenTime.html",
+        image: "images/projects/GEO/TEST.png",
+        tags: ["Digital", "Research", "Design"],
+        description: "A research and design project exploring the relationship between digital consumption, attention, and wellbeing.",
+        visible: true
+    },
+    {
+        number: "07",
+        title: "Add Extra",
+        url: "projects/AddExtra.html",
+        image: "images/projects/GEO/TEST.png",
+        tags: ["Design", "Research", "Experimental"],
+        description: "A design and research project exploring themes of excess, supplementation, and the culture of addition.",
+        visible: true
+    },
+    {
+        number: "08",
         title: "Tokotoko — Te Reo Language Learning Application",
         url: "projects/Tokotoko.html",
         image: "images/projects/Tokotoko/tokotoko logo.png",
@@ -57,7 +75,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "07",
+        number: "09",
         title: "Iterate — Exhibition Design",
         url: "projects/Iterate.html",
         image: "images/projects/iterate/MDI_ITERATE_EXHIBITION-01.jpg",
@@ -66,7 +84,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "08",
+        number: "10",
         title: "Collated_Frames — Visual Storytelling",
         url: "projects/CollatedFrames.html",
         image: "images/projects/Collated-Frames/CollatedFrames1.jpg",
@@ -75,7 +93,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "09",
+        number: "11",
         title: "Adlib — Brutalist Web Design",
         url: "projects/adlib.html",
         image: "adlib/adlibsimg/Adlib-23.png",
@@ -84,7 +102,7 @@ const projectsData = [
         visible: false
     },
     {
-        number: "10",
+        number: "12",
         title: "KihiKihi — Installation Art",
         url: "projects/kihikihi.html",
         image: "images/projects/kihikihi/main.jpg",
@@ -93,7 +111,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "11",
+        number: "13",
         title: "Empty Vessels — Video Installation",
         url: "projects/EmptyVesselsVideo.html",
         image: "images/projects/empty-vessels/Day 08 Image -05 Large.jpeg",
@@ -102,7 +120,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "12",
+        number: "14",
         title: "Empty Vessels — Installation Art",
         url: "projects/EmptyVesselsInstall.html",
         image: "images/projects/empty-vessels/emptyvessels_2.jpeg",
@@ -111,7 +129,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "13",
+        number: "15",
         title: "The Dream Atlas — Mapping Project",
         url: "projects/dream-atlas.html",
         image: "images/projects/DreamAtlas/Title.png",
@@ -120,7 +138,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "14",
+        number: "16",
         title: "Ändern — Language & Translation Research",
         url: "projects/Andern.html",
         image: "images/project-image.png",
@@ -129,7 +147,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "15",
+        number: "17",
         title: "Geographic Visualisation — Environmental Data",
         url: "projects/geographic-visualisation.html",
         image: "images/projects/GEO/TEST.png",
@@ -138,7 +156,7 @@ const projectsData = [
         visible: false
     },
     {
-        number: "16",
+        number: "18",
         title: "OnDisplay — Series of Works",
         url: "projects/sample-project.html",
         image: "images/projects/GEO/TEST.png",
@@ -147,7 +165,7 @@ const projectsData = [
         visible: false
     },
     {
-        number: "17",
+        number: "19",
         title: "Pixaura — Digital Typography",
         url: "projects/Pixaura.html",
         image: "images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_1.jpg",
@@ -156,7 +174,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "17",
+        number: "20",
         title: "He Rito — Brand Identity",
         url: "projects/herito.html",
         image: "images/projects/HeRito/HeRitoExhibition09112023+(6).jpg",
