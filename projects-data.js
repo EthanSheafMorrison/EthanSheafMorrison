@@ -83,17 +83,17 @@ const projectsData = [
         description: "Exploring narrative through sequential imagery and experimental visual composition.",
         visible: true
     },
+    // {
+    //     number: "10",
+    //     title: "Adlib — Brutalist Web Design",
+    //     url: "projects/adlib.html",
+    //     image: "adlib/adlibsimg/Adlib-23.png",
+    //     tags: ["Web", "Design", "Experimental"],
+    //     description: "A playful, experimental approach to web design inspired by brutalism and improvisation.",
+    //     visible: false
+    // },
     {
         number: "10",
-        title: "Adlib — Brutalist Web Design",
-        url: "projects/adlib.html",
-        image: "adlib/adlibsimg/Adlib-23.png",
-        tags: ["Web", "Design", "Experimental"],
-        description: "A playful, experimental approach to web design inspired by brutalism and improvisation.",
-        visible: false
-    },
-    {
-        number: "11",
         title: "KihiKihi — Installation Art",
         url: "projects/kihikihi.html",
         image: "images/projects/kihikihi/main.jpg",
@@ -102,7 +102,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "12",
+        number: "11",
         title: "Empty Vessels — Video Installation",
         url: "projects/EmptyVesselsVideo.html",
         image: "images/projects/empty-vessels/Day 08 Image -05 Large.jpeg",
@@ -111,7 +111,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "13",
+        number: "12",
         title: "Empty Vessels — Installation Art",
         url: "projects/EmptyVesselsInstall.html",
         image: "images/projects/empty-vessels/emptyvessels_2.jpeg",
@@ -120,7 +120,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "14",
+        number: "13",
         title: "The Dream Atlas — Mapping Project",
         url: "projects/dream-atlas.html",
         image: "images/projects/DreamAtlas/Title.png",
@@ -128,17 +128,17 @@ const projectsData = [
         description: "A mapping project exploring dreams, memory, and spatial narratives through visual storytelling.",
         visible: true
     },
+    // {
+    //     number: "15",
+    //     title: "Ändern — Language & Translation Research",
+    //     url: "projects/Andern.html",
+    //     image: "images/project-image.png",
+    //     tags: ["Research", "Language", "Design"],
+    //     description: "A personal art investigation into language and perspective, working inside German and English to see how thinking shifts when form and meaning move together.",
+    //     visible: true
+    // },
     {
-        number: "15",
-        title: "Ändern — Language & Translation Research",
-        url: "projects/Andern.html",
-        image: "images/project-image.png",
-        tags: ["Research", "Language", "Design"],
-        description: "A personal art investigation into language and perspective, working inside German and English to see how thinking shifts when form and meaning move together.",
-        visible: true
-    },
-    {
-        number: "16",
+        number: "14",
         title: "Geographic Visualisation — Environmental Data",
         url: "projects/geographic-visualisation.html",
         image: "images/projects/GEO/TEST.png",
@@ -147,7 +147,7 @@ const projectsData = [
         visible: false
     },
     {
-        number: "17",
+        number: "15",
         title: "OnDisplay — Series of Works",
         url: "projects/sample-project.html",
         image: "images/projects/GEO/TEST.png",
@@ -156,7 +156,7 @@ const projectsData = [
         visible: false
     },
     {
-        number: "18",
+        number: "16",
         title: "Pixaura — Digital Typography",
         url: "projects/Pixaura.html",
         image: "images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_1.jpg",
@@ -165,7 +165,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "19",
+        number: "17",
         title: "He Rito — Brand Identity",
         url: "projects/herito.html",
         image: "images/projects/HeRito/HeRitoExhibition09112023+(6).jpg",
