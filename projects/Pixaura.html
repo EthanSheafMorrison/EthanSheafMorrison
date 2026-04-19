@@ -1,105 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Google Warming - Ethan Sheaf-Morrison</title>
-  <link rel="stylesheet" href="../styles.css" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixaura - Ethan Sheaf-Morrison</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../cin-styles.css" />
 </head>
 <body>
-  <div id="site-header"></div>
+    <div id="site-header"></div>
 
-  <!-- Project Hero Section -->
-  <section class="project-hero">
-    <div class="project-hero-content">
-      <div class="project-title-section">
-        <span class="hero-label">/ PROJECT</span>
-        <h1>Pixaura</h1>
-      </div>
-      <div class="project-meta-grid">
-        <div class="project-meta-item">
-          <span class="detail-label">/ DATE</span>
-          <p>2023</p>
+    <section class="cin-hero">
+        <img class="cin-hero-bg active" src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_2.jpg" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_1.jpg" alt="" />
+        <div class="cin-hero-overlay">
+            <span class="cin-hero-index">Project</span>
+            <h1 class="cin-hero-title">Pixaura</h1>
+            <p class="cin-hero-meta">2023 · Design, Development · Typography, Digital Media, Creative Coding</p>
+            <span class="cin-scroll-hint">↓</span>
         </div>
-        <div class="project-meta-item">
-          <span class="detail-label">/ ROLE</span>
-          <p>Design, Development</p>
-        </div>
-        <div class="project-meta-item">
-          <span class="detail-label">/ TYPE</span>
-          <p>Typography, Digital Media, Creative Coding</p>
-        </div>
-      </div>
+    </section>
+
+    <div class="cin-content">
+        <aside class="cin-rail">
+            <ol class="cin-toc">
+                <li class="cin-toc-item active" data-chapter="overview"><a href="#overview">Overview</a></li>
+                <li class="cin-toc-item" data-chapter="output"><a href="#output">Output</a></li>
+                <li class="cin-toc-item" data-chapter="tools"><a href="#tools">Tools</a></li>
+                <li class="cin-toc-item" data-chapter="gallery"><a href="#gallery">Gallery</a></li>
+            </ol>
+            <dl class="cin-rail-meta">
+                <dt>Date</dt>
+                <dd>2023</dd>
+                <dt>Role</dt>
+                <dd>Design, Development</dd>
+                <dt>Type</dt>
+                <dd>Typography, Digital Media, Creative Coding</dd>
+            </dl>
+        </aside>
+
+        <main class="cin-chapters">
+            <div class="cin-chapter" id="overview">
+                <h2 class="cin-chapter-label">Overview</h2>
+                <p>Pixaura delves into the structural foundations of letterform creation by exploring the underlying role of grids. Initially, these grids serve as a framework, defining the spatial organisation and proportions that anchor each letter's form. However, moving beyond traditional type design, the project takes a deconstructive turn through digital abstraction.</p>
+                <p>Using brush strokes as a primary medium, these letterforms are processed through a custom script that applies a pixel-sorting algorithm, selectively rearranging pixel values across the composition. This approach introduces an element of calculated disruption into the ordered geometry of typography, transforming static letterforms into dynamic, fragmented visual experiences.</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_2.jpg" alt="Spread of Pixaura concertina — pixel-sorted letterforms" loading="lazy" decoding="async" />
+                    <figcaption>Spread of Pixaura concertina.</figcaption>
+                </figure>
+            </div>
+
+            <div class="cin-chapter" id="output">
+                <h2 class="cin-chapter-label">Output</h2>
+                <p>The final outcome is a series of dynamic letterforms where the boundaries of typographic and visual language blur. By harnessing the deconstructive properties of digital media, these letters become more than static symbols—they transform into expressive, layered forms that challenge conventional readability. Instead, they invite viewers to engage with the typography as a textured landscape, where each letter carries the visual tension of digital manipulation, resonating with a contemporary and fluid aesthetic.</p>
+                <p>This interplay between order and abstraction not only reimagines the grid's role but also pushes the boundaries of typographic expression.</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_1.jpg" alt="Second spread of Pixaura concertina" loading="lazy" decoding="async" />
+                    <figcaption>Second spread of Pixaura concertina.</figcaption>
+                </figure>
+            </div>
+
+            <div class="cin-chapter" id="tools">
+                <h2 class="cin-chapter-label">Tools</h2>
+                <ul class="tools-list">
+                    <li>Custom Pixel-Sorting Script</li>
+                    <li>Brush-Based Drawing</li>
+                    <li>Photoshop</li>
+                    <li>Creative Coding</li>
+                </ul>
+            </div>
+
+            <div class="cin-chapter" id="gallery">
+                <h2 class="cin-chapter-label">Gallery</h2>
+                <div class="cin-gallery">
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_2.jpg" alt="Pixaura concertina — spread 1" loading="lazy" decoding="async" />
+                        <figcaption>Concertina spread 1.</figcaption>
+                    </figure>
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_1.jpg" alt="Pixaura concertina — spread 2" loading="lazy" decoding="async" />
+                        <figcaption>Concertina spread 2.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </main>
     </div>
-  </section>
 
-  <section class="project-hero">
-    <div class="project-hero-content">
-      <div class="project-hero-image">
-        <img src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_2.jpg" alt="Screenshot of the Google Warming project" />
-      </div>
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-nav">
+                <span class="lightbox-prev">&#10094;</span>
+                <span class="lightbox-next">&#10095;</span>
+            </div>
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
-  </section>
 
-  <!-- Project Content -->
-  <section class="project-content">
-    <div class="project-grid">
-      <!-- Left Column - Project Info -->
-      <div class="project-info-column">
-        <div class="info-section">
-          <h3 class="section-label">/ OVERVIEW</h3>
-          <p>Pixaura delves into the structural foundations of letterform creation by exploring the underlying role of grids. Initially, these grids serve as a framework, defining the spatial organisation and proportions that anchor each letter’s form. However, moving beyond traditional type design, the project takes a deconstructive turn through digital abstraction. Using brush strokes as a primary medium, these letterforms are processed through a custom script that applies a pixel-sorting algorithm, selectively rearranging pixel values across the composition. This approach introduces an el</p>
-          <p>The project culminates in a series of works that explore the relationship between letterforms and their underlying grids, inviting viewers to consider the role of structure in shaping visual language.</p>
-        </div>
-        <div class="info-section">
-          <h3 class="section-label">/ OUTPUT</h3>
-          <p>The final outcome is a series of dynamic letterforms where the boundaries of typographic and visual language blur. By harnessing the deconstructive properties of digital media, these letters become more than static symbols—they transform into expressive, layered forms that challenge conventional readability. Instead, they invite viewers to engage with the typography as a textured landscape, where each letter carries the visual tension of digital manipulation, resonating with a contemporary and fluid aesthetic. This interplay between order and abstraction not only reimagines the grid’s role but also pushes the boundaries of typographic expression..</p>
-        </div>
-        <div class="info-section">
-          <h3 class="section-label">/ TOOLS</h3>
-          <ul class="tools-list">
-            <li>Custom Pixel-Sorting Script</li>
-            <li>Brush-Based Drawing</li>
-            <li>Photoshop</li>
-            <li>Creative Coding</li>
-          </ul>
-        </div>
-      </div>
+    <footer>
+        <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
+        <nav>
+            <a href="../index.html">HOME</a>
+            <a href="../index.html#projects">PROJECTS</a>
+            <a href="../index.html#about">ABOUT</a>
+        </nav>
+    </footer>
 
-      <!-- Right Column - Project Gallery -->
-      <div class="project-gallery-column">
-        <figure class="project-figure">
-          <img src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_2.jpg" alt="Collated Frames visualization" />
-          <figcaption>Spread of Pixaura Concertina.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="../images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_1.jpg" alt="Collated Frames visualization" />
-          <figcaption>Spread of Pixaura Concertina.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+    <script src="../script.js"></script>
+    <script src="../cin-script.js"></script>
+    <script>
+        fetch('../header.html')
+            .then(res => res.text())
+            .then(data => { document.getElementById('site-header').innerHTML = data; });
 
-  <!-- Footer -->
-  <footer>
-    <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
-    <nav>
-      <a href="../index.html">HOME</a>
-      <a href="../index.html#projects">PROJECTS</a>
-      <a href="../index.html#about">ABOUT</a>
-    </nav>
-  </footer>
+        document.addEventListener('DOMContentLoaded', function () {
+            var images = document.querySelectorAll('.cin-inline-figure img, .cin-gallery img');
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            var lightboxCaption = document.getElementById('lightbox-caption');
+            var lightboxClose = document.querySelector('.lightbox-close');
+            var lightboxPrev = document.querySelector('.lightbox-prev');
+            var lightboxNext = document.querySelector('.lightbox-next');
+            var currentIndex = 0;
+            var imageArray = Array.from(images);
 
-  <script src="../script.js"></script>
-  <script>
-    fetch('../header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('site-header').innerHTML = data;
-      });
-  </script>
+            images.forEach(function (img, index) {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function () {
+                    lightboxImg.src = this.src;
+                    lightboxCaption.textContent = this.alt;
+                    lightbox.classList.add('active');
+                    currentIndex = index;
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            lightboxClose.addEventListener('click', function () { lightbox.classList.remove('active'); document.body.style.overflow = ''; });
+            lightbox.addEventListener('click', function (e) { if (e.target === lightbox) { lightbox.classList.remove('active'); document.body.style.overflow = ''; } });
+            lightboxPrev.addEventListener('click', function () { currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length; lightboxImg.src = imageArray[currentIndex].src; lightboxCaption.textContent = imageArray[currentIndex].alt; });
+            lightboxNext.addEventListener('click', function () { currentIndex = (currentIndex + 1) % imageArray.length; lightboxImg.src = imageArray[currentIndex].src; lightboxCaption.textContent = imageArray[currentIndex].alt; });
+            document.addEventListener('keydown', function (e) {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+                else if (e.key === 'ArrowLeft') { lightboxPrev.click(); }
+                else if (e.key === 'ArrowRight') { lightboxNext.click(); }
+            });
+        });
+    </script>
 </body>
 </html>

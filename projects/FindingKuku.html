@@ -5,163 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finding Kuku - Ethan Sheaf-Morrison</title>
     <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../cin-styles.css" />
 </head>
 <body>
     <div id="site-header"></div>
 
-    <!-- Project Hero Section -->
-    <section class="project-hero">
-        <div class="project-hero-content">
-            <div class="project-title-section">
-                <span class="hero-label">PROJECT</span>
-                <h1>Finding Kuku</h1>
-            </div>
-            <div class="project-meta-grid">
-                <div class="project-meta-item">
-                    <span class="detail-label">DATE</span>
-                    <p>2023</p>
-                </div>
-                <div class="project-meta-item">
-                    <span class="detail-label">ROLE</span>
-                    <p>Designer</p>
-                </div>
-                <div class="project-meta-item">
-                    <span class="detail-label">TYPE</span>
-                    <p>Publication</p>
-                </div>
-            </div>
+    <!-- Cinematic Hero -->
+    <section class="cin-hero">
+        <img class="cin-hero-bg active" src="../images/projects/finding-kuku/main.jpg" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/finding-kuku/FindingKuku5.jpg" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/finding-kuku/20220928_201239000_iOS.jpg" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/finding-kuku/FindingKuku4.jpg" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/finding-kuku/FindingKuku3.jpeg" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/finding-kuku/FindingKuku2.jpeg" alt="" />
+        <div class="cin-hero-overlay">
+            <span class="cin-hero-index">Project</span>
+            <h1 class="cin-hero-title">Finding Kuku</h1>
+            <p class="cin-hero-meta">2023 · Designer · Publication</p>
+            <span class="cin-scroll-hint">↓</span>
         </div>
     </section>
 
-    <section class="project-hero">
-        <div class="project-hero-content">
-            <div class="project-hero-image">
-                <img src="../images/projects/finding-kuku/FindingKuku4.jpg" alt="Finding Kuku Hero Image" />
-            </div>
-        </div>
-    </section>
+    <!-- Cinematic 2-column content -->
+    <div class="cin-content">
 
-    <!-- Project Navigation -->
-    <nav class="project-nav">
-        <div class="project-nav-inner">
-            <ul class="project-nav-list">
-                <li class="project-nav-item active"><a href="#overview">Overview</a></li>
-                <li class="project-nav-item"><a href="#press">Press & Exhibition</a></li>
-                <li class="project-nav-item"><a href="#tools">Tools</a></li>
-                <li class="project-nav-item"><a href="#gallery">Gallery</a></li>
-            </ul>
-        </div>
-    </nav>
+        <!-- Left rail: chapter TOC + metadata -->
+        <aside class="cin-rail">
+            <ol class="cin-toc">
+                <li class="cin-toc-item active" data-chapter="overview">
+                    <a href="#overview">Overview</a>
+                </li>
+                <li class="cin-toc-item" data-chapter="press">
+                    <a href="#press">Press & Exhibition</a>
+                </li>
+                <li class="cin-toc-item" data-chapter="tools">
+                    <a href="#tools">Tools</a>
+                </li>
+                <li class="cin-toc-item" data-chapter="gallery">
+                    <a href="#gallery">Gallery</a>
+                </li>
+            </ol>
+            <dl class="cin-rail-meta">
+                <dt>Date</dt>
+                <dd>2023</dd>
+                <dt>Role</dt>
+                <dd>Designer</dd>
+                <dt>Type</dt>
+                <dd>Publication</dd>
+            </dl>
+        </aside>
 
-    <!-- Project Content -->
-    <section class="project-content">
-        <div class="project-grid">
-            <!-- Left Column - Project Info -->
-            <div class="project-info-column">
-                <div id="overview" class="info-section section-marker">
-                    <h3 class="section-label">OVERVIEW</h3>
-                    <p>Finding Kuku is a photographic and illustrative exploration of cultural reconnection through personal experience. Named after Ethan's lost relative, Kuku Reweti, the project follows a journey across the East Cape—documenting moments that intertwine personal memory, family history, and broader historic events.</p>
-                    <p>Through photography and drawing, Ethan reflects on the layered and often fractured relationship between identity and whakapapa. The work examines how Māori disconnection from language and place—shaped by colonial policies like the suppression of Te Reo Māori—has instilled generational impacts, including internalised racism and forced urban migration.</p>
-                    <p>Spanning 88 risograph-printed pages, Finding Kuku is both a record and a reassembly. Riso printing was chosen not just for its aesthetic, but as a deliberate, meditative process: separating and layering individual colour channels mimics the act of piecing together memory. This slow, tactile production becomes an act of re-tracing—transforming printmaking into a method of reflection and reclamation.</p>
-                </div>
+        <!-- Center: scrolling chapters with inline images -->
+        <main class="cin-chapters">
 
-                <div id="press" class="info-section section-marker">
-                    <h3 class="section-label">PRESS & EXHIBITION</h3>
-                    <p>The book was printed by the author in full Risograph. Cover Screenprinted. Exhibited at the 2024 Matariki Exhibition, Mā Wai Rā: New Māori Photobooks Exhibition 2024.</p>
-                    <ul class="tools-list">
-                        <li><a href="https://www.wgtn.ac.nz/wfadi/about/news/staff-students-and-alumni-explore-the-kaupapa-of-matariki-at-annual-exhibition" target="_blank">Matariki Exhibition</a></li>
-                        <li><a href="https://www.photobooknz.com/programme-2" target="_blank">Mā Wai Rā: New Māori Photobooks</a></li>
-                    </ul>
-                </div>
+            <div class="cin-chapter" id="overview">
+                <h2 class="cin-chapter-label">Overview</h2>
+                <p>Finding Kuku is a photographic and illustrative exploration of cultural reconnection through personal experience. Named after Ethan's lost relative, Kuku Reweti, the project follows a journey across the East Cape—documenting moments that intertwine personal memory, family history, and broader historic events.</p>
 
-                <div id="tools" class="info-section section-marker">
-                    <h3 class="section-label">TOOLS</h3>
-                    <ul class="tools-list">
-                        <li>Photography</li>
-                        <li>Mapping</li>
-                        <li>Print Design</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Right Column - Project Gallery -->
-            <div id="gallery" class="project-gallery-column section-marker">
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/FindingKuku1.png" alt="Finding Kuku publication cover - photographic and illustrative exploration" loading="lazy" decoding="async" />
-                    <figcaption>The Camera used to capture the images in Finding Kuku.</figcaption>
-                </figure>
-                
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/FindingKuku2.jpeg" alt="Inside spread of Finding Kuku featuring the bridge over the Motu River" loading="lazy" decoding="async" />
-                    <figcaption>Inside spread of Finding Kuku featuring the bridge over the <a href="https://en.wikipedia.org/wiki/Motu_River" target="_blank">Motu River</a>.</figcaption>
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/finding-kuku/FindingKuku2.jpeg" alt="Inside spread featuring the bridge over the Motu River" loading="lazy" decoding="async" />
+                    <figcaption>Inside spread featuring the bridge over the <a href="https://en.wikipedia.org/wiki/Motu_River" target="_blank">Motu River</a>.</figcaption>
                 </figure>
 
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/20220928_201239000_iOS.jpg" alt="Inside spread of Finding Kuku featuring Ōmaio Marae" loading="lazy" decoding="async" />
-                    <figcaption>Inside spread of Finding Kuku featuring Ōmaio Marae.</figcaption>
+                <p>Through photography and drawing, Ethan reflects on the layered and often fractured relationship between identity and whakapapa. The work examines how Māori disconnection from language and place—shaped by colonial policies like the suppression of Te Reo Māori—has instilled generational impacts, including internalised racism and forced urban migration.</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/finding-kuku/20220928_201239000_iOS.jpg" alt="Inside spread featuring Ōmaio Marae" loading="lazy" decoding="async" />
+                    <figcaption>Inside spread featuring Ōmaio Marae.</figcaption>
                 </figure>
-                
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/AZJnNsCdyR0?si=i4l6VnR8KerQdT8h" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen
-                        referrerpolicy="strict-origin-when-cross-origin">
-                    </iframe>
-                </div>
-                <figcaption>Video walkthrough of the Finding Kuku publication.</figcaption>
-                
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/FindingKuku3.jpeg" alt="Layout page from Finding Kuku showing risograph printed illustrations" loading="lazy" decoding="async" />
+
+                <p>Spanning 88 risograph-printed pages, Finding Kuku is both a record and a reassembly. Riso printing was chosen not just for its aesthetic, but as a deliberate, meditative process: separating and layering individual colour channels mimics the act of piecing together memory. This slow, tactile production becomes an act of re-tracing—transforming printmaking into a method of reflection and reclamation.</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/finding-kuku/FindingKuku3.jpeg" alt="Risograph printed illustrations showing the layering process" loading="lazy" decoding="async" />
                     <figcaption>Risograph printed illustrations showing the layering process.</figcaption>
                 </figure>
-                
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/FindingKuku4.jpg" alt="Detailed view of Finding Kuku publication with textural elements" loading="lazy" decoding="async" />
+            </div>
+
+            <div class="cin-chapter" id="press">
+                <h2 class="cin-chapter-label">Press & Exhibition</h2>
+                <p>The book was printed by the author in full Risograph. Cover Screenprinted. Exhibited at the 2024 Matariki Exhibition, Mā Wai Rā: New Māori Photobooks Exhibition 2024.</p>
+                <ul class="tools-list">
+                    <li><a href="https://www.wgtn.ac.nz/wfadi/about/news/staff-students-and-alumni-explore-the-kaupapa-of-matariki-at-annual-exhibition" target="_blank">Matariki Exhibition</a></li>
+                    <li><a href="https://www.photobooknz.com/programme-2" target="_blank">Mā Wai Rā: New Māori Photobooks</a></li>
+                </ul>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/finding-kuku/FindingKuku4.jpg" alt="Detail view showing textural elements created through risograph printing" loading="lazy" decoding="async" />
                     <figcaption>Detail view showing the textural elements created through risograph printing.</figcaption>
                 </figure>
-                
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/FindingKuku5.jpg" alt="Final spread from Finding Kuku showing landscape photography" loading="lazy" decoding="async" />
-                    <figcaption>Final spread showing landscape photography from the East Cape journey.</figcaption>
-                </figure>
-                
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/FindingKuku6.jpg" alt="Additional spread from Finding Kuku publication" loading="lazy" decoding="async" />
-                    <figcaption>Additional spread from the publication.</figcaption>
-                </figure>
-
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/FindingKuku7.jpeg" alt="Detail from Finding Kuku publication" loading="lazy" decoding="async" />
-                    <figcaption>Detail view from the publication.</figcaption>
-                </figure>
-
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/20220928_201518000_iOS.jpg" alt="Finding Kuku field photograph 201518" loading="lazy" decoding="async" />
-                    <figcaption>Field photograph from the East Cape journey.</figcaption>
-                </figure>
-
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/20220928_201546000_iOS.jpg" alt="Finding Kuku field photograph 201546" loading="lazy" decoding="async" />
-                    <figcaption>Field photograph from the East Cape journey.</figcaption>
-                </figure>
-
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/20220928_201557000_iOS.jpg" alt="Finding Kuku field photograph 201557" loading="lazy" decoding="async" />
-                    <figcaption>Field photograph from the East Cape journey.</figcaption>
-                </figure>
-
-                <figure class="project-figure">
-                    <img src="../images/projects/finding-kuku/20220928_201615000_iOS.jpg" alt="Finding Kuku field photograph 201615" loading="lazy" decoding="async" />
-                    <figcaption>Field photograph from the East Cape journey.</figcaption>
-                </figure>
             </div>
-        </div>
-    </section>
 
-    <!-- Lightbox container -->
+            <div class="cin-chapter" id="tools">
+                <h2 class="cin-chapter-label">Tools</h2>
+                <ul class="tools-list">
+                    <li>Photography</li>
+                    <li>Mapping</li>
+                    <li>Print Design</li>
+                </ul>
+            </div>
+
+            <div class="cin-chapter" id="gallery">
+                <h2 class="cin-chapter-label">Gallery</h2>
+                <div class="cin-gallery">
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/finding-kuku/FindingKuku1.png" alt="The camera used to capture the images in Finding Kuku" loading="lazy" decoding="async" />
+                        <figcaption>The camera used to capture the images in Finding Kuku.</figcaption>
+                    </figure>
+
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/finding-kuku/FindingKuku5.jpg" alt="Final spread showing landscape photography from the East Cape journey" loading="lazy" decoding="async" />
+                        <figcaption>Final spread showing landscape photography from the East Cape journey.</figcaption>
+                    </figure>
+
+                    <div class="cin-video-wrap">
+                        <iframe
+                            src="https://www.youtube.com/embed/AZJnNsCdyR0?si=i4l6VnR8KerQdT8h"
+                            title="Video walkthrough of the Finding Kuku publication"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/finding-kuku/FindingKuku6.jpg" alt="Additional spread from the publication" loading="lazy" decoding="async" />
+                        <figcaption>Additional spread from the publication.</figcaption>
+                    </figure>
+
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/finding-kuku/FindingKuku7.jpeg" alt="Detail view from the publication" loading="lazy" decoding="async" />
+                        <figcaption>Detail view from the publication.</figcaption>
+                    </figure>
+
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/finding-kuku/20220928_201518000_iOS.jpg" alt="Field photograph from the East Cape journey" loading="lazy" decoding="async" />
+                        <figcaption>Field photograph from the East Cape journey.</figcaption>
+                    </figure>
+
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/finding-kuku/20220928_201546000_iOS.jpg" alt="Field photograph from the East Cape journey" loading="lazy" decoding="async" />
+                        <figcaption>Field photograph from the East Cape journey.</figcaption>
+                    </figure>
+
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/finding-kuku/20220928_201557000_iOS.jpg" alt="Field photograph from the East Cape journey" loading="lazy" decoding="async" />
+                        <figcaption>Field photograph from the East Cape journey.</figcaption>
+                    </figure>
+
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/finding-kuku/20220928_201615000_iOS.jpg" alt="Field photograph from the East Cape journey" loading="lazy" decoding="async" />
+                        <figcaption>Field photograph from the East Cape journey.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
         <div class="lightbox-content">
@@ -183,31 +187,32 @@
             <a href="../index.html#about">ABOUT</a>
         </nav>
     </footer>
-    
+
     <script src="../script.js"></script>
+    <script src="../cin-script.js"></script>
     <script>
         fetch('../header.html')
             .then(res => res.text())
             .then(data => {
                 document.getElementById('site-header').innerHTML = data;
             });
-            
-        // Lightbox functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.project-gallery-column img');
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxCaption = document.getElementById('lightbox-caption');
-            const lightboxClose = document.querySelector('.lightbox-close');
-            const lightboxPrev = document.querySelector('.lightbox-prev');
-            const lightboxNext = document.querySelector('.lightbox-next');
-            
-            let currentIndex = 0;
-            const imageArray = Array.from(images);
-            
-            // Open lightbox
-            images.forEach((img, index) => {
-                img.addEventListener('click', function() {
+
+        // Lightbox for all project images
+        document.addEventListener('DOMContentLoaded', function () {
+            var images = document.querySelectorAll('.cin-inline-figure img, .cin-gallery img');
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            var lightboxCaption = document.getElementById('lightbox-caption');
+            var lightboxClose = document.querySelector('.lightbox-close');
+            var lightboxPrev = document.querySelector('.lightbox-prev');
+            var lightboxNext = document.querySelector('.lightbox-next');
+
+            var currentIndex = 0;
+            var imageArray = Array.from(images);
+
+            images.forEach(function (img, index) {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function () {
                     lightboxImg.src = this.src;
                     lightboxCaption.textContent = this.alt;
                     lightbox.classList.add('active');
@@ -215,38 +220,33 @@
                     document.body.style.overflow = 'hidden';
                 });
             });
-            
-            // Close lightbox
-            lightboxClose.addEventListener('click', function() {
+
+            lightboxClose.addEventListener('click', function () {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = '';
             });
-            
-            lightbox.addEventListener('click', function(e) {
+
+            lightbox.addEventListener('click', function (e) {
                 if (e.target === lightbox) {
                     lightbox.classList.remove('active');
                     document.body.style.overflow = '';
                 }
             });
-            
-            // Previous image
-            lightboxPrev.addEventListener('click', function() {
+
+            lightboxPrev.addEventListener('click', function () {
                 currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
                 lightboxImg.src = imageArray[currentIndex].src;
                 lightboxCaption.textContent = imageArray[currentIndex].alt;
             });
-            
-            // Next image
-            lightboxNext.addEventListener('click', function() {
+
+            lightboxNext.addEventListener('click', function () {
                 currentIndex = (currentIndex + 1) % imageArray.length;
                 lightboxImg.src = imageArray[currentIndex].src;
                 lightboxCaption.textContent = imageArray[currentIndex].alt;
             });
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
+
+            document.addEventListener('keydown', function (e) {
                 if (!lightbox.classList.contains('active')) return;
-                
                 if (e.key === 'Escape') {
                     lightbox.classList.remove('active');
                     document.body.style.overflow = '';
@@ -255,63 +255,6 @@
                 } else if (e.key === 'ArrowRight') {
                     lightboxNext.click();
                 }
-            });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.project-nav-item a');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                        
-                        document.querySelectorAll('.project-nav-item').forEach(item => {
-                            item.classList.remove('active');
-                        });
-                        
-                        const parentNavItem = this.parentElement;
-                        if (parentNavItem) {
-                            parentNavItem.classList.add('active');
-                        }
-                        
-                        history.pushState(null, null, targetId);
-                    }
-                });
-            });
-            
-            // Set active nav item on scroll
-            window.addEventListener('scroll', function() {
-                const scrollPosition = window.scrollY;
-                
-                const sections = document.querySelectorAll('.section-marker');
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 150;
-                    const sectionBottom = sectionTop + section.offsetHeight;
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                        const sectionId = section.getAttribute('id');
-                        
-                        document.querySelectorAll('.project-nav-item').forEach(item => {
-                            item.classList.remove('active');
-                        });
-                        
-                        const activeNavItem = document.querySelector(`.project-nav-item a[href="#${sectionId}"]`);
-                        if (activeNavItem) {
-                            activeNavItem.parentElement.classList.add('active');
-                        }
-                    }
-                });
             });
         });
     </script>

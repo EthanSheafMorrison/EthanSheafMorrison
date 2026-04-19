@@ -1,317 +1,180 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tokotoko — Te Reo Language Learning Application — Ethan Sheaf-Morrison</title>
-    <meta name="description" content="A Māori language learning platform that reimagines how people engage with Te Reo Māori through interactive, story-driven design." />
     <link rel="stylesheet" href="../styles.css" />
-    <link rel="preload" as="image" href="../images/projects/tokotoko/tokotoko logo.png">
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Tokotoko — Te Reo Language Learning Application" />
-    <meta property="og:description" content="A Māori language learning platform that reimagines how people engage with Te Reo Māori through interactive, story-driven design." />
-    <meta property="og:image" content="https://ethansheaf.com/images/projects/Tokotoko/tokotoko-hero.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <style>
-      .project-nav { position:sticky; top:0; z-index:5; background:var(--bg,#fff); border-block:1px solid rgba(0,0,0,.08)}
-      .project-nav-inner{max-width:1200px;margin-inline:auto;padding:0 1rem}
-      .project-nav-list{display:flex;gap:.75rem;flex-wrap:wrap;padding:.75rem 0;margin:0;list-style:none}
-      .project-nav-item a{display:block;padding:.4rem .6rem;border-radius:.35rem}
-      .project-nav-item.active a{outline:1px solid currentColor}
-      .kbd{font-family:var(--font-primary,'Geist',sans-serif);font-size:.9em;padding:.1rem .35rem;border:1px solid rgba(0,0,0,.1);border-radius:.3rem}
-      .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-      .token{display:inline-block;padding:.15rem .4rem;border:1px solid rgba(0,0,0,.12);border-radius:.35rem;margin:.15rem 0 .15rem .25rem}
-      .callout{border:1px solid rgba(0,0,0,.12);padding:1rem;border-radius:.5rem}
-      .badge{display:inline-flex;align-items:center;gap:.4rem;padding:.2rem .5rem;border-radius:.4rem;border:1px solid rgba(0,0,0,.12)}
-      .ok{background:#e9f7ef}
-      .warn{background:#fff6e5}
-      .stop{background:#fdecea}
-      .legend{display:flex;gap:.5rem;flex-wrap:wrap}
-      .mini{opacity:.8;font-size:.95rem}
-      .muted{opacity:.7}
-      .section-divider{height:1px;background:rgba(0,0,0,.08);margin:2rem 0}
-      .table{width:100%;border-collapse:collapse}
-      .table th,.table td{border-bottom:1px solid rgba(0,0,0,.08);text-align:left;padding:.5rem .25rem}
-      .chip{display:inline-block;border:1px solid rgba(0,0,0,.12);padding:.1rem .4rem;border-radius:.4rem;margin-right:.3rem}
-      .project-figure img{background:#f6f6f6}
-    </style>
-  </head>
-  <body>
+    <link rel="stylesheet" href="../cin-styles.css" />
+</head>
+<body>
     <div id="site-header"></div>
 
-    <!-- Hero -->
-    <section class="project-hero">
-      <div class="project-hero-content">
-        <div class="project-title-section">
-          <span class="hero-label">PROJECT</span>
-          <h1>Tokotoko — Te Reo Language Learning Application</h1>
+    <section class="cin-hero">
+        <img class="cin-hero-bg active" src="../images/projects/tokotoko/Tokotoko_Pitch2.jpeg" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/tokotoko/tokotoko logo.png" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/tokotoko/Method.png" alt="" />
+        <div class="cin-hero-overlay">
+            <span class="cin-hero-index">Project</span>
+            <h1 class="cin-hero-title">Tokotoko</h1>
+            <p class="cin-hero-meta">2024–2025 · Design, Development, Research · Language Learning App</p>
+            <span class="cin-scroll-hint">↓</span>
         </div>
-        <div class="project-meta-grid">
-          <div class="project-meta-item"><span class="detail-label">DATE</span><p>2024—2025</p></div>
-          <div class="project-meta-item"><span class="detail-label">ROLE</span><p>Design, development, research</p></div>
-          <div class="project-meta-item"><span class="detail-label">TYPE</span><p>Language learning app, UX design, research</p></div>
-        </div>
-      </div>
     </section>
 
-    <section class="project-hero">
-      <div class="project-hero-content">
-        <div class="project-hero-image">
-          <img src="../images/projects/tokotoko/tokotoko logo.png" alt="Tokotoko language learning application" />
-        </div>
-      </div>
-    </section>
+    <div class="cin-content">
+        <aside class="cin-rail">
+            <ol class="cin-toc">
+                <li class="cin-toc-item active" data-chapter="overview"><a href="#overview">Overview</a></li>
+                <li class="cin-toc-item" data-chapter="design"><a href="#design">Design</a></li>
+                <li class="cin-toc-item" data-chapter="process"><a href="#process">Process</a></li>
+                <li class="cin-toc-item" data-chapter="technology"><a href="#technology">Technology</a></li>
+                <li class="cin-toc-item" data-chapter="impact"><a href="#impact">Impact</a></li>
+                <li class="cin-toc-item" data-chapter="gallery"><a href="#gallery">Gallery</a></li>
+            </ol>
+            <dl class="cin-rail-meta">
+                <dt>Date</dt>
+                <dd>2024–2025</dd>
+                <dt>Role</dt>
+                <dd>Design, development, research</dd>
+                <dt>Type</dt>
+                <dd>Language learning app, UX design</dd>
+            </dl>
+        </aside>
 
-  <!-- Project Navigation -->
-  <nav class="project-nav">
-    <div class="project-nav-inner">
-      <ul class="project-nav-list">
-        <li class="project-nav-item active"><a href="#overview">Overview</a></li>
-        <li class="project-nav-item"><a href="#approach">Design</a></li>
-        <li class="project-nav-item"><a href="#role">Role</a></li>
-        <li class="project-nav-item"><a href="#process">Process</a></li>
-        <li class="project-nav-item"><a href="#technology">Technology</a></li>
-        <li class="project-nav-item"><a href="#visualization">Visualization</a></li>
-        <li class="project-nav-item"><a href="#impact">Impact</a></li>
-        <li class="project-nav-item"><a href="#gallery">Gallery</a></li>
-      </ul>
+        <main class="cin-chapters">
+            <div class="cin-chapter" id="overview">
+                <h2 class="cin-chapter-label">Overview</h2>
+                <p><em>Tokotoko</em> is a Māori language learning platform that reimagines how people engage with Te Reo Māori through interactive, story-driven design. The project combines UX research, linguistic pedagogy, and data-driven feedback systems to create an app that prioritises cultural context, learner agency, and visual clarity. I collaborated on the concept design, UX structure, and visual communication system.</p>
+                <p>The name <em>Tokotoko</em> refers to the carved orator's staff—a symbol of speaking authority—aligning with the project's aim to empower learners to speak confidently and respectfully. Tokotoko moves beyond conventional flashcard or gamified models by embedding Te Reo within cultural narratives, idiomatic expressions, and everyday conversational settings.</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/tokotoko/Tokotoko_Pitch2.jpeg" alt="Tokotoko application interface showing story-driven learning design" loading="lazy" decoding="async" />
+                    <figcaption>Tokotoko application interface showing story-driven learning design.</figcaption>
+                </figure>
+            </div>
+
+            <div class="cin-chapter" id="design">
+                <h2 class="cin-chapter-label">Design</h2>
+                <p>The interface emphasises clarity and immersion. Lessons appear as scrollable "story threads" combining text, audio, and imagery, with gesture-based interactions to reveal translations or grammar notes. A minimal palette and typographic hierarchy support accessibility in both light and dark modes. The app also features a kōrero view, where learners can record and compare their speech with native pronunciation.</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/tokotoko/tokotoko logo.png" alt="The Tokotoko logo representing the orator's staff and speaking authority" loading="lazy" decoding="async" />
+                    <figcaption>The Tokotoko logo representing the orator's staff and speaking authority.</figcaption>
+                </figure>
+            </div>
+
+            <div class="cin-chapter" id="process">
+                <h2 class="cin-chapter-label">Process</h2>
+                <p><strong>Discovery.</strong> Cultural probe kit, diaries, and photo prompts to capture daily language touchpoints. UX surveys and interviews to prioritise barriers and motivators.</p>
+                <p><strong>Prototype.</strong> Interactive transcript player, vocabulary capture, and spaced repetition. Early playlists and difficulty tagging. Low-latency UI tests on mobile.</p>
+                <p><strong>Evaluate.</strong> Usability tests on comprehension, retention, and affect. Compare playlist vs. algorithmic feed. Measure time-on-task and return rate.</p>
+                <p><strong>Iterate.</strong> Refine familiarity model, add social features, and extend content taxonomy for contexts, registers, and domains.</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/tokotoko/Method.png" alt="Research and design methodology informing the Tokotoko platform" loading="lazy" decoding="async" />
+                    <figcaption>Research and design methodology informing the Tokotoko platform.</figcaption>
+                </figure>
+            </div>
+
+            <div class="cin-chapter" id="technology">
+                <h2 class="cin-chapter-label">Technology</h2>
+                <ul class="tools-list">
+                    <li>Web app: Next.js + TypeScript</li>
+                    <li>Transcripts: WebVTT with word-level timing and bilingual alignment</li>
+                    <li>Storage: Postgres (Supabase) with RLS for user data control</li>
+                    <li>Review engine: spaced repetition with item difficulty and lapse handling</li>
+                    <li>Analytics: privacy-preserving event pipeline for learning metrics</li>
+                    <li>Exports: CSV/JSON and Anki-ready decks</li>
+                </ul>
+            </div>
+
+            <div class="cin-chapter" id="impact">
+                <h2 class="cin-chapter-label">Impact</h2>
+                <p>Tokotoko serves as both a pedagogical and cultural tool, encouraging engagement with Māori language revitalisation through design. The platform is being developed in collaboration with educators and linguists to ensure linguistic accuracy and cultural integrity, with future plans to expand into an open-source learning framework for indigenous languages.</p>
+            </div>
+
+            <div class="cin-chapter" id="gallery">
+                <h2 class="cin-chapter-label">Gallery</h2>
+                <div class="cin-gallery">
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/tokotoko/Tokotoko_Pitch2.jpeg" alt="Tokotoko application interface and design" loading="lazy" decoding="async" />
+                        <figcaption>Application interface.</figcaption>
+                    </figure>
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/tokotoko/tokotoko logo.png" alt="Tokotoko logo" loading="lazy" decoding="async" />
+                        <figcaption>Tokotoko logo.</figcaption>
+                    </figure>
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/tokotoko/Method.png" alt="Research methodology" loading="lazy" decoding="async" />
+                        <figcaption>Research methodology.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </main>
     </div>
-  </nav>
 
-     <!-- Project Content -->
-  <section class="project-content">
-    <div class="project-grid">
-      <!-- Left Column - Project Info -->
-      <div class="project-info-column">
-        <div id="overview" class="info-section section-marker">
-          <h3 class="section-label">OVERVIEW</h3>
-          <p><em>Tokotoko</em> is a Māori language learning platform that reimagines how people engage with Te Reo Māori through interactive, story-driven design. The project combines UX research, linguistic pedagogy, and data-driven feedback systems to create an app that prioritises cultural context, learner agency, and visual clarity. I collaborated on the concept design, UX structure, and visual communication system.</p>
-          <p>The name <em>Tokotoko</em> refers to the carved orator's staff—a symbol of speaking authority—aligning with the project's aim to empower learners to speak confidently and respectfully. Tokotoko moves beyond conventional flashcard or gamified models by embedding Te Reo within cultural narratives, idiomatic expressions, and everyday conversational settings. Each learning sequence is anchored by short, situational dialogues that integrate audio, transcription, and contextual explanations.</p>
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-nav">
+                <span class="lightbox-prev">&#10094;</span>
+                <span class="lightbox-next">&#10095;</span>
+            </div>
         </div>
-
-        <div id="approach" class="info-section section-marker">
-          <h3 class="section-label">DESIGN</h3>
-          <p>The interface emphasises clarity and immersion. Lessons appear as scrollable "story threads" combining text, audio, and imagery, with gesture-based interactions to reveal translations or grammar notes. A minimal palette and typographic hierarchy support accessibility in both light and dark modes. The app also features a kōrero view, where learners can record and compare their speech with native pronunciation.</p>
-        </div>
-        
-        <div id="role" class="info-section section-marker">
-          <h3 class="section-label">ROLE</h3>
-          <ul class="tools-list">
-            <li>Co-designer and researcher</li>
-            <li>Developed UI prototypes and design system</li>
-            <li>Structured the learning flow and interface components</li>
-            <li>Supported backend planning for progress tracking and vocabulary database</li>
-          </ul>
-        </div>
-
-        <div id="process" class="info-section section-marker">
-          <h3 class="section-label">PROCESS</h3>
-          <p><strong>Discovery.</strong> Cultural probe kit, diaries, and photo prompts to capture daily language touchpoints. UX surveys and interviews to prioritise barriers and motivators.</p>
-          <p><strong>Prototype.</strong> Interactive transcript player, vocabulary capture, and spaced repetition. Early playlists and difficulty tagging. Low-latency UI tests on mobile.</p>
-          <p><strong>Evaluate.</strong> Usability tests on comprehension, retention, and affect. Compare playlist vs. algorithmic feed. Measure time-on-task and return rate.</p>
-          <p><strong>Iterate.</strong> Refine familiarity model, add social features, and extend content taxonomy for contexts, registers, and domains.</p>
-        </div>
-
-        <div id="technology" class="info-section section-marker">
-          <h3 class="section-label">TECHNOLOGY</h3>
-          <p>A lightweight web stack optimised for media and annotation. Focus on transparent data models and exportability.</p>
-          <ul class="tools-list">
-            <li>Web app: Next.js + TypeScript</li>
-            <li>Transcripts: WebVTT with word-level timing and bilingual alignment</li>
-            <li>Storage: Postgres (Supabase) with RLS for user data control</li>
-            <li>Review engine: spaced repetition with item difficulty and lapse handling</li>
-            <li>Analytics: privacy-preserving event pipeline for learning metrics</li>
-            <li>Exports: CSV/JSON and Anki-ready decks</li>
-          </ul>
-        </div>
-
-        <div id="visualization" class="info-section section-marker">
-          <h3 class="section-label">VISUALIZATION</h3>
-          <p>Dashboards focus on comprehension and exposure rather than vanity scores.</p>
-          <ul class="tools-list">
-            <li><strong>Familiarity graph:</strong> tracks coverage of high-frequency vocab and multiword phrases</li>
-            <li><strong>Context heatmap:</strong> domains used this week (home, mahi, kai, travel)</li>
-            <li><strong>Retention bands:</strong> new, learning, mature, and due items</li>
-            <li><strong>Journey map:</strong> playlist paths and branching choices</li>
-          </ul>
-        </div>
-
-        <div id="impact" class="info-section section-marker">
-          <h3 class="section-label">IMPACT</h3>
-          <p>Tokotoko serves as both a pedagogical and cultural tool, encouraging engagement with Māori language revitalisation through design. The platform is being developed in collaboration with educators and linguists to ensure linguistic accuracy and cultural integrity, with future plans to expand into an open-source learning framework for indigenous languages.</p>
-        </div>
-
-        <div id="tools" class="info-section section-marker">
-          <h3 class="section-label">TOOLS</h3>
-          <ul class="tools-list">
-            <li>Next.js, TypeScript</li>
-            <li>Postgres/Supabase</li>
-            <li>WebVTT, FFmpeg</li>
-            <li>Figma for UX</li>
-            <li>Python notebooks for analysis</li>
-          </ul>
-        </div>
-
-        <div id="links" class="info-section section-marker">
-          <h3 class="section-label">LINKS</h3>
-          <ul class="tools-list">
-            <li><a href="#" target="_blank">Prototype (internal)</a></li>
-            <li><a href="#" target="_blank">Design research notes</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Right Column - Project Gallery -->
-      <div id="gallery" class="project-gallery-column section-marker">
-        <figure class="project-figure">
-          <img src="../images/projects/tokotoko/Tokotoko_Pitch2.jpeg" alt="Tokotoko application interface and design" />
-          <figcaption>Tokotoko application interface showing story-driven learning design.</figcaption>
-        </figure>
-
-        <div class="section-divider"></div>
-
-        <figure class="project-figure">
-          <img src="../images/projects/tokotoko/Method.png" alt="Tokotoko research and design methodology" />
-          <figcaption>Research and design methodology informing the Tokotoko platform.</figcaption>
-        </figure>
-
-        <figure class="project-figure">
-          <img src="../images/projects/tokotoko/tokotoko logo.png" alt="Tokotoko logo" />
-          <figcaption>The Tokotoko logo representing the orator's staff and speaking authority.</figcaption>
-        </figure>
-      </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
-  </section>
 
-  <!-- Lightbox container -->
-  <div id="lightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
-    <div class="lightbox-content">
-      <img class="lightbox-img" id="lightbox-img">
-      <div class="lightbox-nav">
-        <span class="lightbox-prev">&#10094;</span>
-        <span class="lightbox-next">&#10095;</span>
-      </div>
-    </div>
-    <div class="lightbox-caption" id="lightbox-caption"></div>
-  </div>
-
-    <!-- Footer -->
     <footer>
-      <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
-      <nav>
-        <a href="../index.html">HOME</a>
-        <a href="../index.html#projects">PROJECTS</a>
-        <a href="../index.html#about">ABOUT</a>
-      </nav>
+        <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
+        <nav>
+            <a href="../index.html">HOME</a>
+            <a href="../index.html#projects">PROJECTS</a>
+            <a href="../index.html#about">ABOUT</a>
+        </nav>
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../cin-script.js"></script>
     <script>
-      // header include
-      fetch('../header.html').then(r=>r.text()).then(t=>{document.getElementById('site-header').innerHTML=t});
+        fetch('../header.html')
+            .then(res => res.text())
+            .then(data => { document.getElementById('site-header').innerHTML = data; });
 
-      // smooth scroll + active state
-      document.addEventListener('DOMContentLoaded', function () {
-        const navLinks = document.querySelectorAll('.project-nav-item a');
-        navLinks.forEach(link => {
-          link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const el = document.querySelector(targetId);
-            if (!el) return;
-            const y = el.getBoundingClientRect().top + window.scrollY - 100;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-            history.pushState(null, '', targetId);
-          });
-        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var images = document.querySelectorAll('.cin-inline-figure img, .cin-gallery img');
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            var lightboxCaption = document.getElementById('lightbox-caption');
+            var lightboxClose = document.querySelector('.lightbox-close');
+            var lightboxPrev = document.querySelector('.lightbox-prev');
+            var lightboxNext = document.querySelector('.lightbox-next');
+            var currentIndex = 0;
+            var imageArray = Array.from(images);
 
-        const sections = document.querySelectorAll('.section-marker');
-        const items = document.querySelectorAll('.project-nav-item');
-        function syncActive() {
-          const scrollY = window.scrollY;
-          sections.forEach(sec => {
-            const top = sec.offsetTop - 150;
-            const bottom = top + sec.offsetHeight;
-            if (scrollY >= top && scrollY < bottom) {
-              const id = sec.getAttribute('id');
-              items.forEach(i => i.classList.remove('active'));
-              const active = document.querySelector(`.project-nav-item a[href="#${id}"]`);
-              active?.parentElement.classList.add('active');
-            }
-          });
-        }
-        window.addEventListener('scroll', syncActive, { passive: true });
-        syncActive();
-      });
-      
-      // Lightbox functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const images = document.querySelectorAll('.project-gallery-column img, .project-hero-image img');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        const lightboxClose = document.querySelector('.lightbox-close');
-        const lightboxPrev = document.querySelector('.lightbox-prev');
-        const lightboxNext = document.querySelector('.lightbox-next');
-        
-        if (!lightbox || !lightboxImg) return;
-        
-        let currentIndex = 0;
-        const imageArray = Array.from(images);
-        
-        // Open lightbox
-        images.forEach((img, index) => {
-          img.addEventListener('click', function() {
-            lightboxImg.src = this.src;
-            lightboxCaption.textContent = this.alt;
-            lightbox.classList.add('active');
-            currentIndex = index;
-            document.body.style.overflow = 'hidden';
-          });
+            images.forEach(function (img, index) {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function () {
+                    lightboxImg.src = this.src;
+                    lightboxCaption.textContent = this.alt;
+                    lightbox.classList.add('active');
+                    currentIndex = index;
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            lightboxClose.addEventListener('click', function () { lightbox.classList.remove('active'); document.body.style.overflow = ''; });
+            lightbox.addEventListener('click', function (e) { if (e.target === lightbox) { lightbox.classList.remove('active'); document.body.style.overflow = ''; } });
+            lightboxPrev.addEventListener('click', function () { currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length; lightboxImg.src = imageArray[currentIndex].src; lightboxCaption.textContent = imageArray[currentIndex].alt; });
+            lightboxNext.addEventListener('click', function () { currentIndex = (currentIndex + 1) % imageArray.length; lightboxImg.src = imageArray[currentIndex].src; lightboxCaption.textContent = imageArray[currentIndex].alt; });
+            document.addEventListener('keydown', function (e) {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+                else if (e.key === 'ArrowLeft') { lightboxPrev.click(); }
+                else if (e.key === 'ArrowRight') { lightboxNext.click(); }
+            });
         });
-        
-        // Close lightbox
-        lightboxClose.addEventListener('click', function() {
-          lightbox.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-        
-        lightbox.addEventListener('click', function(e) {
-          if (e.target === lightbox) {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        });
-        
-        // Previous image
-        lightboxPrev.addEventListener('click', function() {
-          currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-          lightboxImg.src = imageArray[currentIndex].src;
-          lightboxCaption.textContent = imageArray[currentIndex].alt;
-        });
-        
-        // Next image
-        lightboxNext.addEventListener('click', function() {
-          currentIndex = (currentIndex + 1) % imageArray.length;
-          lightboxImg.src = imageArray[currentIndex].src;
-          lightboxCaption.textContent = imageArray[currentIndex].alt;
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-          if (!lightbox.classList.contains('active')) return;
-          
-          if (e.key === 'Escape') {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-          } else if (e.key === 'ArrowLeft') {
-            lightboxPrev.click();
-          } else if (e.key === 'ArrowRight') {
-            lightboxNext.click();
-          }
-        });
-      });
     </script>
-  </body>
-  </html>
+</body>
+</html>

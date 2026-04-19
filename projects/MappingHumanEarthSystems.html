@@ -1,421 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapping Human Earth Systems — Ethan Sheaf-Morrison</title>
-  <meta name="description" content="Thesis project operationalising truthful, participatory visualisation across organic certification and Māori business networks." />
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="preload" as="image" href="../images/projects/MappingSystems/Mapping-01.png">
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Mapping Human Earth Systems" />
-  <meta property="og:description" content="Participatory mapping, data sovereignty, and fluid ontologies in practice." />
-  <meta property="og:image" content="https://ethansheaf.com/images/projects/MappingSystems/Mapping-01.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <style>
-    .project-nav { position:sticky; top:0; z-index:5; background:var(--bg,#fff); border-block:1px solid rgba(0,0,0,.08)}
-    .project-nav-inner{max-width:1200px;margin-inline:auto;padding:0 1rem}
-    .project-nav-list{display:flex;gap:.75rem;flex-wrap:wrap;padding:.75rem 0;margin:0;list-style:none}
-    .project-nav-item a{display:block;padding:.4rem .6rem;border-radius:.35rem}
-    .project-nav-item.active a{outline:1px solid currentColor}
-    .kbd{font-family:var(--font-primary,'Geist',sans-serif);font-size:.9em;padding:.1rem .35rem;border:1px solid rgba(0,0,0,.1);border-radius:.3rem}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .token{display:inline-block;padding:.15rem .4rem;border:1px solid rgba(0,0,0,.12);border-radius:.35rem;margin:.15rem 0 .15rem .25rem}
-    .callout{border:1px solid rgba(0,0,0,.12);padding:1rem;border-radius:.5rem}
-    .badge{display:inline-flex;align-items:center;gap:.4rem;padding:.2rem .5rem;border-radius:.4rem;border:1px solid rgba(0,0,0,.12)}
-    .ok{background:#e9f7ef}
-    .warn{background:#fff6e5}
-    .stop{background:#fdecea}
-    .legend{display:flex;gap:.5rem;flex-wrap:wrap}
-    .mini{opacity:.8;font-size:.95rem}
-    .muted{opacity:.7}
-    .section-divider{height:1px;background:rgba(0,0,0,.08);margin:2rem 0}
-    .table{width:100%;border-collapse:collapse}
-    .table th,.table td{border-bottom:1px solid rgba(0,0,0,.08);text-align:left;padding:.5rem .25rem}
-    .chip{display:inline-block;border:1px solid rgba(0,0,0,.12);padding:.1rem .4rem;border-radius:.4rem;margin-right:.3rem}
-    .project-figure img{background:#f6f6f6}
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapping Human Earth Systems — Ethan Sheaf-Morrison</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../cin-styles.css" />
 </head>
 <body>
-  <div id="site-header"></div>
+    <div id="site-header"></div>
 
-  <!-- Hero -->
-  <section class="project-hero">
-    <div class="project-hero-content">
-      <div class="project-title-section">
-        <span class="hero-label">PROJECT</span>
-        <h1>Mapping Human Earth Systems</h1>
-      </div>
-      <div class="project-meta-grid">
-        <div class="project-meta-item"><span class="detail-label">DATE</span><p>2024—2025</p></div>
-        <div class="project-meta-item"><span class="detail-label">ROLE</span><p>Research, design, development, writing</p></div>
-        <div class="project-meta-item"><span class="detail-label">TYPE</span><p>Thesis, participatory mapping, data viz</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="project-hero">
-    <div class="project-hero-content">
-      <div class="project-hero-image">
-        <img src="../images/projects/iterate/MDI_ITERATE_EXHIBITION-61.jpg" alt="Exhibition installation image from Mapping Human Earth Systems" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Sectioned Nav -->
-  <nav class="project-nav">
-    <div class="project-nav-inner">
-      <ul class="project-nav-list">
-        <li class="project-nav-item active"><a href="#overview">Overview</a></li>
-        <li class="project-nav-item"><a href="#truth">Truth Model</a></li>
-        <li class="project-nav-item"><a href="#geodesign">GeoDesign Loop</a></li>
-        <li class="project-nav-item"><a href="#barriers">Barriers</a></li>
-        <li class="project-nav-item"><a href="#case1">Case Study 1: Organics</a></li>
-        <li class="project-nav-item"><a href="#case2">Case Study 2: Māori Businesses</a></li>
-        <li class="project-nav-item"><a href="#participation">Participation & TK Labels</a></li>
-        <li class="project-nav-item"><a href="#system">System & Stack</a></li>
-        <li class="project-nav-item"><a href="#onboarding">Onboarding</a></li>
-        <li class="project-nav-item"><a href="#outcomes">Outcomes</a></li>
-        <li class="project-nav-item"><a href="#gallery">Gallery</a></li>
-        <li class="project-nav-item"><a href="#downloads">Downloads</a></li>
-        <li class="project-nav-item"><a href="#references">References</a></li>
-        <li class="project-nav-item"><a href="#links">Links</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Content -->
-  <section class="project-content">
-    <div class="project-grid">
-      <!-- Left column -->
-      <div class="project-info-column">
-
-        <div id="overview" class="info-section section-marker">
-          <h3 class="section-label">OVERVIEW</h3>
-          <p><strong>Mapping Human Earth Systems</strong> is a participatory mapping and visualisation project. It prototypes ways to show land use, ownership, and relationships between people and place without stripping context or agency from the people represented.</p>
-          <p>The work runs through two live case studies:</p>
-          <ul class="tools-list">
-            <li>A timeline map that tracks organic farm certification over time.</li>
-            <li>A network map of Māori owned and Māori led businesses in Wellington.</li>
-          </ul>
-          <p>Both prototypes sit inside a reusable system for handling data where consent, provenance, and cultural context are first-class, not afterthoughts.</p>
-          <div class="callout">
-            <strong>The core aim</strong> is to keep provenance, consent, and context attached to data at every stage. Collection, processing, and display are treated as one continuous process, not separate steps.
-          </div>
+    <section class="cin-hero">
+        <img class="cin-hero-bg active" src="../images/projects/MappingSystems/Mapping-01.png" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/MappingSystems/Mapping-02.png" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/MappingSystems/MappingHumanEarthSystems.jpeg" alt="" />
+        <img class="cin-hero-bg" src="../images/projects/MappingSystems/imageblackcover.jpg" alt="" />
+        <div class="cin-hero-overlay">
+            <span class="cin-hero-index">Project</span>
+            <h1 class="cin-hero-title">Mapping Human Earth Systems</h1>
+            <p class="cin-hero-meta">2024–2025 · Research, Design, Development · Thesis, Participatory Mapping</p>
+            <span class="cin-scroll-hint">↓</span>
         </div>
+    </section>
 
-        <div id="truth" class="info-section section-marker">
-          <h3 class="section-label">TRUTH MODEL</h3>
-          <p>The project treats truth as something that is not only factual but also situated. It uses two lenses when showing information.</p>
-          <div class="grid-2" style="margin-top: 1rem;">
-            <div>
-              <h4>Correspondence</h4>
-              <p>This is about factual accuracy. It covers things that can be verified externally, such as locations, dates, and certification status. A farm was inspected on this date. A business is located here. A certification moved from C1 to C2 in this year.</p>
+    <div class="cin-content">
+        <aside class="cin-rail">
+            <ol class="cin-toc">
+                <li class="cin-toc-item active" data-chapter="overview"><a href="#overview">Overview</a></li>
+                <li class="cin-toc-item" data-chapter="approach"><a href="#approach">Approach</a></li>
+                <li class="cin-toc-item" data-chapter="casestudies"><a href="#casestudies">Case Studies</a></li>
+                <li class="cin-toc-item" data-chapter="system"><a href="#system">System</a></li>
+                <li class="cin-toc-item" data-chapter="outcomes"><a href="#outcomes">Outcomes</a></li>
+                <li class="cin-toc-item" data-chapter="gallery"><a href="#gallery">Gallery</a></li>
+            </ol>
+            <dl class="cin-rail-meta">
+                <dt>Date</dt>
+                <dd>2024–2025</dd>
+                <dt>Role</dt>
+                <dd>Research, design, development, writing</dd>
+                <dt>Type</dt>
+                <dd>Thesis, participatory mapping, data viz</dd>
+            </dl>
+        </aside>
+
+        <main class="cin-chapters">
+            <div class="cin-chapter" id="overview">
+                <h2 class="cin-chapter-label">Overview</h2>
+                <p><strong>Mapping Human Earth Systems</strong> is a participatory mapping and visualisation project. It prototypes ways to show land use, ownership, and relationships between people and place without stripping context or agency from the people represented.</p>
+                <p>The work runs through two live case studies: a timeline map that tracks organic farm certification over time, and a network map of Māori owned and Māori led businesses in Wellington. Both prototypes sit inside a reusable system for handling data where consent, provenance, and cultural context are first-class considerations, not afterthoughts.</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/MappingSystems/Mapping-01.png" alt="Consent states and provenance ribbons applied to map layers" loading="lazy" decoding="async" />
+                    <figcaption>Consent states and provenance ribbons applied to map layers.</figcaption>
+                </figure>
+
+                <p>The project treats truth as something that is not only factual but also situated. It uses two lenses when showing information: <strong>Correspondence</strong>—factual accuracy covering things that can be verified externally, such as locations, dates, and certification status—and <strong>Coherence</strong>—internal consistency and lived reality, covering community narratives, tikanga, and relationships between businesses that do not behave like fixed data points.</p>
             </div>
-            <div>
-              <h4>Coherence</h4>
-              <p>This is about internal consistency and lived reality. It covers things like community narratives, tikanga, significance of place, and relationships between businesses. These do not behave like fixed data points. They are held in context and they can change.</p>
+
+            <div class="cin-chapter" id="approach">
+                <h2 class="cin-chapter-label">Approach</h2>
+                <p>The work follows an iterative geodesign loop: Representation → Process → Evaluation → Change → Impact → Decision. In practice: gather material, prototype with it, test with the community it describes, adjust, and only then treat anything as publishable.</p>
+                <p>The project is built to remove four common barriers to community owned mapping: <strong>Cost</strong> (most tooling is open source), <strong>Skills</strong> (the interface reveals complexity gradually), <strong>Data gaps</strong> (the system supports direct community input with visible provenance), and <strong>Trust</strong> (every record carries consent state, TK Label information, and visibility scope).</p>
+
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/MappingSystems/Mapping-02.png" alt="Certification timeline UI for Organics: C0 through to Certified" loading="lazy" decoding="async" />
+                    <figcaption>Certification timeline UI for Organics: C0→C1→C2→Certified.</figcaption>
+                </figure>
             </div>
-          </div>
-          <p class="muted">The interface surfaces both lenses at once. Quantitative layers sit on the map. Qualitative layers open in drawers with context, source, and constraints. Short narrative snapshots sit alongside the map so users can read why something matters, not just where it is.</p>
-        </div>
 
-        <div id="geodesign" class="info-section section-marker">
-          <h3 class="section-label">GEODESIGN LOOP</h3>
-          <p>The work follows an iterative loop.</p>
-          <p><span class="chip">Representation</span> → <span class="chip">Process</span> → <span class="chip">Evaluation</span> → <span class="chip">Change</span> → <span class="chip">Impact</span> → <span class="chip">Decision</span>.</p>
-          <p>In practice this means: gather material, prototype with it, test with the community it describes, adjust, and only then treat anything as publishable.</p>
-          <p class="muted">The map is not treated as neutral output. It is an active site where evidence and design inform each other.</p>
-        </div>
+            <div class="cin-chapter" id="casestudies">
+                <h2 class="cin-chapter-label">Case Studies</h2>
+                <p><strong>Case Study 1 — Organic Certification Timeline.</strong> Organic certification is not a yes or no state. It is a staged process that can take years. The interface lets the user scrub through time and see who is progressing, who is stalled, and where change is happening. The basemap is intentionally minimal to prioritise legibility over satellite texture.</p>
+                <p><strong>Case Study 2 — Māori Businesses.</strong> This prototype maps Māori business presence and relationships in Wellington. It is opt-in and supports multiple forms of verification: self-identified, community-verified, and certified. The system presents two main views: a geographic map showing clusters by suburb and ANZSIC category, and an abstract network-style map inspired by metro diagrams.</p>
 
-        <div id="barriers" class="info-section section-marker">
-          <h3 class="section-label">BARRIERS ADDRESSED</h3>
-          <p>The project is built to remove four common barriers to community owned mapping.</p>
-          <ul class="tools-list">
-            <li><strong>Cost:</strong> Most tooling is open source in order to reduce reliance on expensive GIS platforms.</li>
-            <li><strong>Skills:</strong> The interface reveals complexity gradually. Users can navigate light map views, then open raw tables if they want full detail. Inline help and plain language labels lower the technical barrier.</li>
-            <li><strong>Data gaps:</strong> The system supports direct community input. Users can place new points, add notes, and submit corrections. Provenance is always visible, including who added what and when.</li>
-            <li><strong>Trust:</strong> Every record carries consent state, TK Label information, and visibility scope. Contributors can choose to mark material as public, community only, or private. They can also retract.</li>
-          </ul>
-        </div>
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/MappingSystems/MappingHumanEarthSystems.jpeg" alt="Poster composition for Mapping Human Earth Systems" loading="lazy" decoding="async" />
+                    <figcaption>Poster composition for Mapping Human Earth Systems.</figcaption>
+                </figure>
+            </div>
 
-        <div id="case1" class="info-section section-marker">
-          <h3 class="section-label">CASE STUDY 1 — ORGANIC CERTIFICATION TIMELINE</h3>
-          <p>This prototype maps organic growers by certification stage across time.</p>
-          <p>Organic certification is not a yes or no state. It is a staged process that can take years.</p>
-          <div class="legend">
-            <span class="badge ok"><span class="kbd">C0</span> Registration</span>
-            <span class="badge ok"><span class="kbd">C1</span> Conversion</span>
-            <span class="badge ok"><span class="kbd">C2</span> Conversion</span>
-            <span class="badge ok"><span class="kbd">Certified</span> Full</span>
-          </div>
-          <p>The interface lets the user scrub through time and see who is progressing, who is stalled, and where change is happening. The basemap is intentionally minimal to prioritise legibility over satellite texture.</p>
-          <p>A table view exposes the underlying records in full, with personal information removed.</p>
-          <p class="muted">Early experiments in Unreal Engine were used to test immersive mapping and spatial storytelling, but the final delivery is browser based for accessibility and performance.</p>
-        </div>
+            <div class="cin-chapter" id="system">
+                <h2 class="cin-chapter-label">System & Stack</h2>
+                <ul class="tools-list">
+                    <li><strong>Data preparation</strong> uses Python and Pandas, including GeoPandas for spatial work.</li>
+                    <li><strong>Mapping and visualisation</strong> use Leaflet and React Leaflet with custom vector tiles and clustering logic similar to D3.</li>
+                    <li><strong>Design and interface elements</strong> are developed in Figma and Illustrator, including icon systems for consent and provenance.</li>
+                    <li><strong>Governance</strong> is built into the data model. Each record includes provenance fields, consent state, TK Label state, and an audit trail.</li>
+                </ul>
 
-        <div id="case2" class="info-section section-marker">
-          <h3 class="section-label">CASE STUDY 2 — MĀORI BUSINESSES</h3>
-          <p>This prototype maps Māori business presence and relationships in Wellington. It is opt in.</p>
-          <p>It supports multiple forms of verification.</p>
-          <ul class="tools-list">
-            <li><span class="badge warn">Self-identified</span> — Submitted directly by owners or community.</li>
-            <li><span class="badge ok">Community-verified</span> — Confirmed by existing network knowledge.</li>
-            <li><span class="badge ok">Certified</span> — Supported by governance or ownership evidence.</li>
-          </ul>
-          <p>The system presents two main views.</p>
-          <ul class="tools-list">
-            <li>A geographic map showing clusters by suburb and ANZSIC category.</li>
-            <li>An abstract network style map inspired by metro diagrams. This view is helpful when strict geography is less important than social or economic linkage.</li>
-          </ul>
-          <p>Users can also view sites of significance with culturally aware iconography and contextual explanation instead of generic map pins.</p>
-        </div>
+                <figure class="cin-inline-figure">
+                    <img src="../images/projects/MappingSystems/imageblackcover.jpg" alt="Thesis book cover: Mapping Human Earth Systems" loading="lazy" decoding="async" />
+                    <figcaption>Thesis book cover: Mapping Human/Earth Systems by Ethan Sheaf-Morrison.</figcaption>
+                </figure>
+            </div>
 
-        <div id="participation" class="info-section section-marker">
-          <h3 class="section-label">PARTICIPATION, FLUID ONTOLOGIES, TK LABELS</h3>
-          <p>The system is built for participation rather than extraction.</p>
-          <ul class="tools-list">
-            <li><strong>Add marker</strong> — Users can propose new businesses or places. New submissions are stored in a separate queue so they are visible but clearly marked as pending.</li>
-            <li><strong>Fluid ontology</strong> — Categories are not locked. Tags can evolve with community use. The system accepts that language around identity, activity, and belonging is not static.</li>
-            <li><strong>Consent and scope</strong> — Each entry carries a visible consent badge. It states where the information came from, how it is allowed to be used, who can see it, and whether it can be revoked.
-              <div style="margin-top: 0.5rem;">
-                <span class="token">Provenance: source</span>
-                <span class="token">Scope: public/community/private</span>
-                <span class="token">Revocation: enabled</span>
-              </div>
-            </li>
-            <li><strong>TK Labels</strong> — Traditional Knowledge Labels are embedded as metadata in the record. This makes expected cultural protocol visible at the point of use, not hidden in policy text. It clarifies conditions like attribution, respectful use, and limits on reuse.</li>
-            <li><strong>Story snapshots</strong> — Users can curate sequences of points, notes, and places into short walkthroughs. This supports education and advocacy without requiring a formal report.</li>
-          </ul>
-        </div>
+            <div class="cin-chapter" id="outcomes">
+                <h2 class="cin-chapter-label">Outcomes</h2>
+                <p>The output is not just a pair of demos. It is a reusable mapping kit that treats consent, provenance, context, and authorship as requirements. It includes two functioning prototypes—the certification timeline map and the Māori business network map—plus interface patterns that can generalise: time based layer chips, context drawers that sit alongside the map, and uncertainty and verification states shown as part of the data.</p>
+                <ul class="tools-list">
+                    <li><a href="../projects/Iterate.html">Iterate Exhibition</a></li>
+                </ul>
+            </div>
 
-        <div id="system" class="info-section section-marker">
-          <h3 class="section-label">SYSTEM & STACK</h3>
-          <ul class="tools-list">
-            <li><strong>Data preparation</strong> uses Python and Pandas, including GeoPandas for spatial work.</li>
-            <li><strong>Mapping and visualisation</strong> use Leaflet and React Leaflet with custom vector tiles and clustering logic similar to D3.</li>
-            <li><strong>Design and interface elements</strong> are developed in Figma and Illustrator, including icon systems for consent and provenance.</li>
-            <li><strong>Governance</strong> is built into the data model. Each record includes provenance fields, consent state, TK Label state, and an audit trail.</li>
-          </ul>
-        </div>
-
-        <div id="onboarding" class="info-section section-marker">
-          <h3 class="section-label">ONBOARDING</h3>
-          <p>The onboarding flow explains what the map is for, who it represents, and how contributions will be handled.</p>
-          <p>A short guided walkthrough introduces interaction patterns and data visibility.</p>
-          <p>A transparency panel links directly to sources, collection methods, and known gaps rather than hiding them in footnotes.</p>
-        </div>
-
-        <div id="outcomes" class="info-section section-marker">
-          <h3 class="section-label">OUTCOMES</h3>
-          <p>The output is not just a pair of demos.</p>
-          <ul class="tools-list">
-            <li>It is a reusable mapping kit that treats consent, provenance, context, and authorship as requirements.</li>
-            <li>It includes two functioning prototypes:
-              <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                <li>The certification timeline map.</li>
-                <li>The Māori business network map.</li>
-              </ul>
-            </li>
-            <li>It also proposes interface patterns that can generalise. Time based layer chips. Context drawers that sit alongside the map rather than below it. Uncertainty and verification states shown as part of the data, not disclaimers at the end.</li>
-          </ul>
-        </div>
-
-        <div id="links" class="info-section section-marker">
-          <h3 class="section-label">LINKS</h3>
-          <ul class="tools-list">
-            <li><a href="../projects/iterate.html">Iterate</a></li>
-            <!-- Add live prototype URLs when ready -->
-          </ul>
-        </div>
-      </div>
-
-      <!-- Right column -->
-      <div class="project-gallery-column">
-        <div id="gallery" class="section-marker">
-          <figure class="project-figure">
-            <img src="../images/projects/MappingSystems/Mapping-01.png" alt="Poster detail showing provenance ribbons and consent states" />
-            <figcaption>Consent states and provenance ribbons applied to map layers.</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="../images/projects/MappingSystems/Mapping-02.png" alt="Certification timeline UI" />
-            <figcaption>Certification timeline UI for Organics: C0→C1→C2→Certified.</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="../images/projects/MappingSystems/MappingHumanEarthSystems.jpeg" alt="Mapping Human Earth Systems poster composition" />
-            <figcaption>Poster composition for Mapping Human Earth Systems.</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="../images/projects/MappingSystems/imageblackcover.jpg" alt="Mapping Human Earth Systems thesis book cover" />
-            <figcaption>Thesis book cover: Mapping Human/Earth Systems by Ethan Sheaf-Morrison.</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="../images/projects/MappingSystems/MappingHumanEarthSystems1.jpeg" alt="Mapping Human Earth Systems detail 1" />
-            <figcaption>Detail view of mapping prototypes.</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="../images/projects/MappingSystems/MappingHumanEarthSystems2.jpeg" alt="Mapping Human Earth Systems detail 2" />
-            <figcaption>Detail view of certification and network mapping.</figcaption>
-          </figure>
-        </div>
-
-        <div id="downloads" class="section-marker">
-          <div class="section-divider"></div>
-          <h3 class="section-label">DOWNLOADS</h3>
-          <ul class="tools-list">
-            <li><a href="#" download>Thesis PDF (final)</a></li>
-            <li><a href="#" download>Design system spec</a></li>
-            <li><a href="#" download>Icon set: consent + TK</a></li>
-          </ul>
-        </div>
-
-        <div id="references" class="section-marker">
-          <div class="section-divider"></div>
-          <h3 class="section-label">REFERENCES</h3>
-          <table class="table mini">
-            <tbody>
-              <tr><td>D’Ignazio, C., & Klein, L. <em>Data Feminism</em>.</td></tr>
-              <tr><td>Drucker, J. “Humanities Approaches to Graphical Display.”</td></tr>
-              <tr><td>Kukutai, T., & Taylor, J. <em>Indigenous Data Sovereignty</em>.</td></tr>
-              <tr><td>Tufte, E. <em>The Visual Display of Quantitative Information</em>.</td></tr>
-              <tr><td>Wilkins, D. “Sites of significance” guidance.</td></tr>
-            </tbody>
-          </table>
-          <p class="muted">Full bibliography in thesis PDF.</p>
-        </div>
-      </div>
+            <div class="cin-chapter" id="gallery">
+                <h2 class="cin-chapter-label">Gallery</h2>
+                <div class="cin-gallery">
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/MappingSystems/Mapping-01.png" alt="Consent states and provenance ribbons" loading="lazy" decoding="async" />
+                        <figcaption>Consent states and provenance ribbons.</figcaption>
+                    </figure>
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/MappingSystems/Mapping-02.png" alt="Certification timeline UI" loading="lazy" decoding="async" />
+                        <figcaption>Certification timeline UI.</figcaption>
+                    </figure>
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/MappingSystems/MappingHumanEarthSystems.jpeg" alt="Poster composition" loading="lazy" decoding="async" />
+                        <figcaption>Poster composition.</figcaption>
+                    </figure>
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/MappingSystems/imageblackcover.jpg" alt="Thesis book cover" loading="lazy" decoding="async" />
+                        <figcaption>Thesis book cover.</figcaption>
+                    </figure>
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/MappingSystems/MappingHumanEarthSystems1.jpeg" alt="Detail view of mapping prototypes" loading="lazy" decoding="async" />
+                        <figcaption>Detail view of mapping prototypes.</figcaption>
+                    </figure>
+                    <figure class="cin-gallery-figure">
+                        <img src="../images/projects/MappingSystems/MappingHumanEarthSystems2.jpeg" alt="Detail view of certification and network mapping" loading="lazy" decoding="async" />
+                        <figcaption>Certification and network mapping detail.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </main>
     </div>
-  </section>
 
-  <!-- Lightbox container -->
-  <div id="lightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
-    <div class="lightbox-content">
-      <img class="lightbox-img" id="lightbox-img">
-      <div class="lightbox-nav">
-        <span class="lightbox-prev">&#10094;</span>
-        <span class="lightbox-next">&#10095;</span>
-      </div>
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-nav">
+                <span class="lightbox-prev">&#10094;</span>
+                <span class="lightbox-next">&#10095;</span>
+            </div>
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
-    <div class="lightbox-caption" id="lightbox-caption"></div>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
-    <nav>
-      <a href="../index.html">HOME</a>
-      <a href="../index.html#projects">PROJECTS</a>
-      <a href="../index.html#about">ABOUT</a>
-    </nav>
-  </footer>
+    <footer>
+        <div class="copyright">© 2025 Ethan Sheaf-Morrison</div>
+        <nav>
+            <a href="../index.html">HOME</a>
+            <a href="../index.html#projects">PROJECTS</a>
+            <a href="../index.html#about">ABOUT</a>
+        </nav>
+    </footer>
 
-  <script src="../script.js"></script>
-  <script>
-    // header include
-    fetch('../header.html').then(r=>r.text()).then(t=>{document.getElementById('site-header').innerHTML=t});
+    <script src="../script.js"></script>
+    <script src="../cin-script.js"></script>
+    <script>
+        fetch('../header.html')
+            .then(res => res.text())
+            .then(data => { document.getElementById('site-header').innerHTML = data; });
 
-    // smooth scroll + active state
-    document.addEventListener('DOMContentLoaded', function () {
-      const navLinks = document.querySelectorAll('.project-nav-item a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const el = document.querySelector(targetId);
-          if (!el) return;
-          const y = el.getBoundingClientRect().top + window.scrollY - 100;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-          history.pushState(null, '', targetId);
+        document.addEventListener('DOMContentLoaded', function () {
+            var images = document.querySelectorAll('.cin-inline-figure img, .cin-gallery img');
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            var lightboxCaption = document.getElementById('lightbox-caption');
+            var lightboxClose = document.querySelector('.lightbox-close');
+            var lightboxPrev = document.querySelector('.lightbox-prev');
+            var lightboxNext = document.querySelector('.lightbox-next');
+            var currentIndex = 0;
+            var imageArray = Array.from(images);
+
+            images.forEach(function (img, index) {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function () {
+                    lightboxImg.src = this.src;
+                    lightboxCaption.textContent = this.alt;
+                    lightbox.classList.add('active');
+                    currentIndex = index;
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            lightboxClose.addEventListener('click', function () { lightbox.classList.remove('active'); document.body.style.overflow = ''; });
+            lightbox.addEventListener('click', function (e) { if (e.target === lightbox) { lightbox.classList.remove('active'); document.body.style.overflow = ''; } });
+            lightboxPrev.addEventListener('click', function () { currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length; lightboxImg.src = imageArray[currentIndex].src; lightboxCaption.textContent = imageArray[currentIndex].alt; });
+            lightboxNext.addEventListener('click', function () { currentIndex = (currentIndex + 1) % imageArray.length; lightboxImg.src = imageArray[currentIndex].src; lightboxCaption.textContent = imageArray[currentIndex].alt; });
+            document.addEventListener('keydown', function (e) {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+                else if (e.key === 'ArrowLeft') { lightboxPrev.click(); }
+                else if (e.key === 'ArrowRight') { lightboxNext.click(); }
+            });
         });
-      });
-
-      const sections = document.querySelectorAll('.section-marker');
-      const items = document.querySelectorAll('.project-nav-item');
-      function syncActive() {
-        const scrollY = window.scrollY;
-        sections.forEach(sec => {
-          const top = sec.offsetTop - 150;
-          const bottom = top + sec.offsetHeight;
-          if (scrollY >= top && scrollY < bottom) {
-            const id = sec.getAttribute('id');
-            items.forEach(i => i.classList.remove('active'));
-            const active = document.querySelector(`.project-nav-item a[href="#${id}"]`);
-            active?.parentElement.classList.add('active');
-          }
-        });
-      }
-      window.addEventListener('scroll', syncActive, { passive: true });
-      syncActive();
-    });
-    
-    // Lightbox functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const images = document.querySelectorAll('.project-gallery-column img, .project-hero-image img');
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const lightboxCaption = document.getElementById('lightbox-caption');
-      const lightboxClose = document.querySelector('.lightbox-close');
-      const lightboxPrev = document.querySelector('.lightbox-prev');
-      const lightboxNext = document.querySelector('.lightbox-next');
-      
-      if (!lightbox || !lightboxImg) return;
-      
-      let currentIndex = 0;
-      const imageArray = Array.from(images);
-      
-      // Open lightbox
-      images.forEach((img, index) => {
-        img.addEventListener('click', function() {
-          lightboxImg.src = this.src;
-          lightboxCaption.textContent = this.alt;
-          lightbox.classList.add('active');
-          currentIndex = index;
-          document.body.style.overflow = 'hidden';
-        });
-      });
-      
-      // Close lightbox
-      lightboxClose.addEventListener('click', function() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-      
-      lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-          lightbox.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      });
-      
-      // Previous image
-      lightboxPrev.addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-        lightboxImg.src = imageArray[currentIndex].src;
-        lightboxCaption.textContent = imageArray[currentIndex].alt;
-      });
-      
-      // Next image
-      lightboxNext.addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % imageArray.length;
-        lightboxImg.src = imageArray[currentIndex].src;
-        lightboxCaption.textContent = imageArray[currentIndex].alt;
-      });
-      
-      // Keyboard navigation
-      document.addEventListener('keydown', function(e) {
-        if (!lightbox.classList.contains('active')) return;
-        
-        if (e.key === 'Escape') {
-          lightbox.classList.remove('active');
-          document.body.style.overflow = '';
-        } else if (e.key === 'ArrowLeft') {
-          lightboxPrev.click();
-        } else if (e.key === 'ArrowRight') {
-          lightboxNext.click();
-        }
-      });
-    });
-  </script>
+    </script>
 </body>
 </html>

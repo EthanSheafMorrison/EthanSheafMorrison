@@ -1,0 +1,388 @@
+/* ─── Cinematic Layout ───────────────────────────────────────────── */
+
+/* Hero */
+.cin-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 400px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.cin-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.cin-hero-bg.active {
+  opacity: 1;
+}
+
+.cin-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.05) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem;
+}
+
+.cin-hero-index {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.5rem;
+}
+
+.cin-hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.cin-hero-meta {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+}
+
+.cin-scroll-hint {
+  display: block;
+  margin-top: 2.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ─── 2-Column Content Grid ─────────────────────────────────────── */
+
+.cin-content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
+  padding: 0;
+  margin: 0;
+}
+
+/* ─── Left Rail ──────────────────────────────────────────────────── */
+
+.cin-rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--color-light-gray, #eee);
+  scrollbar-width: none;
+}
+
+.cin-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.cin-toc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cin-toc-item {
+  margin-bottom: 0.75rem;
+}
+
+.cin-toc-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray, #666);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cin-toc-item a::before {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.cin-toc-item.active a {
+  color: var(--color-black, #111);
+}
+
+.cin-toc-item.active a::before {
+  opacity: 1;
+}
+
+.cin-rail-meta {
+  margin: 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-light-gray, #eee);
+}
+
+.cin-rail-meta dt {
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray, #666);
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.cin-rail-meta dd {
+  font-size: 0.8rem;
+  color: var(--color-black, #111);
+  margin: 0;
+}
+
+/* ─── Center Chapters ────────────────────────────────────────────── */
+
+.cin-chapters {
+  padding: 5rem 3.5rem;
+}
+
+.cin-chapter {
+  padding-bottom: 8rem;
+  min-height: 55vh;
+}
+
+.cin-chapter:last-child {
+  padding-bottom: 4rem;
+  min-height: 0;
+}
+
+.cin-chapter-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gray, #666);
+  margin: 0 0 2.25rem;
+  font-weight: 400;
+}
+
+.cin-chapter p {
+  font-size: 1.0rem;
+  line-height: 1.82;
+  color: var(--color-black, #111);
+  max-width: 60ch;
+  margin-bottom: 1.5rem;
+}
+
+.cin-chapter + .cin-chapter::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--color-light-gray, #eee);
+  margin-bottom: 7rem;
+}
+
+.cin-chapter p:last-child {
+  margin-bottom: 0;
+}
+
+.cin-chapter .tools-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 60ch;
+}
+
+.cin-chapter .tools-list li {
+  font-size: 0.9rem;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--color-light-gray, #eee);
+  color: var(--color-black, #111);
+}
+
+.cin-chapter .tools-list li:first-child {
+  border-top: 1px solid var(--color-light-gray, #eee);
+}
+
+.cin-chapter .tools-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cin-chapter .tools-list a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Gallery (inline in center chapter) ────────────────────────── */
+
+.cin-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+  margin-top: 2rem;
+}
+
+.cin-gallery-figure {
+  margin: 0;
+}
+
+.cin-gallery-figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cin-gallery-figure:first-child {
+  grid-column: 1 / -1;
+}
+
+.cin-gallery-figure:first-child img {
+  aspect-ratio: 16 / 9;
+}
+
+.cin-gallery-figure img:hover {
+  opacity: 0.88;
+}
+
+.cin-gallery-figure figcaption {
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: var(--color-gray, #666);
+  padding: 0.4rem 0;
+  line-height: 1.4;
+}
+
+.cin-video-wrap {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
+.cin-video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ─── Inline Images ──────────────────────────────────────────────── */
+
+.cin-inline-figure {
+  margin: 3rem 0;
+}
+
+.cin-inline-figure img {
+  width: calc(100% + 3.5rem);
+  max-width: calc(100% + 3.5rem);
+  margin-left: -3.5rem;
+  display: block;
+  height: auto;
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.cin-inline-figure.cin-anim-ready img {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.cin-inline-figure.revealed img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cin-inline-figure figcaption {
+  margin-top: 0.625rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: var(--color-gray, #666);
+  line-height: 1.45;
+}
+
+.cin-inline-figure figcaption a {
+  color: inherit;
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .cin-content {
+    grid-template-columns: 1fr;
+  }
+
+  .cin-rail {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    border-right: none;
+    border-bottom: 1px solid var(--color-light-gray, #eee);
+    padding: 1rem 1.5rem;
+  }
+
+  .cin-rail-meta {
+    display: none;
+  }
+
+  .cin-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+
+  .cin-toc-item {
+    margin-bottom: 0;
+  }
+
+  .cin-chapters {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .cin-chapter {
+    padding-bottom: 4rem;
+    min-height: 0;
+  }
+
+  .cin-inline-figure img {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .cin-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .cin-hero-overlay {
+    padding: 1.5rem;
+  }
+
+  .cin-hero-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+}
