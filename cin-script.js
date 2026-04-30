@@ -1,15 +1,4 @@
 (function () {
-  function initHeroCycle() {
-    var slides = document.querySelectorAll('.cin-hero-bg');
-    if (slides.length < 2) return;
-    var current = 0;
-    setInterval(function () {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 4000);
-  }
-
   function initCinematicScroll() {
     const chapters = document.querySelectorAll('.cin-chapter');
     const tocItems = document.querySelectorAll('.cin-toc-item');
@@ -25,9 +14,6 @@
         wrap.classList.toggle('active', wrap.dataset.chapter === id);
       });
     }
-
-    // Hero image cycle
-    initHeroCycle();
 
     // Activate first chapter immediately
     if (chapters[0]) activate(chapters[0].id);
