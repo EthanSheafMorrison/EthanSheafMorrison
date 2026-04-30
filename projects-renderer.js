@@ -40,9 +40,45 @@ function renderMobileProject(project) {
     `;
 }
 
+// Tag classification for the filter UI. Tags not listed here are dropped from
+// the filter (still searchable via project tags, just not surfaced as a chip).
+const TYPE_TAGS = [
+    "Critical Cartography and Design Research", "Research", "Installation",
+    "Web", "Web Design", "Data", "Photography", "Mapping",
+    "Graphic Design", "Exhibition Design", "Typography", "Branding",
+    "Video", "Creative Coding", "Digital Media", "Design"
+];
+const TOPIC_TAGS = [
+    "Art", "Cultural", "Environmental", "Climate", "Digital",
+    "Visual", "Spatial", "Sequential", "Policy"
+];
+
+function renderFilters(visibleProjects) {
+    const counts = new Map();
+    visibleProjects.forEach(p => p.tags.forEach(t => {
+        counts.set(t, (counts.get(t) || 0) + 1);
+    }));
+
+    function renderGroup(container, tagOrder) {
+        if (!container) return;
+        container.innerHTML = tagOrder
+            .filter(t => counts.has(t))
+            .map(t => `
+                <label class="filter-option">
+                    <input type="checkbox" data-tag="${t.toLowerCase()}">
+                    ${t} (${counts.get(t)})
+                </label>
+            `).join('');
+    }
+
+    renderGroup(document.querySelector('[data-filter-group="type"]'), TYPE_TAGS);
+    renderGroup(document.querySelector('[data-filter-group="topic"]'), TOPIC_TAGS);
+}
+
 function renderAllProjects() {
     // Filter to only visible projects for rendering
     const visibleProjects = projectsData.filter(p => p.visible);
+    renderFilters(visibleProjects);
     
     // Render desktop projects
     const desktopContainer = document.querySelector('.projects-list');

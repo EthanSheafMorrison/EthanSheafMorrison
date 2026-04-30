@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:site_name" content="Ethan Sheaf-Morrison">
+    <meta property="og:description" content="The Dream Atlas — a project by Ethan Sheaf-Morrison. 2025–ongoing · Design, Development · Mapping, Research, Visual.">
+    <meta property="og:image" content="https://ethansheafmorrison.github.io/images/projects/DreamAtlas/dreams.png">
+    <meta name="twitter:title" content="The Dream Atlas — Ethan Sheaf-Morrison">
+    <meta name="twitter:image" content="https://ethansheafmorrison.github.io/images/projects/DreamAtlas/dreams.png">
+        <meta name="description" content="The Dream Atlas — a project by Ethan Sheaf-Morrison. 2025–ongoing · Design, Development · Mapping, Research, Visual.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Ethan Sheaf-Morrison">
+    <meta property="og:title" content="The Dream Atlas — Ethan Sheaf-Morrison">
+    <meta property="og:description" content="The Dream Atlas — a project by Ethan Sheaf-Morrison. 2025–ongoing · Design, Development · Mapping, Research, Visual.">
+    <meta property="og:url" content="https://ethansheafmorrison.github.io/projects/dream-atlas.html">
+    <meta property="og:image" content="https://ethansheafmorrison.github.io/images/projects/DreamAtlas/dreams.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Dream Atlas — Ethan Sheaf-Morrison">
+    <meta name="twitter:description" content="The Dream Atlas — a project by Ethan Sheaf-Morrison. 2025–ongoing · Design, Development · Mapping, Research, Visual.">
+    <meta name="twitter:image" content="https://ethansheafmorrison.github.io/images/projects/DreamAtlas/dreams.png">
     <title>The Dream Atlas - Ethan Sheaf-Morrison</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../cin-styles.css" />
@@ -116,14 +132,6 @@
         </main>
     </div>
 
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <div class="lightbox-content">
-            <img class="lightbox-img" id="lightbox-img">
-            <div class="lightbox-nav">
-                <span class="lightbox-prev">&#10094;</span>
-                <span class="lightbox-next">&#10095;</span>
-            </div>
         </div>
         <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
@@ -136,49 +144,11 @@
         <nav>
             <a href="../index.html">HOME</a>
             <a href="../index.html#projects">PROJECTS</a>
-            <a href="../index.html#about">ABOUT</a>
+            <a href="../about.html">ABOUT</a>
         </nav>
     </footer>
 
     <script src="../cin-script.js"></script>
-    <script>
-        fetch('../header.html')
-            .then(res => res.text())
-            .then(data => { document.getElementById('site-header').innerHTML = data; });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var images = document.querySelectorAll('.cin-inline-figure img, .cin-gallery img');
-            var lightbox = document.getElementById('lightbox');
-            var lightboxImg = document.getElementById('lightbox-img');
-            var lightboxCaption = document.getElementById('lightbox-caption');
-            var lightboxClose = document.querySelector('.lightbox-close');
-            var lightboxPrev = document.querySelector('.lightbox-prev');
-            var lightboxNext = document.querySelector('.lightbox-next');
-            var currentIndex = 0;
-            var imageArray = Array.from(images);
-
-            images.forEach(function (img, index) {
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', function () {
-                    lightboxImg.src = this.src;
-                    lightboxCaption.textContent = this.alt;
-                    lightbox.classList.add('active');
-                    currentIndex = index;
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            lightboxClose.addEventListener('click', function () { lightbox.classList.remove('active'); document.body.style.overflow = ''; });
-            lightbox.addEventListener('click', function (e) { if (e.target === lightbox) { lightbox.classList.remove('active'); document.body.style.overflow = ''; } });
-            lightboxPrev.addEventListener('click', function () { currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length; lightboxImg.src = imageArray[currentIndex].src; lightboxCaption.textContent = imageArray[currentIndex].alt; });
-            lightboxNext.addEventListener('click', function () { currentIndex = (currentIndex + 1) % imageArray.length; lightboxImg.src = imageArray[currentIndex].src; lightboxCaption.textContent = imageArray[currentIndex].alt; });
-            document.addEventListener('keydown', function (e) {
-                if (!lightbox.classList.contains('active')) return;
-                if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
-                else if (e.key === 'ArrowLeft') { lightboxPrev.click(); }
-                else if (e.key === 'ArrowRight') { lightboxNext.click(); }
-            });
-        });
-    </script>
+    <script src="../cin-lightbox.js"></script>
 </body>
 </html>
