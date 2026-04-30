@@ -322,9 +322,12 @@
         if (mobileNavTime) mobileNavTime.textContent = timeString;
       }
 
-      // Update time every minute
+      // Update time, aligning the first tick to the next real minute boundary
       updateTime();
-      setInterval(updateTime, 60000);
+      setTimeout(() => {
+        updateTime();
+        setInterval(updateTime, 60000);
+      }, 60000 - (Date.now() % 60000));
 
       // Mobile menu toggle
       if (mobileMenuToggle) {

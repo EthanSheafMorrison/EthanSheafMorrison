@@ -2,36 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Sitemap - Ethan Sheaf-Morrison</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap — Ethan Sheaf-Morrison</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        h1 { font-size: 2em; margin-bottom: 20px; }
-        ul { list-style-type: none; padding-left: 0; }
-        li { margin: 10px 0; }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        .sitemap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .sitemap h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin: 0 0 0.5rem;
+        }
+        .sitemap-section {
+            margin-top: 3rem;
+        }
+        .sitemap-section h2 {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(0, 0, 0, 0.5);
+            margin: 0 0 1rem;
+            font-weight: 500;
+        }
+        .sitemap-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .sitemap-list li {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .sitemap-list a {
+            display: block;
+            padding: 0.9rem 0;
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .sitemap-list a:hover {
+            opacity: 0.55;
+        }
     </style>
 </head>
 <body>
-    <h1>Sitemap</h1>
-    <ul>
-        <li><a href="projects/sample-project.html" aria-label="Project page for Sample Markdown Project">Sample Markdown Project</a></li>
-<li><a href="projects/FindingKuku.html" aria-label="Project page for Finding Kuku">Finding Kuku</a></li>
-<li><a href="projects/FindingKuku.html" aria-label="Project page for Finding Kuku2">Finding Kuku2</a></li>
-<li><a href="projects/MappingHumanEarthSystems.html" aria-label="Project page for Mapping Human/Earth Systems">Mapping Human/Earth Systems</a></li>
-<li><a href="projects/WesternSahara.html" aria-label="Project page for Western Sahara, Aotearoa, & the phosphate crisis">Western Sahara, Aotearoa, & the phosphate crisis</a></li>
-<li><a href="projects/GoogleWarming.html" aria-label="Project page for Google Warming">Google Warming</a></li>
-<li><a href="projects/CollatedFrames.html" aria-label="Project page for Collated_Frames">Collated_Frames</a></li>
-<li><a href="projects/Iterate.html" aria-label="Project page for Iterate Postgraduate Showcase">Iterate Postgraduate Showcase</a></li>
-<li><a href="projects/OnDisplay.html" aria-label="Project page for On Display Pt.2">On Display Pt.2</a></li>
-<li><a href="adlib/adlib.html" aria-label="Project page for adlib">adlib</a></li>
-<li><a href="projects/projects.html?id=finding-kuku" aria-label="Project page for FindingKuku MD">FindingKuku MD</a></li>
-<li><a href="projects/projects.html?id=kihikihi" aria-label="Project page for Kihikihi">Kihikihi</a></li>
-<li><a href="projects/projects.html?id=iterate" aria-label="Project page for Iterate Postgraduate Showcase">Iterate Postgraduate Showcase</a></li>
-<li><a href="projects/projects.html?id=empty-vessels" aria-label="Project page for Empty Vessels">Empty Vessels</a></li>
-<li><a href="projects/projects.html?id=geographic-visualisation" aria-label="Project page for Geographic Visualisation">Geographic Visualisation</a></li>
+    <div id="site-header"></div>
+    <main class="sitemap">
+        <h1>Sitemap</h1>
 
-    </ul>
+        <section class="sitemap-section">
+            <h2>Pages</h2>
+            <ul class="sitemap-list">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/cv.html">CV</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </section>
+
+        <section class="sitemap-section">
+            <h2>Projects</h2>
+            <ul class="sitemap-list" id="sitemap-projects"></ul>
+        </section>
+    </main>
+    <script src="projects-data.js"></script>
+    <script>
+        fetch('header.html')
+            .then(res => res.text())
+            .then(data => { document.getElementById('site-header').innerHTML = data; });
+
+        const list = document.getElementById('sitemap-projects');
+        list.innerHTML = projectsData
+            .filter(p => p.visible && !/^https?:\/\//.test(p.url))
+            .map(p => `<li><a href="${p.url}">${p.title}</a></li>`)
+            .join('');
+    </script>
 </body>
 </html>

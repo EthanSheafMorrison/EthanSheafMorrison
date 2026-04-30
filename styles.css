@@ -1,5 +1,5 @@
-/* Import Geist font */
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..500&display=swap');
+/* Import Geist + Geist Mono */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..500&family=Geist+Mono:wght@100..500&display=swap');
 
 /* CSS Variables */
 :root {
@@ -12,7 +12,7 @@
   
   /* Fonts */
   --font-primary: 'Geist', sans-serif;
-  --font-mono: 'Geist', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
   
   /* Layout */
   --max-width: 1400px;
