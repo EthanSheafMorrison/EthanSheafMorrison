@@ -51,7 +51,7 @@ const projectsData = [
         number: "06",
         title: "Saving Screen Time",
         url: "projects/SavingScreenTime.html",
-        image: "images/projects/GEO/TEST.png",
+        image: "images/projects/SST/Artboard1.png",
         tags: ["Digital", "Research", "Design"],
         description: "A research and design project exploring the relationship between digital consumption, attention, and wellbeing.",
         visible: true
@@ -75,7 +75,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "9",
+        number: "09",
         title: "Collated_Frames — Visual Storytelling",
         url: "projects/CollatedFrames.html",
         image: "images/projects/Collated-Frames/CollatedFrames1.jpg",
@@ -83,15 +83,6 @@ const projectsData = [
         description: "Exploring narrative through sequential imagery and experimental visual composition.",
         visible: true
     },
-    // {
-    //     number: "10",
-    //     title: "Adlib — Brutalist Web Design",
-    //     url: "projects/adlib.html",
-    //     image: "adlib/adlibsimg/Adlib-23.png",
-    //     tags: ["Web", "Design", "Experimental"],
-    //     description: "A playful, experimental approach to web design inspired by brutalism and improvisation.",
-    //     visible: false
-    // },
     {
         number: "10",
         title: "KihiKihi — Installation Art",
@@ -128,35 +119,8 @@ const projectsData = [
         description: "A mapping project exploring dreams, memory, and spatial narratives through visual storytelling.",
         visible: true
     },
-    // {
-    //     number: "15",
-    //     title: "Ändern — Language & Translation Research",
-    //     url: "projects/Andern.html",
-    //     image: "images/project-image.png",
-    //     tags: ["Research", "Language", "Design"],
-    //     description: "A personal art investigation into language and perspective, working inside German and English to see how thinking shifts when form and meaning move together.",
-    //     visible: true
-    // },
     {
         number: "14",
-        title: "Geographic Visualisation — Environmental Data",
-        url: "projects/geographic-visualisation.html",
-        image: "images/projects/GEO/TEST.png",
-        tags: ["Data", "Geography", "Research"],
-        description: "Tools and graphics for making complex environmental data accessible through maps and visual storytelling.",
-        visible: false
-    },
-    {
-        number: "15",
-        title: "OnDisplay — Series of Works",
-        url: "projects/sample-project.html",
-        image: "images/projects/GEO/TEST.png",
-        tags: ["Installation", "Spatial", "Art"],
-        description: "A curated series exploring the intersection of digital and physical display spaces through experimental exhibition design.",
-        visible: false
-    },
-    {
-        number: "16",
         title: "Pixaura — Digital Typography",
         url: "projects/Pixaura.html",
         image: "images/projects/Pixaura/EthanSheafMorrison_ass2_typespecimen_view_Page_1.jpg",
@@ -165,7 +129,7 @@ const projectsData = [
         visible: true
     },
     {
-        number: "17",
+        number: "15",
         title: "He Rito — Brand Identity",
         url: "projects/herito.html",
         image: "images/projects/HeRito/HeRitoExhibition09112023+(6).jpg",
