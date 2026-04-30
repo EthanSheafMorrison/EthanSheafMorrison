@@ -1,12 +1,9 @@
 // Simple script for loading projects without all the complexity
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded - simple script');
-    
     // Load data
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
-            console.log('Data loaded:', data);
             if (data.projects && data.projects.length > 0) {
                 displayProjects(data.projects);
                 setupProjectPreviews(data.projects);
@@ -24,15 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Get all section elements with class "projects-list"
         const sections = document.querySelectorAll('section.projects-list');
-        console.log('Found sections:', sections.length);
-        
         // Find the Selected Works section
         let selectedWorksUl = null;
         for (let i = 0; i < sections.length; i++) {
             const heading = sections[i].querySelector('h2');
             if (heading && heading.textContent.trim() === 'Selected Works') {
                 selectedWorksUl = sections[i].querySelector('ul');
-                console.log('Found Selected Works section with heading:', heading.textContent);
                 break;
             }
         }
@@ -43,11 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const li = createProjectListItem(project);
                 selectedWorksUl.appendChild(li);
             });
-            console.log('Featured projects displayed:', featuredProjects.length);
         } else {
-            console.warn('Selected Works section not found or no featured projects', 
-                         'Found UL:', !!selectedWorksUl, 
-                         'Featured projects:', featuredProjects.length);
         }
         
         // Display projects by year
@@ -62,9 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const li = createProjectListItem(project);
                     yearUl.appendChild(li);
                 });
-                console.log(`Year ${year} projects displayed:`, yearProjects.length);
             } else {
-                console.warn(`Year ${year} section not found or no projects for this year`);
             }
         });
         
@@ -77,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const heading = sections[i].querySelector('h2');
             if (heading && heading.textContent.trim() === 'Group Projects') {
                 groupProjectsUl = sections[i].querySelector('ul');
-                console.log('Found Group Projects section with heading:', heading.textContent);
                 break;
             }
         }
@@ -88,11 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const li = createProjectListItem(project);
                 groupProjectsUl.appendChild(li);
             });
-            console.log('Group projects displayed:', groupProjects.length);
         } else {
-            console.warn('Group Projects section not found or no group projects',
-                         'Found UL:', !!groupProjectsUl,
-                         'Group projects:', groupProjects.length);
         }
     }
     
@@ -126,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Get the project preview container
         const previewContainer = document.querySelector('.project-preview');
         if (!previewContainer) {
-            console.warn('Project preview container not found');
             return;
         }
         
@@ -167,8 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 previewContainer.style.visibility = 'hidden';
             });
         });
-        
-        console.log('Project preview hover effects set up');
     }
     
     function updatePreviewPosition(e, previewContainer) {
@@ -342,7 +322,6 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
         });
     } else {
-        console.warn('Dark mode toggle button not found');
     }
 
     // Setup dropdowns
