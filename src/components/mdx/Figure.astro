@@ -1,0 +1,14 @@
+---
+// Inline chapter figure — mirrors the original .cin-inline-figure markup so the
+// scroll-reveal + lightbox wiring and styling apply unchanged.
+interface Props {
+  src: string;
+  alt?: string;
+  caption?: string;
+}
+const { src, alt = "", caption } = Astro.props;
+---
+<figure class="cin-inline-figure">
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  {caption && <figcaption set:html={caption} />}
+</figure>

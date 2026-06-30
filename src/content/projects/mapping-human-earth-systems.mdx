@@ -1,0 +1,78 @@
+---
+title: "Mapping Human/Earth Systems — Data Visualization"
+number: "03"
+date: 2025-01-01
+summary: "Visualising the complex interrelations between people and environment using data-driven maps and diagrams."
+cover: "/images/projects/MappingSystems/Mapping-01.png"
+tags: ["Data", "Research", "Environmental"]
+featured: true
+tier: case-study
+role: "Research, design, development, writing"
+year: "2024–2025"
+researchQuestion: "How can community land, ownership, and relationships be mapped truthfully — without stripping context, consent, or agency from the people represented?"
+methods: ["Participatory mapping", "Iterative geodesign", "Critical GIS", "Community co-design"]
+outputs: ["Two interactive map prototypes", "Reusable mapping kit", "Master's thesis"]
+contribution: "A reusable mapping system that treats consent, provenance, and cultural context as first-class data — demonstrated through a certification-timeline map and a Māori-business network map."
+# type line: Thesis, Participatory Mapping
+gallery:
+  - src: "/images/projects/MappingSystems/Mapping-01.png"
+    alt: "Consent states and provenance ribbons"
+  - src: "/images/projects/MappingSystems/Mapping-02.png"
+    alt: "Certification timeline UI"
+  - src: "/images/projects/MappingSystems/MappingHumanEarthSystems.jpeg"
+    alt: "Poster composition"
+  - src: "/images/projects/MappingSystems/imageblackcover.jpg"
+    alt: "Thesis book cover"
+  - src: "/images/projects/MappingSystems/MappingHumanEarthSystems1.jpeg"
+    alt: "Detail view of mapping prototypes"
+  - src: "/images/projects/MappingSystems/MappingHumanEarthSystems2.jpeg"
+    alt: "Detail view of certification and network mapping"
+---
+
+import Figure from '../../components/mdx/Figure.astro';
+
+## Overview
+
+**Mapping Human Earth Systems** is a participatory mapping and visualisation project. It prototypes ways to show land use, ownership, and relationships between people and place without stripping context or agency from the people represented.
+
+The work runs through two live case studies: a timeline map that tracks organic farm certification over time, and a network map of Māori owned and Māori led businesses in Wellington. Both prototypes sit inside a reusable system for handling data where consent, provenance, and cultural context are first-class considerations, not afterthoughts.
+
+<Figure src="/images/projects/MappingSystems/Mapping-01.png" alt="Consent states and provenance ribbons applied to map layers" caption="Consent states and provenance ribbons applied to map layers." />
+
+The project treats truth as something that is not only factual but also situated. It uses two lenses when showing information: **Correspondence**—factual accuracy covering things that can be verified externally, such as locations, dates, and certification status—and **Coherence**—internal consistency and lived reality, covering community narratives, tikanga, and relationships between businesses that do not behave like fixed data points.
+
+## Approach
+
+The work follows an iterative geodesign loop: Representation → Process → Evaluation → Change → Impact → Decision. In practice: gather material, prototype with it, test with the community it describes, adjust, and only then treat anything as publishable.
+
+The project is built to remove four common barriers to community owned mapping: **Cost** (most tooling is open source), **Skills** (the interface reveals complexity gradually), **Data gaps** (the system supports direct community input with visible provenance), and **Trust** (every record carries consent state, TK Label information, and visibility scope).
+
+<Figure src="/images/projects/MappingSystems/Mapping-02.png" alt="Certification timeline UI for Organics: C0 through to Certified" caption="Certification timeline UI for Organics: C0→C1→C2→Certified." />
+
+## Case Studies
+
+**Case Study 1 — Organic Certification Timeline.** Organic certification is not a yes or no state. It is a staged process that can take years. The interface lets the user scrub through time and see who is progressing, who is stalled, and where change is happening. The basemap is intentionally minimal to prioritise legibility over satellite texture.
+
+**Case Study 2 — Māori Businesses.** This prototype maps Māori business presence and relationships in Wellington. It is opt-in and supports multiple forms of verification: self-identified, community-verified, and certified. The system presents two main views: a geographic map showing clusters by suburb and ANZSIC category, and an abstract network-style map inspired by metro diagrams.
+
+<Figure src="/images/projects/MappingSystems/MappingHumanEarthSystems.jpeg" alt="Poster composition for Mapping Human Earth Systems" caption="Poster composition for Mapping Human Earth Systems." />
+
+## System & Stack
+
+- **Data preparation** uses Python and Pandas, including GeoPandas for spatial work.
+
+- **Mapping and visualisation** use Leaflet and React Leaflet with custom vector tiles and clustering logic similar to D3.
+
+- **Design and interface elements** are developed in Figma and Illustrator, including icon systems for consent and provenance.
+
+- **Governance** is built into the data model. Each record includes provenance fields, consent state, TK Label state, and an audit trail.
+
+<Figure src="/images/projects/MappingSystems/imageblackcover.jpg" alt="Thesis book cover: Mapping Human Earth Systems" caption="Thesis book cover: Mapping Human/Earth Systems by Ethan Sheaf-Morrison." />
+
+## Outcomes
+
+The output is not just a pair of demos. It is a reusable mapping kit that treats consent, provenance, context, and authorship as requirements. It includes two functioning prototypes—the certification timeline map and the Māori business network map—plus interface patterns that can generalise: time based layer chips, context drawers that sit alongside the map, and uncertainty and verification states shown as part of the data.
+
+- [Iterate Exhibition](/projects/iterate)
+
+

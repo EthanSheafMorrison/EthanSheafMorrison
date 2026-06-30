@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About — Ethan Sheaf-Morrison">
+  <main class="about-container">
+    <section class="about-hero">
+      <h1>About</h1>
+    </section>
+
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          Ethan Sheaf is a designer, visual researcher, and storyteller based in Aotearoa New
+          Zealand. His practice navigates the spaces between communication design, indigenous
+          knowledge systems, data visualisation, and community mapping.
+        </p>
+        <p>
+          With a background in media and communication design, his work often takes the form of
+          systems-driven visuals — maps, networks, interfaces, publications — grounded in kaupapa
+          Māori values and critical design methods. Ethan's projects question how we represent data,
+          land, and people — and who those representations serve.
+        </p>
+        <p>
+          He holds a Master of Design Innovation from Te Herenga Waka—Victoria University of
+          Wellington, where his thesis explored truthful methods of mapping social, environmental,
+          and economic systems through indigenous and critical GIS approaches. In addition to
+          academic research, he has worked as a tutor, research assistant, and collaborator on
+          projects spanning environmental justice, data sovereignty, and visual storytelling.
+        </p>
+        <p>
+          Ethan's work exists between digital and tactile media — from screen-based dashboards to
+          photographic journeys and large-scale installations. Each project is shaped by a clear
+          intent: to make invisible systems visible, to reconnect stories to place, and to challenge
+          extractive narratives.
+        </p>
+        <a href="/cv" class="cv-link">View my CV →</a>
+      </div>
+      <div class="about-image-container">
+        <img src="/images/profile.jpg" alt="Portrait of Ethan Sheaf-Morrison" class="about-image" />
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .about-container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: 0 var(--gutter);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: calc(var(--baseline) * 8) var(--container-padding);
+  }
+  .about-hero {
+    grid-column: span 12;
+    margin-bottom: calc(var(--baseline) * 4);
+  }
+  .about-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 500;
+    margin-bottom: calc(var(--baseline) * 2);
+    letter-spacing: -0.02em;
+  }
+  .about-content {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: 0 var(--gutter);
+  }
+  .about-text {
+    grid-column: span 8;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--color-gray);
+  }
+  .about-text p {
+    margin-bottom: calc(var(--baseline) * 2);
+  }
+  .cv-link {
+    display: inline-block;
+    margin-top: calc(var(--baseline) * 2);
+    font-weight: 500;
+    color: var(--color-black);
+    text-decoration: none;
+  }
+  .cv-link:hover {
+    color: var(--color-gray);
+  }
+  .about-image-container {
+    grid-column: span 4;
+  }
+  .about-image {
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: 768px) {
+    .about-container {
+      padding: calc(var(--baseline) * 4) var(--container-padding);
+    }
+    .about-text,
+    .about-image-container {
+      grid-column: span 12;
+    }
+    .about-hero h1 {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+  }
+</style>

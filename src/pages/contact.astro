@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Contact — Ethan Sheaf-Morrison">
+  <main class="contact-container">
+    <h1>Contact</h1>
+    <p>For inquiries, collaborations, or just to say hello, please reach out via email.</p>
+    <a href="mailto:ethan.sheafmorrison@gmail.com" class="contact-link"
+      >ethan.sheafmorrison@gmail.com</a
+    >
+  </main>
+</BaseLayout>
+
+<style>
+  .contact-container {
+    max-width: 600px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  .contact-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .contact-container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  .contact-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #000;
+    text-decoration: underline;
+  }
+  .contact-link:hover {
+    color: #555;
+  }
+</style>

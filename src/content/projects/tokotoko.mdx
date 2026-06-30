@@ -1,0 +1,72 @@
+---
+title: "Tokotoko — Te Reo Language Learning Application"
+number: "07"
+date: 2025-01-01
+summary: "A playful, experimental approach to learning te reo Māori."
+cover: "/images/projects/tokotoko/tokotoko logo.png"
+tags: ["Web", "Design"]
+featured: true
+tier: case-study
+role: "Design, development, research"
+year: "2024–2025"
+researchQuestion: "How can learning te reo Māori move beyond flashcards to build speaking confidence through cultural narrative and learner agency?"
+methods: ["Cultural probes", "Diary studies", "UX interviews", "Usability testing", "Spaced-repetition modelling"]
+outputs: ["Interactive learning prototype", "Pronunciation kōrero view", "Content taxonomy"]
+contribution: "A story-driven language-learning model that embeds te reo within cultural context, developed with educators and linguists toward an open-source framework for indigenous languages."
+# type line: Language Learning App
+gallery:
+  - src: "/images/projects/tokotoko/Tokotoko_Pitch2.jpeg"
+    alt: "Tokotoko application interface and design"
+  - src: "/images/projects/tokotoko/tokotoko logo.png"
+    alt: "Tokotoko logo"
+  - src: "/images/projects/tokotoko/Method.png"
+    alt: "Research methodology"
+---
+
+import Figure from '../../components/mdx/Figure.astro';
+
+## Overview
+
+_Tokotoko_ is a Māori language learning platform that reimagines how people engage with Te Reo Māori through interactive, story-driven design. The project combines UX research, linguistic pedagogy, and data-driven feedback systems to create an app that prioritises cultural context, learner agency, and visual clarity. I collaborated on the concept design, UX structure, and visual communication system.
+
+The name _Tokotoko_ refers to the carved orator's staff—a symbol of speaking authority—aligning with the project's aim to empower learners to speak confidently and respectfully. Tokotoko moves beyond conventional flashcard or gamified models by embedding Te Reo within cultural narratives, idiomatic expressions, and everyday conversational settings.
+
+<Figure src="/images/projects/tokotoko/Tokotoko_Pitch2.jpeg" alt="Tokotoko application interface showing story-driven learning design" caption="Tokotoko application interface showing story-driven learning design." />
+
+## Design
+
+The interface emphasises clarity and immersion. Lessons appear as scrollable "story threads" combining text, audio, and imagery, with gesture-based interactions to reveal translations or grammar notes. A minimal palette and typographic hierarchy support accessibility in both light and dark modes. The app also features a kōrero view, where learners can record and compare their speech with native pronunciation.
+
+<Figure src="/images/projects/tokotoko/tokotoko logo.png" alt="The Tokotoko logo representing the orator's staff and speaking authority" caption="The Tokotoko logo representing the orator's staff and speaking authority." />
+
+## Process
+
+**Discovery.** Cultural probe kit, diaries, and photo prompts to capture daily language touchpoints. UX surveys and interviews to prioritise barriers and motivators.
+
+**Prototype.** Interactive transcript player, vocabulary capture, and spaced repetition. Early playlists and difficulty tagging. Low-latency UI tests on mobile.
+
+**Evaluate.** Usability tests on comprehension, retention, and affect. Compare playlist vs. algorithmic feed. Measure time-on-task and return rate.
+
+**Iterate.** Refine familiarity model, add social features, and extend content taxonomy for contexts, registers, and domains.
+
+<Figure src="/images/projects/tokotoko/Method.png" alt="Research and design methodology informing the Tokotoko platform" caption="Research and design methodology informing the Tokotoko platform." />
+
+## Technology
+
+- Web app: Next.js + TypeScript
+
+- Transcripts: WebVTT with word-level timing and bilingual alignment
+
+- Storage: Postgres (Supabase) with RLS for user data control
+
+- Review engine: spaced repetition with item difficulty and lapse handling
+
+- Analytics: privacy-preserving event pipeline for learning metrics
+
+- Exports: CSV/JSON and Anki-ready decks
+
+## Impact
+
+Tokotoko serves as both a pedagogical and cultural tool, encouraging engagement with Māori language revitalisation through design. The platform is being developed in collaboration with educators and linguists to ensure linguistic accuracy and cultural integrity, with future plans to expand into an open-source learning framework for indigenous languages.
+
+

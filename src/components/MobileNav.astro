@@ -1,0 +1,88 @@
+---
+// Mobile header + full-screen nav overlay, shown below 768px (legacy CSS handles
+// visibility). Provided site-wide so every page has mobile navigation; links use
+// absolute paths so they resolve from interior pages, with same-page smooth
+// scroll when the anchor target exists.
+---
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mobile-nav-content">
+    <div class="mobile-nav-header">
+      <div class="mobile-nav-time" id="mobileNavTime">--:--</div>
+      <button class="mobile-nav-close" id="mobileNavClose">BACK</button>
+    </div>
+    <nav class="mobile-nav-menu">
+      <a href="/" class="mobile-nav-item">HOME</a>
+      <a href="/#projects-mobile" class="mobile-nav-item">PROJECTS</a>
+      <a href="/about" class="mobile-nav-item">ABOUT</a>
+      <a href="/#contact" class="mobile-nav-item">CONTACT</a>
+    </nav>
+    <div class="mobile-nav-footer">
+      <a href="https://www.instagram.com/ethan.sheaf/" class="mobile-nav-social" target="_blank" rel="noopener">INSTAGRAM</a>
+      <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" class="mobile-nav-social" target="_blank" rel="noopener">LINKEDIN</a>
+    </div>
+  </div>
+</div>
+
+<header class="mobile-header">
+  <div class="mobile-header-content">
+    <div class="mobile-header-time" id="mobileHeaderTime">--:--</div>
+    <a href="/" class="mobile-header-title" style="text-decoration:none">ETHAN SHEAF</a>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">MENU</button>
+  </div>
+</header>
+
+<script>
+  const overlay = document.getElementById("mobileNavOverlay");
+  const toggle = document.getElementById("mobileMenuToggle");
+  const close = document.getElementById("mobileNavClose");
+  const items = document.querySelectorAll<HTMLAnchorElement>(".mobile-nav-item");
+  const headerTime = document.getElementById("mobileHeaderTime");
+  const navTime = document.getElementById("mobileNavTime");
+
+  function updateTime() {
+    const t = new Date().toLocaleTimeString("en-US", {
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    if (headerTime) headerTime.textContent = t;
+    if (navTime) navTime.textContent = t;
+  }
+  updateTime();
+  setTimeout(() => {
+    updateTime();
+    setInterval(updateTime, 60000);
+  }, 60000 - (Date.now() % 60000));
+
+  function closeNav() {
+    overlay?.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  toggle?.addEventListener("click", () => {
+    overlay?.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+  close?.addEventListener("click", closeNav);
+  overlay?.addEventListener("click", (e) => {
+    if (e.target === overlay) closeNav();
+  });
+
+  // Same-page anchors smooth-scroll; cross-page links navigate normally.
+  items.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const href = item.getAttribute("href") || "";
+      const hashIndex = href.indexOf("#");
+      if (hashIndex !== -1) {
+        const id = href.slice(hashIndex + 1);
+        const onHome = location.pathname === "/" || location.pathname === "/index.html";
+        const target = onHome ? document.getElementById(id) : null;
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+      closeNav();
+    });
+  });
+</script>
