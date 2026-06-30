@@ -1,0 +1,25 @@
+---
+// A row of 2–3 inline figures. Each child keeps the `.cin-inline-figure`
+// markup so the scroll-reveal + lightbox wiring in ProjectLayout applies
+// unchanged; the row container takes over the left "bleed" alignment.
+interface Item {
+  src: string;
+  alt?: string;
+  caption?: string;
+}
+interface Props {
+  images: Item[];
+  caption?: string;
+}
+const { images = [], caption } = Astro.props;
+const cols = images.length;
+---
+<div class="cin-figure-row" style={`--cin-row-cols: ${cols}`}>
+  {images.map((img) => (
+    <figure class="cin-inline-figure">
+      <img src={img.src} alt={img.alt ?? ""} loading="lazy" decoding="async" />
+      {img.caption && <figcaption set:html={img.caption} />}
+    </figure>
+  ))}
+  {caption && <figcaption class="cin-figure-row-caption" set:html={caption} />}
+</div>

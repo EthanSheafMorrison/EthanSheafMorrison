@@ -32,6 +32,7 @@ gallery:
 ---
 
 import Figure from '../../components/mdx/Figure.astro';
+import FigureRow from '../../components/mdx/FigureRow.astro';
 
 ## Overview
 
@@ -45,9 +46,10 @@ Ultimately, the project posits that people with ADHD are early indicators of how
 
 As the designer for the project, the role centred on translating dense, critical academic research into an accessible and engaging digital experience. This involved designing and building the project's digital presence from the ground up, including structuring the navigation across vital sections such as publications, team profiles, and the active study portal. The layout ensures that complex theoretical frameworks remain legible and approachable for a broader public audience. The live platform — including interactive tools such as the Screen Space Defacer browser extension and the Screen Time Horoscope — is accessible at [savingscreentime.com](https://www.savingscreentime.com).
 
-<Figure src="/images/projects/SST/Artboard2.png" alt="Wireframe of an application designed to promote mindful phone usage" caption="Application wireframe promoting mindful phone usage." />
-
-<Figure src="/images/projects/SST/Artboard3.png" alt="Data visualization showing a user's screen time across different apps" caption="Data visualization showing screen time across different apps." />
+<FigureRow images={[
+  { src: "/images/projects/SST/Artboard2.png", alt: "Wireframe of an application designed to promote mindful phone usage", caption: "Application wireframe promoting mindful phone usage." },
+  { src: "/images/projects/SST/Artboard3.png", alt: "Data visualization showing a user's screen time across different apps", caption: "Data visualization showing screen time across different apps." }
+]} />
 
 ## Tools
 

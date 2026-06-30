@@ -330,6 +330,44 @@
   color: inherit;
 }
 
+/* ─── Figure Rows (2–3 across) ───────────────────────────────────── */
+
+.cin-figure-row {
+  display: grid;
+  grid-template-columns: repeat(var(--cin-row-cols, 2), 1fr);
+  gap: 1rem;
+  margin: 3rem 0;
+  /* match the single-figure left bleed on the whole row */
+  width: calc(100% + 3.5rem);
+  max-width: calc(100% + 3.5rem);
+  margin-left: -3.5rem;
+}
+
+/* children sit normally inside the row — the row owns the bleed */
+.cin-figure-row .cin-inline-figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.cin-figure-row .cin-inline-figure img {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+}
+
+.cin-figure-row-caption {
+  grid-column: 1 / -1;
+  margin-top: 0.625rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: var(--color-gray, #666);
+  line-height: 1.45;
+}
+
+.cin-figure-row-caption a {
+  color: inherit;
+}
+
 /* ─── Mobile ─────────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
@@ -373,6 +411,13 @@
   }
 
   .cin-inline-figure img {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .cin-figure-row {
+    grid-template-columns: 1fr;
     width: 100%;
     max-width: 100%;
     margin-left: 0;
