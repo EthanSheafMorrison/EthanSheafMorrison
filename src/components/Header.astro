@@ -1,13 +1,14 @@
 ---
-// Sticky desktop header. Mirrors the original header.html markup/classes so the
-// legacy CSS (#site-header, header, .site-title, nav) applies unchanged.
-// Hidden below 768px, where MobileNav takes over.
+// Site top bar — matches the codex landing-page navbar (wordmark left, nav
+// right, monochrome Geist). Lives inside #site-header (sticky) from base.css.
+// Shown ≥768px; MobileNav takes over below. Styles: .sitebar in codex.css.
+const path = Astro.url.pathname;
 ---
-<header>
-  <div class="site-title"><a href="/">Ethan Sheaf</a></div>
-  <nav>
-    <a href="/">HOME</a>
-    <a href="/#projects">PROJECTS</a>
-    <a href="/about">ABOUT</a>
+<header class="sitebar">
+  <a class="sitebar-wordmark" href="/">Ethan Sheaf-Morrison</a>
+  <nav class="sitebar-nav" aria-label="Primary">
+    <a href="/#work">Work</a>
+    <a href="/#about">About</a>
+    <a href="/cv" aria-current={path.startsWith("/cv") ? "page" : undefined}>CV</a>
   </nav>
 </header>

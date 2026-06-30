@@ -12,6 +12,7 @@ interface Props {
   jsonLd?: Record<string, unknown>;
   showHeader?: boolean;
   showFooter?: boolean;
+  showMobileNav?: boolean;
   bodyClass?: string;
 }
 
@@ -23,6 +24,7 @@ const {
   jsonLd,
   showHeader = true,
   showFooter = true,
+  showMobileNav = true,
   bodyClass,
 } = Astro.props;
 
@@ -64,13 +66,13 @@ const ogImageAbs = new URL(ogImage, Astro.site).href;
   </head>
   <body class={bodyClass}>
     {showHeader && <div id="site-header"><Header /></div>}
-    <MobileNav />
+    {showMobileNav && <MobileNav />}
 
     <slot />
 
     {showFooter && <Footer />}
 
-    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    {showHeader && <div class="scroll-progress-bar" id="scrollProgressBar"></div>}
 
     <script>
       // Global scroll-progress bar (shared across all pages).

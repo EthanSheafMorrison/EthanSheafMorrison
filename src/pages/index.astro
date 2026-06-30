@@ -32,231 +32,282 @@ const jsonLd = {
   title="Ethan Sheaf-Morrison — Designer & Researcher"
   ogType="website"
   jsonLd={jsonLd}
+  showHeader={false}
   showFooter={false}
+  showMobileNav={false}
+  bodyClass="codex-page"
 >
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <section class="intro-splash">
-        <div class="intro-container">
-          <h2 class="parallax-header">Kia ora, I'm Ethan</h2>
-          <p>
-            I'm a designer and researcher based in Aotearoa New Zealand. My practice blends
-            indigenous storytelling, critical cartography, and digital systems thinking to
-            reimagine how we visualise land, data, and identity.
-          </p>
-        </div>
-      </section>
-      <div class="hero-details">
-        <div class="hero-location">
-          <span class="detail-label">LOCATION</span>
-          <p>Designer & Researcher based in Pōneke, Aotearoa</p>
-        </div>
-        <div class="hero-focus">
-          <span class="detail-label">FOCUS</span>
-          <p>Indigenous storytelling, critical cartography, and digital world-building</p>
-        </div>
-        <div class="hero-status">
-          <span class="detail-label">STATUS</span>
-          <p>Currently working on mapping projects and data visualization</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="codex" data-section="0">
+    <!-- ── Top bar ── -->
+    <header class="codex-top">
+      <span class="codex-wordmark">Ethan Sheaf-Morrison</span>
+      <nav class="codex-nav" aria-label="Sections">
+        <button type="button" data-goto="0">Intro</button>
+        <button type="button" data-goto="1">Work</button>
+        <button type="button" data-goto="2">About</button>
+        <a href="/cv">CV</a>
+      </nav>
+    </header>
 
-  <!-- All Projects (desktop) -->
-  <section class="all-projects" id="projects">
-    <div class="filter-sidebar">
-      <div class="filter-section">
-        <h3 class="filter-heading">FILTER</h3>
-        <div class="filter-group">
-          <h4 class="filter-group-heading">└ Type</h4>
-          <div class="filter-options" data-filter-group="type">
-            {
-              typeFacet.map((f) => (
-                <label class="filter-option">
-                  <input type="checkbox" data-tag={f.slug} />
-                  {f.tag} ({f.count})
-                </label>
-              ))
-            }
-          </div>
-        </div>
-        <div class="filter-group">
-          <h4 class="filter-group-heading">└ Topic</h4>
-          <div class="filter-options" data-filter-group="topic">
-            {
-              topicFacet.map((f) => (
-                <label class="filter-option">
-                  <input type="checkbox" data-tag={f.slug} />
-                  {f.tag} ({f.count})
-                </label>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-      <button class="clear-filters">CLEAR FILTERS</button>
-    </div>
+    <!-- ── Main: spines | stage | notes | spines ── -->
+    <div class="codex-main">
+      <div class="codex-spines codex-spines--left" id="codexSpinesLeft"></div>
 
-    <div class="projects-container">
-      <div class="projects-header">
-        <span class="header-date">#</span>
-        <span class="header-name">NAME</span>
-        <span class="header-type">TYPE</span>
-      </div>
-      <div class="projects-list">
-        {
-          projects.map((p) => (
-            <div class="project-row" data-image={p.data.cover}>
-              <div class="project-number">{p.data.number}</div>
-              <a href={projectHref(p)} class="project-title">{p.data.title}</a>
-              <div class="project-tags">
-                {p.data.tags.map((t) => <span>{t}</span>)}
+      <div class="codex-stage">
+        <!-- §I Intro -->
+        <section class="codex-pane is-active" data-pane="0" aria-label="Introduction">
+          <div class="codex-intro">
+            <div>
+              <div class="codex-eyebrow">Portfolio · 2019–2025 · §I</div>
+              <h1 class="codex-hero">Kia ora,<br />I'm Ethan</h1>
+              <div class="codex-subhead">Designer · Researcher · Aotearoa NZ</div>
+            </div>
+            <div>
+              <hr class="codex-rule" />
+              <p class="codex-lede">
+                I'm a designer and researcher based in Aotearoa New Zealand. My practice blends
+                indigenous storytelling, critical cartography, and digital systems thinking to
+                reimagine how we visualise land, data, and identity.
+              </p>
+              <button type="button" class="codex-cta" data-goto="1">See work §II →</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- §II Work -->
+        <section class="codex-pane" data-pane="1" aria-label="Selected work">
+          <div class="codex-work">
+            <div class="codex-section-head">
+              <span>Selected Work</span>
+              <span>{projects.length} projects</span>
+            </div>
+            <div class="codex-work-body">
+              <aside class="filter-sidebar">
+                <div class="filter-section">
+                  <h3 class="filter-heading">Filter</h3>
+                  <div class="filter-group">
+                    <h4 class="filter-group-heading">Type</h4>
+                    <div class="filter-options" data-filter-group="type">
+                      {
+                        typeFacet.map((f) => (
+                          <label class="filter-option">
+                            <input type="checkbox" data-tag={f.slug} />
+                            {f.tag} ({f.count})
+                          </label>
+                        ))
+                      }
+                    </div>
+                  </div>
+                  <div class="filter-group">
+                    <h4 class="filter-group-heading">Topic</h4>
+                    <div class="filter-options" data-filter-group="topic">
+                      {
+                        topicFacet.map((f) => (
+                          <label class="filter-option">
+                            <input type="checkbox" data-tag={f.slug} />
+                            {f.tag} ({f.count})
+                          </label>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="clear-filters">Clear</button>
+              </aside>
+
+              <div class="projects-container">
+                <div class="codex-work-bg" id="hoverBgA"></div>
+                <div class="codex-work-bg" id="hoverBgB"></div>
+                <div class="codex-work-cols">
+                  <span>Ref</span><span>Title</span><span>Tags</span><span>Year</span>
+                </div>
+                <div class="projects-list">
+                  {
+                    projects.map((p) => (
+                      <div class="project-row" data-image={p.data.cover}>
+                        <span class="project-number">{p.data.number}</span>
+                        <a href={projectHref(p)} class="project-title">
+                          {p.data.title}
+                        </a>
+                        <div class="project-tags">
+                          {p.data.tags.map((t) => <span>{t}</span>)}
+                        </div>
+                        <span class="project-year">{p.data.year ?? ""}</span>
+                        <p class="project-description">{p.data.summary}</p>
+                      </div>
+                    ))
+                  }
+                </div>
+                <div class="project-selection-bar" id="projectSelectionBar"></div>
               </div>
-              <div />
-              <div class="project-description">{p.data.summary}</div>
             </div>
-          ))
-        }
-      </div>
-      <div class="project-selection-bar" id="projectSelectionBar"></div>
-    </div>
-  </section>
-
-  <!-- About (desktop) -->
-  <section class="about-footer" id="about">
-    <div class="bio-intro">
-      <p>
-        Ethan Sheaf-Morrison is an independent <em>designer, researcher, and developer</em> based in
-        Aotearoa New Zealand. Grounded in his Māori whakapapa (Te Whānau-ā-Apanui), his work
-        intersects indigenous storytelling, critical cartography, and digital world-building. He
-        creates poetic, technically rigorous responses to social and environmental systems through
-        data visualisation, mapping, and typographic experimentation. He has worked with university
-        research centres, independent artists, and policy organisations on projects spanning from
-        phosphate trade research to geospatial tools for community engagement.
-      </p>
-    </div>
-    <div class="bio-grid">
-      <div class="bio-image">
-        <img src="/images/profile.jpg" alt="Ethan Sheaf-Morrison Portrait" />
-      </div>
-      <div class="bio-column">
-        <h3>EXPERIENCE</h3>
-        <p>Teaching Fellow, Victoria University — 2025</p>
-        <p>Research Assistant, Victoria University — 2021–</p>
-        <p>Design Tutor, Victoria University — 2021–</p>
-        <p>Summer Research Scholar — 2022–2023</p>
-      </div>
-      <div class="bio-column">
-        <h3>EDUCATION</h3>
-        <p>Te Herenga Waka, Victoria University<br />Master of Design with Distinction, 2024</p>
-        <p>Bachelor of Design Innovation, 2023</p>
-      </div>
-      <div class="bio-column">
-        <h3>CONTACT</h3>
-        <p><strong>Email</strong><br /><a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
-        <p>
-          <strong>Elsewhere</strong><br />
-          <a href="https://www.instagram.com/ethan.sheaf/" target="_blank" rel="noopener">Instagram</a><br />
-          <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank" rel="noopener">LinkedIn</a><br />
-          <a href="https://github.com/EthanSheafMorrison" target="_blank" rel="noopener">GitHub</a>
-        </p>
-        <p><strong>CV</strong><br /><a href="/cv">View CV</a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mobile Hero -->
-  <section class="mobile-hero" id="home">
-    <div class="mobile-hero-content mobile-fade-in">
-      <h1 class="mobile-hero-title">KIA ORA, I'M ETHAN</h1>
-      <p class="mobile-hero-text">
-        I'M A DESIGNER AND RESEARCHER BASED IN AOTEAROA NEW ZEALAND. MY PRACTICE BLENDS INDIGENOUS
-        STORYTELLING, CRITICAL CARTOGRAPHY, AND DIGITAL SYSTEMS THINKING TO REIMAGINE HOW WE
-        VISUALISE LAND, DATA, AND IDENTITY.
-      </p>
-      <img src="/images/profile.jpg" alt="Ethan Sheaf-Morrison Portrait" class="mobile-hero-image" />
-    </div>
-  </section>
-
-  <!-- Mobile Projects -->
-  <section class="mobile-projects" id="projects-mobile">
-    <h2 class="mobile-projects-header">PROJECTS</h2>
-    <div class="mobile-filter" id="mobileFilter">
-      <div class="mobile-filter-chips" id="mobileFilterChips"></div>
-      <button class="mobile-filter-clear" id="mobileFilterClear" aria-label="Clear filters">CLEAR</button>
-    </div>
-    <div class="mobile-projects-list">
-      {
-        projects.map((p) => (
-          <div class="mobile-project-item" data-image={p.data.cover}>
-            <div class="mobile-project-number">{p.data.number}</div>
-            <a href={projectHref(p)} class="mobile-project-title">{p.data.title}</a>
-            <div class="mobile-project-tags">
-              {p.data.tags.map((t) => <span class="mobile-project-tag">{t}</span>)}
+            <div class="codex-work-summary" id="codexWorkSummary">
+              <div class="codex-work-summary-inner">
+                <span class="codex-work-summary-ref" id="codexWorkSummaryRef"></span>
+                <span class="codex-work-summary-text" id="codexWorkSummaryText"></span>
+              </div>
             </div>
-            <p class="mobile-project-description">{p.data.summary}</p>
           </div>
-        ))
-      }
-    </div>
-  </section>
+        </section>
 
-  <!-- Mobile About -->
-  <section class="mobile-about" id="about-mobile">
-    <div class="mobile-about-content">
-      <h2 class="mobile-about-title">ABOUT</h2>
-      <p class="mobile-about-text">
-        Ethan Sheaf-Morrison is an independent <em>designer, researcher, and developer</em> based in
-        Aotearoa New Zealand. Grounded in his Māori whakapapa (Te Whānau-ā-Apanui), his work
-        intersects indigenous storytelling, critical cartography, and digital world-building.
-      </p>
-      <div class="mobile-about-grid">
-        <div class="mobile-about-column">
-          <h3>EXPERIENCE</h3>
-          <p>Teaching Fellow, Victoria University — 2025</p>
-          <p>Research Assistant, Victoria University — 2021–</p>
-          <p>Design Tutor, Victoria University — 2021–</p>
-          <p>Summer Research Scholar — 2022–2023</p>
+        <!-- §III About -->
+        <section class="codex-pane" data-pane="2" aria-label="About">
+          <div class="codex-about">
+            <div>
+              <div class="codex-eyebrow">About · §III</div>
+              <h2 class="codex-about-title">Designer<br />+ Researcher</h2>
+              <div class="codex-about-body">
+                <div class="codex-about-text">
+                  <p>
+                    Ethan Sheaf-Morrison is an independent <em>designer, researcher, and developer</em>
+                    based in Aotearoa New Zealand. Grounded in his Māori whakapapa (Te Whānau-ā-Apanui),
+                    his work intersects indigenous storytelling, critical cartography, and digital
+                    world-building.
+                  </p>
+                  <p>
+                    He creates poetic, technically rigorous responses to social and environmental
+                    systems through data visualisation, mapping, and typographic experimentation —
+                    working with university research centres, independent artists, and policy
+                    organisations.
+                  </p>
+                </div>
+                <div class="codex-about-meta">
+                  <img
+                    src="/images/profile.jpg"
+                    alt="Ethan Sheaf-Morrison portrait"
+                    class="codex-about-portrait"
+                  />
+                  <div class="codex-about-col">
+                    <h3>Experience</h3>
+                    <p>Teaching Fellow, Victoria University — 2025</p>
+                    <p>Research Assistant, Victoria University — 2021–</p>
+                    <p>Design Tutor, Victoria University — 2021–</p>
+                  </div>
+                  <div class="codex-about-col">
+                    <h3>Education</h3>
+                    <p>Te Herenga Waka, Victoria University — Master of Design with Distinction, 2024</p>
+                    <p>Bachelor of Design Innovation, 2023</p>
+                  </div>
+                  <div class="codex-about-col">
+                    <h3>Contact</h3>
+                    <p><a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
+                    <p>
+                      <a href="https://www.instagram.com/ethan.sheaf/" target="_blank" rel="noopener">Instagram</a>
+                      ·
+                      <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank" rel="noopener">LinkedIn</a>
+                      ·
+                      <a href="https://github.com/EthanSheafMorrison" target="_blank" rel="noopener">GitHub</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footnotes -->
+      <aside class="codex-notes" aria-label="Notes">
+        <div class="codex-notes-head">Notes</div>
+
+        <div class="codex-notes-group is-active" data-notes="0">
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[1]</span>
+              <span class="codex-note-label">Location</span>
+            </div>
+            <div class="codex-note-val">Pōneke, Aotearoa NZ</div>
+          </div>
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[2]</span>
+              <span class="codex-note-label">Focus</span>
+            </div>
+            <div class="codex-note-val">Indigenous storytelling, critical cartography, digital world-building</div>
+          </div>
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[3]</span>
+              <span class="codex-note-label">Status</span>
+            </div>
+            <div class="codex-note-val">Mapping & data-visualisation projects</div>
+          </div>
         </div>
-        <div class="mobile-about-column">
-          <h3>EDUCATION</h3>
-          <p>Te Herenga Waka, Victoria University<br />Master of Design with Distinction, 2024</p>
-          <p>Bachelor of Design Innovation, 2023</p>
+
+        <div class="codex-notes-group" data-notes="1">
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[1]</span>
+              <span class="codex-note-label">Count</span>
+            </div>
+            <div class="codex-note-val">{projects.length} projects, 2019–2025</div>
+          </div>
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[2]</span>
+              <span class="codex-note-label">Filter</span>
+            </div>
+            <div class="codex-note-val">By Type and Topic</div>
+          </div>
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[3]</span>
+              <span class="codex-note-label">Order</span>
+            </div>
+            <div class="codex-note-val">Curated sequence</div>
+          </div>
         </div>
-        <div class="mobile-about-column">
-          <h3>CONTACT</h3>
-          <p><strong>Email</strong><br /><a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
-          <p>
-            <strong>Elsewhere</strong><br />
-            <a href="https://www.instagram.com/ethan.sheaf/" target="_blank" rel="noopener">Instagram</a><br />
-            <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank" rel="noopener">LinkedIn</a><br />
-            <a href="https://github.com/EthanSheafMorrison" target="_blank" rel="noopener">GitHub</a>
-          </p>
+
+        <div class="codex-notes-group" data-notes="2">
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[1]</span>
+              <span class="codex-note-label">Based</span>
+            </div>
+            <div class="codex-note-val">Pōneke, Aotearoa NZ</div>
+          </div>
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[2]</span>
+              <span class="codex-note-label">Education</span>
+            </div>
+            <div class="codex-note-val">MDes (Dist.), Te Herenga Waka</div>
+          </div>
+          <div>
+            <div class="codex-note-key">
+              <span class="codex-note-num">[3]</span>
+              <span class="codex-note-label">Contact</span>
+            </div>
+            <div class="codex-note-val">ethan.sheafmorrison@gmail.com</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="codex-spines codex-spines--right" id="codexSpinesRight"></div>
+    </div>
+
+    <!-- ── Folio bar ── -->
+    <footer class="codex-folio">
+      <div class="codex-progress">
+        <div class="codex-progress-fill" id="codexProgressFill" style="width: 33.333%"></div>
+      </div>
+      <div class="codex-folio-row">
+        <div class="codex-folio-links">
+          <button type="button">§I</button>
+          <button type="button">§II</button>
+          <button type="button">§III</button>
+        </div>
+        <div class="codex-pager">
+          <button type="button" id="codexPrev" aria-label="Previous section" disabled>←</button>
+          <span class="codex-folio-count">p.&nbsp;<span id="codexPageNum">1</span>&nbsp;/&nbsp;3</span>
+          <button type="button" id="codexNext" aria-label="Next section">→</button>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Mobile Footer -->
-  <footer class="mobile-footer" id="contact">
-    <div class="mobile-footer-content">
-      <div class="mobile-footer-copyright">© 2026 Ethan Sheaf-Morrison</div>
-      <div class="mobile-footer-social">
-        <a href="https://www.instagram.com/ethan.sheaf/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/EthanSheafMorrison" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </div>
-  </footer>
-
-  <div class="project-hover-bg" id="hoverBgA"></div>
-  <div class="project-hover-bg" id="hoverBgB"></div>
-  <div class="mobile-hero-bg" id="mobileHeroBg"></div>
+    </footer>
+  </div>
 
   <script>
-    import { initHome } from "../scripts/home";
-    initHome();
+    import { initCodex } from "../scripts/codex";
+    initCodex();
   </script>
 </BaseLayout>

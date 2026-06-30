@@ -1,0 +1,1045 @@
+/* ============================================================
+   Codex — fixed, paged landing-page interface.
+   Adopts the "Landing Page.html" interaction (book/codex paging
+   with spines + footnotes + folio) on this site's Geist type
+   system. Everything is scoped under .codex so it never bleeds
+   into pages that still use legacy/base.css.
+   ============================================================ */
+
+:root {
+  /* Monochrome palette local to the codex (no red accent). */
+  --codex-ink: #111111;
+  --codex-bg: #f7f7f7;
+  --codex-line: rgba(17, 17, 17, 0.12);
+  --codex-line-soft: rgba(17, 17, 17, 0.07);
+  --codex-line-strong: rgba(17, 17, 17, 0.3);
+  --codex-muted: rgba(17, 17, 17, 0.4);
+  --codex-sub: rgba(17, 17, 17, 0.55);
+  --codex-body: rgba(17, 17, 17, 0.66);
+  --codex-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Lock page scroll — the codex owns the viewport. */
+body.codex-page {
+  overflow: hidden;
+  height: 100vh;
+  background: var(--codex-bg);
+}
+
+.codex {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--codex-bg);
+  color: var(--codex-ink);
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.codex *,
+.codex *::before,
+.codex *::after {
+  box-sizing: border-box;
+}
+
+.codex ::selection {
+  background: var(--codex-ink);
+  color: var(--codex-bg);
+}
+
+/* Shared mono label treatment */
+.codex .mono {
+  font-family: var(--font-mono);
+}
+.codex .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+}
+
+/* ── Site top bar (non-codex pages: projects, about, cv, …) ──────
+   Same look as the codex top bar, but a normal sticky header inside
+   #site-header. Resets the leaked legacy `header {}` / `nav {}` rules. */
+.sitebar {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  gap: 0;
+  height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(24px, 3vw, 52px);
+  border-bottom: 1px solid var(--codex-line);
+  font-family: var(--font-primary);
+  color: var(--codex-ink);
+}
+.sitebar-wordmark {
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--codex-ink);
+  text-decoration: none;
+}
+.sitebar-nav {
+  display: flex;
+  width: auto;
+  flex-wrap: nowrap;
+  gap: 24px;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+.sitebar-nav a {
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  text-decoration: none;
+  padding: 0;
+  transition: color 150ms ease;
+}
+.sitebar-nav a:hover,
+.sitebar-nav a[aria-current="page"] {
+  color: var(--codex-ink);
+}
+/* Mobile: hide the desktop bar; MobileNav covers ≤768px. */
+@media (max-width: 768px) {
+  .sitebar {
+    display: none;
+  }
+}
+
+/* ── Top bar ───────────────────────────────────────────────── */
+.codex-top {
+  height: 52px;
+  flex-shrink: 0;
+  /* Reset leaked legacy `header {}` rules from base.css (grid, max-width,
+     margin auto, mobile display:none / flex-direction:column). */
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  gap: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(24px, 3vw, 52px);
+  border-bottom: 1px solid var(--codex-line);
+}
+.codex-wordmark {
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.codex-nav {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  /* Reset leaked legacy `nav {}` rules (grid-column, width:100%, wrap). */
+  width: auto;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+.codex-nav button,
+.codex-nav a {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.codex-nav button:hover,
+.codex-nav a:hover,
+.codex-nav button[aria-current="true"] {
+  color: var(--codex-ink);
+}
+
+/* ── Main row: spines | stage | notes | spines ─────────────── */
+.codex-main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Spines (rotated section tabs) */
+.codex-spines {
+  display: flex;
+  flex-shrink: 0;
+}
+.codex-spines--left {
+  border-right: 2px solid var(--codex-line-strong);
+}
+.codex-spines--right {
+  border-left: 2px solid var(--codex-line-strong);
+}
+.codex-spines:empty {
+  border: none;
+}
+.codex-spine {
+  width: 36px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 200ms ease;
+}
+.codex-spines--left .codex-spine {
+  border-right: 1px solid var(--codex-line);
+}
+.codex-spines--right .codex-spine {
+  border-left: 1px solid var(--codex-line);
+}
+.codex-spine:hover {
+  background: rgba(17, 17, 17, 0.05);
+}
+.codex-spine .codex-spine-roman {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  line-height: 1;
+}
+.codex-spine .codex-spine-tick {
+  width: 1px;
+  height: 20px;
+  background: var(--codex-line);
+}
+.codex-spine .codex-spine-name {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  line-height: 1;
+}
+
+/* ── Stage + panes ─────────────────────────────────────────── */
+.codex-stage {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.codex-pane {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+.codex-pane.is-active {
+  display: flex;
+}
+.codex-pane.slide-right {
+  animation: codexSlideInRight 380ms var(--codex-ease) both;
+}
+.codex-pane.slide-left {
+  animation: codexSlideInLeft 380ms var(--codex-ease) both;
+}
+@keyframes codexSlideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes codexSlideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── §I Intro pane ─────────────────────────────────────────── */
+.codex-intro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px);
+  overflow-y: auto;
+}
+.codex-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  margin-bottom: 18px;
+}
+.codex-hero {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--codex-ink);
+  margin: 0;
+}
+.codex-subhead {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--codex-sub);
+}
+.codex-rule {
+  border: none;
+  height: 1px;
+  background: var(--codex-line);
+  width: 100%;
+  margin: 0 0 18px;
+}
+.codex-lede {
+  max-width: 30rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--codex-body);
+  font-weight: 400;
+  margin: 0 0 22px;
+}
+.codex-cta {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--codex-sub);
+  transition: color 150ms ease;
+}
+.codex-cta:hover {
+  color: var(--codex-ink);
+}
+
+/* ── §II Work pane ─────────────────────────────────────────── */
+.codex-work {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+.codex-section-head {
+  flex-shrink: 0;
+  padding: 14px clamp(24px, 3vw, 48px);
+  border-bottom: 1px solid var(--codex-line);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.codex-section-head span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+}
+.codex-work-body {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Filter sidebar (reuses .filter-sidebar id/markup + home logic) */
+.codex .filter-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--codex-line);
+  padding: 18px clamp(14px, 1.5vw, 22px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.codex .filter-heading {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+.codex .filter-group-heading {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--codex-sub);
+  margin: 0 0 8px;
+}
+.codex .filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.codex .filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--codex-body);
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+.codex .filter-option input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--codex-line-strong);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+.codex .filter-option input:checked {
+  background: var(--codex-ink);
+  border-color: var(--codex-ink);
+}
+.codex .clear-filters {
+  margin-top: auto;
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--codex-line);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  transition: border-color 150ms ease, color 150ms ease;
+}
+.codex .clear-filters:hover {
+  border-color: var(--codex-ink);
+  color: var(--codex-ink);
+}
+
+/* Projects table + hover layers */
+.codex .projects-container {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.codex-work-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+  z-index: 0;
+}
+.codex-work-bg.visible {
+  opacity: 0.1;
+}
+.codex-work-cols {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 64px 1fr 150px 56px;
+  gap: 12px;
+  padding: 8px clamp(24px, 3vw, 48px);
+  border-bottom: 1px solid var(--codex-line);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--codex-line-strong);
+}
+.codex-work-cols span:last-child {
+  text-align: right;
+}
+.codex .projects-list {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  overflow-y: auto;
+}
+.codex .project-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 150px 56px;
+  gap: 12px;
+  align-items: center;
+  padding: 13px clamp(24px, 3vw, 48px);
+  border-bottom: 1px solid var(--codex-line-soft);
+  transition: background 150ms ease, opacity 300ms, transform 300ms, max-height 300ms, padding 300ms;
+  cursor: default;
+}
+.codex .project-row:hover {
+  background: rgba(17, 17, 17, 0.03);
+}
+.codex .project-number {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--codex-line-strong);
+}
+.codex .project-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--codex-ink);
+  line-height: 1.2;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.codex .project-title:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.codex .project-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.codex .project-tags span {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  border: 1px solid var(--codex-line);
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+.codex .project-year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--codex-line-strong);
+  text-align: right;
+}
+/* hidden description holds summary text for the hover bar */
+.codex .project-description {
+  display: none;
+}
+/* filter collapse */
+.codex .project-row.filter-hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  border-bottom-width: 0;
+}
+
+/* Selection bar that tracks the hovered row */
+.codex .project-selection-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  background: var(--codex-ink);
+  opacity: 0;
+  z-index: 2;
+  transition: transform 200ms var(--codex-ease), height 200ms var(--codex-ease), opacity 150ms ease;
+  pointer-events: none;
+}
+.codex .project-selection-bar.visible {
+  opacity: 1;
+}
+
+/* Hovered-project summary bar (mockup) */
+.codex-work-summary {
+  flex-shrink: 0;
+  height: 0;
+  overflow: hidden;
+  border-top: 1px solid var(--codex-line);
+  background: rgba(17, 17, 17, 0.025);
+  transition: height 250ms var(--codex-ease);
+}
+.codex-work-summary.visible {
+  height: 44px;
+}
+.codex-work-summary-inner {
+  padding: 11px clamp(24px, 3vw, 48px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.codex-work-summary-ref {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--codex-muted);
+  flex-shrink: 0;
+}
+.codex-work-summary-text {
+  font-size: 11px;
+  color: var(--codex-sub);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── §III About pane ───────────────────────────────────────── */
+.codex-about {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px);
+  overflow-y: auto;
+}
+.codex-about-title {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--codex-ink);
+  margin: 0 0 24px;
+}
+.codex-about-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+.codex-about-text p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--codex-body);
+  margin: 0 0 16px;
+}
+.codex-about-text em {
+  font-style: italic;
+}
+.codex-about-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.codex-about-portrait {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.02);
+  margin-bottom: 4px;
+}
+.codex-about-col {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--codex-line);
+}
+.codex-about-col h3 {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+.codex-about-col p {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--codex-body);
+  margin: 0 0 6px;
+}
+.codex-about-col a {
+  color: var(--codex-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--codex-line-strong);
+}
+.codex-about-col a:hover {
+  border-color: var(--codex-ink);
+}
+
+/* ── Footnotes sidebar ─────────────────────────────────────── */
+.codex-notes {
+  width: 252px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--codex-line);
+  padding: 20px 18px;
+  overflow-y: auto;
+}
+.codex-notes-head {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--codex-line);
+  margin-bottom: 18px;
+}
+.codex-notes-group {
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+}
+.codex-notes-group.is-active {
+  display: flex;
+}
+.codex-note-key {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+.codex-note-num {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--codex-line-strong);
+}
+.codex-note-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--codex-muted);
+}
+.codex-note-val {
+  font-size: 12px;
+  color: var(--codex-body);
+  padding-left: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+
+/* ── Folio bar ─────────────────────────────────────────────── */
+.codex-folio {
+  flex-shrink: 0;
+  /* Reset leaked legacy `footer {}` rules (grid, max-width, margin auto,
+     padding, and the mobile display:none that would hide the folio bar). */
+  display: block;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+.codex-progress {
+  height: 2px;
+  background: var(--codex-line);
+  position: relative;
+}
+.codex-progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  height: 100%;
+  background: var(--codex-ink);
+  transition: width 400ms var(--codex-ease);
+}
+.codex-folio-row {
+  height: 42px;
+  border-top: 1px solid var(--codex-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(24px, 3vw, 52px);
+}
+.codex-folio-links {
+  display: flex;
+  gap: 20px;
+}
+.codex-folio-links button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--codex-muted);
+  transition: color 200ms ease;
+}
+.codex-folio-links button[aria-current="true"] {
+  color: var(--codex-ink);
+  font-weight: 600;
+}
+.codex-pager {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.codex-pager button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--codex-muted);
+  transition: color 200ms ease;
+}
+.codex-pager button:hover:not(:disabled) {
+  color: var(--codex-ink);
+}
+.codex-pager button:disabled {
+  color: transparent;
+  cursor: default;
+}
+.codex-folio-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--codex-muted);
+}
+
+/* Codex scrollbars */
+.codex *::-webkit-scrollbar { width: 4px; height: 4px; }
+.codex *::-webkit-scrollbar-track { background: transparent; }
+.codex *::-webkit-scrollbar-thumb { background: rgba(17, 17, 17, 0.2); border-radius: 2px; }
+
+/* ── Mobile: unlock into a normal vertically-scrolling page ────
+   The desktop codex locks the viewport and pages between panes. On phones
+   that fights every finger gesture, so below 768px we tear down the fixed /
+   overflow:hidden layout and let the whole document scroll naturally. The
+   top bar becomes a sticky, tappable section nav; spines, notes and the
+   folio pager are dropped. Paired with the isMobile branch in codex.ts. */
+@media (max-width: 768px) {
+  /* Restore native page scrolling (desktop locked it to the viewport). */
+  html {
+    scroll-behavior: smooth;
+    /* Clip stray horizontal overflow at the document scroller so the sticky nav
+       can't be stretched past the viewport. Kept off .codex so it stays a
+       non-scrolling ancestor and the sticky top bar pins to the viewport. */
+    overflow-x: hidden;
+  }
+  body.codex-page {
+    overflow: visible;
+    height: auto;
+  }
+  .codex {
+    position: static;
+    inset: auto;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+  .codex-main {
+    flex: none;
+    display: block;
+    overflow: visible;
+  }
+  .codex-stage {
+    flex: none;
+    position: static;
+    overflow: visible;
+  }
+  /* All three panes stack and flow; no absolute positioning, all visible. */
+  .codex-pane {
+    position: static;
+    display: flex !important;
+    overflow: visible;
+    /* clear the sticky header when jumped to (e.g. arriving at /#work) */
+    scroll-margin-top: 60px;
+  }
+  /* No slide/translate animations once panes are simply stacked. */
+  .codex-pane.slide-left,
+  .codex-pane.slide-right {
+    animation: none;
+  }
+
+  /* Drop the desktop-only chrome. */
+  .codex-spines,
+  .codex-notes,
+  .codex-folio,
+  .codex-work-cols,
+  .codex-work-summary {
+    display: none;
+  }
+
+  /* ── Sticky wordmark bar (nav chips dropped — scrolling is the nav) ── */
+  .codex-top {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: 52px;
+    padding: 0 16px;
+    background: var(--codex-bg);
+    border-bottom: 1px solid var(--codex-line);
+  }
+  .codex-wordmark {
+    font-size: 12px;
+  }
+  .codex-nav {
+    display: none;
+  }
+
+  /* ── Intro / About: just comfortable scrolling sections ────── */
+  .codex-intro,
+  .codex-about {
+    overflow: visible;
+    padding: 32px 20px 40px;
+    gap: 28px;
+  }
+  .codex-hero {
+    font-size: clamp(2.75rem, 14vw, 4rem);
+  }
+  .codex-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 0;
+    font-size: 12px;
+  }
+  .codex-about-body {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .codex-about-portrait {
+    max-width: 180px;
+  }
+
+  /* ── Work: filter strip + naturally-flowing list ───────────── */
+  .codex-work,
+  .codex-work-body,
+  .codex .projects-container,
+  .codex .projects-list {
+    overflow: visible;
+    flex: none;
+    display: block;
+  }
+  .codex-section-head {
+    padding: 14px 16px;
+  }
+  /* Filter: a horizontally-scrolling strip of tappable controls. */
+  .codex .filter-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    border-right: none;
+    border-bottom: 1px solid var(--codex-line);
+    padding: 12px 16px;
+  }
+  .codex .filter-section {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .codex .filter-heading {
+    display: none;
+  }
+  .codex .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+  }
+  .codex .filter-group-heading {
+    margin: 0;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  .codex .filter-options {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .codex .filter-option {
+    white-space: nowrap;
+    font-size: 13px;
+    gap: 8px;
+    padding: 6px 0;
+    min-height: 36px;
+  }
+  .codex .filter-option input {
+    width: 18px;
+    height: 18px;
+  }
+  .codex .clear-filters {
+    margin: 0;
+    padding: 9px 12px;
+    font-size: 10px;
+  }
+
+  /* Project rows become tall, two-line, tappable cards. */
+  .codex .project-row {
+    grid-template-columns: 28px 1fr auto;
+    grid-template-areas:
+      "num title year"
+      ".   tags  tags";
+    row-gap: 10px;
+    column-gap: 12px;
+    align-items: start;
+    padding: 18px 16px;
+  }
+  .codex .project-number {
+    grid-area: num;
+    padding-top: 3px;
+  }
+  .codex .project-title {
+    grid-area: title;
+    font-size: 1.0625rem;
+    line-height: 1.3;
+  }
+  .codex .project-year {
+    grid-area: year;
+    padding-top: 3px;
+  }
+  /* Show tags again, wrapped under the title. Long single tags wrap their text
+     rather than forcing horizontal page overflow. */
+  .codex .project-tags {
+    grid-area: tags;
+    display: flex;
+    min-width: 0;
+  }
+  .codex .project-tags span {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .codex-pane.slide-right,
+  .codex-pane.slide-left {
+    animation: none;
+  }
+  .codex-progress-fill,
+  .codex .project-selection-bar,
+  .codex-work-summary,
+  .codex-work-bg {
+    transition: none;
+  }
+}

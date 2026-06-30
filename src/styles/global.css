@@ -7,6 +7,9 @@
 @import "./legacy/base.css";
 @import "./legacy/cinematic.css";
 
+/* Codex landing-page interface (scoped under .codex). */
+@import "./codex.css";
+
 /* Expose the original palette + type to Tailwind utilities (text-accent, font-mono, …). */
 @theme {
   --font-sans: "Geist", sans-serif;
