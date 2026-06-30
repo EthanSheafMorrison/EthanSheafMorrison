@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/legacy/experiments.css";
+
+const experiments = [
+  {
+    href: "#",
+    img: "/images/threejs-preview.jpg",
+    title: "Three.js Visualization",
+    desc: "An interactive 3D visualization exploring spatial relationships and data representation.",
+    tags: ["Three.js", "3D", "Interactive"],
+  },
+  {
+    href: "#",
+    img: "/images/data-viz-preview.jpg",
+    title: "Data Visualization",
+    desc: "Exploring complex datasets through interactive visual representations.",
+    tags: ["D3.js", "Data", "Visualization"],
+  },
+  {
+    href: "#",
+    img: "/images/generative-preview.jpg",
+    title: "Generative Art",
+    desc: "Algorithmic art generation using p5.js and creative coding techniques.",
+    tags: ["p5.js", "Generative", "Art"],
+  },
+];
+---
+
+<BaseLayout title="Experiments — Ethan Sheaf-Morrison">
+  <main class="experiments-container">
+    <section class="experiments-intro">
+      <h1>Experiments</h1>
+      <p>
+        A collection of interactive experiments and coding projects exploring various technologies
+        and creative concepts.
+      </p>
+    </section>
+
+    <section class="experiments-grid">
+      {
+        experiments.map((e) => (
+          <article class="experiment-card">
+            <a href={e.href}>
+              <div class="experiment-preview">
+                <img src={e.img} alt={`${e.title} preview`} loading="lazy" />
+              </div>
+              <div class="experiment-info">
+                <h2>{e.title}</h2>
+                <p>{e.desc}</p>
+                <div class="experiment-tags">
+                  {e.tags.map((t) => (
+                    <span class="tag">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+</BaseLayout>

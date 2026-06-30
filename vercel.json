@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/projects/FindingKuku.html", "destination": "/projects/finding-kuku", "permanent": true },
+    { "source": "/projects/MappingHumanEarthSystems.html", "destination": "/projects/mapping-human-earth-systems", "permanent": true },
+    { "source": "/projects/WesternSahara.html", "destination": "/projects/western-sahara", "permanent": true },
+    { "source": "/projects/GoogleWarming.html", "destination": "/projects/google-warming", "permanent": true },
+    { "source": "/projects/SavingScreenTime.html", "destination": "/projects/saving-screen-time", "permanent": true },
+    { "source": "/projects/Tokotoko.html", "destination": "/projects/tokotoko", "permanent": true },
+    { "source": "/projects/Iterate.html", "destination": "/projects/iterate", "permanent": true },
+    { "source": "/projects/CollatedFrames.html", "destination": "/projects/collated-frames", "permanent": true },
+    { "source": "/projects/kihikihi.html", "destination": "/projects/kihikihi", "permanent": true },
+    { "source": "/projects/EmptyVesselsVideo.html", "destination": "/projects/empty-vessels-video", "permanent": true },
+    { "source": "/projects/EmptyVesselsInstall.html", "destination": "/projects/empty-vessels-install", "permanent": true },
+    { "source": "/projects/Pixaura.html", "destination": "/projects/pixaura", "permanent": true },
+    { "source": "/projects/herito.html", "destination": "/projects/he-rito", "permanent": true },
+    { "source": "/projects/dream-atlas.html", "destination": "/projects/dream-atlas", "permanent": true },
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/cv.html", "destination": "/cv", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/experiments.html", "destination": "/experiments", "permanent": true }
+  ]
+}

@@ -1,0 +1,262 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getProjects, projectHref } from "../lib/projects";
+import { buildFacet } from "../lib/tags";
+
+const projects = await getProjects();
+const allTags = projects.flatMap((p) => p.data.tags);
+const typeFacet = buildFacet("type", allTags);
+const topicFacet = buildFacet("topic", allTags);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ethan Sheaf-Morrison",
+  alternateName: "Ethan Sheaf",
+  url: "https://ethansheaf.com",
+  sameAs: [
+    "https://www.instagram.com/ethan.sheaf/",
+    "https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/",
+    "https://github.com/EthanSheafMorrison",
+  ],
+  jobTitle: "Designer, Researcher, Developer",
+  worksFor: { "@type": "EducationalOrganization", name: "Victoria University of Wellington" },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Te Herenga Waka – Victoria University of Wellington",
+  },
+};
+---
+
+<BaseLayout
+  title="Ethan Sheaf-Morrison — Designer & Researcher"
+  ogType="website"
+  jsonLd={jsonLd}
+  showFooter={false}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <section class="intro-splash">
+        <div class="intro-container">
+          <h2 class="parallax-header">Kia ora, I'm Ethan</h2>
+          <p>
+            I'm a designer and researcher based in Aotearoa New Zealand. My practice blends
+            indigenous storytelling, critical cartography, and digital systems thinking to
+            reimagine how we visualise land, data, and identity.
+          </p>
+        </div>
+      </section>
+      <div class="hero-details">
+        <div class="hero-location">
+          <span class="detail-label">LOCATION</span>
+          <p>Designer & Researcher based in Pōneke, Aotearoa</p>
+        </div>
+        <div class="hero-focus">
+          <span class="detail-label">FOCUS</span>
+          <p>Indigenous storytelling, critical cartography, and digital world-building</p>
+        </div>
+        <div class="hero-status">
+          <span class="detail-label">STATUS</span>
+          <p>Currently working on mapping projects and data visualization</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Projects (desktop) -->
+  <section class="all-projects" id="projects">
+    <div class="filter-sidebar">
+      <div class="filter-section">
+        <h3 class="filter-heading">FILTER</h3>
+        <div class="filter-group">
+          <h4 class="filter-group-heading">└ Type</h4>
+          <div class="filter-options" data-filter-group="type">
+            {
+              typeFacet.map((f) => (
+                <label class="filter-option">
+                  <input type="checkbox" data-tag={f.slug} />
+                  {f.tag} ({f.count})
+                </label>
+              ))
+            }
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4 class="filter-group-heading">└ Topic</h4>
+          <div class="filter-options" data-filter-group="topic">
+            {
+              topicFacet.map((f) => (
+                <label class="filter-option">
+                  <input type="checkbox" data-tag={f.slug} />
+                  {f.tag} ({f.count})
+                </label>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <button class="clear-filters">CLEAR FILTERS</button>
+    </div>
+
+    <div class="projects-container">
+      <div class="projects-header">
+        <span class="header-date">#</span>
+        <span class="header-name">NAME</span>
+        <span class="header-type">TYPE</span>
+      </div>
+      <div class="projects-list">
+        {
+          projects.map((p) => (
+            <div class="project-row" data-image={p.data.cover}>
+              <div class="project-number">{p.data.number}</div>
+              <a href={projectHref(p)} class="project-title">{p.data.title}</a>
+              <div class="project-tags">
+                {p.data.tags.map((t) => <span>{t}</span>)}
+              </div>
+              <div />
+              <div class="project-description">{p.data.summary}</div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="project-selection-bar" id="projectSelectionBar"></div>
+    </div>
+  </section>
+
+  <!-- About (desktop) -->
+  <section class="about-footer" id="about">
+    <div class="bio-intro">
+      <p>
+        Ethan Sheaf-Morrison is an independent <em>designer, researcher, and developer</em> based in
+        Aotearoa New Zealand. Grounded in his Māori whakapapa (Te Whānau-ā-Apanui), his work
+        intersects indigenous storytelling, critical cartography, and digital world-building. He
+        creates poetic, technically rigorous responses to social and environmental systems through
+        data visualisation, mapping, and typographic experimentation. He has worked with university
+        research centres, independent artists, and policy organisations on projects spanning from
+        phosphate trade research to geospatial tools for community engagement.
+      </p>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-image">
+        <img src="/images/profile.jpg" alt="Ethan Sheaf-Morrison Portrait" />
+      </div>
+      <div class="bio-column">
+        <h3>EXPERIENCE</h3>
+        <p>Teaching Fellow, Victoria University — 2025</p>
+        <p>Research Assistant, Victoria University — 2021–</p>
+        <p>Design Tutor, Victoria University — 2021–</p>
+        <p>Summer Research Scholar — 2022–2023</p>
+      </div>
+      <div class="bio-column">
+        <h3>EDUCATION</h3>
+        <p>Te Herenga Waka, Victoria University<br />Master of Design with Distinction, 2024</p>
+        <p>Bachelor of Design Innovation, 2023</p>
+      </div>
+      <div class="bio-column">
+        <h3>CONTACT</h3>
+        <p><strong>Email</strong><br /><a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
+        <p>
+          <strong>Elsewhere</strong><br />
+          <a href="https://www.instagram.com/ethan.sheaf/" target="_blank" rel="noopener">Instagram</a><br />
+          <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank" rel="noopener">LinkedIn</a><br />
+          <a href="https://github.com/EthanSheafMorrison" target="_blank" rel="noopener">GitHub</a>
+        </p>
+        <p><strong>CV</strong><br /><a href="/cv">View CV</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Hero -->
+  <section class="mobile-hero" id="home">
+    <div class="mobile-hero-content mobile-fade-in">
+      <h1 class="mobile-hero-title">KIA ORA, I'M ETHAN</h1>
+      <p class="mobile-hero-text">
+        I'M A DESIGNER AND RESEARCHER BASED IN AOTEAROA NEW ZEALAND. MY PRACTICE BLENDS INDIGENOUS
+        STORYTELLING, CRITICAL CARTOGRAPHY, AND DIGITAL SYSTEMS THINKING TO REIMAGINE HOW WE
+        VISUALISE LAND, DATA, AND IDENTITY.
+      </p>
+      <img src="/images/profile.jpg" alt="Ethan Sheaf-Morrison Portrait" class="mobile-hero-image" />
+    </div>
+  </section>
+
+  <!-- Mobile Projects -->
+  <section class="mobile-projects" id="projects-mobile">
+    <h2 class="mobile-projects-header">PROJECTS</h2>
+    <div class="mobile-filter" id="mobileFilter">
+      <div class="mobile-filter-chips" id="mobileFilterChips"></div>
+      <button class="mobile-filter-clear" id="mobileFilterClear" aria-label="Clear filters">CLEAR</button>
+    </div>
+    <div class="mobile-projects-list">
+      {
+        projects.map((p) => (
+          <div class="mobile-project-item" data-image={p.data.cover}>
+            <div class="mobile-project-number">{p.data.number}</div>
+            <a href={projectHref(p)} class="mobile-project-title">{p.data.title}</a>
+            <div class="mobile-project-tags">
+              {p.data.tags.map((t) => <span class="mobile-project-tag">{t}</span>)}
+            </div>
+            <p class="mobile-project-description">{p.data.summary}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Mobile About -->
+  <section class="mobile-about" id="about-mobile">
+    <div class="mobile-about-content">
+      <h2 class="mobile-about-title">ABOUT</h2>
+      <p class="mobile-about-text">
+        Ethan Sheaf-Morrison is an independent <em>designer, researcher, and developer</em> based in
+        Aotearoa New Zealand. Grounded in his Māori whakapapa (Te Whānau-ā-Apanui), his work
+        intersects indigenous storytelling, critical cartography, and digital world-building.
+      </p>
+      <div class="mobile-about-grid">
+        <div class="mobile-about-column">
+          <h3>EXPERIENCE</h3>
+          <p>Teaching Fellow, Victoria University — 2025</p>
+          <p>Research Assistant, Victoria University — 2021–</p>
+          <p>Design Tutor, Victoria University — 2021–</p>
+          <p>Summer Research Scholar — 2022–2023</p>
+        </div>
+        <div class="mobile-about-column">
+          <h3>EDUCATION</h3>
+          <p>Te Herenga Waka, Victoria University<br />Master of Design with Distinction, 2024</p>
+          <p>Bachelor of Design Innovation, 2023</p>
+        </div>
+        <div class="mobile-about-column">
+          <h3>CONTACT</h3>
+          <p><strong>Email</strong><br /><a href="mailto:ethan.sheafmorrison@gmail.com">ethan.sheafmorrison@gmail.com</a></p>
+          <p>
+            <strong>Elsewhere</strong><br />
+            <a href="https://www.instagram.com/ethan.sheaf/" target="_blank" rel="noopener">Instagram</a><br />
+            <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank" rel="noopener">LinkedIn</a><br />
+            <a href="https://github.com/EthanSheafMorrison" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Footer -->
+  <footer class="mobile-footer" id="contact">
+    <div class="mobile-footer-content">
+      <div class="mobile-footer-copyright">© 2026 Ethan Sheaf-Morrison</div>
+      <div class="mobile-footer-social">
+        <a href="https://www.instagram.com/ethan.sheaf/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/ethan-sheaf-morrison-a2b7451b7/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/EthanSheafMorrison" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="project-hover-bg" id="hoverBgA"></div>
+  <div class="project-hover-bg" id="hoverBgB"></div>
+  <div class="mobile-hero-bg" id="mobileHeroBg"></div>
+
+  <script>
+    import { initHome } from "../scripts/home";
+    initHome();
+  </script>
+</BaseLayout>

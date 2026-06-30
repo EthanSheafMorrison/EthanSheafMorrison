@@ -1,0 +1,100 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import MobileNav from "../components/MobileNav.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogType?: "website" | "article";
+  ogImage?: string;
+  jsonLd?: Record<string, unknown>;
+  showHeader?: boolean;
+  showFooter?: boolean;
+  bodyClass?: string;
+}
+
+const {
+  title = "Ethan Sheaf-Morrison",
+  description = "The portfolio of Ethan Sheaf-Morrison — a designer and researcher exploring data visualisation, cultural identity, and systems thinking through design.",
+  ogType = "website",
+  ogImage = "/images/profile.jpg",
+  jsonLd,
+  showHeader = true,
+  showFooter = true,
+  bodyClass,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageAbs = new URL(ogImage, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Ethan Sheaf-Morrison" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..500&family=Geist+Mono:wght@100..500&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Ethan Sheaf-Morrison" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <title>{title}</title>
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    {showHeader && <div id="site-header"><Header /></div>}
+    <MobileNav />
+
+    <slot />
+
+    {showFooter && <Footer />}
+
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <script>
+      // Global scroll-progress bar (shared across all pages).
+      const bar = document.getElementById("scrollProgressBar");
+      if (bar) {
+        let ticking = false;
+        const update = () => {
+          const docH = document.documentElement.scrollHeight - window.innerHeight;
+          const pct = docH > 0 ? window.scrollY / docH : 0;
+          bar.style.transform = `scaleX(${pct})`;
+          ticking = false;
+        };
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              requestAnimationFrame(update);
+              ticking = true;
+            }
+          },
+          { passive: true }
+        );
+        update();
+      }
+    </script>
+  </body>
+</html>

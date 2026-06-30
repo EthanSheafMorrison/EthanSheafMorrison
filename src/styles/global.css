@@ -1,0 +1,84 @@
+/* Tailwind v4 entry. Tokens are exposed to Tailwind via @theme; the bespoke
+   design system (grid, cinematic project layout, project rows, mobile nav)
+   is preserved verbatim from the original site as a legacy layer below. */
+@import "tailwindcss";
+
+/* Legacy design system — ported 1:1 from the original static site. */
+@import "./legacy/base.css";
+@import "./legacy/cinematic.css";
+
+/* Expose the original palette + type to Tailwind utilities (text-accent, font-mono, …). */
+@theme {
+  --font-sans: "Geist", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  --color-ink: #000000;
+  --color-paper: #f5f5f5;
+  --color-muted: #666666;
+  --color-line: #eeeeee;
+  --color-accent: #ff0000;
+}
+
+/* MDX project bodies render flat (h2 / p / ul / figure as direct children of
+   .cin-chapters). Map those to the original .cin-chapter styling so the
+   cinematic look is preserved without per-chapter wrapper divs. */
+/* Research-question lead under the project title (case studies). */
+.cin-research-q {
+  margin: 1.5rem 0 0;
+  max-width: 46ch;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--color-black, #111);
+  font-weight: 400;
+}
+
+.cin-chapters > h2 {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gray, #666);
+  margin: 0 0 2.25rem;
+  font-weight: 400;
+  scroll-margin-top: 2rem;
+}
+.cin-chapters > h2:not(:first-child) {
+  margin-top: 7rem;
+}
+.cin-chapters > h2:not(:first-child)::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--color-light-gray, #eee);
+  margin-bottom: 7rem;
+}
+.cin-chapters > p {
+  font-size: 1rem;
+  line-height: 1.82;
+  color: var(--color-black, #111);
+  max-width: 60ch;
+  margin-bottom: 1.5rem;
+}
+.cin-chapters > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  max-width: 60ch;
+}
+.cin-chapters > ul li {
+  font-size: 0.9rem;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--color-light-gray, #eee);
+  color: var(--color-black, #111);
+}
+.cin-chapters > ul li:first-child {
+  border-top: 1px solid var(--color-light-gray, #eee);
+}
+.cin-chapters > ul a {
+  color: inherit;
+  text-decoration: none;
+}
+.cin-chapters > ul a:hover {
+  text-decoration: underline;
+}
