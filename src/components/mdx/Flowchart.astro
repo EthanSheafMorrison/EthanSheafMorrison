@@ -1,0 +1,174 @@
+---
+// Constrained branching flowchart (line-art SVG). A deterministic left→right
+// SPINE of typed nodes; a `decision` node continues the spine on its "pass" edge
+// and drops a "branch" edge to a terminal node in the right-hand OUTCOMES column.
+// All geometry uses `currentColor` so it inverts with the site theme.
+//
+// OUT OF SCOPE (by design — keep authoring simple): loops / back-edges, multiple
+// branches per decision, free-form edge routing. For anything tangled, hand-author
+// a bespoke SVG instead.
+interface Step {
+  type: "start" | "process" | "decision" | "end";
+  label: string;
+  passLabel?: string; // label on the inline edge to the next spine node (e.g. "yes")
+  branch?: { label: string; to: string }; // exits to outcomes[id === to]
+}
+interface Outcome {
+  id: string;
+  label: string;
+}
+interface Props {
+  steps: Step[];
+  outcomes?: Outcome[];
+  swimlane?: { label: string; from: number; to: number };
+  caption?: string;
+}
+const { steps = [], outcomes = [], swimlane, caption } = Astro.props;
+
+function wrap(text: string, max = 15): string[] {
+  const words = text.split(/\s+/);
+  const lines: string[] = [];
+  let line = "";
+  for (const w of words) {
+    if ((line + " " + w).trim().length > max && line) {
+      lines.push(line);
+      line = w;
+    } else {
+      line = (line + " " + w).trim();
+    }
+  }
+  if (line) lines.push(line);
+  return lines.slice(0, 3);
+}
+
+// Stable marker id from content (avoids duplicate ids across instances).
+const hash = Array.from(JSON.stringify({ steps, outcomes }))
+  .reduce((h, c) => ((h << 5) - h + c.charCodeAt(0)) | 0, 0)
+  .toString(36)
+  .replace("-", "n");
+const arrow = `fc-arrow-${hash}`;
+
+// ── Layout ───────────────────────────────────────────────────────────
+const LEFT = 90;
+const STEP_W = 200;
+const spineY = 80;
+const BOX_W = 140;
+const BOX_H = 54;
+const DIA_W = 120;
+const DIA_H = 78;
+const nodeX = (i: number) => LEFT + i * STEP_W;
+const halfW = (t: Step["type"]) => (t === "decision" ? DIA_W / 2 : BOX_W / 2);
+const halfH = (t: Step["type"]) => (t === "decision" ? DIA_H / 2 : BOX_H / 2);
+
+const spineRight = nodeX(steps.length - 1) + halfW(steps[steps.length - 1]?.type ?? "process");
+const outX = nodeX(steps.length - 1) + STEP_W; // right outcomes column (centre)
+const OUT_W = 150;
+const OUT_H = 50;
+const outTop = spineY + 120;
+const OUT_V = 78;
+const outY = (k: number) => outTop + k * OUT_V;
+const outcomeIndex = (id: string) => outcomes.findIndex((o) => o.id === id);
+
+const W = Math.max(outX + OUT_W / 2 + 40, spineRight + 40);
+const H = Math.max(outY(Math.max(outcomes.length - 1, 0)) + OUT_H / 2 + 30, spineY + 120);
+---
+<figure class="cin-diagram cin-diagram--flowchart">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" preserveAspectRatio="xMidYMid meet"
+       aria-label={`Flowchart: ${steps.map((s) => s.label).join(" → ")}`}>
+    <defs>
+      <marker id={arrow} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10" fill="none" stroke="currentColor" stroke-width="1.5" />
+      </marker>
+    </defs>
+
+    {/* swimlane container (drawn first, behind nodes) */}
+    {swimlane && (
+      <>
+        <rect
+          x={nodeX(swimlane.from) - halfW(steps[swimlane.from]?.type ?? "process") - 26}
+          y={spineY - halfH("process") - 30}
+          width={
+            nodeX(swimlane.to) + halfW(steps[swimlane.to]?.type ?? "process") + 26 -
+            (nodeX(swimlane.from) - halfW(steps[swimlane.from]?.type ?? "process") - 26)
+          }
+          height={H - (spineY - halfH("process") - 30) - 16}
+          fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 4" opacity="0.55" rx="4"
+        />
+        <text
+          x={nodeX(swimlane.from) - halfW(steps[swimlane.from]?.type ?? "process") - 14}
+          y={spineY - halfH("process") - 14}
+          class="cin-diagram-sub" text-anchor="start">{swimlane.label}</text>
+      </>
+    )}
+
+    {/* spine connectors (pass edges) */}
+    {steps.slice(0, -1).map((s, i) => (
+      <>
+        <line
+          x1={nodeX(i) + halfW(s.type)} y1={spineY}
+          x2={nodeX(i + 1) - halfW(steps[i + 1].type)} y2={spineY}
+          stroke="currentColor" stroke-width="1" marker-end={`url(#${arrow})`} />
+        {s.passLabel && (
+          <text x={(nodeX(i) + halfW(s.type) + nodeX(i + 1) - halfW(steps[i + 1].type)) / 2}
+                y={spineY - 8} class="cin-diagram-sub" text-anchor="middle">{s.passLabel}</text>
+        )}
+      </>
+    ))}
+
+    {/* branch edges → outcomes (elbow: down then right) */}
+    {steps.map((s, i) => {
+      if (!s.branch) return null;
+      const k = outcomeIndex(s.branch.to);
+      if (k < 0) return null;
+      const sx = nodeX(i);
+      const sy = spineY + halfH(s.type);
+      const oy = outY(k);
+      return (
+        <>
+          <path d={`M ${sx} ${sy} L ${sx} ${oy} L ${outX - OUT_W / 2} ${oy}`}
+                fill="none" stroke="currentColor" stroke-width="1" marker-end={`url(#${arrow})`} />
+          <text x={sx + 8} y={(sy + oy) / 2} class="cin-diagram-sub" text-anchor="start">{s.branch.label}</text>
+        </>
+      );
+    })}
+
+    {/* spine nodes */}
+    {steps.map((s, i) => {
+      const cx = nodeX(i);
+      const lines = wrap(s.label);
+      const ty = spineY - ((lines.length - 1) * 13) / 2;
+      return (
+        <>
+          {s.type === "decision" ? (
+            <polygon points={`${cx},${spineY - DIA_H / 2} ${cx + DIA_W / 2},${spineY} ${cx},${spineY + DIA_H / 2} ${cx - DIA_W / 2},${spineY}`}
+                     fill="none" stroke="currentColor" stroke-width="1.25" />
+          ) : (
+            <rect x={cx - BOX_W / 2} y={spineY - BOX_H / 2} width={BOX_W} height={BOX_H}
+                  rx={s.type === "start" || s.type === "end" ? BOX_H / 2 : 3}
+                  fill="none" stroke="currentColor" stroke-width="1.25" />
+          )}
+          <text x={cx} y={ty} class="cin-diagram-label" text-anchor="middle" dominant-baseline="middle">
+            {lines.map((ln, li) => (<tspan x={cx} dy={li === 0 ? 0 : 13}>{ln}</tspan>))}
+          </text>
+        </>
+      );
+    })}
+
+    {/* outcome nodes (right column) */}
+    {outcomes.map((o, k) => {
+      const cy = outY(k);
+      const lines = wrap(o.label);
+      const ty = cy - ((lines.length - 1) * 13) / 2;
+      return (
+        <>
+          <rect x={outX - OUT_W / 2} y={cy - OUT_H / 2} width={OUT_W} height={OUT_H} rx={OUT_H / 2}
+                fill="none" stroke="currentColor" stroke-width="1.25" />
+          <text x={outX} y={ty} class="cin-diagram-label" text-anchor="middle" dominant-baseline="middle">
+            {lines.map((ln, li) => (<tspan x={outX} dy={li === 0 ? 0 : 13}>{ln}</tspan>))}
+          </text>
+        </>
+      );
+    })}
+  </svg>
+  {caption && <figcaption set:html={caption} />}
+</figure>

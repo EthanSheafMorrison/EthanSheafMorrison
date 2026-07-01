@@ -1,0 +1,62 @@
+---
+// Line-art process diagram: a horizontal sequence of labelled nodes connected
+// by a thin line. All geometry uses `currentColor` so it inverts with the site
+// theme (black-on-cream by default, light-on-dark under .dark-mode).
+interface Step {
+  label: string;
+  sub?: string;
+}
+interface Props {
+  steps: Step[];
+  caption?: string;
+}
+const { steps = [], caption } = Astro.props;
+
+// Wrap a label into at most two lines of ~16 chars for the SVG <text>.
+function wrap(text: string, max = 16): string[] {
+  const words = text.split(/\s+/);
+  const lines: string[] = [];
+  let line = "";
+  for (const w of words) {
+    if ((line + " " + w).trim().length > max && line) {
+      lines.push(line);
+      line = w;
+    } else {
+      line = (line + " " + w).trim();
+    }
+    if (lines.length === 1 && line.length > max) break;
+  }
+  if (line) lines.push(line);
+  return lines.slice(0, 2);
+}
+
+const STEP_W = 220;
+const W = Math.max(steps.length, 1) * STEP_W;
+const H = 150;
+const lineY = 46;
+const nodeX = (i: number) => STEP_W / 2 + i * STEP_W;
+---
+<figure class="cin-diagram cin-diagram--flow">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" preserveAspectRatio="xMidYMid meet"
+       aria-label={`Process: ${steps.map((s) => s.label).join(" then ")}`}>
+    {steps.length > 1 && (
+      <line x1={nodeX(0)} y1={lineY} x2={nodeX(steps.length - 1)} y2={lineY}
+            stroke="currentColor" stroke-width="1" />
+    )}
+    {steps.map((s, i) => (
+      <>
+        <circle cx={nodeX(i)} cy={lineY} r="5" fill="none" stroke="currentColor" stroke-width="1.25" />
+        <text x={nodeX(i)} y={lineY + 28} text-anchor="middle" class="cin-diagram-label">
+          {wrap(s.label).map((ln, li) => (
+            <tspan x={nodeX(i)} dy={li === 0 ? 0 : 15}>{ln}</tspan>
+          ))}
+        </text>
+        {s.sub && (
+          <text x={nodeX(i)} y={lineY + 28 + wrap(s.label).length * 15 + 4}
+                text-anchor="middle" class="cin-diagram-sub">{s.sub}</text>
+        )}
+      </>
+    ))}
+  </svg>
+  {caption && <figcaption set:html={caption} />}
+</figure>

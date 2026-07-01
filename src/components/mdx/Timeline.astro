@@ -1,0 +1,56 @@
+---
+// Line-art timeline: a horizontal axis with plotted milestones. `date` sits
+// above the axis (mono), `label` below. `currentColor` throughout so it inverts
+// with the site theme.
+interface Event {
+  date: string;
+  label: string;
+}
+interface Props {
+  events: Event[];
+  caption?: string;
+}
+const { events = [], caption } = Astro.props;
+
+function wrap(text: string, max = 18): string[] {
+  const words = text.split(/\s+/);
+  const lines: string[] = [];
+  let line = "";
+  for (const w of words) {
+    if ((line + " " + w).trim().length > max && line) {
+      lines.push(line);
+      line = w;
+    } else {
+      line = (line + " " + w).trim();
+    }
+  }
+  if (line) lines.push(line);
+  return lines.slice(0, 2);
+}
+
+const EV_W = 200;
+const W = Math.max(events.length, 1) * EV_W;
+const H = 150;
+const axisY = 64;
+const PAD = 24;
+const evX = (i: number) => EV_W / 2 + i * EV_W;
+---
+<figure class="cin-diagram cin-diagram--timeline">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" preserveAspectRatio="xMidYMid meet"
+       aria-label={`Timeline: ${events.map((e) => `${e.date} ${e.label}`).join(", ")}`}>
+    <line x1={PAD} y1={axisY} x2={W - PAD} y2={axisY} stroke="currentColor" stroke-width="1" />
+    {events.map((e, i) => (
+      <>
+        <text x={evX(i)} y={axisY - 14} text-anchor="middle" class="cin-diagram-date">{e.date}</text>
+        <line x1={evX(i)} y1={axisY - 6} x2={evX(i)} y2={axisY + 6} stroke="currentColor" stroke-width="1" />
+        <circle cx={evX(i)} cy={axisY} r="4" fill="currentColor" />
+        <text x={evX(i)} y={axisY + 26} text-anchor="middle" class="cin-diagram-label">
+          {wrap(e.label).map((ln, li) => (
+            <tspan x={evX(i)} dy={li === 0 ? 0 : 15}>{ln}</tspan>
+          ))}
+        </text>
+      </>
+    ))}
+  </svg>
+  {caption && <figcaption set:html={caption} />}
+</figure>

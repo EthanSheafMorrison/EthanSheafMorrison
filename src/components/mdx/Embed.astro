@@ -1,0 +1,49 @@
+---
+// Live interactive embed with a "facade" load: the third-party frame is only
+// injected on user intent, so we don't pay its cost on every page view and we
+// degrade gracefully when a site refuses framing (X-Frame-Options / CSP).
+// Uses class `cin-embed` (NOT `cin-inline-figure`) so the poster image never
+// gets picked up by the ProjectLayout lightbox.
+interface Props {
+  src: string;
+  title: string;
+  poster?: string;
+  aspect?: string; // e.g. "16/9", "4/3"
+  caption?: string;
+}
+const { src, title, poster, aspect = "16/9", caption } = Astro.props;
+---
+<figure class="cin-embed" style={`--cin-embed-aspect: ${aspect}`}>
+  <div class="cin-embed-frame" data-src={src} data-title={title}>
+    {poster && <img class="cin-embed-poster" src={poster} alt="" loading="lazy" decoding="async" />}
+    <button class="cin-embed-launch" type="button" aria-label={`Launch ${title}`}>
+      <span class="cin-embed-launch-label">Launch interactive ↗</span>
+    </button>
+  </div>
+  <figcaption>
+    {caption && <span set:html={caption} />}{caption && " "}
+    <a href={src} target="_blank" rel="noopener">Open in new tab ↗</a>
+  </figcaption>
+</figure>
+
+<script>
+  // Facade → real iframe on click. Runs once per page; handles many embeds.
+  document.querySelectorAll<HTMLButtonElement>(".cin-embed-launch").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const frame = btn.closest<HTMLElement>(".cin-embed-frame");
+      if (!frame || frame.dataset.loaded) return;
+      const src = frame.dataset.src;
+      const title = frame.dataset.title ?? "";
+      if (!src) return;
+      const iframe = document.createElement("iframe");
+      iframe.src = src;
+      iframe.title = title;
+      iframe.loading = "lazy";
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("referrerpolicy", "no-referrer");
+      frame.dataset.loaded = "true";
+      frame.appendChild(iframe);
+      frame.classList.add("is-loaded");
+    });
+  });
+</script>

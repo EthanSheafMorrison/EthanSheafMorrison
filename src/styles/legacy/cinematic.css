@@ -433,3 +433,252 @@
     font-size: clamp(2rem, 10vw, 3rem);
   }
 }
+
+/* ─── Diagrams & Embeds ──────────────────────────────────────────── */
+
+/* Shared layout: same left "bleed" as inline figures. Theme-adaptive colour
+   drives the `currentColor` line art / iframe chrome. */
+.cin-diagram,
+.cin-embed {
+  margin: 3rem 0;
+  color: var(--color-black, #111);
+  width: calc(100% + 3.5rem);
+  max-width: calc(100% + 3.5rem);
+  margin-left: -3.5rem;
+}
+
+body.dark-mode .cin-diagram,
+body.dark-mode .cin-embed {
+  color: var(--color-off-white, #f5f5f5);
+}
+
+/* Scroll-reveal (classes toggled by ProjectLayout's observer). */
+.cin-diagram.cin-anim-ready,
+.cin-embed.cin-anim-ready {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.cin-diagram.revealed,
+.cin-embed.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+/* Diagram SVG */
+.cin-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.cin-diagram-label,
+.cin-diagram-sub,
+.cin-diagram-date {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  fill: currentColor;
+}
+
+.cin-diagram-label {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.cin-diagram-date {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.cin-diagram-sub {
+  font-size: 11px;
+  opacity: 0.55;
+}
+
+/* Diagram + embed captions reuse the inline-figure caption look. */
+.cin-diagram figcaption,
+.cin-embed figcaption {
+  margin-top: 0.625rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: var(--color-gray, #666);
+  line-height: 1.45;
+}
+
+.cin-diagram figcaption a,
+.cin-embed figcaption a {
+  color: inherit;
+}
+
+/* Embed: facade box, launch button, and the injected iframe. */
+.cin-embed-frame {
+  position: relative;
+  aspect-ratio: var(--cin-embed-aspect, 16 / 9);
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid currentColor;
+  background: var(--color-light-gray, #eee);
+}
+
+body.dark-mode .cin-embed-frame {
+  background: #1c1c1c;
+}
+
+.cin-embed-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cin-embed-launch {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.cin-embed-launch-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-off-white, #f5f5f5);
+  background: rgba(0, 0, 0, 0.65);
+  padding: 0.6rem 1rem;
+  transition: background 0.2s ease;
+}
+
+.cin-embed-launch:hover .cin-embed-launch-label,
+.cin-embed-launch:focus-visible .cin-embed-launch-label {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.cin-embed-frame.is-loaded .cin-embed-launch,
+.cin-embed-frame.is-loaded .cin-embed-poster {
+  display: none;
+}
+
+.cin-embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ── Service blueprint (CSS-grid table) ── */
+.cin-diagram--blueprint .cin-bp {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) repeat(var(--bp-stages, 4), 1fr);
+  border: 1px solid currentColor;
+}
+
+.cin-bp-corner {
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.cin-bp-stage {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+
+.cin-bp-stage:last-child {
+  border-right: none;
+}
+
+.cin-bp-lane {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.03em;
+  padding: 0.6rem;
+  border-right: 1px solid currentColor;
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+}
+
+.cin-bp-cell {
+  padding: 0.6rem;
+  border-right: 1px solid color-mix(in srgb, currentColor 32%, transparent);
+  border-top: 1px solid color-mix(in srgb, currentColor 32%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cin-bp-cell:last-child {
+  border-right: none;
+}
+
+.cin-bp-item {
+  font-size: 0.66rem;
+  line-height: 1.3;
+}
+
+/* Canonical separators span the full grid width as a dashed, labelled line. */
+.cin-bp-line {
+  grid-column: 1 / -1;
+  position: relative;
+  border-top: 1.5px dashed currentColor;
+  height: 0;
+}
+
+.cin-bp-line span {
+  position: absolute;
+  right: 0.5rem;
+  top: -0.55rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 0.4rem;
+  background: var(--color-off-white, #f5f5f5);
+}
+
+body.dark-mode .cin-bp-line span {
+  background: #121212;
+}
+
+@media (max-width: 900px) {
+  .cin-diagram,
+  .cin-embed {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .cin-diagram--flow svg,
+  .cin-diagram--timeline svg,
+  .cin-diagram--flowchart svg,
+  .cin-diagram--matrix svg {
+    min-width: 520px;
+  }
+
+  .cin-diagram--flow,
+  .cin-diagram--timeline,
+  .cin-diagram--flowchart,
+  .cin-diagram--matrix,
+  .cin-diagram--blueprint {
+    overflow-x: auto;
+  }
+
+  .cin-diagram--blueprint .cin-bp {
+    min-width: 560px;
+  }
+}

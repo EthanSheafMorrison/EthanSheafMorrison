@@ -1,0 +1,51 @@
+---
+// Service blueprint as a CSS-grid table (more maintainable & accessible than SVG
+// text). Columns = journey stages, rows = lanes. A lane may declare `lineBelow`
+// to draw one of the canonical separators beneath it. Thin `currentColor` borders
+// keep the line-art look; the theme flip comes from `.cin-diagram`.
+type LineKind = "interaction" | "visibility" | "internal";
+interface Lane {
+  label: string;
+  cells: string[]; // cells[i] aligns with stages[i]; "\n" → multiple items
+  lineBelow?: LineKind;
+}
+interface Props {
+  stages: string[];
+  lanes: Lane[];
+  caption?: string;
+}
+const { stages = [], lanes = [], caption } = Astro.props;
+
+const LINE_LABEL: Record<LineKind, string> = {
+  interaction: "Line of interaction",
+  visibility: "Line of visibility",
+  internal: "Line of internal interaction",
+};
+const items = (cell: string) => (cell ?? "").split("\n").map((s) => s.trim()).filter(Boolean);
+---
+<figure class="cin-diagram cin-diagram--blueprint">
+  <div class="cin-bp" style={`--bp-stages: ${stages.length}`} role="table">
+    <div class="cin-bp-corner" role="columnheader"></div>
+    {stages.map((s) => (
+      <div class="cin-bp-stage" role="columnheader">{s}</div>
+    ))}
+    {lanes.map((lane) => (
+      <>
+        <div class="cin-bp-lane" role="rowheader">{lane.label}</div>
+        {Array.from({ length: stages.length }).map((_, i) => (
+          <div class="cin-bp-cell" role="cell">
+            {items(lane.cells?.[i] ?? "").map((it) => (
+              <span class="cin-bp-item">{it}</span>
+            ))}
+          </div>
+        ))}
+        {lane.lineBelow && (
+          <div class="cin-bp-line" data-line={lane.lineBelow}>
+            <span>{LINE_LABEL[lane.lineBelow]}</span>
+          </div>
+        )}
+      </>
+    ))}
+  </div>
+  {caption && <figcaption set:html={caption} />}
+</figure>

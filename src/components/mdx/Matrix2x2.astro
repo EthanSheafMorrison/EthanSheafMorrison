@@ -1,0 +1,67 @@
+---
+// 2×2 positioning / prioritization matrix. Line-art SVG: a square frame with a
+// dashed mid-cross, axis poles outside the frame, and plotted items. All geometry
+// uses `currentColor` so it inverts with the site theme.
+interface Item {
+  label: string;
+  x: number; // 0..1, 0 = left
+  y: number; // 0..1, 0 = bottom
+}
+interface Axis {
+  label: string;
+  low: string;
+  high: string;
+}
+interface Props {
+  xAxis: Axis;
+  yAxis: Axis;
+  items: Item[];
+  quadrantLabels?: [string, string, string, string]; // TL, TR, BR, BL
+  caption?: string;
+}
+const { xAxis, yAxis, items = [], quadrantLabels, caption } = Astro.props;
+
+// Plot area inside a padded viewBox.
+const PAD = 96;
+const SIZE = 520;
+const W = SIZE + PAD * 2;
+const H = SIZE + PAD * 2;
+const clamp = (n: number) => Math.max(0, Math.min(1, n));
+const px = (x: number) => PAD + clamp(x) * SIZE;
+const py = (y: number) => PAD + (1 - clamp(y)) * SIZE; // flip: y=0 at bottom
+const mid = PAD + SIZE / 2;
+const [qTL, qTR, qBR, qBL] = quadrantLabels ?? ["", "", "", ""];
+---
+<figure class="cin-diagram cin-diagram--matrix">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" preserveAspectRatio="xMidYMid meet"
+       aria-label={`Matrix of ${yAxis.label} against ${xAxis.label}: ${items.map((i) => i.label).join(", ")}`}>
+    <!-- frame -->
+    <rect x={PAD} y={PAD} width={SIZE} height={SIZE} fill="none" stroke="currentColor" stroke-width="1" />
+    <!-- dashed mid-cross -->
+    <line x1={mid} y1={PAD} x2={mid} y2={PAD + SIZE} stroke="currentColor" stroke-width="1" stroke-dasharray="4 5" opacity="0.6" />
+    <line x1={PAD} y1={mid} x2={PAD + SIZE} y2={mid} stroke="currentColor" stroke-width="1" stroke-dasharray="4 5" opacity="0.6" />
+
+    <!-- quadrant labels -->
+    {qTL && <text x={PAD + 14} y={PAD + 24} class="cin-diagram-sub" text-anchor="start">{qTL}</text>}
+    {qTR && <text x={PAD + SIZE - 14} y={PAD + 24} class="cin-diagram-sub" text-anchor="end">{qTR}</text>}
+    {qBR && <text x={PAD + SIZE - 14} y={PAD + SIZE - 14} class="cin-diagram-sub" text-anchor="end">{qBR}</text>}
+    {qBL && <text x={PAD + 14} y={PAD + SIZE - 14} class="cin-diagram-sub" text-anchor="start">{qBL}</text>}
+
+    <!-- axis poles -->
+    <text x={PAD - 12} y={mid} class="cin-diagram-date" text-anchor="end" dominant-baseline="middle">{yAxis.label}</text>
+    <text x={mid} y={PAD - 16} class="cin-diagram-date" text-anchor="middle">{yAxis.high}</text>
+    <text x={mid} y={PAD + SIZE + 26} class="cin-diagram-date" text-anchor="middle">{yAxis.low}</text>
+    <text x={PAD} y={PAD + SIZE + 26} class="cin-diagram-sub" text-anchor="middle">{xAxis.low}</text>
+    <text x={PAD + SIZE} y={PAD + SIZE + 26} class="cin-diagram-sub" text-anchor="middle">{xAxis.high}</text>
+    <text x={mid} y={PAD + SIZE + 48} class="cin-diagram-date" text-anchor="middle">{xAxis.label}</text>
+
+    <!-- plotted items -->
+    {items.map((it) => (
+      <>
+        <circle cx={px(it.x)} cy={py(it.y)} r="5" fill="currentColor" />
+        <text x={px(it.x) + 10} y={py(it.y) + 4} class="cin-diagram-label" text-anchor="start">{it.label}</text>
+      </>
+    ))}
+  </svg>
+  {caption && <figcaption set:html={caption} />}
+</figure>

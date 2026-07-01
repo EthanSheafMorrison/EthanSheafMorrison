@@ -136,8 +136,10 @@ const jsonLd = {
       heads.forEach((h) => obs.observe(h));
     }
 
-    // Reveal inline figures on scroll.
-    const figures = document.querySelectorAll<HTMLElement>(".cin-inline-figure");
+    // Reveal inline figures, diagrams, and embeds on scroll.
+    const figures = document.querySelectorAll<HTMLElement>(
+      ".cin-inline-figure, .cin-diagram, .cin-embed"
+    );
     if (figures.length) {
       const figObs = new IntersectionObserver(
         (entries) => {
