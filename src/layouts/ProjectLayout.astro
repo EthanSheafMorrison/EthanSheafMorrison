@@ -136,9 +136,9 @@ const jsonLd = {
       heads.forEach((h) => obs.observe(h));
     }
 
-    // Reveal inline figures, diagrams, and embeds on scroll.
+    // Reveal inline figures, diagrams, embeds, video, and flipbooks on scroll.
     const figures = document.querySelectorAll<HTMLElement>(
-      ".cin-inline-figure, .cin-diagram, .cin-embed"
+      ".cin-inline-figure, .cin-diagram, .cin-embed, .cin-video, .cin-flipbook"
     );
     if (figures.length) {
       const figObs = new IntersectionObserver(

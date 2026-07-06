@@ -1,0 +1,25 @@
+---
+// Autoplaying, muted, looping video — for short brand/motion pieces. Uses class
+// `cin-video` (NOT `cin-inline-figure`) so the ProjectLayout lightbox never
+// grabs the poster frame. Styling lives in cinematic.css alongside .cin-embed.
+interface Props {
+  src: string;
+  poster?: string;
+  aspect?: string; // e.g. "16/9", "1/1"
+  caption?: string;
+}
+const { src, poster, aspect = "16/9", caption } = Astro.props;
+---
+<figure class="cin-video" style={`--cin-video-aspect: ${aspect}`}>
+  <video
+    src={src}
+    poster={poster}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    aria-label={caption}
+  ></video>
+  {caption && <figcaption set:html={caption} />}
+</figure>
