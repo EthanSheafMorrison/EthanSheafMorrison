@@ -874,19 +874,35 @@ body.dark-mode .cin-flipbook-stage {
 .cin-flipbook-btn:hover:not([disabled]),
 .cin-flipbook-btn:focus-visible:not([disabled]) {
   background: currentColor;
+  /* neutralise the global button:hover lift/shadow from base.css */
+  border-radius: 0;
+  transform: none;
+  box-shadow: none;
 }
 
 .cin-flipbook-btn:hover:not([disabled]) {
-  color: var(--color-off-white, #f5f5f5);
+  color: var(--color-off-white, #f5f5f5) !important;
 }
 
 body.dark-mode .cin-flipbook-btn:hover:not([disabled]) {
-  color: #121212;
+  color: #121212 !important;
 }
 
 .cin-flipbook-btn[disabled] {
   opacity: 0.28;
   cursor: default;
+}
+
+/* The edge zones are invisible click-to-turn targets — cancel the global
+   button:hover treatment (base.css) that would otherwise flood each side
+   with a black background on hover/active. */
+.cin-flipbook-edge:hover,
+.cin-flipbook-edge:active {
+  background-color: transparent;
+  color: inherit !important;
+  border-radius: 0;
+  transform: none;
+  box-shadow: none;
 }
 
 .cin-flipbook-counter {
