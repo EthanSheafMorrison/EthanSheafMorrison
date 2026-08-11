@@ -85,3 +85,19 @@
 .cin-chapters > ul a:hover {
   text-decoration: underline;
 }
+/* Links inside chapter prose. The `## Links` list above carries its own
+   affordance (bordered rows, underline on hover), but an inline link in a
+   paragraph inherited the global `a { text-decoration: none }` and was
+   indistinguishable from the text around it. `color: inherit` keeps it correct
+   in both themes; the rule underlines on the link's own line only. */
+.cin-chapters > p a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--color-gray, #666);
+  transition: text-decoration-color 0.2s ease;
+}
+.cin-chapters > p a:hover {
+  text-decoration-color: currentColor;
+}

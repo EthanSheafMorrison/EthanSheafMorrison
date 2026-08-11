@@ -547,6 +547,20 @@ body.dark-mode .cin-embed-frame {
   padding: 0;
 }
 
+/* The launch button covers the whole poster, so the global button:hover
+   treatment (base.css) would flood the entire facade with black until the
+   frame is clicked and the button is display:none'd. Cancel it — only the
+   label pill should react to hover. */
+.cin-embed-launch:hover,
+.cin-embed-launch:focus-visible,
+.cin-embed-launch:active {
+  background-color: transparent;
+  color: inherit !important;
+  border-radius: 0;
+  transform: none;
+  box-shadow: none;
+}
+
 .cin-embed-launch-label {
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 0.7rem;

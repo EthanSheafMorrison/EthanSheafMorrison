@@ -3,7 +3,14 @@ import { getCollection, render } from "astro:content";
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects", (p) => p.data.visible !== false);
+  // Drafts (`visible: false`) render under `astro dev` so they can be reviewed at
+  // their real URL, but are never emitted by `astro build` — so they cannot reach
+  // production or the sitemap. They stay off the home index either way; see
+  // getProjects() in src/lib/projects.ts.
+  const projects = await getCollection(
+    "projects",
+    (p) => p.data.visible !== false || import.meta.env.DEV
+  );
   return projects.map((project) => ({
     params: { slug: project.id },
     props: { project },

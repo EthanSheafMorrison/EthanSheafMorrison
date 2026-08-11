@@ -1,0 +1,123 @@
+---
+title: "Indigenous Insurance Map"
+number: "17"
+date: 2026-08-04
+summary: "A living map of Māori-led insurance innovation, placed by the strategy each initiative uses to navigate the system rather than by the sector it happens to sit in."
+cover: "/images/projects/indigenous-insurance-map/map-aotearoa.jpg"
+tags: ["Mapping", "Web", "Data", "Research", "Cultural"]
+featured: true
+tier: case-study
+visible: false
+role: "Research, Design, Development"
+year: "2026"
+researchQuestion: "What happens when you organise a map by the strategy each initiative uses to navigate a system, rather than by the sector or the region it sits in — and can a record like that be handed back to the community it describes?"
+methods: ["Taxonomy design", "Content modelling", "Cartographic design", "Interaction design", "Public submission design"]
+outputs: ["Interactive map", "Editorial landing site", "Embeddable build", "Content model and review pipeline"]
+contribution: "Makes engagement strategy the primary axis of a map instead of sector or region, so initiatives that look unrelated on the ground read as variations on the same move — and keeps the record open, so the community it describes can add to it."
+# type line: Mapping, Web
+gallery:
+  - src: "/images/projects/indigenous-insurance-map/map-aotearoa.jpg"
+    alt: "The Aotearoa view — collective marae insurance schemes plotted across the motu, with the record listed alongside"
+  - src: "/images/projects/indigenous-insurance-map/welcome-hero.jpg"
+    alt: "The editorial landing page, framing the map as he rārangi ora — a living record"
+  - src: "/images/projects/indigenous-insurance-map/strategy-key.jpg"
+    alt: "The strategy key — a dot inside the ring, the ring itself, a square beyond it"
+  - src: "/images/projects/indigenous-insurance-map/entry-detail.jpg"
+    alt: "An entry card opened over the map, labelled with the strategy it uses"
+  - src: "/images/projects/indigenous-insurance-map/entry-scales.jpg"
+    alt: "The four scheme-design spectrums carried by each curated entry"
+  - src: "/images/projects/indigenous-insurance-map/map-global.jpg"
+    alt: "The global view, sectioned into Indigenous-led initiatives and models to learn from"
+  - src: "/images/projects/indigenous-insurance-map/submit-details.jpg"
+    alt: "The four-step submission flow, opening on the location step"
+---
+
+import Figure from '../../components/mdx/Figure.astro';
+
+## Overview
+
+Insuring a marae is harder than insuring a house. The buildings are old, often irreplaceable, sometimes uninsurable at any sensible price, and they are held collectively rather than owned by one person who can sign a policy. Communities have been solving this for years — quietly, locally, and mostly without knowing that anyone else was solving it too.
+
+This is a commissioned platform for a Māori innovation organisation that wanted those solutions gathered into one picture. Not a directory, and not a case-study archive: a living record, added to by the people it describes.
+
+<Figure src="/images/projects/indigenous-insurance-map/map-aotearoa.jpg" alt="The Aotearoa view of the map, with the record listed in the sidebar" caption="The Aotearoa view. Nine schemes, each one a different answer to the same problem." />
+
+The brief arrived attached to a research programme, which meant the map had a second job. It had to stay legible to people who had never read the research, while being precise enough that the research team could use it as a working instrument.
+
+## Three ways to engage
+
+The obvious way to organise a map like this is by sector, or by region. Both are useless here. Every entry is in the same sector, and region tells you where a marae is rather than anything about what it built.
+
+So the map is organised by a different axis: how each initiative engages the system it is stuck inside. Three positions, each with its own reo gloss.
+
+<Figure src="/images/projects/indigenous-insurance-map/strategy-key.jpg" alt="The strategy key — Within System, System Reshaping, Outside System, with reo glosses" caption="Three positions relative to the system, and the mark that stands for each." />
+
+**Within System** — *I roto i te pūnaha.* Tactical workarounds, relationship deepening, cultural reframing. Working the existing machinery harder than it was meant to be worked.
+
+**System Reshaping** — *Te whakahōu pūnaha.* Kōtahitanga collective models and adaptive rebuilding: many marae negotiating as one body, so the thing that was unaffordable individually becomes affordable together.
+
+**Outside System** — *I waho i te pūnaha.* Bricolage, whakapapa recentring, building beyond the system entirely.
+
+The mark is the argument. A dot sitting inside the ring, the ring itself, a square out beyond it — the shape tells you where the initiative stands in relation to the system before you have read a word. That mark carries through everywhere: on the pin, on the card, in the legend, in the filter.
+
+Sorting this way makes the map do something a directory cannot. Schemes that look completely unrelated on the ground — a grant fund in one rohe, a licensed captive insurer in another — turn out to be the same move at different scale.
+
+## Placing a kaupapa
+
+The basemap is a custom Mapbox Studio style built for the job: land in a single flat teal, water dropped out entirely, roads and labels stripped back to almost nothing. There is no reason to show a state highway on a map about collective ownership, and every reason not to compete with the pins.
+
+<Figure src="/images/projects/indigenous-insurance-map/entry-detail.jpg" alt="An entry card open over the map, headed with its strategy label" caption="The card leads with the strategy, not the name." />
+
+Not every kaupapa has a street address. Some are rohe-wide, some are deliberately non-specific because the detail is not in the public domain. Those records are normalised at a single point in the data layer and carried as approximate rather than being dropped or, worse, given a false precision they never had.
+
+## Reading an entry
+
+Curated entries carry four spectrums describing how the scheme is actually designed — assigned by the research team, not by the submitter.
+
+<Figure src="/images/projects/indigenous-insurance-map/entry-scales.jpg" alt="The four scheme-design spectrums: subsidised premium, ongoing funding, collective negotiation, access pathways" caption="Four axes of scheme design, each a five-step spectrum between two named poles." />
+
+Whether premiums are subsidised, from nothing to fully. Whether the funding behind it is ad hoc or ongoing. Whether insurance is negotiated marae by marae or collectively. And whether access is by application or automatic for everyone affiliated.
+
+Those four questions are what someone comparing schemes actually wants to know, and they are exactly what prose buries. As spectrums they can be read at a glance and compared across entries. The poles are named rather than numbered, because "3 out of 5" means nothing and "application based → automatic" means something.
+
+## The wider view
+
+The record runs at two scopes. Aotearoa is the default. The global view widens to Indigenous insurance initiatives internationally, carried on a lighter pin so the distinction stays visible at a glance.
+
+<Figure src="/images/projects/indigenous-insurance-map/map-global.jpg" alt="The global view, sectioned into Indigenous-led entries and models to learn from" caption="The global view splits into two sections, and says plainly why the second one exists." />
+
+International entries are sectioned in two, and the honesty of that split matters more than it might look. The first section is Indigenous-owned, Indigenous-led or Indigenous-dedicated. The second is explicitly *not* — those entries are on the map because their structures answer problems marae-centred communities face, and the interface says so in as many words rather than letting proximity imply endorsement.
+
+That labelling only appears when tiered entries are actually in view, so the Aotearoa scope never carries a distinction that does not apply to it.
+
+## Adding to the record
+
+A record that only its authors can edit is an archive. The point here was a record that grows, so submission is a first-class part of the interface rather than a contact form bolted to the side.
+
+<Figure src="/images/projects/indigenous-insurance-map/submit-details.jpg" alt="The submission flow's location step, with a search field and a clickable map" caption="Four steps. Search for a place, or just click the map." />
+
+Four steps — location, details, contact, review. Location comes first because it is the step people can answer instantly and it warms them up for the rest; you can search for a place or drop a pin by clicking. Contact details are collected but never published, and the form says so at the point of asking rather than in a policy page nobody opens.
+
+Two fields are deliberately absent from the form: strategy and tier. Both are curated. "Indigenous-led" is a claim the record vouches for, so the record has to be the one making it — a self-declared checkbox would quietly turn an editorial position into an unverified one. Every submission is reviewed before it joins the map.
+
+## Building it
+
+The content model is the interesting part. The team needed to curate entries without touching a deploy, so the source of truth is a Notion database and the site reads from it — but a live dependency on a third-party API is also a way to have a blank map on the morning of a launch.
+
+So every read goes through one loader. It tries the live source, falls back to a bundled snapshot committed alongside the code, and normalises records at that single chokepoint. Components never reach for data themselves. The map is never blank, and the fallback path is exercised by every local dev run rather than being untested code that only executes during an outage.
+
+The public read is server-side and cached, which keeps the API credential off the client and projects contact details out of the response before it leaves the server. A webhook busts the cache when an editor saves, so curation reaches the map in seconds without a rebuild.
+
+The whole thing also builds to a chrome-less route, so the map can be embedded into the commissioning organisation's own site as a first-class page rather than a link out to somewhere else.
+
+## Tools
+
+- Next.js 14 (App Router) and TypeScript
+
+- Mapbox GL JS, react-map-gl, and a custom Mapbox Studio style
+
+- Turf.js for spatial work
+
+- Notion as the editorial source of truth
+
+- Vercel
