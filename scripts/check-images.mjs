@@ -11,9 +11,11 @@ const refs = new Set();
 for (const file of fs.readdirSync(CONTENT)) {
   if (!file.endsWith(".mdx")) continue;
   const txt = fs.readFileSync(path.join(CONTENT, file), "utf8");
-  // cover:, gallery src:, and <Figure src="...">
+  // cover:, gallery src:, and src="..." on any component (Figure, Video, FigureRow
+  // items, poster frames). The unquoted-key form `src: "..."` covers both YAML
+  // gallery entries and the object literals inside <FigureRow images={[...]}>.
   for (const m of txt.matchAll(/(?:cover:|src:)\s*["']([^"']+)["']/g)) refs.add(`${file}\t${m[1]}`);
-  for (const m of txt.matchAll(/<Figure\s+src=["']([^"']+)["']/g)) refs.add(`${file}\t${m[1]}`);
+  for (const m of txt.matchAll(/\b(?:src|poster)=["']([^"']+)["']/g)) refs.add(`${file}\t${m[1]}`);
 }
 
 function existsCaseSensitive(rel) {
